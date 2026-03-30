@@ -55,6 +55,27 @@ export default function HowWeHelp() {
               </p>
             </div>
           ))}
+
+          <div
+            id="contact"
+            className="border-b border-dark-tertiary/60 py-8"
+          >
+            <a
+              href="mailto:founders@antifund.com"
+              className="group inline-flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] leading-[1.7] md:text-lg"
+            >
+              <span className="text-warm-gray">Building something anti?</span>
+              <span
+                aria-hidden="true"
+                className="text-gold-gradient transition-transform duration-300 group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
+              <span className="text-warm-white transition-colors duration-300 group-hover:text-gold">
+                founders@antifund.com
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

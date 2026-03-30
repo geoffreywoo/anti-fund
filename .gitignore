@@ -6,3 +6,5 @@ out/
 next-env.d.ts
 .vercel
 .gstack/
+playwright-report/
+test-results/

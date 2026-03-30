@@ -39,13 +39,39 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mb-10">
-          <a
-            href="mailto:ir@antifund.com"
-            className="font-mono text-xs text-muted hover:text-gold transition-colors duration-300"
-          >
-            ir@antifund.com
-          </a>
+        <div className="mb-12 space-y-5">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold-dim">
+              For founders
+            </span>
+            <a
+              href="mailto:founders@antifund.com"
+              className="group inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-sm transition-colors duration-300"
+            >
+              <span className="text-warm-gray">Building something anti?</span>
+              <span
+                aria-hidden="true"
+                className="text-gold-gradient transition-transform duration-300 group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
+              <span className="font-mono text-warm-white group-hover:text-gold">
+                founders@antifund.com
+              </span>
+            </a>
+          </div>
+
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold-dim">
+              For investors
+            </span>
+            <a
+              href="mailto:ir@antifund.com"
+              className="font-mono text-xs text-muted hover:text-gold transition-colors duration-300"
+            >
+              ir@antifund.com
+            </a>
+          </div>
         </div>
 
         <p className="text-[11px] text-muted/40 leading-relaxed max-w-2xl">

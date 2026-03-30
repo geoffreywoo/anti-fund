@@ -50,7 +50,7 @@ export default function Thesis() {
           {antiList.map((item) => (
             <span
               key={item}
-              className="border border-dark-tertiary px-5 py-2.5 text-sm font-mono text-muted hover:border-gold hover:text-gold transition-all duration-300 cursor-default hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]"
+              className="inline-flex min-h-[36px] items-center border border-dark-tertiary px-5 py-2.5 text-sm font-mono text-muted hover:border-gold hover:text-gold transition-all duration-300 cursor-default hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]"
             >
               {item}
             </span>

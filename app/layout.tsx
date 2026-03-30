@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
     "Technology creates value. Culture creates demand. We back founders who command both.",
+  metadataBase: new URL("https://antifund.com"),
   openGraph: {
     title: "Anti Fund",
     description:
@@ -40,7 +42,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }

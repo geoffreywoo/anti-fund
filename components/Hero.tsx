@@ -2,7 +2,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-16 lg:px-24 overflow-hidden">
+    <section
+      id="top"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-16 lg:px-24 overflow-hidden"
+    >
       {/* Ambient glow behind logo */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(0,200,130,0.07),transparent_60%)] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.04),transparent_70%)] pointer-events-none" />
@@ -15,7 +18,7 @@ export default function Hero() {
             alt="Anti Fund"
             width={400}
             height={331}
-            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto drop-shadow-[0_0_60px_rgba(0,200,130,0.15)]"
+            className="w-[220px] min-[390px]:w-[260px] md:w-[340px] lg:w-[420px] h-auto drop-shadow-[0_0_60px_rgba(0,200,130,0.15)]"
             priority
           />
         </div>

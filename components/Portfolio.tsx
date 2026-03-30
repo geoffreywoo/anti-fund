@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const aiCompanies = [
   { name: "OpenAI", description: "Artificial general intelligence" },
   { name: "Anduril", description: "Defense technology & autonomous systems" },
@@ -21,7 +23,10 @@ function CompanyRow({
   index: number;
 }) {
   return (
-    <div className="group flex items-baseline justify-between py-5 border-b border-dark-tertiary/60 hover:border-gold/40 transition-all duration-300">
+    <div
+      className="portfolio-row group flex items-baseline justify-between py-5 border-b border-dark-tertiary/60 hover:border-gold/40 transition-all duration-300"
+      style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
+    >
       <div className="flex items-baseline gap-4">
         <span className="font-mono text-[10px] text-muted/40 tabular-nums">
           {String(index + 1).padStart(2, "0")}
@@ -47,6 +52,19 @@ export default function Portfolio() {
         <p className="font-mono text-xs text-gold tracking-[0.25em] uppercase mb-16">
           Select Investments
         </p>
+
+        <div className="mb-16 border-l border-gold/25 bg-white/[0.02] px-6 py-5 backdrop-blur-sm">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold-dim">
+            Proof
+          </p>
+          <p className="mt-3 max-w-3xl text-base leading-[1.7] text-warm-gray md:text-lg">
+            Portfolio includes category-defining companies across AI, defense,
+            finance, and consumer, including{" "}
+            <span className="text-warm-white">
+              OpenAI, Anduril, Ramp, and Polymarket.
+            </span>
+          </p>
+        </div>
 
         <div className="mb-20">
           <h3 className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase mb-8">
