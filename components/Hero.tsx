@@ -4,44 +4,83 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-16 lg:px-24 overflow-hidden"
+      className="px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-40 lg:px-14"
     >
-      {/* Ambient glow behind logo */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(0,200,130,0.07),transparent_60%)] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.04),transparent_70%)] pointer-events-none" />
+      <div className="mx-auto max-w-6xl">
+        <div className="border-y border-line py-10 md:py-14">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_260px]">
+            <div>
+              <p className="paper-label mb-8">
+                Anti Fund memorandum 01 / March 2026
+              </p>
 
-      <div className="relative flex flex-col items-center text-center">
-        {/* Logo */}
-        <div className="animate-fade-up mb-10 md:mb-14">
-          <Image
-            src="/logo.png"
-            alt="Anti Fund"
-            width={400}
-            height={331}
-            className="w-[220px] min-[390px]:w-[260px] md:w-[340px] lg:w-[420px] h-auto drop-shadow-[0_0_60px_rgba(0,200,130,0.15)]"
-            priority
-          />
+              <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-[-0.05em] text-ink md:text-7xl lg:text-[5.75rem]">
+                Technology creates value. Culture creates demand.
+              </h1>
+
+              <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
+                We back founders who command both.
+              </p>
+
+              <div className="mt-10 border-t border-line pt-8">
+                <p className="paper-label mb-3">Abstract</p>
+                <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+                  Anti Fund is built around a simple thesis: category-defining
+                  companies are usually led by founders who combine technical
+                  depth with the ability to command attention. This page reads as
+                  a memorandum because that is the point. Less brochure, more
+                  argument.
+                </p>
+              </div>
+            </div>
+
+            <aside className="border-t border-line pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <Image
+                src="/logo.png"
+                alt="Anti Fund"
+                width={96}
+                height={79}
+                className="h-auto w-20 grayscale brightness-0 contrast-125 opacity-75 md:w-24"
+                priority
+              />
+
+              <dl className="mt-8 space-y-6">
+                <div>
+                  <dt className="paper-label">Document type</dt>
+                  <dd className="mt-2 text-base leading-7 text-ink-soft">
+                    Founder-facing whitepaper
+                  </dd>
+                </div>
+
+                <div>
+                  <dt className="paper-label">Keywords</dt>
+                  <dd className="mt-2 text-base leading-7 text-ink-soft">
+                    AI, robotics, defense, software, culture, conviction.
+                  </dd>
+                </div>
+
+                <div>
+                  <dt className="paper-label">Correspondence</dt>
+                  <dd className="mt-2 text-base text-ink">
+                    <a href="mailto:founders@antifund.com" className="paper-link">
+                      founders@antifund.com
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
         </div>
 
-        {/* Tagline */}
-        <div className="animate-fade-up delay-200 max-w-2xl">
-          <p className="text-xl md:text-2xl lg:text-[1.75rem] text-warm-gray leading-relaxed tracking-[-0.01em]">
-            Technology creates value. Culture creates demand.
-          </p>
-          <p className="text-xl md:text-2xl lg:text-[1.75rem] text-warm-white leading-relaxed tracking-[-0.01em] mt-2 font-medium">
-            We back founders who command both.
-          </p>
+        <div className="mt-8 flex items-center gap-4">
+          <span className="block h-px w-16 bg-line-strong" aria-hidden="true" />
+          <a
+            href="#thesis"
+            className="paper-link font-mono text-[11px] uppercase tracking-[0.18em]"
+          >
+            Begin reading
+          </a>
         </div>
-      </div>
-
-      <div className="absolute bottom-12 left-6 md:left-16 lg:left-24 animate-fade-up delay-500">
-        <a
-          href="#thesis"
-          className="group flex items-center gap-3 text-muted hover:text-gold transition-colors font-mono text-xs tracking-[0.2em] uppercase"
-        >
-          <span className="block w-8 h-px bg-muted group-hover:bg-gold group-hover:w-12 transition-all" />
-          Scroll
-        </a>
       </div>
     </section>
   );

@@ -21,55 +21,89 @@ function ShareImage({ logoSrc }: { logoSrc: string }) {
         width: "100%",
         height: "100%",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#080809",
-        color: "#F0EDE8",
-        position: "relative",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        background: "#faf8f1",
+        color: "#141414",
+        padding: "52px 64px",
       }}
     >
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(circle at 50% 42%, rgba(212,175,55,0.18), transparent 48%)",
-        }}
-      />
-      <div
-        style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          borderBottom: "1px solid #cdc5b7",
+          paddingBottom: "24px",
         }}
       >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              fontSize: 15,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "#6d685d",
+            }}
+          >
+            Anti Fund memorandum 01
+          </div>
+          <div
+            style={{
+              fontSize: 30,
+              marginTop: "10px",
+              fontWeight: 600,
+            }}
+          >
+            Founder-facing whitepaper
+          </div>
+        </div>
+
         <img
           src={logoSrc}
           alt=""
-          width="300"
-          height="248"
-          style={{ objectFit: "contain", marginBottom: 28 }}
+          width="88"
+          height="72"
+          style={{ objectFit: "contain", opacity: 0.9 }}
         />
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <div
           style={{
-            fontSize: 92,
-            fontWeight: 800,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-          }}
-        >
-          ANTI FUND
-        </div>
-        <div
-          style={{
-            marginTop: 18,
-            fontSize: 28,
-            color: "#9B9590",
+            fontSize: 82,
+            lineHeight: 0.95,
+            letterSpacing: "-0.05em",
+            maxWidth: "900px",
+            fontWeight: 700,
           }}
         >
           Technology creates value. Culture creates demand.
         </div>
+        <div
+          style={{
+            marginTop: "24px",
+            fontSize: 30,
+            color: "#373631",
+            maxWidth: "760px",
+          }}
+        >
+          We back founders who command both.
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          borderTop: "1px solid #cdc5b7",
+          paddingTop: "18px",
+          fontSize: 16,
+          color: "#6d685d",
+        }}
+      >
+        <div>Correspondence: founders@antifund.com</div>
+        <div>antifund.com</div>
       </div>
     </div>
   );

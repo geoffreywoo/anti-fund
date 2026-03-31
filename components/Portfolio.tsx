@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 
 const aiCompanies = [
   { name: "OpenAI", description: "Artificial general intelligence" },
-  { name: "Anduril", description: "Defense technology & autonomous systems" },
+  { name: "Anduril", description: "Defense technology and autonomous systems" },
   { name: "Cognition", description: "AI software engineering" },
   { name: "Physical Intelligence", description: "Foundation models for robotics" },
   { name: "Ramp", description: "Corporate finance automation" },
@@ -11,9 +11,7 @@ const aiCompanies = [
   { name: "Chronosphere", description: "Cloud-native observability" },
 ];
 
-const consumerCompanies = [
-  { name: "Polymarket", description: "Prediction markets" },
-];
+const consumerCompanies = [{ name: "Polymarket", description: "Prediction markets" }];
 
 function CompanyRow({
   company,
@@ -24,64 +22,61 @@ function CompanyRow({
 }) {
   return (
     <div
-      className="portfolio-row group flex items-baseline justify-between py-5 border-b border-dark-tertiary/60 hover:border-gold/40 transition-all duration-300"
+      className="portfolio-row grid gap-3 border-b border-line py-4 md:grid-cols-[44px_minmax(0,240px)_minmax(0,1fr)] md:gap-6"
       style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
     >
-      <div className="flex items-baseline gap-4">
-        <span className="font-mono text-[10px] text-muted/40 tabular-nums">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="font-display text-xl md:text-2xl font-bold tracking-[-0.02em] text-warm-white group-hover:text-gold-gradient transition-colors duration-300">
-          {company.name}
-        </span>
-      </div>
-      <span className="text-xs text-muted font-mono ml-4 text-right hidden sm:block">
-        {company.description}
+      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+        {String(index + 1).padStart(2, "0")}
       </span>
+      <span className="font-display text-2xl leading-none tracking-[-0.03em] text-ink">
+        {company.name}
+      </span>
+      <span className="text-base leading-7 text-ink-soft">{company.description}</span>
+    </div>
+  );
+}
+
+function CompanyGroup({
+  title,
+  companies,
+}: {
+  title: string;
+  companies: { name: string; description: string }[];
+}) {
+  return (
+    <div>
+      <p className="paper-label mb-3">{title}</p>
+      <div className="border-y border-line">
+        {companies.map((company, index) => (
+          <CompanyRow key={company.name} company={company} index={index} />
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-32 md:py-40 px-6 md:px-16 lg:px-24 relative">
-      {/* Subtle glow */}
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.04),transparent_70%)] pointer-events-none" />
+    <section id="portfolio" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
+          <div className="paper-label">02 / Select Investments</div>
 
-      <div className="max-w-5xl relative">
-        <p className="font-mono text-xs text-gold tracking-[0.25em] uppercase mb-16">
-          Select Investments
-        </p>
+          <div className="space-y-10">
+            <div className="border border-line bg-paper-alt px-6 py-6">
+              <p className="paper-label mb-3">Observation 01 / Proof</p>
+              <p className="text-lg leading-8 text-ink-soft">
+                Portfolio includes category-defining companies across AI,
+                defense, finance, and consumer, including{" "}
+                <span className="font-semibold text-ink">
+                  OpenAI, Anduril, Ramp, and Polymarket.
+                </span>
+              </p>
+            </div>
 
-        <div className="mb-16 border-l border-gold/25 bg-white/[0.02] px-6 py-5 backdrop-blur-sm">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold-dim">
-            Proof
-          </p>
-          <p className="mt-3 max-w-3xl text-base leading-[1.7] text-warm-gray md:text-lg">
-            Portfolio includes category-defining companies across AI, defense,
-            finance, and consumer, including{" "}
-            <span className="text-warm-white">
-              OpenAI, Anduril, Ramp, and Polymarket.
-            </span>
-          </p>
-        </div>
-
-        <div className="mb-20">
-          <h3 className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase mb-8">
-            AI · Robotics · Software
-          </h3>
-          {aiCompanies.map((company, i) => (
-            <CompanyRow key={company.name} company={company} index={i} />
-          ))}
-        </div>
-
-        <div>
-          <h3 className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase mb-8">
-            Consumer
-          </h3>
-          {consumerCompanies.map((company, i) => (
-            <CompanyRow key={company.name} company={company} index={i} />
-          ))}
+            <CompanyGroup title="AI / Robotics / Software" companies={aiCompanies} />
+            <CompanyGroup title="Consumer" companies={consumerCompanies} />
+          </div>
         </div>
       </div>
     </section>

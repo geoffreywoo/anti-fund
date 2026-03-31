@@ -9,52 +9,43 @@ export default function Thesis() {
   ];
 
   return (
-    <section id="thesis" className="py-32 md:py-40 px-6 md:px-16 lg:px-24">
-      <div className="max-w-5xl">
-        <p className="font-mono text-xs text-gold tracking-[0.25em] uppercase mb-16">
-          What We Believe
-        </p>
+    <section id="thesis" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
+          <div className="paper-label">01 / What We Believe</div>
 
-        <blockquote className="font-display text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.03em] mb-20 text-warm-white">
-          The best founders are{" "}
-          <span className="text-gold-gradient">&ldquo;anti&rdquo;</span> by
-          definition. Their companies must be highly disruptive to the status
-          quo.
-        </blockquote>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <blockquote className="border-l-2 border-ink pl-6 font-display text-4xl leading-[1.06] tracking-[-0.04em] text-ink md:text-6xl">
+              The best founders are “anti” by definition.
+            </blockquote>
 
-        <hr className="hr-gradient mb-16" />
-
-        <div className="grid md:grid-cols-2 gap-16 mb-24">
-          <div>
-            <p className="text-lg text-warm-gray leading-[1.7] tracking-[-0.01em]">
-              <span className="text-warm-white font-medium">
-                Capital is a commodity.
-              </span>{" "}
-              Attention is not. Every fund can wire money. Very few can move
-              markets with a phone call, a post, or a co-sign. We can.
-            </p>
-          </div>
-          <div>
-            <p className="text-lg text-warm-gray leading-[1.7] tracking-[-0.01em]">
-              <span className="text-warm-white font-medium">
-                We don&apos;t spray and pray.
-              </span>{" "}
-              We concentrate our portfolio in a small number of companies we
-              believe can reshape industries. Every dollar we deploy has a thesis
-              behind it.
-            </p>
+            <div className="space-y-6 text-lg leading-8 text-ink-soft">
+              <p>
+                Capital is a commodity. Attention is not. Every fund can wire
+                money. Very few can materially shape demand, narrative, or
+                distribution at the same moment they support a company.
+              </p>
+              <p>
+                We do not spray and pray. We make a small number of concentrated
+                bets on founders who are building something technically serious,
+                culturally resonant, and structurally difficult to ignore.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-3">
-          {antiList.map((item) => (
-            <span
-              key={item}
-              className="inline-flex min-h-[36px] items-center border border-dark-tertiary px-5 py-2.5 text-sm font-mono text-muted hover:border-gold hover:text-gold transition-all duration-300 cursor-default hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]"
-            >
-              {item}
-            </span>
-          ))}
+        <div className="mt-12 border-y border-line py-6">
+          <p className="paper-label mb-4">Key terms</p>
+          <div className="flex flex-wrap gap-2.5">
+            {antiList.map((item) => (
+              <span
+                key={item}
+                className="inline-flex min-h-[34px] items-center border border-line bg-paper-alt px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

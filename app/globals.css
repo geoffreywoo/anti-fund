@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dark: #080809;
-  --color-dark-secondary: #0E0E10;
-  --color-dark-tertiary: #1C1C1F;
-  --color-gold: #D4AF37;
-  --color-gold-light: #F0D060;
-  --color-gold-dim: #8B7433;
-  --color-warm-white: #F0EDE8;
-  --color-warm-gray: #9B9590;
-  --color-muted: #5A5856;
-  --font-display: "Syne", system-ui, sans-serif;
-  --font-body: "Space Grotesk", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --z-grain: 100;
+  --color-paper: #faf8f1;
+  --color-paper-alt: #f1ede2;
+  --color-paper-shadow: #e6dfd1;
+  --color-ink: #141414;
+  --color-ink-soft: #373631;
+  --color-ink-muted: #6d685d;
+  --color-line: #cdc5b7;
+  --color-line-strong: #9f988a;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --z-grain: 0;
   --z-nav: 110;
   --z-modal: 120;
 }
@@ -23,62 +22,64 @@ html {
 }
 
 body {
-  background-color: var(--color-dark);
-  color: var(--color-warm-white);
+  background:
+    linear-gradient(180deg, rgba(250, 248, 241, 1) 0%, rgba(247, 243, 234, 1) 100%);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  line-height: 1.65;
 }
 
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-dark);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
 }
 
-/* Grain texture overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: var(--z-grain);
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
-/* Gold gradient text utility */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #D4AF37 0%, #F0D060 40%, #D4AF37 60%, #AA8A2E 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-ink);
 }
 
-/* Ambient glow */
-.glow-gold {
-  position: relative;
+.paper-label {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
-.glow-gold::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 60%;
-  height: 140%;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: -1;
+
+.paper-link {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line-strong);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.paper-link:hover {
+  border-color: var(--color-ink);
 }
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(10px);
   transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+    opacity 0.45s ease,
+    transform 0.45s ease;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -89,10 +90,10 @@ body::before {
 
 [data-reveal] .portfolio-row {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(8px);
   transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+    opacity 0.45s ease,
+    transform 0.45s ease;
   transition-delay: var(--row-delay, 0ms);
 }
 
@@ -101,11 +102,10 @@ body::before {
   transform: none;
 }
 
-/* Fade-up animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -117,18 +117,37 @@ body::before {
   animation: fadeUp 0.8s ease-out both;
 }
 
-/* Staggered delays */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
+.delay-100 {
+  animation-delay: 0.1s;
+}
 
-/* Horizontal rule with gradient */
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
 .hr-gradient {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-dark-tertiary) 20%, var(--color-gold-dim) 50%, var(--color-dark-tertiary) 80%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-line) 18%,
+    var(--color-line-strong) 50%,
+    var(--color-line) 82%,
+    transparent
+  );
 }
 
 #thesis,

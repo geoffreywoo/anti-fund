@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 
 const links = [
@@ -18,7 +17,7 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 24);
     };
 
     handleScroll();
@@ -87,39 +86,23 @@ export default function Nav() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[var(--z-nav)] px-4 pt-4 md:px-6">
-        <div
-          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 md:px-6 ${
-            isScrolled
-              ? "border-white/10 bg-[rgba(8,8,9,0.85)] shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-[16px]"
-              : "border-transparent bg-transparent"
-          }`}
-        >
-          <a
-            href="#top"
-            className="flex items-center gap-3 text-warm-white transition-colors duration-300 hover:text-gold"
-          >
-            <Image
-              src="/logo.png"
-              alt="Anti Fund"
-              width={32}
-              height={27}
-              className="h-auto w-8"
-              priority
-            />
-            <span className="font-display text-lg font-extrabold tracking-[0.22em]">
-              ANTI FUND
-            </span>
+      <header className="fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-14">
+          <a href="#top" className="min-w-0 text-ink transition-colors hover:text-ink-soft">
+            <div className="paper-label">Anti Fund</div>
+            <div className="mt-1 text-sm text-ink-soft md:text-base">
+              Research memorandum for founders
+            </div>
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-            {links.map((link) => (
+            {links.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="font-mono text-[11px] uppercase tracking-[0.24em] text-warm-gray transition-colors duration-300 hover:text-gold"
+                className="paper-link font-mono text-[11px] uppercase tracking-[0.18em]"
               >
-                {link.label}
+                {String(index + 1).padStart(2, "0")} {link.label}
               </a>
             ))}
           </nav>
@@ -127,21 +110,21 @@ export default function Nav() {
           <button
             ref={buttonRef}
             type="button"
-            className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-full border border-white/10 text-warm-white transition-colors duration-300 hover:border-gold/40 hover:text-gold md:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-line-strong px-3 text-ink transition-colors hover:bg-paper-alt md:hidden"
             aria-expanded={isOpen}
             aria-controls={menuId}
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setIsOpen((open) => !open)}
           >
-            <span className="sr-only">Menu</span>
-            <span
-              aria-hidden="true"
-              className="font-mono text-[11px] uppercase tracking-[0.25em]"
-            >
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
               {isOpen ? "Close" : "Menu"}
             </span>
           </button>
         </div>
+
+        {isScrolled ? (
+          <div className="mx-auto h-px max-w-6xl bg-line/70" aria-hidden="true" />
+        ) : null}
       </header>
 
       {isOpen ? (
@@ -151,28 +134,30 @@ export default function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
-          className="fixed inset-0 z-[var(--z-modal)] flex items-center justify-center bg-[#080809]/95 px-6 backdrop-blur-lg md:hidden"
+          className="fixed inset-0 z-[var(--z-modal)] bg-paper px-6 pb-10 pt-28"
         >
-          <nav aria-label="Mobile primary" className="w-full max-w-sm">
-            <div className="space-y-4">
-              {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="flex min-h-12 items-center justify-between border-b border-dark-tertiary/60 py-4 font-display text-3xl font-bold tracking-[-0.03em] text-warm-white transition-colors duration-300 hover:text-gold"
-                  onClick={closeMenu}
-                >
-                  <span>{link.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className="font-mono text-sm text-gold-dim"
+          <div className="mx-auto max-w-3xl">
+            <p className="paper-label mb-8">Contents</p>
+            <nav aria-label="Mobile primary">
+              <div className="border-y border-line">
+                {links.map((link, index) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="flex min-h-14 items-baseline justify-between border-b border-line py-5 last:border-b-0"
+                    onClick={closeMenu}
                   >
-                    &rarr;
-                  </span>
-                </a>
-              ))}
-            </div>
-          </nav>
+                    <span className="font-display text-3xl leading-none tracking-[-0.03em] text-ink">
+                      {link.label}
+                    </span>
+                    <span className="font-mono text-xs uppercase tracking-[0.18em] text-ink-muted">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </div>
         </div>
       ) : null}
     </>
