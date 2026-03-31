@@ -1,28 +1,28 @@
 const pillars = [
   {
-    title: "Network",
+    title: "Signal",
     description:
-      "Our LP base includes Marc Andreessen, Chris Dixon, and Aquarian Holdings. Not Sand Hill handshakes, real operators.",
+      "Our LP base includes Marc Andreessen, Chris Dixon, and Aquarian Holdings. When the story is strong, we can get it into the right rooms fast.",
   },
   {
-    title: "Product",
+    title: "Taste",
     description:
-      "We've built products people use. We bring taste, urgency, and a founder's instinct for what ships and what does not.",
+      "Product, positioning, brand, narrative, launch. In crowded markets, better taste is not decoration. It is edge.",
   },
   {
-    title: "Go-to-Market",
+    title: "Distribution",
     description:
-      "Attention is our weapon. Distribution and partner introductions accelerate the path from product to market dominance.",
+      "When intelligence is commoditized, distribution matters more. We help create moments, introductions, and partnerships that compound attention.",
   },
   {
     title: "Fundraising",
     description:
-      "We co-invest with the best firms in venture. Strategy, pitch preparation, introductions, and negotiation happen alongside you.",
+      "There is more capital than ever. That does not mean founders should take undifferentiated money. We help sharpen the story, run process, and keep leverage.",
   },
   {
-    title: "Inflection Points",
+    title: "Pressure moments",
     description:
-      "Board dynamics. M&A. Pivots. Existential decisions. We pick up the phone when the stakes are highest.",
+      "Board pressure. Pivots. Financing crunches. M&A. We are most useful when the stakes are high and the answer is not obvious.",
   },
 ];
 
@@ -56,11 +56,12 @@ export default function HowWeHelp() {
             <div id="contact" className="border border-line bg-paper-alt px-6 py-6">
               <p className="paper-label mb-3">Correspondence</p>
               <p className="text-lg leading-8 text-ink-soft">
-                Building something anti? Write to{" "}
+                Building something technically serious with real cultural pull?
+                Write to{" "}
                 <a href="mailto:founders@antifund.com" className="paper-link">
                   founders@antifund.com
                 </a>
-                . We prefer direct notes over funnels.
+                . We prefer conviction over funnel-fill.
               </p>
             </div>
           </div>

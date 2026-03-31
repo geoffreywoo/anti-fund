@@ -68,29 +68,29 @@ function ShareImage({ logoSrc }: { logoSrc: string }) {
         />
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div
-          style={{
-            fontSize: 82,
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              fontSize: 82,
             lineHeight: 0.95,
             letterSpacing: "-0.05em",
             maxWidth: "900px",
             fontWeight: 700,
-          }}
-        >
-          Technology creates value. Culture creates demand.
+            }}
+          >
+            Capital is abundant. Attention is scarce.
+          </div>
+          <div
+            style={{
+              marginTop: "24px",
+              fontSize: 30,
+              color: "#373631",
+              maxWidth: "760px",
+            }}
+          >
+            We back founders with technical depth and cultural gravity.
+          </div>
         </div>
-        <div
-          style={{
-            marginTop: "24px",
-            fontSize: 30,
-            color: "#373631",
-            maxWidth: "760px",
-          }}
-        >
-          We back founders who command both.
-        </div>
-      </div>
 
       <div
         style={{

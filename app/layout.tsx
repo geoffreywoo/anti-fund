@@ -5,12 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
-    "Technology creates value. Culture creates demand. We back founders who command both.",
+    "Capital is abundant. Attention is scarce. Anti Fund backs founders with technical depth and cultural gravity.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
     title: "Anti Fund",
     description:
-      "Technology creates value. Culture creates demand. We back founders who command both.",
+      "Capital is abundant. Attention is scarce. Anti Fund backs founders with technical depth and cultural gravity.",
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anti Fund",
     description:
-      "Technology creates value. Culture creates demand. We back founders who command both.",
+      "Capital is abundant. Attention is scarce. Anti Fund backs founders with technical depth and cultural gravity.",
   },
 };
 

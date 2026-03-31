@@ -5,19 +5,19 @@ import { useRef, useState } from "react";
 const faqItems = [
   {
     question: "What stage do you invest at?",
-    answer: "Pre-seed and seed primarily.",
+    answer: "Pre-seed and seed primarily, with selective follow-on support.",
   },
   {
     question: "What’s your check size?",
     answer: "$250K to $500K in most rounds, with occasional follow-ons well beyond that.",
   },
   {
-    question: "What sectors?",
-    answer: "AI, robotics, defense tech, autonomous systems, and the consumer products that can command attention.",
+    question: "What kinds of companies do you back?",
+    answer: "AI, robotics, defense, autonomous systems, and consumer products with real cultural pull.",
   },
   {
-    question: "How do you help beyond capital?",
-    answer: "Network, product instinct, go-to-market leverage, fundraising support, and honest operator feedback when things get weird.",
+    question: "Why Anti Fund?",
+    answer: "Because capital is abundant and attention is scarce. Founders come to us for taste, narrative, distribution instinct, and honest operator help alongside money.",
   },
   {
     question: "Are you raising a new fund?",

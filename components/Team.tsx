@@ -9,19 +9,19 @@ const team = [
     name: "Jake Paul",
     title: "Co-founder and Managing Partner",
     credential:
-      "Record-breaking boxer. 65M peak concurrent on Netflix. 70M+ followers. Built Most Valuable Promotions, Betr, and W.",
+      "Built one of the largest audience engines on the internet and turned that attention into businesses. 65M peak concurrent on Netflix. Built Most Valuable Promotions, Betr, and W.",
   },
   {
     name: "Logan Paul",
     title: "General Partner",
     credential:
-      "Professional wrestler. Built Prime and Lunchly. Host of Impaulsive. Global cultural force.",
+      "Understands internet-native distribution at global scale. Built Prime and Lunchly. Host of Impaulsive. Professional wrestler and cultural force.",
   },
   {
     name: "Steve Han",
     title: "Partner",
     credential:
-      "Previously March Capital and Deutsche Bank. Dual degrees, UC Berkeley. ROK Army veteran.",
+      "Institutional investor with operator empathy. Previously March Capital and Deutsche Bank. UC Berkeley. ROK Army veteran.",
   },
 ];
 
@@ -32,28 +32,35 @@ export default function Team() {
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">03 / Team</div>
 
-          <div className="border-y border-line">
-            {team.map((member, index) => (
-              <div
-                key={member.name}
-                className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,260px)_minmax(0,1fr)] md:gap-6"
-              >
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink md:text-3xl">
-                    {member.name}
-                  </h3>
-                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-                    {member.title}
+          <div className="space-y-10">
+            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+              Anti Fund sits at the intersection of product truth and cultural
+              gravity. We know how companies are built and how attention moves.
+            </p>
+
+            <div className="border-y border-line">
+              {team.map((member, index) => (
+                <div
+                  key={member.name}
+                  className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,260px)_minmax(0,1fr)] md:gap-6"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink md:text-3xl">
+                      {member.name}
+                    </h3>
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+                      {member.title}
+                    </p>
+                  </div>
+                  <p className="text-base leading-7 text-ink-soft">
+                    {member.credential}
                   </p>
                 </div>
-                <p className="text-base leading-7 text-ink-soft">
-                  {member.credential}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

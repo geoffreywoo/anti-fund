@@ -15,21 +15,21 @@ export default function Hero() {
               </p>
 
               <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-[-0.05em] text-ink md:text-7xl lg:text-[5.75rem]">
-                Technology creates value. Culture creates demand.
+                Capital is abundant. Attention is scarce.
               </h1>
 
               <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
-                We back founders who command both.
+                When intelligence is cheap and capital is everywhere, culture,
+                taste, and vibes become hard power.
               </p>
 
               <div className="mt-10 border-t border-line pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-lg leading-8 text-ink-soft">
-                  Anti Fund is built around a simple thesis: category-defining
-                  companies are usually led by founders who combine technical
-                  depth with the ability to command attention. This page reads as
-                  a memorandum because that is the point. Less brochure, more
-                  argument.
+                  Anti Fund backs founders who can build real technology and
+                  create real demand. As intelligence gets commoditized and
+                  capital gets more abundant, the bottleneck shifts to taste,
+                  narrative, and the ability to make the market care.
                 </p>
               </div>
             </div>
@@ -48,14 +48,14 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Document type</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Founder-facing whitepaper
+                    Founder memorandum
                   </dd>
                 </div>
 
                 <div>
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    AI, robotics, defense, software, culture, conviction.
+                    Attention, taste, culture, AI, conviction.
                   </dd>
                 </div>
 

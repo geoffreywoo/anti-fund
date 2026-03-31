@@ -1,11 +1,11 @@
 export default function Thesis() {
   const antiList = [
     "Anti-consensus",
-    "Anti-incremental",
+    "Anti-boring",
     "Anti-bureaucratic",
-    "Anti-mediocre",
+    "Anti-sameness",
+    "Anti-commodity",
     "Anti-spray-and-pray",
-    "Anti-ivory tower",
   ];
 
   return (
@@ -16,19 +16,27 @@ export default function Thesis() {
 
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <blockquote className="border-l-2 border-ink pl-6 font-display text-4xl leading-[1.06] tracking-[-0.04em] text-ink md:text-6xl">
-              The best founders are “anti” by definition.
+              When intelligence gets cheaper, taste gets more valuable.
             </blockquote>
 
             <div className="space-y-6 text-lg leading-8 text-ink-soft">
               <p>
-                Capital is a commodity. Attention is not. Every fund can wire
-                money. Very few can materially shape demand, narrative, or
-                distribution at the same moment they support a company.
+                We are entering a market flooded with models, compute, and
+                capital. Capability is compounding fast. So is sameness.
               </p>
               <p>
-                We do not spray and pray. We make a small number of concentrated
-                bets on founders who are building something technically serious,
-                culturally resonant, and structurally difficult to ignore.
+                That changes the bottleneck. The hard part is no longer shipping
+                something functional. It is commanding attention, creating
+                desire, and making people care before the market fully catches
+                up.
+              </p>
+              <p>
+                Culture is not decoration around the company. It is part of the
+                moat. Vibes are not fluff. They are how taste travels, how
+                products earn pull, and how movements start.
+              </p>
+              <p>
+                We back founders who can build the future and give it gravity.
               </p>
             </div>
           </div>

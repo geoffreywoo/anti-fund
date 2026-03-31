@@ -77,7 +77,7 @@ export default async function Image() {
               fontWeight: 700,
             }}
           >
-            Technology creates value. Culture creates demand.
+            Capital is abundant. Attention is scarce.
           </div>
           <div
             style={{
@@ -87,7 +87,7 @@ export default async function Image() {
               maxWidth: "760px",
             }}
           >
-            We back founders who command both.
+            We back founders with technical depth and cultural gravity.
           </div>
         </div>
 

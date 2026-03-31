@@ -66,8 +66,8 @@ export default function Portfolio() {
             <div className="border border-line bg-paper-alt px-6 py-6">
               <p className="paper-label mb-3">Observation 01 / Proof</p>
               <p className="text-lg leading-8 text-ink-soft">
-                Portfolio includes category-defining companies across AI,
-                defense, finance, and consumer, including{" "}
+                This is not a theory. The portfolio already includes companies
+                that define categories and command attention, including{" "}
                 <span className="font-semibold text-ink">
                   OpenAI, Anduril, Ramp, and Polymarket.
                 </span>
@@ -75,7 +75,7 @@ export default function Portfolio() {
             </div>
 
             <CompanyGroup title="AI / Robotics / Software" companies={aiCompanies} />
-            <CompanyGroup title="Consumer" companies={consumerCompanies} />
+            <CompanyGroup title="Consumer / Culture" companies={consumerCompanies} />
           </div>
         </div>
       </div>

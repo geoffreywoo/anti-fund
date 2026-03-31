@@ -91,7 +91,7 @@ export default function Nav() {
           <a href="#top" className="min-w-0 text-ink transition-colors hover:text-ink-soft">
             <div className="paper-label">Anti Fund</div>
             <div className="mt-1 text-sm text-ink-soft md:text-base">
-              Research memorandum for founders
+              Capital is abundant. Attention is scarce.
             </div>
           </a>
 
