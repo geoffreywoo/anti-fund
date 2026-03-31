@@ -3,25 +3,25 @@ const team = [
     name: "Geoffrey Woo",
     title: "Co-founder and Managing Partner",
     credential:
-      "Serial founder. Sold Glassmap (YC S11) to Groupon. Built Archive and Ketone-IQ. Stanford CS.",
+      "Entrepreneur and co-founder of Archive, Ketone-IQ, and W. Previously founded and sold Glassmap (YC S11) to Groupon. Stanford Computer Science.",
   },
   {
     name: "Jake Paul",
     title: "Co-founder and Managing Partner",
     credential:
-      "Built one of the largest audience engines on the internet and turned that attention into businesses. 65M peak concurrent on Netflix. Built Most Valuable Promotions, Betr, and W.",
+      "Professional boxer and founder of Most Valuable Promotions, Betr, and W. Held 65M peak concurrent streams on Netflix, ranked among the most Googled athletes in 2024, and reaches 70M+ followers across social media.",
   },
   {
     name: "Logan Paul",
     title: "General Partner",
     credential:
-      "Understands internet-native distribution at global scale. Built Prime and Lunchly. Host of Impaulsive. Professional wrestler and cultural force.",
+      "Professional wrestler, founder of Prime and Lunchly, and host of Impaulsive. One of the most followed celebrities across social media and a durable force in consumer attention.",
   },
   {
     name: "Steve Han",
     title: "Partner",
     credential:
-      "Institutional investor with operator empathy. Previously March Capital and Deutsche Bank. UC Berkeley. ROK Army veteran.",
+      "Previously at March Capital and Deutsche Bank advising tech buyouts. Raised across Korea, India, and China. UC Berkeley economics. Served in the ROK Army.",
   },
 ];
 
@@ -34,8 +34,9 @@ export default function Team() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-lg leading-8 text-ink-soft">
-              Anti Fund sits at the intersection of product truth and cultural
-              gravity. We know how companies are built and how attention moves.
+              Anti Fund combines operators, investors, and culture-shaping
+              distribution. The team reflects the same thesis as the portfolio:
+              tech depth matters, but so does the ability to command attention.
             </p>
 
             <div className="border-y border-line">

@@ -1,28 +1,28 @@
 const pillars = [
   {
-    title: "Signal",
+    title: "Network",
     description:
-      "Our LP base includes Marc Andreessen, Chris Dixon, and Aquarian Holdings. When the story is strong, we can get it into the right rooms fast.",
+      "Our LP base includes people like Marc Andreessen, Chris Dixon, and Aquarian Holdings. When the story is strong, we can help it reach the right founders, operators, customers, and later-stage investors fast.",
   },
   {
-    title: "Taste",
+    title: "Product",
     description:
-      "Product, positioning, brand, narrative, launch. In crowded markets, better taste is not decoration. It is edge.",
+      "We dig into product, positioning, and what actually ships. In markets flooded with capability, better product instinct and better taste are material advantages.",
   },
   {
-    title: "Distribution",
+    title: "Go-to-market",
     description:
-      "When intelligence is commoditized, distribution matters more. We help create moments, introductions, and partnerships that compound attention.",
+      "Go-to-market is where taste meets leverage. We help create moments, intros, and storylines that compound mindshare rather than just checking a sales-process box.",
   },
   {
     title: "Fundraising",
     description:
-      "There is more capital than ever. That does not mean founders should take undifferentiated money. We help sharpen the story, run process, and keep leverage.",
+      "There is more capital than ever, but not all of it is useful. We help sharpen the story, run a tighter process, and keep leverage when the round matters.",
   },
   {
-    title: "Pressure moments",
+    title: "Strategic inflection points",
     description:
-      "Board pressure. Pivots. Financing crunches. M&A. We are most useful when the stakes are high and the answer is not obvious.",
+      "Board pressure, pivots, financing crunches, M&A, and other existential moments. We are not interested in busywork. We are most useful when the stakes are high.",
   },
 ];
 
@@ -34,6 +34,13 @@ export default function HowWeHelp() {
           <div className="paper-label">04 / How We Help</div>
 
           <div className="space-y-10">
+            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+              Founding and scaling a high-growth business is difficult. Anti
+              Fund will not waste your time or generate busywork. We are a
+              phone call or text message away when you want to dig into product,
+              go-to-market, fundraising, and strategy.
+            </p>
+
             <div className="border-y border-line">
               {pillars.map((pillar, index) => (
                 <div
@@ -56,12 +63,12 @@ export default function HowWeHelp() {
             <div id="contact" className="border border-line bg-paper-alt px-6 py-6">
               <p className="paper-label mb-3">Correspondence</p>
               <p className="text-lg leading-8 text-ink-soft">
-                Building something technically serious with real cultural pull?
-                Write to{" "}
+                Building something anti with differentiated technology or
+                distribution advantages? Write to{" "}
                 <a href="mailto:founders@antifund.com" className="paper-link">
                   founders@antifund.com
                 </a>
-                . We prefer conviction over funnel-fill.
+                . Direct notes beat funnel-fill.
               </p>
             </div>
           </div>

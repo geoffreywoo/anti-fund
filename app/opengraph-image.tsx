@@ -78,7 +78,7 @@ function ShareImage({ logoSrc }: { logoSrc: string }) {
             fontWeight: 700,
             }}
           >
-            Capital is abundant. Attention is scarce.
+            Capital is commodity. Attention is not.
           </div>
           <div
             style={{
@@ -88,7 +88,7 @@ function ShareImage({ logoSrc }: { logoSrc: string }) {
               maxWidth: "760px",
             }}
           >
-            We back founders with technical depth and cultural gravity.
+            The future is forged at the intersection of tech and culture.
           </div>
         </div>
 

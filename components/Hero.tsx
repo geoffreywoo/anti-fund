@@ -15,21 +15,21 @@ export default function Hero() {
               </p>
 
               <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-[-0.05em] text-ink md:text-7xl lg:text-[5.75rem]">
-                Capital is abundant. Attention is scarce.
+                Capital is commodity. Attention is not.
               </h1>
 
               <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
-                When intelligence is cheap and capital is everywhere, culture,
-                taste, and vibes become hard power.
+                The future is forged at the intersection of tech and culture.
               </p>
 
               <div className="mt-10 border-t border-line pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-lg leading-8 text-ink-soft">
-                  Anti Fund backs founders who can build real technology and
-                  create real demand. As intelligence gets commoditized and
-                  capital gets more abundant, the bottleneck shifts to taste,
-                  narrative, and the ability to make the market care.
+                  Anti Fund is founded on two axioms: the future is forged at
+                  the intersection of tech and culture, and the best founders
+                  are anti by definition. Startups live and die on two levers,
+                  capital and attention. One is abundant. The other wins
+                  markets.
                 </p>
               </div>
             </div>
@@ -48,14 +48,14 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Document type</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Founder memorandum
+                    Founder-facing whitepaper
                   </dd>
                 </div>
 
                 <div>
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Attention, taste, culture, AI, conviction.
+                    Tech, culture, attention, mindshare, iconoclasts.
                   </dd>
                 </div>
 

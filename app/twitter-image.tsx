@@ -77,7 +77,7 @@ export default async function Image() {
               fontWeight: 700,
             }}
           >
-            Capital is abundant. Attention is scarce.
+            Capital is commodity. Attention is not.
           </div>
           <div
             style={{
@@ -87,7 +87,7 @@ export default async function Image() {
               maxWidth: "760px",
             }}
           >
-            We back founders with technical depth and cultural gravity.
+            The future is forged at the intersection of tech and culture.
           </div>
         </div>
 

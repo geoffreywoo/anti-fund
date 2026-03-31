@@ -4,24 +4,24 @@ import { useRef, useState } from "react";
 
 const faqItems = [
   {
-    question: "What stage do you invest at?",
-    answer: "Pre-seed and seed primarily, with selective follow-on support.",
+    question: "What stage do you focus on?",
+    answer: "Primarily early-stage, especially pre-seed and seed, with selective follow-ons.",
   },
   {
     question: "What’s your check size?",
     answer: "$250K to $500K in most rounds, with occasional follow-ons well beyond that.",
   },
   {
-    question: "What kinds of companies do you back?",
-    answer: "AI, robotics, defense, autonomous systems, and consumer products with real cultural pull.",
+    question: "Will you invest in late-stage rounds?",
+    answer: "Occasionally, if there is a strong strategic reason and the company fits the broader Anti Fund thesis.",
   },
   {
-    question: "Why Anti Fund?",
-    answer: "Because capital is abundant and attention is scarce. Founders come to us for taste, narrative, distribution instinct, and honest operator help alongside money.",
+    question: "What do you invest in?",
+    answer: "AI, robotics, software, defense, and high-growth consumer companies with differentiated technology and/or distribution advantages.",
   },
   {
-    question: "Are you raising a new fund?",
-    answer: "Not currently. Investor inquiries should go to ir@antifund.com.",
+    question: "How can I invest in the fund?",
+    answer: "Investor inquiries should go to ir@antifund.com.",
   },
 ];
 
