@@ -541,7 +541,7 @@ export default function Portfolio() {
     <section id="portfolio" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">02 / Select Investments</div>
+          <div className="paper-label">03 / Select Investments</div>
 
           <div className="space-y-10">
             <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">

@@ -30,6 +30,26 @@ test("desktop nav reaches proof and founder CTA with the right anchor offset", a
   await expect(founderLink).toContainText("founders@antifund.com");
 });
 
+test("team section appears before portfolio in the homepage flow", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const positions = await page.evaluate(() => {
+    const team = document.querySelector("#team");
+    const portfolio = document.querySelector("#portfolio");
+
+    return {
+      teamTop: team?.getBoundingClientRect().top ?? null,
+      portfolioTop: portfolio?.getBoundingClientRect().top ?? null,
+    };
+  });
+
+  expect(positions.teamTop).not.toBeNull();
+  expect(positions.portfolioTop).not.toBeNull();
+  expect((positions.teamTop as number) < (positions.portfolioTop as number)).toBeTruthy();
+});
+
 test("faq supports keyboard navigation and one-open-at-a-time behavior", async ({
   page,
 }) => {

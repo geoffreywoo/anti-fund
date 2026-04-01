@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Thesis from "@/components/Thesis";
-import Portfolio from "@/components/Portfolio";
 import Team from "@/components/Team";
+import Portfolio from "@/components/Portfolio";
 import HowWeHelp from "@/components/HowWeHelp";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
@@ -16,10 +16,10 @@ export default function Home() {
         <Thesis />
       </RevealWrapper>
       <RevealWrapper delay={50}>
-        <Portfolio />
+        <Team />
       </RevealWrapper>
       <RevealWrapper delay={100}>
-        <Team />
+        <Portfolio />
       </RevealWrapper>
       <RevealWrapper delay={150}>
         <HowWeHelp />

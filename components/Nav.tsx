@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import Wordmark from "@/components/Wordmark";
 
 const links = [
-  { href: "#portfolio", label: "Portfolio" },
   { href: "#team", label: "Team" },
+  { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -95,9 +95,6 @@ export default function Nav() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-6 md:px-10 md:py-4 lg:px-14">
           <a href={homeHref} className="min-w-0 text-ink transition-colors hover:text-ink-soft">
             <Wordmark className="block text-[1.65rem] sm:text-[1.9rem]" />
-            <div className="mt-1 hidden text-sm text-ink-soft sm:block md:text-base">
-              Capital is abundant. Attention is scarce.
-            </div>
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">

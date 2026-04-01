@@ -135,7 +135,7 @@ export default function Team() {
     <section id="team" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">03 / Team</div>
+          <div className="paper-label">02 / Team</div>
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
