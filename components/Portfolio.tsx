@@ -367,14 +367,14 @@ function getSortedStageParts(stage: string) {
 
 function sortCompanies(companies: Company[]) {
   return [...companies].sort((left, right) => {
+    const partneredDifference = Number(left.partnered) - Number(right.partnered);
+    if (partneredDifference !== 0) {
+      return partneredDifference;
+    }
+
     const rankDifference = getStageRank(right.stage) - getStageRank(left.stage);
     if (rankDifference !== 0) {
       return rankDifference;
-    }
-
-    const partneredDifference = Number(right.partnered) - Number(left.partnered);
-    if (partneredDifference !== 0) {
-      return partneredDifference;
     }
 
     return left.name.localeCompare(right.name);

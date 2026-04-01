@@ -104,6 +104,20 @@ test("portfolio company names link out to company websites in new tabs", async (
   const exitStage = portfolio.locator('[data-stage-part="exit"]').first();
   await expect(exitStage).toBeVisible();
   await expect(exitStage).toHaveClass(/text-green-700/);
+
+  const sinceValuesByGroup = await portfolio.locator("[data-portfolio-group]").evaluateAll(
+    (groups) =>
+      groups.map((group) =>
+        Array.from(group.querySelectorAll("[data-company]")).map((row) => {
+          const cells = row.querySelectorAll("span");
+          return Number(cells[cells.length - 1]?.textContent?.trim());
+        }),
+      ),
+  );
+
+  for (const sinceValues of sinceValuesByGroup) {
+    expect(sinceValues).toEqual([...sinceValues].sort((left, right) => left - right));
+  }
 });
 
 test.describe("reduced motion and metadata", () => {
