@@ -23,6 +23,13 @@ const testimonials = [
     name: "Aryan Shah",
     title: "CEO, Metis",
   },
+  {
+    quote:
+      'No other GP on the AngelList platform - out of hundreds of qualifying investors - beats the Anti Fund along both of these axes. It follows that Geoff and Jake may be able to justify a claim to being the "best investors on AngelList", in the sense that there\'s no other GP that dominates them along the data-driven axes that we believe can help to predict future investment performance.',
+    name: "Abraham Othman",
+    title:
+      "Former Chief Data Scientist, AngelList & CIO, Strawberry Tree Management Company LLC",
+  },
 ];
 
 export default function Testimonials() {
@@ -37,8 +44,9 @@ export default function Testimonials() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-lg leading-8 text-ink-soft">
-              The strongest proof is not a slogan. It is what founders and
-              operators say after working with us in the trenches.
+              The strongest proof is not a slogan. It is what founders,
+              operators, and close observers say after seeing the work up
+              close.
             </p>
 
             <div className="border-y border-line">
@@ -51,7 +59,13 @@ export default function Testimonials() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <blockquote className="max-w-4xl font-display text-2xl leading-[1.2] tracking-[-0.02em] text-ink md:text-[2rem]">
+                    <blockquote
+                      className={`max-w-4xl font-display leading-[1.2] tracking-[-0.02em] text-ink ${
+                        testimonial.quote.length > 240
+                          ? "text-xl md:text-[1.65rem]"
+                          : "text-2xl md:text-[2rem]"
+                      }`}
+                    >
                       "{testimonial.quote}"
                     </blockquote>
                     <figcaption className="mt-4">
