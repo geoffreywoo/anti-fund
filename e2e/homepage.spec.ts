@@ -63,7 +63,7 @@ test.describe("reduced motion and metadata", () => {
 
     await expect(page.getByText("What We Believe")).toBeVisible();
     await expect(page.getByText("Select Investments")).toBeVisible();
-    await expect(page.getByText("How We Help")).toBeVisible();
+    await expect(page.getByText("Founder Proof")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
 
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(

@@ -1,28 +1,28 @@
 const pillars = [
   {
-    title: "Network",
-    description:
-      "Our LP base includes people like Marc Andreessen, Chris Dixon, and Aquarian Holdings. When the story is strong, we can help it reach the right founders, operators, customers, and later-stage investors fast.",
-  },
-  {
     title: "Product",
     description:
-      "We dig into product, positioning, and what actually ships. In markets flooded with capability, better product instinct and better taste are material advantages.",
+      "Product relies on good taste. We dig into the actual product, positioning, and what should ship now versus later.",
   },
   {
     title: "Go-to-market",
     description:
-      "Go-to-market is where taste meets leverage. We help create moments, intros, and storylines that compound mindshare rather than just checking a sales-process box.",
+      "The market is noisy. We help founders shape launch moments, narrative, and distribution so the company earns mindshare, not just meetings.",
+  },
+  {
+    title: "Network",
+    description:
+      "Community at Anti Fund is built through work. Summits, office visits, executive dinners, and working sessions create durable trust, access, and deal flow over time.",
   },
   {
     title: "Fundraising",
     description:
-      "There is more capital than ever, but not all of it is useful. We help sharpen the story, run a tighter process, and keep leverage when the round matters.",
+      "Top founders are not short on capital. We help sharpen the story, win the right partners, and use differentiated access as leverage when the round matters.",
   },
   {
-    title: "Strategic inflection points",
+    title: "Strategy",
     description:
-      "Board pressure, pivots, financing crunches, M&A, and other existential moments. We are not interested in busywork. We are most useful when the stakes are high.",
+      "We stay close when the stakes are high: pivots, key hires, customer strategy, financing crunches, board pressure, and other existential decisions.",
   },
 ];
 
@@ -31,14 +31,20 @@ export default function HowWeHelp() {
     <section id="help" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">04 / How We Help</div>
+          <div className="paper-label">04 / Platform</div>
 
           <div className="space-y-10">
             <p className="max-w-3xl text-lg leading-8 text-ink-soft">
-              Founding and scaling a high-growth business is difficult. Anti
-              Fund will not waste your time or generate busywork. We are a
-              phone call or text message away when you want to dig into product,
-              go-to-market, fundraising, and strategy.
+              Community at Anti Fund is built through work. We are physically
+              present and consistently on the ground with founders, operators,
+              and decision makers. Founding and scaling a high-growth business
+              is difficult, so we do not want to waste your time with busywork.
+            </p>
+
+            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+              Instead, we are a phone call or text message away when you want
+              to dig into product, go-to-market, fundraising, and strategy.
+              The work compounds into durable relationships, trust, and access.
             </p>
 
             <div className="border-y border-line">

@@ -1,17 +1,45 @@
 import type { CSSProperties } from "react";
 
-const aiCompanies = [
+type Company = {
+  name: string;
+  description: string;
+  stage: string;
+  partnered: string;
+};
+
+const infraCompanies: Company[] = [
+  {
+    name: "Modal",
+    description: "AI infrastructure.",
+    stage: "Series B",
+    partnered: "2025",
+  },
+  {
+    name: "Etched",
+    description: "Transformer ASICs.",
+    stage: "Series B",
+    partnered: "2025",
+  },
+  {
+    name: "Metis",
+    description: "Post-training and continual-learning layer for enterprise agents.",
+    stage: "Exit",
+    partnered: "2025",
+  },
+  {
+    name: "Chronosphere",
+    description: "Observability platform. Acquired by Palo Alto Networks.",
+    stage: "Exit",
+    partnered: "2019",
+  },
+];
+
+const appliedAiCompanies: Company[] = [
   {
     name: "OpenAI",
     description: "Building safe and beneficial AGI.",
     stage: "Growth",
     partnered: "2025",
-  },
-  {
-    name: "Anduril",
-    description: "Transforming defense capabilities with advanced technology.",
-    stage: "Series E",
-    partnered: "2022",
   },
   {
     name: "Ramp",
@@ -26,16 +54,25 @@ const aiCompanies = [
     partnered: "2024",
   },
   {
+    name: "Archive",
+    description: "End-to-end creator marketing AI.",
+    stage: "Seed / Series A",
+    partnered: "2022",
+  },
+];
+
+const frontierCompanies: Company[] = [
+  {
+    name: "Anduril",
+    description: "Transforming defense capabilities with advanced technology.",
+    stage: "Series E",
+    partnered: "2022",
+  },
+  {
     name: "Physical Intelligence",
     description: "Bringing general-purpose AI into the physical world.",
     stage: "Seed",
     partnered: "2024",
-  },
-  {
-    name: "Chronosphere",
-    description: "Observability platform. Acquired by Palo Alto Networks.",
-    stage: "Exit",
-    partnered: "2019",
   },
   {
     name: "Aerodome -> Flock Safety",
@@ -44,38 +81,14 @@ const aiCompanies = [
     partnered: "2023",
   },
   {
-    name: "Metis",
-    description: "Post-training and continual-learning layer for enterprise agents.",
-    stage: "Exit",
-    partnered: "2025",
-  },
-  {
-    name: "Etched",
-    description: "Transformer ASICs.",
-    stage: "Series B",
-    partnered: "2025",
-  },
-  {
-    name: "Modal",
-    description: "AI infrastructure.",
-    stage: "Series B",
-    partnered: "2025",
-  },
-  {
     name: "Kela Systems",
     description: "Defense tech for modern conflict.",
     stage: "Series A",
     partnered: "2024",
   },
-  {
-    name: "Archive",
-    description: "End-to-end creator marketing AI.",
-    stage: "Seed / Series A",
-    partnered: "2022",
-  },
 ];
 
-const consumerCompanies = [
+const consumerCompanies: Company[] = [
   {
     name: "Polymarket",
     description: "The world's largest prediction market.",
@@ -142,12 +155,7 @@ function CompanyRow({
   company,
   index,
 }: {
-  company: {
-    name: string;
-    description: string;
-    stage: string;
-    partnered: string;
-  };
+  company: Company;
   index: number;
 }) {
   return (
@@ -177,12 +185,7 @@ function CompanyGroup({
   companies,
 }: {
   title: string;
-  companies: {
-    name: string;
-    description: string;
-    stage: string;
-    partnered: string;
-  }[];
+  companies: Company[];
 }) {
   return (
     <div>
@@ -238,7 +241,29 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <CompanyGroup title="AI / Robotics / Software" companies={aiCompanies} />
+            <div className="border border-line bg-paper-alt px-6 py-6">
+              <p className="paper-label mb-3">Observation 02 / Focus Areas</p>
+              <p className="text-base leading-7 text-ink-soft">
+                The platform deck frames the core investment map as AI
+                infrastructure, applied AI, and frontier tech / physical AI.
+                Beta keeps that structure, while preserving a distinct lane for
+                consumer and culture businesses where distribution itself is a
+                moat.
+              </p>
+            </div>
+
+            <CompanyGroup
+              title="AI Infrastructure / Software Systems"
+              companies={infraCompanies}
+            />
+            <CompanyGroup
+              title="Applied AI / Enterprise Software"
+              companies={appliedAiCompanies}
+            />
+            <CompanyGroup
+              title="Frontier Tech / Physical AI"
+              companies={frontierCompanies}
+            />
             <CompanyGroup title="Consumer / Culture" companies={consumerCompanies} />
           </div>
         </div>

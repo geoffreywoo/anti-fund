@@ -3,6 +3,7 @@ export default function Thesis() {
     "Tech culture",
     "Mindshare",
     "Attention",
+    "Access",
     "Iconoclasts",
     "Distribution",
     "Power law",
@@ -39,20 +40,28 @@ export default function Thesis() {
                   competes for mindshare to recruit talent and win customers.
                 </p>
                 <p>
-                  In a world with more models, more compute, and more capital
-                  chasing the same opportunities, the edge shifts toward taste,
-                  distribution, narrative, and cultural pull.
+                  Top founders are flooded by VCs, so the game becomes one of
+                  access and winning in addition to picking, research, and
+                  underwriting.
+                </p>
+                <p>
+                  The market is noisy, and social media is now the dominant
+                  form of information exchange. The ability to command attention
+                  matters more than ever.
                 </p>
               </div>
 
               <div className="space-y-6 text-lg leading-8 text-ink-soft">
                 <p>
-                  Culture is not branding layered on after the product. It is
-                  part of how demand is created. Vibes are how taste spreads.
+                  Anti Fund is complementary on the cap table to the typical
+                  Sand Hill or Wall Street firm. Our principals understand how
+                  culture moves, how narrative compounds, and how distribution
+                  can become a strategic advantage.
                 </p>
                 <p>
                   Venture is a power law business driven by iconoclasts who win.
-                  Anti Fund exists to find and fund these people.
+                  Anti Fund exists to find and fund these people at the
+                  intersection of technology, culture, and attention.
                 </p>
               </div>
             </div>
