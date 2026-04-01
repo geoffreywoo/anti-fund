@@ -67,6 +67,13 @@ test.describe("reduced motion and metadata", () => {
     await expect(page.getByText("Founder Proof")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
 
+    const patentsLink = page.locator('#team a[href*="patents.google.com"]');
+    const papersLink = page.locator('#team a[href*="scholar.google.com"]');
+    await expect(patentsLink).toBeVisible();
+    await expect(patentsLink).toHaveAttribute("target", "_blank");
+    await expect(papersLink).toBeVisible();
+    await expect(papersLink).toHaveAttribute("target", "_blank");
+
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
       /opengraph-image/,
