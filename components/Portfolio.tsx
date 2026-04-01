@@ -129,7 +129,7 @@ const consumerCompanies: Company[] = [
   {
     name: "Passes",
     url: "https://www.passes.com/",
-    description: "Creator commerce platform founded by Lucy Guo.",
+    description: "Creator commerce platform.",
     stage: "Seed",
     partnered: "2022",
   },
