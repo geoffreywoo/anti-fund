@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type TeamMember = {
@@ -145,6 +146,34 @@ export default function Team() {
               distribution. The team reflects the same thesis as the portfolio:
               tech depth matters, but so does the ability to command attention.
             </p>
+
+            <figure className="border border-line bg-paper-alt p-4 md:p-6">
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-end">
+                <div className="overflow-hidden border border-line bg-paper">
+                  <Image
+                    src="/team-general-partners.jpg"
+                    alt="Geoffrey Woo, Jake Paul, and Logan Paul seated together."
+                    width={2048}
+                    height={2560}
+                    className="h-auto w-full object-cover"
+                    priority
+                  />
+                </div>
+
+                <figcaption className="space-y-4">
+                  <p className="paper-label">General Partners</p>
+                  <p className="max-w-2xl font-display text-3xl leading-[1.08] tracking-[-0.03em] text-ink md:text-4xl">
+                    Geoffrey Woo, Jake Paul, and Logan Paul.
+                  </p>
+                  <p className="max-w-2xl text-base leading-7 text-ink-soft">
+                    Anti Fund&apos;s general partners, left to right. The team
+                    sits at the center of technology, culture, and attention,
+                    which is exactly where the firm believes the future gets
+                    built.
+                  </p>
+                </figcaption>
+              </div>
+            </figure>
 
             <div className="border-y border-line">
               {team.map((member, index) => (

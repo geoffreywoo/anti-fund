@@ -66,6 +66,9 @@ test.describe("reduced motion and metadata", () => {
     await expect(page.getByText("Select Investments")).toBeVisible();
     await expect(page.getByText("Founder Proof")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
+    await expect(
+      page.getByAltText("Geoffrey Woo, Jake Paul, and Logan Paul seated together."),
+    ).toBeVisible();
 
     const patentsLink = page.locator('#team a[href*="patents.google.com"]');
     const papersLink = page.locator('#team a[href*="scholar.google.com"]');
