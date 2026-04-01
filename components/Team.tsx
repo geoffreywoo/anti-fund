@@ -1,27 +1,27 @@
 const team = [
   {
     name: "Geoffrey Woo",
-    title: "Co-founder and Managing Partner",
+    title: "Co-founder & Managing Partner",
     credential:
-      "Entrepreneur and co-founder of Archive, Ketone-IQ, and W. Previously founded and sold Glassmap (YC S11) to Groupon. Stanford Computer Science.",
+      "Geoffrey Woo is co-founder & managing partner of Anti Fund and an entrepreneur. He co-founded Archive, Ketone-IQ, and W. He previously founded and sold Glassmap (YC S11) to Groupon. He earned a BS with Honors & Distinction in Computer Science, but dropped out of the MS program, at Stanford University and is co-inventor and co-author of numerous US patents and peer-reviewed science papers.",
   },
   {
     name: "Jake Paul",
-    title: "Co-founder and Managing Partner",
+    title: "Co-founder & Managing Partner",
     credential:
-      "Professional boxer and founder of Most Valuable Promotions, Betr, and W. Held 65M peak concurrent streams on Netflix, ranked among the most Googled athletes in 2024, and reaches 70M+ followers across social media.",
+      "Jake Paul is co-founder & managing partner of Anti Fund and a professional boxer. Jake holds the record for the most streamed sporting event in history with 65M peak concurrent streams, Paul vs Tyson on Netflix, was a top 5 most Googled athlete in 2024, and has 70M+ followers across social media, including 28M+ on Instagram and 20M+ on YouTube. He is founder of Most Valuable Promotions, Betr, and W.",
   },
   {
     name: "Logan Paul",
     title: "General Partner",
     credential:
-      "Professional wrestler, founder of Prime and Lunchly, and host of Impaulsive. One of the most followed celebrities across social media and a durable force in consumer attention.",
+      "Logan Paul is general partner of Anti Fund and a professional wrestler. He is founder of Prime, the fastest growing beverage brand in history, and Lunchly. He also hosts Impaulsive, one of the biggest podcasts in the world. He is one of the most followed celebrities across social media, including 26M+ on Instagram and 23M+ on YouTube.",
   },
   {
     name: "Steve Han",
     title: "Partner",
     credential:
-      "Previously at March Capital and Deutsche Bank advising tech buyouts. Raised across Korea, India, and China. UC Berkeley economics. Served in the ROK Army.",
+      "Steve Han is a partner at Anti Fund. He was previously at March Capital, a $1.6B+ AUM venture and growth investor, and at Deutsche Bank in the Sponsors Group advising tech buyouts for Silver Lake, Thoma Bravo, TPG, and others. Born in Korea and raised across India and China, he holds dual degrees in Economics and Environmental Economics & Policy from the University of California, Berkeley. Steve served in the ROK Army as secretary to the Commanding General of the 17th Infantry Division, selected out of 12,000 soldiers.",
   },
 ];
 
