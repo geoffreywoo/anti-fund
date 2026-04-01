@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import Wordmark from "@/components/Wordmark";
 
 const links = [
   { href: "#portfolio", label: "Portfolio" },
@@ -93,7 +94,7 @@ export default function Nav() {
       <header className="fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-6 md:px-10 md:py-4 lg:px-14">
           <a href={homeHref} className="min-w-0 text-ink transition-colors hover:text-ink-soft">
-            <div className="paper-label">Anti Fund</div>
+            <Wordmark className="block text-[1.65rem] sm:text-[1.9rem]" />
             <div className="mt-1 hidden text-sm text-ink-soft sm:block md:text-base">
               Capital is abundant. Attention is scarce.
             </div>

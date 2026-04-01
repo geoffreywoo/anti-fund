@@ -1,3 +1,5 @@
+import Wordmark from "@/components/Wordmark";
+
 const links = [
   { label: "X", href: "https://x.com/antifund" },
   { label: "Instagram", href: "https://instagram.com/antifund" },
@@ -50,9 +52,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
-          <span className="font-display text-2xl tracking-[-0.04em] text-ink">
-            ANTI FUND
-          </span>
+          <Wordmark className="text-[2.15rem]" />
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
             &copy; {new Date().getFullYear()} / Memorandum edition
           </p>
