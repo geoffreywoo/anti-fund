@@ -132,6 +132,9 @@ test("platform section links out to summit footage in new tabs", async ({
   const secondSummitLink = help.getByRole("link", {
     name: "Another look at Anti Fund Summit",
   });
+  const communityEventsLink = help.getByRole("link", {
+    name: "Community event reel",
+  });
 
   await expect(firstSummitLink).toBeVisible();
   await expect(firstSummitLink).toHaveAttribute(
@@ -146,6 +149,13 @@ test("platform section links out to summit footage in new tabs", async ({
     "https://www.youtube.com/watch?v=PIH2C-dLLUc",
   );
   await expect(secondSummitLink).toHaveAttribute("target", "_blank");
+
+  await expect(communityEventsLink).toBeVisible();
+  await expect(communityEventsLink).toHaveAttribute(
+    "href",
+    "https://www.youtube.com/watch?v=4ND2P-HydlM",
+  );
+  await expect(communityEventsLink).toHaveAttribute("target", "_blank");
 });
 
 test.describe("reduced motion and metadata", () => {

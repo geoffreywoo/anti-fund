@@ -31,6 +31,10 @@ const pillars: Pillar[] = [
         label: "Another look at Anti Fund Summit",
         href: "https://www.youtube.com/watch?v=PIH2C-dLLUc",
       },
+      {
+        label: "Community event reel",
+        href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
+      },
     ],
   },
   {
