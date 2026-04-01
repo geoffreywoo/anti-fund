@@ -5,6 +5,7 @@ type Company = {
   description: string;
   stage: string;
   partnered: string;
+  personal?: boolean;
 };
 
 const infraCompanies: Company[] = [
@@ -31,6 +32,7 @@ const infraCompanies: Company[] = [
     description: "Observability platform. Acquired by Palo Alto Networks.",
     stage: "Exit",
     partnered: "2019",
+    personal: true,
   },
 ];
 
@@ -46,6 +48,7 @@ const appliedAiCompanies: Company[] = [
     description: "Easy-to-use corporate cards.",
     stage: "Seed / Series B / Series E",
     partnered: "2019",
+    personal: true,
   },
   {
     name: "Cognition",
@@ -168,6 +171,7 @@ function CompanyRow({
       </span>
       <span className="font-display text-2xl leading-none tracking-[-0.03em] text-ink">
         {company.name}
+        {company.personal ? "*" : ""}
       </span>
       <span className="text-base leading-7 text-ink-soft">{company.description}</span>
       <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
@@ -265,6 +269,10 @@ export default function Portfolio() {
               companies={frontierCompanies}
             />
             <CompanyGroup title="Consumer / Culture" companies={consumerCompanies} />
+
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+              * Personal investment
+            </p>
           </div>
         </div>
       </div>
