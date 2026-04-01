@@ -55,7 +55,7 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Tech, culture, attention, mindshare, iconoclasts.
+                    venture capital, tech, culture, attention, iconoclasts.
                   </dd>
                 </div>
 
