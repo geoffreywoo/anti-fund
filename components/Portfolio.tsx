@@ -44,7 +44,7 @@ const appliedAiCompanies: Company[] = [
   {
     name: "Ramp",
     description: "Easy-to-use corporate cards.",
-    stage: "Seed / Series E",
+    stage: "Seed / Series B / Series E",
     partnered: "2019",
   },
   {
