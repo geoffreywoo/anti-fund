@@ -55,7 +55,8 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    venture capital, tech, culture, attention, iconoclasts.
+                    technology x culture, attention asymmetry, earned distribution,
+                    asymmetric access, power-law outcomes.
                   </dd>
                 </div>
 

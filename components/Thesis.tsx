@@ -1,12 +1,12 @@
 export default function Thesis() {
   const antiList = [
-    "Tech culture",
-    "Mindshare",
-    "Attention",
-    "Access",
-    "Iconoclasts",
-    "Distribution",
-    "Power law",
+    "Technology x culture",
+    "Attention asymmetry",
+    "Earned distribution",
+    "Asymmetric access",
+    "Narrative compounding",
+    "Iconoclast founders",
+    "Power-law outcomes",
   ];
 
   return (

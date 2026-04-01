@@ -173,7 +173,7 @@ function SocialImage({
               color: "#6d685d",
             }}
           >
-            <div>Tech, culture, attention, iconoclasts.</div>
+            <div>Technology x culture. Attention asymmetry. Power-law outcomes.</div>
             <div>antifund.com</div>
           </div>
         </div>
