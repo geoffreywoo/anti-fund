@@ -89,9 +89,9 @@ const frontierCompanies: Company[] = [
     partnered: "2024",
   },
   {
-    name: "Aerodome -> Flock Safety",
+    name: "Aerodome",
     url: "https://www.flocksafety.com/",
-    description: "Public safety air support rolled into Flock equity.",
+    description: "Public safety drones and air support acquired by Flock Safety.",
     stage: "Exit",
     partnered: "2023",
   },
