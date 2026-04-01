@@ -4,13 +4,9 @@ import { useRef, useState } from "react";
 
 const faqItems = [
   {
-    question: "What stage do you focus on?",
-    answer: "We invest across all stages, from first check to late-stage pre-IPO.",
-  },
-  {
-    question: "What do you invest in?",
+    question: "What do you invest in, and at what stage?",
     answer:
-      "We invest in high-growth AI, robotics/automation, SaaS, and consumer companies with differentiated technology and/or distribution advantages. We like working with ambitious, fearless founders who have a unique view or angle on their market.",
+      "We invest across all stages, from first check to late-stage pre-IPO, in high-growth AI, robotics/automation, SaaS, and consumer companies with differentiated technology and/or distribution advantages. We like working with ambitious, fearless founders who have a unique view or angle on their market.",
   },
   {
     question: "What's your check size?",
