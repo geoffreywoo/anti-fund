@@ -5,23 +5,22 @@ import { useRef, useState } from "react";
 const faqItems = [
   {
     question: "What stage do you focus on?",
-    answer: "Primarily early-stage, especially pre-seed and seed, with selective follow-ons.",
-  },
-  {
-    question: "What’s your check size?",
-    answer: "$250K to $500K in most rounds, with occasional follow-ons well beyond that.",
-  },
-  {
-    question: "Will you invest in late-stage rounds?",
-    answer: "Occasionally, if there is a strong strategic reason and the company fits the broader Anti Fund thesis.",
+    answer: "We invest across all stages, from first check to late-stage pre-IPO.",
   },
   {
     question: "What do you invest in?",
-    answer: "AI, robotics, software, defense, and high-growth consumer companies with differentiated technology and/or distribution advantages.",
+    answer:
+      "We invest in high-growth AI, robotics/automation, SaaS, and consumer companies with differentiated technology and/or distribution advantages. We like working with ambitious, fearless founders who have a unique view or angle on their market.",
+  },
+  {
+    question: "What's your check size?",
+    answer:
+      "We invest between $250K-$30M+. We are comfortable both leading and participating.",
   },
   {
     question: "How can I invest in the fund?",
-    answer: "Investor inquiries should go to ir@antifund.com.",
+    answer:
+      "We're not raising right now, but do reach out to ir@antifund.com if you're interested in future funds.",
   },
 ];
 

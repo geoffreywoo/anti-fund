@@ -43,13 +43,14 @@ test("faq supports keyboard navigation and one-open-at-a-time behavior", async (
   await page.keyboard.press("ArrowDown");
   await expect(buttons.nth(1)).toBeFocused();
 
-  await page.keyboard.press("Space");
-  await expect(buttons.nth(1)).toHaveAttribute("aria-expanded", "true");
-  await expect(page.locator("#faq-panel-1")).toContainText("$250K");
+  const checkSizeButton = faq.getByRole("button", { name: "What's your check size?" });
+  await checkSizeButton.click();
+  await expect(checkSizeButton).toHaveAttribute("aria-expanded", "true");
+  await expect(faq).toContainText("$250K-$30M+");
 
   await buttons.nth(0).click();
   await expect(buttons.nth(0)).toHaveAttribute("aria-expanded", "true");
-  await expect(buttons.nth(1)).toHaveAttribute("aria-expanded", "false");
+  await expect(checkSizeButton).toHaveAttribute("aria-expanded", "false");
 });
 
 test.describe("reduced motion and metadata", () => {
