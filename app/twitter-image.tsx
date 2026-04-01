@@ -54,7 +54,7 @@ export default async function Image() {
                 fontWeight: 600,
               }}
             >
-              Attention manifesto
+              Firm manifesto
             </div>
           </div>
 
