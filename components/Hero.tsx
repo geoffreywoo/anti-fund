@@ -48,15 +48,14 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Document type</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Firm manifesto
+                    Investment firm manifesto
                   </dd>
                 </div>
 
                 <div className="sm:col-span-2 lg:col-span-1">
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    technology x culture, attention asymmetry, earned distribution,
-                    asymmetric access, power-law outcomes.
+                    venture capital, technology, culture, founders, attention.
                   </dd>
                 </div>
 
