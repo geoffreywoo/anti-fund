@@ -258,6 +258,177 @@ const consumerCompanies: Company[] = [
   },
 ];
 
+const portfolioGroupSpecs = [
+  {
+    title: "Exits",
+    names: ["Chronosphere", "Metis", "Aerodome"],
+  },
+  {
+    title: "Frontier Infrastructure & Defense",
+    names: [
+      "OpenAI",
+      "SpaceX",
+      "Anduril",
+      "Etched",
+      "Modal",
+      "Physical Intelligence",
+      "Kela Systems",
+      "Merge",
+    ],
+  },
+  {
+    title: "Software, Finance & Applied AI",
+    names: [
+      "Ramp",
+      "Erebor",
+      "Cognition",
+      "Lighter",
+      "Polymarket",
+      "Archive",
+      "WithCoverage",
+      "Cluely",
+      "Interaction",
+      "Natural",
+    ],
+  },
+  {
+    title: "Consumer Platforms & Brands",
+    names: [
+      "Olipop",
+      "Wander",
+      "Oats Overnight",
+      "Palm Tree Crew",
+      "Kings League",
+      "Happy Dad",
+      "Passes",
+      "Ketone-IQ",
+      "SipMargs",
+      "Khloud",
+      "Eight Sleep",
+      "Betr",
+      "W",
+    ],
+  },
+] as const;
+
+function toDataKey(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function getStagePartRank(stagePart: string) {
+  const normalized = stagePart.trim().toLowerCase();
+
+  if (normalized.includes("exit")) {
+    return 700;
+  }
+
+  if (normalized === "growth") {
+    return 600;
+  }
+
+  if (normalized === "series e") {
+    return 500;
+  }
+
+  if (normalized === "series b") {
+    return 400;
+  }
+
+  if (normalized === "series a") {
+    return 300;
+  }
+
+  if (normalized === "seed+") {
+    return 250;
+  }
+
+  if (normalized === "seed") {
+    return 200;
+  }
+
+  if (normalized === "incubation") {
+    return 100;
+  }
+
+  return 0;
+}
+
+function getStageRank(stage: string) {
+  return Math.max(...stage.split("/").map((part) => getStagePartRank(part)));
+}
+
+function getSortedStageParts(stage: string) {
+  return stage
+    .split("/")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .sort((left, right) => getStagePartRank(right) - getStagePartRank(left));
+}
+
+function sortCompanies(companies: Company[]) {
+  return [...companies].sort((left, right) => {
+    const rankDifference = getStageRank(right.stage) - getStageRank(left.stage);
+    if (rankDifference !== 0) {
+      return rankDifference;
+    }
+
+    const partneredDifference = Number(right.partnered) - Number(left.partnered);
+    if (partneredDifference !== 0) {
+      return partneredDifference;
+    }
+
+    return left.name.localeCompare(right.name);
+  });
+}
+
+const companyByName = new Map(
+  [...softwareCompanies, ...consumerCompanies].map((company) => [company.name, company]),
+);
+
+const portfolioGroups = portfolioGroupSpecs.map((group) => ({
+  ...group,
+  key: toDataKey(group.title),
+  companies: sortCompanies(
+    group.names
+      .map((name) => companyByName.get(name))
+      .filter((company): company is Company => Boolean(company)),
+  ),
+}));
+
+function StageLabel({ stage }: { stage: string }) {
+  const stageParts = getSortedStageParts(stage);
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+      {stageParts.map((part, index) => {
+        const stageKey = toDataKey(part);
+        const isExit = stageKey === "exit" || part.toLowerCase().includes("exit");
+
+        return (
+          <span
+            key={`${part}-${index}`}
+            className="inline-flex items-center gap-1"
+          >
+            {index > 0 ? (
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+                /
+              </span>
+            ) : null}
+            <span
+              data-stage-part={stageKey}
+              className={`font-mono text-[11px] uppercase tracking-[0.14em] ${
+                isExit ? "text-green-700" : "text-ink-muted"
+              }`}
+            >
+              {part}
+            </span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 function CompanyRow({
   company,
   index,
@@ -267,6 +438,7 @@ function CompanyRow({
 }) {
   return (
     <div
+      data-company={toDataKey(company.name)}
       className="portfolio-row grid gap-3 border-b border-line py-4 md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6"
       style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
     >
@@ -285,9 +457,7 @@ function CompanyRow({
         {company.personal ? "*" : ""}
       </div>
       <span className="text-base leading-7 text-ink-soft">{company.description}</span>
-      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-        {company.stage}
-      </span>
+      <StageLabel stage={company.stage} />
       <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
         {company.partnered}
       </span>
@@ -303,7 +473,7 @@ function CompanyGroup({
   companies: Company[];
 }) {
   return (
-    <div>
+    <div data-portfolio-group={toDataKey(title)}>
       <p className="paper-label mb-3">{title}</p>
       <div className="border-y border-line">
         <div className="hidden border-b border-line bg-paper-alt/70 px-0 py-3 md:grid md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6">
@@ -356,11 +526,13 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <CompanyGroup
-              title="AI; robotics; software"
-              companies={softwareCompanies}
-            />
-            <CompanyGroup title="Consumer" companies={consumerCompanies} />
+            {portfolioGroups.map((group) => (
+              <CompanyGroup
+                key={group.key}
+                title={group.title}
+                companies={group.companies}
+              />
+            ))}
 
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
               * Personal investment

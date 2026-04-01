@@ -82,6 +82,9 @@ test("portfolio company names link out to company websites in new tabs", async (
   const companyLinks = portfolio.locator('a[target="_blank"]');
   await expect(companyLinks).toHaveCount(34);
 
+  const firstGroup = portfolio.locator("[data-portfolio-group]").first();
+  await expect(firstGroup).toHaveAttribute("data-portfolio-group", "exits");
+
   const openAiLink = portfolio.locator('a[href="https://openai.com/"]');
   await expect(openAiLink).toBeVisible();
   await expect(openAiLink).toHaveAttribute("target", "_blank");
@@ -97,6 +100,10 @@ test("portfolio company names link out to company websites in new tabs", async (
   const eightSleepLink = portfolio.locator('a[href="https://www.eightsleep.com/"]');
   await expect(eightSleepLink).toBeVisible();
   await expect(eightSleepLink).toHaveAttribute("target", "_blank");
+
+  const exitStage = portfolio.locator('[data-stage-part="exit"]').first();
+  await expect(exitStage).toBeVisible();
+  await expect(exitStage).toHaveClass(/text-green-700/);
 });
 
 test.describe("reduced motion and metadata", () => {
