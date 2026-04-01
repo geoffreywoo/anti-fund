@@ -351,20 +351,8 @@ export default function Portfolio() {
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
                 Anti Fund invests across all stages, as the first check or in
-                late-stage growth rounds. We look to partner with founders with
+                late-stage growth rounds. We look partnering with founders with
                 differentiated technology and/or distribution advantages.
-              </p>
-            </div>
-
-            <div className="border border-line bg-paper-alt px-6 py-6">
-              <p className="paper-label mb-3">Observation 02 / Public List</p>
-              <p className="text-base leading-7 text-ink-soft">
-                Beta now mirrors the full public company list shown on
-                antifund.com, organized in the same two live buckets:{" "}
-                <span className="font-semibold text-ink">
-                  AI; robotics; software
-                </span>{" "}
-                and <span className="font-semibold text-ink">Consumer</span>.
               </p>
             </div>
 
