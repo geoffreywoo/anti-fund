@@ -58,7 +58,7 @@ test("footer links to the legal page and the legal page renders key notices", as
 }) => {
   await page.goto("/");
 
-  const legalLink = page.getByRole("link", { name: "Read legal notice" });
+  const legalLink = page.getByRole("link", { name: "Legal" });
   await expect(legalLink).toBeVisible();
   await expect(legalLink).toHaveAttribute("href", "/legal");
 
@@ -116,7 +116,7 @@ test.describe("reduced motion and metadata", () => {
     await expect(papersLink).toHaveAttribute("target", "_blank");
 
     const footer = page.locator("footer");
-    await expect(footer).toContainText("Read legal notice");
+    await expect(footer).toContainText("Legal");
 
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",

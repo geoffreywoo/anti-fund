@@ -10,13 +10,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl border-t border-line pt-8">
         <div className="grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
           <div>
-            <p className="paper-label mb-4">Legal</p>
-            <p className="max-w-2xl text-sm leading-7 text-ink-muted">
-              Terms of use, disclaimers, portfolio-reference guidance, and
-              contact information are available on the legal page.
-            </p>
-            <a href="/legal" className="paper-link mt-4 inline-block text-base">
-              Read legal notice
+            <a href="/legal" className="paper-link inline-block text-base">
+              Legal
             </a>
           </div>
 
