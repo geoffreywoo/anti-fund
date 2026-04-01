@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 type Company = {
   name: string;
+  url: string;
   description: string;
   stage: string;
   partnered: string;
@@ -11,24 +12,28 @@ type Company = {
 const infraCompanies: Company[] = [
   {
     name: "Modal",
+    url: "https://modal.com/",
     description: "AI infrastructure.",
     stage: "Series B",
     partnered: "2025",
   },
   {
     name: "Etched",
+    url: "https://www.etched.com/",
     description: "Transformer ASICs.",
     stage: "Series B",
     partnered: "2025",
   },
   {
     name: "Metis",
+    url: "https://www.withmetis.ai/",
     description: "Post-training and continual-learning layer for enterprise agents.",
     stage: "Exit",
     partnered: "2025",
   },
   {
     name: "Chronosphere",
+    url: "https://chronosphere.io/",
     description: "Observability platform. Acquired by Palo Alto Networks.",
     stage: "Exit",
     partnered: "2019",
@@ -39,12 +44,14 @@ const infraCompanies: Company[] = [
 const appliedAiCompanies: Company[] = [
   {
     name: "OpenAI",
+    url: "https://openai.com/",
     description: "Building safe and beneficial AGI.",
     stage: "Growth",
     partnered: "2025",
   },
   {
     name: "Ramp",
+    url: "https://ramp.com/",
     description: "Easy-to-use corporate cards.",
     stage: "Seed / Series B / Series E",
     partnered: "2019",
@@ -52,12 +59,14 @@ const appliedAiCompanies: Company[] = [
   },
   {
     name: "Cognition",
+    url: "https://cognition.ai/",
     description: "An applied AI lab building end-to-end software agents.",
     stage: "Series B",
     partnered: "2024",
   },
   {
     name: "Archive",
+    url: "https://archive.com/",
     description: "End-to-end creator marketing AI.",
     stage: "Seed / Series A",
     partnered: "2022",
@@ -67,24 +76,28 @@ const appliedAiCompanies: Company[] = [
 const frontierCompanies: Company[] = [
   {
     name: "Anduril",
+    url: "https://www.anduril.com/",
     description: "Transforming defense capabilities with advanced technology.",
     stage: "Series E",
     partnered: "2022",
   },
   {
     name: "Physical Intelligence",
+    url: "https://www.physicalintelligence.company/",
     description: "Bringing general-purpose AI into the physical world.",
     stage: "Seed",
     partnered: "2024",
   },
   {
     name: "Aerodome -> Flock Safety",
+    url: "https://www.flocksafety.com/",
     description: "Public safety air support rolled into Flock equity.",
     stage: "Exit",
     partnered: "2023",
   },
   {
     name: "Kela Systems",
+    url: "https://kelasys.com/",
     description: "Defense tech for modern conflict.",
     stage: "Series A",
     partnered: "2024",
@@ -94,60 +107,70 @@ const frontierCompanies: Company[] = [
 const consumerCompanies: Company[] = [
   {
     name: "Polymarket",
+    url: "https://polymarket.com/",
     description: "The world's largest prediction market.",
     stage: "Series A",
     partnered: "2021",
   },
   {
     name: "Betr",
+    url: "https://betr.app/",
     description: "Fast-growing online sports betting, fantasy, and media company.",
     stage: "Incubation",
     partnered: "2021",
   },
   {
     name: "W",
+    url: "https://getw.com/",
     description: "Personal care brand built to inspire young men to take Ws.",
     stage: "Incubation",
     partnered: "2024",
   },
   {
     name: "Passes",
+    url: "https://www.passes.com/",
     description: "Creator commerce platform founded by Lucy Guo.",
     stage: "Seed",
     partnered: "2022",
   },
   {
     name: "Ketone-IQ",
+    url: "https://ketone.com/",
     description: "Energy from ketones, not sugar or caffeine.",
     stage: "Seed",
     partnered: "2022",
   },
   {
     name: "Wander",
+    url: "https://www.wander.com/",
     description: "Luxury travel platform with hotel-grade hospitality.",
     stage: "Series A",
     partnered: "2022",
   },
   {
     name: "Kings League",
+    url: "https://kingsleague.pro/",
     description: "Global creator-led 7 vs 7 soccer league.",
     stage: "Series A",
     partnered: "2024",
   },
   {
     name: "Olipop",
+    url: "https://www.olipoponline.com/",
     description: "Healthy prebiotic soda.",
     stage: "Series B",
     partnered: "2022",
   },
   {
     name: "SipMargs",
+    url: "https://www.sipmargs.com/",
     description: "Sparkling margarita RTD built with Alix Earle.",
     stage: "Seed",
     partnered: "2024",
   },
   {
     name: "Happy Dad",
+    url: "https://happydad.com/",
     description: "Nelk's hard seltzer and tea.",
     stage: "Seed+",
     partnered: "2025",
@@ -169,10 +192,17 @@ function CompanyRow({
       <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         {String(index + 1).padStart(2, "0")}
       </span>
-      <span className="font-display text-2xl leading-none tracking-[-0.03em] text-ink">
-        {company.name}
+      <div className="min-w-0">
+        <a
+          href={company.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="paper-link inline-block font-display text-2xl leading-none tracking-[-0.03em] text-ink"
+        >
+          {company.name}
+        </a>
         {company.personal ? "*" : ""}
-      </span>
+      </div>
       <span className="text-base leading-7 text-ink-soft">{company.description}</span>
       <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
         {company.stage}

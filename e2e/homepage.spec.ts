@@ -71,6 +71,26 @@ test("footer links to the legal page and the legal page renders key notices", as
   );
 });
 
+test("portfolio company names link out to company websites in new tabs", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const portfolio = page.locator("#portfolio");
+  await portfolio.scrollIntoViewIfNeeded();
+
+  const companyLinks = portfolio.locator('a[target="_blank"]');
+  await expect(companyLinks).toHaveCount(22);
+
+  const openAiLink = portfolio.locator('a[href="https://openai.com/"]');
+  await expect(openAiLink).toBeVisible();
+  await expect(openAiLink).toHaveAttribute("target", "_blank");
+
+  const rampLink = portfolio.locator('a[href="https://ramp.com/"]');
+  await expect(rampLink).toBeVisible();
+  await expect(rampLink).toHaveAttribute("target", "_blank");
+});
+
 test.describe("reduced motion and metadata", () => {
   test.use({ reducedMotion: "reduce" });
 
