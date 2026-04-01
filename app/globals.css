@@ -49,6 +49,11 @@ body::before {
   background-size: 256px 256px;
 }
 
+.site-header {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
 .text-gold-gradient {
   color: var(--color-ink);
 }
@@ -171,5 +176,17 @@ body::before {
     transform: none;
     transition: none;
     animation: none;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  body::before {
+    content: none;
+  }
+
+  .site-header {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: rgba(250, 248, 241, 0.98);
   }
 }

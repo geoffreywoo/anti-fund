@@ -11,6 +11,19 @@ test("mobile overlay locks scroll, closes with escape, and routes to the founder
 }) => {
   await page.goto("/");
 
+  const mobileEffects = await page.evaluate(() => {
+    const header = document.querySelector(".site-header");
+
+    return {
+      beforeContent: window.getComputedStyle(document.body, "::before").content,
+      backdropFilter: header
+        ? window.getComputedStyle(header).backdropFilter
+        : null,
+    };
+  });
+  expect(mobileEffects.beforeContent).toBe("none");
+  expect(mobileEffects.backdropFilter === "none" || mobileEffects.backdropFilter === "").toBeTruthy();
+
   const menuButton = page.getByRole("button", {
     name: "Open navigation menu",
   });

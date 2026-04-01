@@ -241,8 +241,8 @@ test.describe("reduced motion and metadata", () => {
     );
 
     const [ogResponse, twitterResponse, iconResponse] = await Promise.all([
-      request.get("/opengraph-image"),
-      request.get("/twitter-image"),
+      request.get("/opengraph-image.jpg"),
+      request.get("/twitter-image.jpg"),
       request.get("/icon"),
     ]);
 

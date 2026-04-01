@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
-const socialImageVersion = "20260401-investment-firm-card";
-const socialImageAlt =
-  "Anti Fund social share image with the Anti Fund word mark, investment firm, and antifund.com.";
-
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
@@ -18,21 +14,12 @@ export const metadata: Metadata = {
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
-    images: [
-      {
-        url: `/opengraph-image?v=${socialImageVersion}`,
-        width: 1200,
-        height: 630,
-        alt: socialImageAlt,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Anti Fund",
     description:
       "The future is forged at the intersection of tech and culture. Capital is commodity. Attention is not.",
-    images: [`/twitter-image?v=${socialImageVersion}`],
   },
 };
 

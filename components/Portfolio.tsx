@@ -556,7 +556,7 @@ export default function Portfolio() {
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
                 Anti Fund invests across all stages, as the first check or in
-                late-stage growth rounds. We look partnering with founders with
+                late-stage growth rounds. We partner with founders with
                 differentiated technology and/or distribution advantages.
               </p>
             </div>
