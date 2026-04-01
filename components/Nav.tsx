@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "#portfolio", label: "Portfolio" },
@@ -9,11 +10,14 @@ const links = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const menuId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const isHome = pathname === "/";
+  const homeHref = isHome ? "#top" : "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,7 +92,7 @@ export default function Nav() {
     <>
       <header className="fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-14">
-          <a href="#top" className="min-w-0 text-ink transition-colors hover:text-ink-soft">
+          <a href={homeHref} className="min-w-0 text-ink transition-colors hover:text-ink-soft">
             <div className="paper-label">Anti Fund</div>
             <div className="mt-1 text-sm text-ink-soft md:text-base">
               Capital is abundant. Attention is scarce.
@@ -99,7 +103,7 @@ export default function Nav() {
             {links.map((link, index) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={isHome ? link.href : `/${link.href}`}
                 className="paper-link font-mono text-[11px] uppercase tracking-[0.18em]"
               >
                 {String(index + 1).padStart(2, "0")} {link.label}
@@ -143,7 +147,7 @@ export default function Nav() {
                 {links.map((link, index) => (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={isHome ? link.href : `/${link.href}`}
                     className="flex min-h-14 items-baseline justify-between border-b border-line py-5 last:border-b-0"
                     onClick={closeMenu}
                   >

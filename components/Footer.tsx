@@ -10,31 +10,14 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl border-t border-line pt-8">
         <div className="grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
           <div>
-            <p className="paper-label mb-4">Disclosures</p>
-            <div className="max-w-3xl space-y-4 text-sm leading-7 text-ink-muted">
-              <p>
-                Anti Fund Investment Fund, LLC is the management company for
-                Anti Fund and related investment vehicles. This website is for
-                informational purposes only and does not constitute an offer to
-                sell, or a solicitation of an offer to buy, any security or
-                investment product.
-              </p>
-              <p>
-                Any such offer will be made only by means of definitive
-                offering documents and only to persons who meet applicable
-                eligibility requirements. Nothing on this website should be
-                relied upon as investment, legal, tax, or accounting advice or
-                as the basis for any investment decision.
-              </p>
-              <p>
-                Portfolio companies, founder testimonials, and other references
-                are illustrative only, do not represent all investments made by
-                Anti Fund vehicles, and should not be assumed to be profitable.
-                Past performance is not indicative of future results. Any
-                investment involves risk, including the possible loss of
-                principal.
-              </p>
-            </div>
+            <p className="paper-label mb-4">Legal</p>
+            <p className="max-w-2xl text-sm leading-7 text-ink-muted">
+              Terms of use, disclaimers, portfolio-reference guidance, and
+              contact information are available on the legal page.
+            </p>
+            <a href="/legal" className="paper-link mt-4 inline-block text-base">
+              Read legal notice
+            </a>
           </div>
 
           <div className="space-y-6">

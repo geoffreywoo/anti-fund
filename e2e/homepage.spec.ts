@@ -53,6 +53,24 @@ test("faq supports keyboard navigation and one-open-at-a-time behavior", async (
   await expect(checkSizeButton).toHaveAttribute("aria-expanded", "false");
 });
 
+test("footer links to the legal page and the legal page renders key notices", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const legalLink = page.getByRole("link", { name: "Read legal notice" });
+  await expect(legalLink).toBeVisible();
+  await expect(legalLink).toHaveAttribute("href", "/legal");
+
+  await legalLink.click();
+  await expect(page).toHaveURL(/\/legal$/);
+  await expect(page.getByRole("heading", { name: "Terms of Use" })).toBeVisible();
+  await expect(page.locator("main")).toContainText("Anti Fund Investment Fund LLC");
+  await expect(page.locator("main")).toContainText(
+    "Nothing on this website constitutes an offer to sell",
+  );
+});
+
 test.describe("reduced motion and metadata", () => {
   test.use({ reducedMotion: "reduce" });
 
@@ -78,10 +96,7 @@ test.describe("reduced motion and metadata", () => {
     await expect(papersLink).toHaveAttribute("target", "_blank");
 
     const footer = page.locator("footer");
-    await expect(footer).toContainText("Anti Fund Investment Fund, LLC");
-    await expect(footer).toContainText(
-      "This website is for informational purposes only",
-    );
+    await expect(footer).toContainText("Read legal notice");
 
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
