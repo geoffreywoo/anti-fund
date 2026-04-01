@@ -48,4 +48,8 @@ test("mobile overlay locks scroll, closes with escape, and routes to the founder
     () => document.documentElement.scrollWidth > window.innerWidth + 1,
   );
   expect(hasHorizontalOverflow).toBeFalsy();
+
+  const portfolio = page.locator("#portfolio");
+  await portfolio.scrollIntoViewIfNeeded();
+  await expect(portfolio.getByRole("link", { name: "Chronosphere" })).toBeVisible();
 });

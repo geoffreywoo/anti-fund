@@ -189,4 +189,13 @@ body::before {
     backdrop-filter: none !important;
     background-color: rgba(250, 248, 241, 0.98);
   }
+
+  [data-reveal],
+  [data-reveal] .portfolio-row,
+  .animate-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
