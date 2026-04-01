@@ -77,6 +77,12 @@ test.describe("reduced motion and metadata", () => {
     await expect(papersLink).toBeVisible();
     await expect(papersLink).toHaveAttribute("target", "_blank");
 
+    const footer = page.locator("footer");
+    await expect(footer).toContainText("Anti Fund Investment Fund, LLC");
+    await expect(footer).toContainText(
+      "This website is for informational purposes only",
+    );
+
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
       /opengraph-image/,
