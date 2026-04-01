@@ -118,16 +118,13 @@ const team: TeamMember[] = [
     bio: (
       <>
         Steve Han is a partner at Anti Fund. He was previously at{" "}
-        <ExternalLink href="https://marchcp.com">March Capital</ExternalLink>, a
-        $1.6B+ AUM venture and growth investor, and at Deutsche Bank in the
-        Sponsors Group advising tech buyouts for Silver Lake, Thoma Bravo, TPG,
-        and others. Born in Korea and raised across India and China, he holds
-        dual degrees in Economics and Environmental Economics & Policy from the{" "}
-        <ExternalLink href="https://www.berkeley.edu">
-          University of California, Berkeley
-        </ExternalLink>
-        . Steve served in the ROK Army as secretary to the Commanding General
-        of the 17th Infantry Division, selected out of 12,000 soldiers.
+        March Capital, a $1.6B+ AUM venture and growth investor, and at
+        Deutsche Bank in the Sponsors Group advising tech buyouts for Silver
+        Lake, Thoma Bravo, TPG, and others. Born in Korea and raised across
+        India and China, he holds dual degrees in Economics and Environmental
+        Economics & Policy from the University of California, Berkeley. Steve
+        served in the ROK Army as secretary to the Commanding General of the
+        17th Infantry Division, selected out of 12,000 soldiers.
       </>
     ),
   },
