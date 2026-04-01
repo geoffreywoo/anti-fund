@@ -2,7 +2,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Anti Fund social share image with the Anti Fund word mark and thesis line.";
+export const alt =
+  "Anti Fund social share image with the Anti Fund word mark, investment firm, and antifund.com.";
 export const size = {
   width: 1200,
   height: 630,
@@ -38,7 +39,7 @@ function SocialImage() {
           <div
             style={{
               fontFamily: '"Source Serif 4"',
-              fontSize: 106,
+              fontSize: 118,
               lineHeight: 0.88,
               letterSpacing: "-0.055em",
               fontWeight: 700,
@@ -46,19 +47,6 @@ function SocialImage() {
             }}
           >
             ANTI FUND
-          </div>
-
-          <div
-            style={{
-              fontFamily: '"Source Serif 4"',
-              fontSize: 44,
-              lineHeight: 1.08,
-              letterSpacing: "-0.03em",
-              fontWeight: 400,
-              maxWidth: "780px",
-            }}
-          >
-            Capital is commodity. Attention is not.
           </div>
         </div>
 

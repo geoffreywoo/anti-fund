@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
-const socialImageVersion = "20260401-wordmark";
+const socialImageVersion = "20260401-investment-firm-card";
 const socialImageAlt =
-  "Anti Fund social share image with the Anti Fund word mark and thesis line.";
+  "Anti Fund social share image with the Anti Fund word mark, investment firm, and antifund.com.";
 
 export const metadata: Metadata = {
   title: "Anti Fund",
