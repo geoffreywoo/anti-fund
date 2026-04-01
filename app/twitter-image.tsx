@@ -63,7 +63,7 @@ export default async function Image() {
             alt=""
             width="88"
             height="72"
-            style={{ objectFit: "contain", opacity: 0.9 }}
+            style={{ objectFit: "contain" }}
           />
         </div>
 

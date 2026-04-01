@@ -40,7 +40,7 @@ export default function Hero() {
                 alt="Anti Fund"
                 width={96}
                 height={79}
-                className="h-auto w-20 grayscale brightness-0 contrast-125 opacity-75 md:w-24"
+                className="h-auto w-20 md:w-24"
                 priority
               />
 
