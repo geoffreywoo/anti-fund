@@ -1,4 +1,13 @@
-const pillars = [
+type Pillar = {
+  title: string;
+  description: string;
+  links?: Array<{
+    label: string;
+    href: string;
+  }>;
+};
+
+const pillars: Pillar[] = [
   {
     title: "Product",
     description:
@@ -58,7 +67,10 @@ export default function HowWeHelp() {
             </p>
 
             <div className="border-y border-line">
-              {pillars.map((pillar, index) => (
+              {pillars.map((pillar, index) => {
+                const links = pillar.links ?? [];
+
+                return (
                 <div
                   key={pillar.title}
                   className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)] md:gap-6"
@@ -73,12 +85,12 @@ export default function HowWeHelp() {
                     <p className="text-base leading-7 text-ink-soft">
                       {pillar.description}
                     </p>
-                    {"links" in pillar ? (
+                    {links.length ? (
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-6 text-ink-soft">
                         <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
                           Watch
                         </span>
-                        {pillar.links.map((link, linkIndex) => (
+                        {links.map((link, linkIndex) => (
                           <span key={link.href} className="inline-flex items-center gap-3">
                             <a
                               href={link.href}
@@ -88,7 +100,7 @@ export default function HowWeHelp() {
                             >
                               {link.label}
                             </a>
-                            {linkIndex < pillar.links.length - 1 ? (
+                            {linkIndex < links.length - 1 ? (
                               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
                                 /
                               </span>
@@ -99,7 +111,8 @@ export default function HowWeHelp() {
                     ) : null}
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
 
             <div id="contact" className="border border-line bg-paper-alt px-6 py-6">
