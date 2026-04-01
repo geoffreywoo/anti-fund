@@ -48,7 +48,7 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Document type</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Founder-facing whitepaper
+                    Attention manifesto
                   </dd>
                 </div>
 

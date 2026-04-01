@@ -55,7 +55,7 @@ function ShareImage({ logoSrc }: { logoSrc: string }) {
               fontWeight: 600,
             }}
           >
-            Founder-facing whitepaper
+            Attention manifesto
           </div>
         </div>
 

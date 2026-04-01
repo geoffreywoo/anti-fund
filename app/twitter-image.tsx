@@ -54,7 +54,7 @@ export default async function Image() {
                 fontWeight: 600,
               }}
             >
-              Founder-facing whitepaper
+              Attention manifesto
             </div>
           </div>
 
