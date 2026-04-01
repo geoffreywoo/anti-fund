@@ -9,7 +9,7 @@ export const size = {
 };
 export const contentType = "image/png";
 
-function SocialImage({ logoSrc }: { logoSrc: string }) {
+function SocialImage() {
   return (
     <div
       style={{
@@ -31,34 +31,16 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
           border: "1px solid #cdc5b7",
           background: "#faf8f1",
           padding: "56px 58px 48px",
-          position: "relative",
           overflow: "hidden",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            background:
-              "radial-gradient(circle at top left, rgba(205,197,183,0.28) 0%, rgba(250,248,241,0) 42%), radial-gradient(circle at bottom right, rgba(205,197,183,0.2) 0%, rgba(250,248,241,0) 38%)",
-          }}
-        />
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "18px",
-            maxWidth: "920px",
-            position: "relative",
-          }}
-        >
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div
             style={{
-              fontSize: 104,
-              lineHeight: 0.9,
-              letterSpacing: "-0.06em",
+              fontFamily: '"Source Serif 4"',
+              fontSize: 106,
+              lineHeight: 0.88,
+              letterSpacing: "-0.055em",
               fontWeight: 700,
               textTransform: "uppercase",
             }}
@@ -68,10 +50,12 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
 
           <div
             style={{
+              fontFamily: '"Source Serif 4"',
               fontSize: 44,
-              lineHeight: 1.02,
-              letterSpacing: "-0.04em",
-              maxWidth: "760px",
+              lineHeight: 1.08,
+              letterSpacing: "-0.03em",
+              fontWeight: 400,
+              maxWidth: "780px",
             }}
           >
             Capital is commodity. Attention is not.
@@ -81,11 +65,9 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "flex-end",
             borderTop: "1px solid #cdc5b7",
             paddingTop: "22px",
-            position: "relative",
           }}
         >
           <div
@@ -98,6 +80,7 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
           >
             <div
               style={{
+                fontFamily: '"IBM Plex Mono"',
                 fontSize: 14,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
@@ -105,16 +88,16 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
             >
               Technology x culture
             </div>
-            <div style={{ fontSize: 20 }}>antifund.com</div>
+            <div
+              style={{
+                fontFamily: '"Source Serif 4"',
+                fontSize: 20,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              antifund.com
+            </div>
           </div>
-
-          <img
-            src={logoSrc}
-            alt=""
-            width="84"
-            height="70"
-            style={{ objectFit: "contain" }}
-          />
         </div>
       </div>
     </div>
@@ -122,10 +105,33 @@ function SocialImage({ logoSrc }: { logoSrc: string }) {
 }
 
 export async function createSocialImage() {
-  const data = await readFile(join(process.cwd(), "public/logo.png"), "base64");
-  const logoSrc = `data:image/png;base64,${data}`;
+  const [sourceSerifRegular, sourceSerifBold, ibmPlexMono] = await Promise.all([
+    readFile(join(process.cwd(), "app/fonts/SourceSerif4-Regular.ttf")),
+    readFile(join(process.cwd(), "app/fonts/SourceSerif4-Bold.ttf")),
+    readFile(join(process.cwd(), "app/fonts/IBMPlexMono-Medium.ttf")),
+  ]);
 
-  return new ImageResponse(<SocialImage logoSrc={logoSrc} />, {
+  return new ImageResponse(<SocialImage />, {
     ...size,
+    fonts: [
+      {
+        name: "Source Serif 4",
+        data: sourceSerifRegular,
+        weight: 400,
+        style: "normal",
+      },
+      {
+        name: "Source Serif 4",
+        data: sourceSerifBold,
+        weight: 700,
+        style: "normal",
+      },
+      {
+        name: "IBM Plex Mono",
+        data: ibmPlexMono,
+        weight: 500,
+        style: "normal",
+      },
+    ],
   });
 }
