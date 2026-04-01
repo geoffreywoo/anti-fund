@@ -258,17 +258,6 @@ const consumerCompanies: Company[] = [
   },
 ];
 
-const highlightCompanies = [
-  "OpenAI",
-  "SpaceX",
-  "Anduril",
-  "Ramp",
-  "Cognition",
-  "Physical Intelligence",
-  "Chronosphere",
-  "Polymarket",
-].join(", ");
-
 function CompanyRow({
   company,
   index,
@@ -353,13 +342,16 @@ export default function Portfolio() {
             <div className="border border-line bg-paper-alt px-6 py-6">
               <p className="paper-label mb-3">Observation 01 / Proof</p>
               <p className="text-lg leading-8 text-ink-soft">
-                Past investments include{" "}
-                <span className="font-semibold text-ink">{highlightCompanies}</span>
-                , among many others across the public Anti Fund portfolio.
+                Past investments include category-defining companies across AI,
+                robotics, software, and high-growth consumer, including{" "}
+                <span className="font-semibold text-ink">
+                  OpenAI, Anduril, Ramp, Cognition, Polymarket, Physical
+                  Intelligence, Flock Safety, and Chronosphere.
+                </span>
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
-                Anti Fund focuses on early-stage investments and advisory in AI,
-                robotics, software, and high-growth consumer companies with
+                Anti Fund invests across all stages, as the first check or in
+                late-stage growth rounds. We look to partner with founders with
                 differentiated technology and/or distribution advantages.
               </p>
             </div>
