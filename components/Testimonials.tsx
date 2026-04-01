@@ -7,9 +7,21 @@ const testimonials = [
   },
   {
     quote:
+      "Awesome working with Jake Paul, Geoffrey Woo and Anti Fund!!",
+    name: "Sam Blond",
+    title: "CEO, Monaco",
+  },
+  {
+    quote:
       "Geoff was one of our first investors and committed to backing Chronosphere before our company was even set up. He is incredibly networked in tech and investor circles and has been a key strategic thought partner. He is one of those rare humans that wields deep technical, product, and business expertise.",
     name: "Rob Skillington",
     title: "CTO & Co-founder, Chronosphere",
+  },
+  {
+    quote:
+      "Thanks for all of support! Couldn't ask for a better partner.",
+    name: "Aryan Shah",
+    title: "CEO, Metis",
   },
 ];
 
