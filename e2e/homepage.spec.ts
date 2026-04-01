@@ -128,12 +128,15 @@ test("platform section links out to summit footage in new tabs", async ({
   const help = page.locator("#help");
   await help.scrollIntoViewIfNeeded();
 
-  const firstSummitLink = help.getByRole("link", { name: "Summit film at the ranch" });
+  const firstSummitLink = help.getByRole("link", {
+    name: "Anti Fund Summit",
+    exact: true,
+  });
   const secondSummitLink = help.getByRole("link", {
     name: "Another look at Anti Fund Summit",
   });
   const communityEventsLink = help.getByRole("link", {
-    name: "Community event reel",
+    name: "48 hours with Anti Fund",
   });
 
   await expect(firstSummitLink).toBeVisible();

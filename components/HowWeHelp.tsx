@@ -24,7 +24,7 @@ const pillars: Pillar[] = [
       "Community at Anti Fund is built through work. Summits, office visits, executive dinners, and working sessions create durable trust, access, and deal flow over time.",
     links: [
       {
-        label: "Summit film at the ranch",
+        label: "Anti Fund Summit",
         href: "https://www.youtube.com/watch?v=BWx8F_YgVt4",
       },
       {
@@ -32,7 +32,7 @@ const pillars: Pillar[] = [
         href: "https://www.youtube.com/watch?v=PIH2C-dLLUc",
       },
       {
-        label: "Community event reel",
+        label: "48 hours with Anti Fund",
         href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
       },
     ],
