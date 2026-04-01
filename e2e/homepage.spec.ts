@@ -120,6 +120,34 @@ test("portfolio company names link out to company websites in new tabs", async (
   }
 });
 
+test("platform section links out to summit footage in new tabs", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const help = page.locator("#help");
+  await help.scrollIntoViewIfNeeded();
+
+  const firstSummitLink = help.getByRole("link", { name: "Summit film at the ranch" });
+  const secondSummitLink = help.getByRole("link", {
+    name: "Another look at Anti Fund Summit",
+  });
+
+  await expect(firstSummitLink).toBeVisible();
+  await expect(firstSummitLink).toHaveAttribute(
+    "href",
+    "https://www.youtube.com/watch?v=BWx8F_YgVt4",
+  );
+  await expect(firstSummitLink).toHaveAttribute("target", "_blank");
+
+  await expect(secondSummitLink).toBeVisible();
+  await expect(secondSummitLink).toHaveAttribute(
+    "href",
+    "https://www.youtube.com/watch?v=PIH2C-dLLUc",
+  );
+  await expect(secondSummitLink).toHaveAttribute("target", "_blank");
+});
+
 test.describe("reduced motion and metadata", () => {
   test.use({ reducedMotion: "reduce" });
 

@@ -13,6 +13,16 @@ const pillars = [
     title: "Network",
     description:
       "Community at Anti Fund is built through work. Summits, office visits, executive dinners, and working sessions create durable trust, access, and deal flow over time.",
+    links: [
+      {
+        label: "Summit film at the ranch",
+        href: "https://www.youtube.com/watch?v=BWx8F_YgVt4",
+      },
+      {
+        label: "Another look at Anti Fund Summit",
+        href: "https://www.youtube.com/watch?v=PIH2C-dLLUc",
+      },
+    ],
   },
   {
     title: "Fundraising",
@@ -59,9 +69,35 @@ export default function HowWeHelp() {
                   <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink">
                     {pillar.title}
                   </h3>
-                  <p className="text-base leading-7 text-ink-soft">
-                    {pillar.description}
-                  </p>
+                  <div className="space-y-3">
+                    <p className="text-base leading-7 text-ink-soft">
+                      {pillar.description}
+                    </p>
+                    {"links" in pillar ? (
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-6 text-ink-soft">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+                          Watch
+                        </span>
+                        {pillar.links.map((link, linkIndex) => (
+                          <span key={link.href} className="inline-flex items-center gap-3">
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="paper-link"
+                            >
+                              {link.label}
+                            </a>
+                            {linkIndex < pillar.links.length - 1 ? (
+                              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+                                /
+                              </span>
+                            ) : null}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               ))}
             </div>
