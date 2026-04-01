@@ -80,15 +80,23 @@ test("portfolio company names link out to company websites in new tabs", async (
   await portfolio.scrollIntoViewIfNeeded();
 
   const companyLinks = portfolio.locator('a[target="_blank"]');
-  await expect(companyLinks).toHaveCount(22);
+  await expect(companyLinks).toHaveCount(34);
 
   const openAiLink = portfolio.locator('a[href="https://openai.com/"]');
   await expect(openAiLink).toBeVisible();
   await expect(openAiLink).toHaveAttribute("target", "_blank");
 
-  const rampLink = portfolio.locator('a[href="https://ramp.com/"]');
-  await expect(rampLink).toBeVisible();
-  await expect(rampLink).toHaveAttribute("target", "_blank");
+  const spaceXLink = portfolio.locator('a[href="https://www.spacex.com/"]');
+  await expect(spaceXLink).toBeVisible();
+  await expect(spaceXLink).toHaveAttribute("target", "_blank");
+
+  const khloudLink = portfolio.locator('a[href="https://khloudfoods.com/"]');
+  await expect(khloudLink).toBeVisible();
+  await expect(khloudLink).toHaveAttribute("target", "_blank");
+
+  const eightSleepLink = portfolio.locator('a[href="https://www.eightsleep.com/"]');
+  await expect(eightSleepLink).toBeVisible();
+  await expect(eightSleepLink).toHaveAttribute("target", "_blank");
 });
 
 test.describe("reduced motion and metadata", () => {

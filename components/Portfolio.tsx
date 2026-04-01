@@ -9,46 +9,7 @@ type Company = {
   personal?: boolean;
 };
 
-const infraCompanies: Company[] = [
-  {
-    name: "Modal",
-    url: "https://modal.com/",
-    description: "AI infrastructure.",
-    stage: "Series B",
-    partnered: "2025",
-  },
-  {
-    name: "Etched",
-    url: "https://www.etched.com/",
-    description: "Transformer ASICs.",
-    stage: "Series B",
-    partnered: "2025",
-  },
-  {
-    name: "Metis",
-    url: "https://www.withmetis.ai/",
-    description: "Post-training and continual-learning layer for enterprise agents.",
-    stage: "Exit",
-    partnered: "2025",
-  },
-  {
-    name: "Chronosphere",
-    url: "https://chronosphere.io/",
-    description: "Observability platform. Acquired by Palo Alto Networks.",
-    stage: "Exit",
-    partnered: "2019",
-    personal: true,
-  },
-];
-
-const appliedAiCompanies: Company[] = [
-  {
-    name: "OpenAI",
-    url: "https://openai.com/",
-    description: "Building safe and beneficial AGI.",
-    stage: "Growth",
-    partnered: "2025",
-  },
+const softwareCompanies: Company[] = [
   {
     name: "Ramp",
     url: "https://ramp.com/",
@@ -58,10 +19,97 @@ const appliedAiCompanies: Company[] = [
     personal: true,
   },
   {
+    name: "Chronosphere",
+    url: "https://chronosphere.io/",
+    description: "Observability platform. Acquired by Palo Alto Networks for $3.35B.",
+    stage: "Seed / Exit",
+    partnered: "2019",
+    personal: true,
+  },
+  {
+    name: "Aerodome",
+    url: "https://www.aerodome.com/",
+    description: "Public safety drones and air support acquired by Flock Safety.",
+    stage: "Seed / Exit",
+    partnered: "2023",
+  },
+  {
+    name: "Metis",
+    url: "https://www.withmetis.ai/",
+    description:
+      "Post-training and continual-learning layer for enterprise agents. Acquired by DoorDash in March 2026.",
+    stage: "Seed / Exit",
+    partnered: "2025",
+  },
+  {
+    name: "OpenAI",
+    url: "https://openai.com/",
+    description: "Building safe and beneficial AGI.",
+    stage: "Growth",
+    partnered: "2025",
+  },
+  {
+    name: "SpaceX",
+    url: "https://www.spacex.com/",
+    description: "Making humans interplanetary through space technology.",
+    stage: "Growth",
+    partnered: "2026",
+  },
+  {
+    name: "Anduril",
+    url: "https://www.anduril.com/",
+    description: "Transforming defense capabilities with advanced technology.",
+    stage: "Series E",
+    partnered: "2022",
+  },
+  {
+    name: "Erebor",
+    url: "https://erebor.bank/",
+    description: "New bank.",
+    stage: "Series B",
+    partnered: "2026",
+  },
+  {
     name: "Cognition",
     url: "https://cognition.ai/",
     description: "An applied AI lab building end-to-end software agents.",
     stage: "Series B",
+    partnered: "2024",
+  },
+  {
+    name: "Etched",
+    url: "https://www.etched.com/",
+    description: "Transformer ASICs.",
+    stage: "Series B",
+    partnered: "2025",
+  },
+  {
+    name: "Modal",
+    url: "https://modal.com/",
+    description: "AI infrastructure.",
+    stage: "Series B",
+    partnered: "2025",
+  },
+  {
+    name: "Lighter",
+    url: "https://lighter.xyz/",
+    description:
+      "A fully verifiable decentralized exchange built with custom ZK infrastructure, inheriting Ethereum security and composability.",
+    stage: "Series B",
+    partnered: "2025",
+  },
+  {
+    name: "Polymarket",
+    url: "https://polymarket.com/",
+    description: "The world's largest prediction market.",
+    stage: "Series A",
+    partnered: "2021",
+  },
+  {
+    name: "Kela Systems",
+    url: "https://kelasys.com/",
+    description: "Defense tech.",
+    stage: "Series A",
     partnered: "2024",
   },
   {
@@ -71,15 +119,12 @@ const appliedAiCompanies: Company[] = [
     stage: "Seed / Series A",
     partnered: "2022",
   },
-];
-
-const frontierCompanies: Company[] = [
   {
-    name: "Anduril",
-    url: "https://www.anduril.com/",
-    description: "Transforming defense capabilities with advanced technology.",
-    stage: "Series E",
-    partnered: "2022",
+    name: "Merge",
+    url: "https://www.merge.io/",
+    description: "Brain-computer interface.",
+    stage: "Seed",
+    partnered: "2025",
   },
   {
     name: "Physical Intelligence",
@@ -89,29 +134,36 @@ const frontierCompanies: Company[] = [
     partnered: "2024",
   },
   {
-    name: "Aerodome",
-    url: "https://www.flocksafety.com/",
-    description: "Public safety drones and air support acquired by Flock Safety.",
-    stage: "Exit",
-    partnered: "2023",
+    name: "WithCoverage",
+    url: "https://withcoverage.com/",
+    description: "Risk management solution for ambitious businesses.",
+    stage: "Seed",
+    partnered: "2024",
   },
   {
-    name: "Kela Systems",
-    url: "https://kelasys.com/",
-    description: "Defense tech for modern conflict.",
-    stage: "Series A",
-    partnered: "2024",
+    name: "Cluely",
+    url: "https://cluely.com/",
+    description: "AI desktop assistant.",
+    stage: "Seed",
+    partnered: "2025",
+  },
+  {
+    name: "Interaction",
+    url: "https://poke.com/",
+    description: "Poke.com.",
+    stage: "Seed",
+    partnered: "2025",
+  },
+  {
+    name: "Natural",
+    url: "https://www.natural.co/",
+    description: "Payments for AI agents.",
+    stage: "Seed",
+    partnered: "2025",
   },
 ];
 
 const consumerCompanies: Company[] = [
-  {
-    name: "Polymarket",
-    url: "https://polymarket.com/",
-    description: "The world's largest prediction market.",
-    stage: "Series A",
-    partnered: "2021",
-  },
   {
     name: "Betr",
     url: "https://betr.app/",
@@ -141,32 +193,18 @@ const consumerCompanies: Company[] = [
     partnered: "2022",
   },
   {
-    name: "Wander",
-    url: "https://www.wander.com/",
-    description: "Luxury travel platform with hotel-grade hospitality.",
-    stage: "Series A",
-    partnered: "2022",
-  },
-  {
-    name: "Kings League",
-    url: "https://kingsleague.pro/",
-    description: "Global creator-led 7 vs 7 soccer league.",
-    stage: "Series A",
-    partnered: "2024",
-  },
-  {
-    name: "Olipop",
-    url: "https://www.olipoponline.com/",
-    description: "Healthy prebiotic soda.",
-    stage: "Series B",
-    partnered: "2022",
-  },
-  {
     name: "SipMargs",
     url: "https://www.sipmargs.com/",
-    description: "Sparkling margarita RTD built with Alix Earle.",
+    description: "Sparkling margarita RTD with Alix Earle.",
     stage: "Seed",
     partnered: "2024",
+  },
+  {
+    name: "Khloud",
+    url: "https://khloudfoods.com/",
+    description: "Khloe Kardashian's protein popcorn.",
+    stage: "Seed",
+    partnered: "2025",
   },
   {
     name: "Happy Dad",
@@ -175,7 +213,61 @@ const consumerCompanies: Company[] = [
     stage: "Seed+",
     partnered: "2025",
   },
+  {
+    name: "Wander",
+    url: "https://www.wander.com/",
+    description: "Luxury travel platform with hotel-grade hospitality.",
+    stage: "Series A",
+    partnered: "2022",
+  },
+  {
+    name: "Oats Overnight",
+    url: "https://www.oatsovernight.com/",
+    description: "Oatmeal.",
+    stage: "Series A",
+    partnered: "2022",
+  },
+  {
+    name: "Palm Tree Crew",
+    url: "https://www.palmtreecrew.com/",
+    description: "Live entertainment and tropical lifestyle.",
+    stage: "Series A",
+    partnered: "2023",
+  },
+  {
+    name: "Kings League",
+    url: "https://kingsleague.pro/",
+    description: "Global, creator-led 7 vs 7 soccer league.",
+    stage: "Series A",
+    partnered: "2024",
+  },
+  {
+    name: "Olipop",
+    url: "https://drinkolipop.com/",
+    description: "Healthy prebiotic soda.",
+    stage: "Series B",
+    partnered: "2022",
+  },
+  {
+    name: "Eight Sleep",
+    url: "https://www.eightsleep.com/",
+    description: "Smart beds.",
+    stage: "Seed",
+    partnered: "2021",
+    personal: true,
+  },
 ];
+
+const highlightCompanies = [
+  "OpenAI",
+  "SpaceX",
+  "Anduril",
+  "Ramp",
+  "Cognition",
+  "Physical Intelligence",
+  "Chronosphere",
+  "Polymarket",
+].join(", ");
 
 function CompanyRow({
   company,
@@ -261,12 +353,9 @@ export default function Portfolio() {
             <div className="border border-line bg-paper-alt px-6 py-6">
               <p className="paper-label mb-3">Observation 01 / Proof</p>
               <p className="text-lg leading-8 text-ink-soft">
-                Past investments include category-defining companies across AI,
-                robotics, software, and high-growth consumer, including{" "}
-                <span className="font-semibold text-ink">
-                  OpenAI, Anduril, Ramp, Cognition, Polymarket, Physical
-                  Intelligence, Flock Safety, and Chronosphere.
-                </span>
+                Past investments include{" "}
+                <span className="font-semibold text-ink">{highlightCompanies}</span>
+                , among many others across the public Anti Fund portfolio.
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
                 Anti Fund focuses on early-stage investments and advisory in AI,
@@ -276,29 +365,22 @@ export default function Portfolio() {
             </div>
 
             <div className="border border-line bg-paper-alt px-6 py-6">
-              <p className="paper-label mb-3">Observation 02 / Focus Areas</p>
+              <p className="paper-label mb-3">Observation 02 / Public List</p>
               <p className="text-base leading-7 text-ink-soft">
-                The platform deck frames the core investment map as AI
-                infrastructure, applied AI, and frontier tech / physical AI.
-                Beta keeps that structure, while preserving a distinct lane for
-                consumer and culture businesses where distribution itself is a
-                moat.
+                Beta now mirrors the full public company list shown on
+                antifund.com, organized in the same two live buckets:{" "}
+                <span className="font-semibold text-ink">
+                  AI; robotics; software
+                </span>{" "}
+                and <span className="font-semibold text-ink">Consumer</span>.
               </p>
             </div>
 
             <CompanyGroup
-              title="AI Infrastructure / Software Systems"
-              companies={infraCompanies}
+              title="AI; robotics; software"
+              companies={softwareCompanies}
             />
-            <CompanyGroup
-              title="Applied AI / Enterprise Software"
-              companies={appliedAiCompanies}
-            />
-            <CompanyGroup
-              title="Frontier Tech / Physical AI"
-              companies={frontierCompanies}
-            />
-            <CompanyGroup title="Consumer / Culture" companies={consumerCompanies} />
+            <CompanyGroup title="Consumer" companies={consumerCompanies} />
 
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
               * Personal investment
