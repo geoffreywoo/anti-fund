@@ -86,7 +86,7 @@ function SocialImage() {
                 textTransform: "uppercase",
               }}
             >
-              Technology x culture
+              Investment firm
             </div>
             <div
               style={{
