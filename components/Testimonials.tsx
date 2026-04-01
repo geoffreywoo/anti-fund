@@ -36,14 +36,14 @@ export default function Testimonials() {
   return (
     <section
       id="proof"
-      className="px-6 py-24 md:px-10 md:py-28 lg:px-14"
+      className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14"
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">05 / Founder Proof</div>
 
           <div className="space-y-10">
-            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+            <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               The strongest proof is not a slogan. It is what founders,
               operators, and close observers say after seeing the work up
               close.
@@ -62,8 +62,8 @@ export default function Testimonials() {
                     <blockquote
                       className={`max-w-4xl font-display leading-[1.2] tracking-[-0.02em] text-ink ${
                         testimonial.quote.length > 240
-                          ? "text-xl md:text-[1.65rem]"
-                          : "text-2xl md:text-[2rem]"
+                          ? "text-lg sm:text-xl md:text-[1.65rem]"
+                          : "text-xl sm:text-2xl md:text-[2rem]"
                       }`}
                     >
                       "{testimonial.quote}"

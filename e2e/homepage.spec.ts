@@ -79,31 +79,54 @@ test("portfolio company names link out to company websites in new tabs", async (
   const portfolio = page.locator("#portfolio");
   await portfolio.scrollIntoViewIfNeeded();
 
-  const companyLinks = portfolio.locator('a[target="_blank"]');
-  await expect(companyLinks).toHaveCount(34);
+  const companyLinkHrefs = await portfolio
+    .locator('a[target="_blank"]')
+    .evaluateAll((links) =>
+      Array.from(
+        new Set(
+          links
+            .map((link) => link.getAttribute("href"))
+            .filter((href): href is string => Boolean(href)),
+        ),
+      ),
+    );
+  expect(companyLinkHrefs).toHaveLength(34);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
   await expect(firstGroup).toHaveAttribute("data-portfolio-group", "exits");
 
-  const openAiLink = portfolio.locator('a[href="https://openai.com/"]');
-  await expect(openAiLink).toBeVisible();
-  await expect(openAiLink).toHaveAttribute("target", "_blank");
+  const hasVisibleExternalLink = async (href: string) =>
+    portfolio.locator(`a[href="${href}"]`).evaluateAll((links) =>
+      links.some((link) => {
+        const element = link as HTMLElement;
+        const style = window.getComputedStyle(element);
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          element.getAttribute("target") === "_blank"
+        );
+      }),
+    );
 
-  const spaceXLink = portfolio.locator('a[href="https://www.spacex.com/"]');
-  await expect(spaceXLink).toBeVisible();
-  await expect(spaceXLink).toHaveAttribute("target", "_blank");
+  expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://khloudfoods.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://www.eightsleep.com/")).toBeTruthy();
 
-  const khloudLink = portfolio.locator('a[href="https://khloudfoods.com/"]');
-  await expect(khloudLink).toBeVisible();
-  await expect(khloudLink).toHaveAttribute("target", "_blank");
-
-  const eightSleepLink = portfolio.locator('a[href="https://www.eightsleep.com/"]');
-  await expect(eightSleepLink).toBeVisible();
-  await expect(eightSleepLink).toHaveAttribute("target", "_blank");
-
-  const exitStage = portfolio.locator('[data-stage-part="exit"]').first();
-  await expect(exitStage).toBeVisible();
-  await expect(exitStage).toHaveClass(/text-green-700/);
+  const hasVisibleExitStage = await portfolio
+    .locator('[data-stage-part="exit"]')
+    .evaluateAll((stages) =>
+      stages.some((stage) => {
+        const element = stage as HTMLElement;
+        const style = window.getComputedStyle(element);
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          element.classList.contains("text-green-700")
+        );
+      }),
+    );
+  expect(hasVisibleExitStage).toBeTruthy();
 
   const sinceValuesByGroup = await portfolio.locator("[data-portfolio-group]").evaluateAll(
     (groups) =>

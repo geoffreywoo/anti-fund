@@ -6,9 +6,9 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="px-6 pb-20 pt-12 md:px-10 lg:px-14">
+    <footer className="px-5 pb-16 pt-10 sm:px-6 md:px-10 md:pb-20 md:pt-12 lg:px-14">
       <div className="mx-auto max-w-6xl border-t border-line pt-8">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] md:gap-12">
           <div>
             <a href="/legal" className="paper-link inline-block text-base">
               Legal

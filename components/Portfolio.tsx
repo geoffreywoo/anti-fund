@@ -439,28 +439,63 @@ function CompanyRow({
   return (
     <div
       data-company={toDataKey(company.name)}
-      className="portfolio-row grid gap-3 border-b border-line py-4 md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6"
+      className="portfolio-row border-b border-line py-4"
       style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
     >
-      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="min-w-0">
-        <a
-          href={company.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="paper-link inline-block font-display text-2xl leading-none tracking-[-0.03em] text-ink"
-        >
-          {company.name}
-        </a>
-        {company.personal ? "*" : ""}
+      <div className="space-y-4 md:hidden">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+              {String(index + 1).padStart(2, "0")}
+            </p>
+            <a
+              href={company.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="paper-link mt-2 inline-block font-display text-[1.9rem] leading-none tracking-[-0.03em] text-ink"
+            >
+              {company.name}
+            </a>
+            {company.personal ? "*" : ""}
+          </div>
+
+          <div className="shrink-0 text-right">
+            <p className="paper-label">Since</p>
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+              {company.partnered}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-base leading-7 text-ink-soft">{company.description}</p>
+
+        <div>
+          <p className="paper-label mb-2">Stage</p>
+          <StageLabel stage={company.stage} />
+        </div>
       </div>
-      <span className="text-base leading-7 text-ink-soft">{company.description}</span>
-      <StageLabel stage={company.stage} />
-      <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-        {company.partnered}
-      </span>
+
+      <div className="hidden gap-3 md:grid md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6">
+        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <div className="min-w-0">
+          <a
+            href={company.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="paper-link inline-block font-display text-2xl leading-none tracking-[-0.03em] text-ink"
+          >
+            {company.name}
+          </a>
+          {company.personal ? "*" : ""}
+        </div>
+        <span className="text-base leading-7 text-ink-soft">{company.description}</span>
+        <StageLabel stage={company.stage} />
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+          {company.partnered}
+        </span>
+      </div>
     </div>
   );
 }
@@ -503,15 +538,15 @@ function CompanyGroup({
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+    <section id="portfolio" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">02 / Select Investments</div>
 
           <div className="space-y-10">
-            <div className="border border-line bg-paper-alt px-6 py-6">
+            <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Observation 01 / Proof</p>
-              <p className="text-lg leading-8 text-ink-soft">
+              <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Past investments include category-defining companies across AI,
                 robotics, software, and high-growth consumer, including{" "}
                 <span className="font-semibold text-ink">

@@ -132,20 +132,20 @@ const team: TeamMember[] = [
 
 export default function Team() {
   return (
-    <section id="team" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+    <section id="team" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">03 / Team</div>
 
           <div className="space-y-10">
-            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+            <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               Anti Fund combines operators, investors, and culture-shaping
               distribution. The team reflects the same thesis as the portfolio:
               tech depth matters, but so does the ability to command attention.
             </p>
 
-            <figure className="border border-line bg-paper-alt p-4 md:p-6">
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-end">
+            <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
+              <div className="grid gap-4 sm:gap-6 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-end">
                 <div className="overflow-hidden border border-line bg-paper">
                   <Image
                     src="/team-general-partners.jpg"
@@ -157,9 +157,9 @@ export default function Team() {
                   />
                 </div>
 
-                <figcaption className="space-y-4">
+                <figcaption className="space-y-3 sm:space-y-4">
                   <p className="paper-label">General Partners</p>
-                  <p className="max-w-2xl font-display text-3xl leading-[1.08] tracking-[-0.03em] text-ink md:text-4xl">
+                  <p className="max-w-2xl font-display text-[2rem] leading-[1.08] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
                     Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
@@ -176,7 +176,7 @@ export default function Team() {
               {team.map((member, index) => (
                 <div
                   key={member.name}
-                  className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,260px)_minmax(0,1fr)] md:gap-6"
+                  className="grid gap-4 border-b border-line py-5 last:border-b-0 md:grid-cols-[44px_minmax(0,260px)_minmax(0,1fr)] md:gap-6 md:py-6"
                 >
                   <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
                     {String(index + 1).padStart(2, "0")}

@@ -31,7 +31,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+    <section id="faq" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">Appendix A / FAQ</div>
@@ -74,7 +74,7 @@ export default function FAQ() {
                       }
                     }}
                   >
-                    <span className="max-w-3xl font-display text-2xl leading-[1.08] tracking-[-0.03em] text-ink md:text-[2rem]">
+                    <span className="max-w-3xl font-display text-xl leading-[1.08] tracking-[-0.03em] text-ink sm:text-2xl md:text-[2rem]">
                       {item.question}
                     </span>
                     <span
@@ -100,7 +100,7 @@ export default function FAQ() {
                       aria-labelledby={buttonId}
                       className="min-h-0"
                     >
-                      <div className="max-w-3xl pb-6 pr-10 text-base leading-7 text-ink-soft">
+                      <div className="max-w-3xl pb-6 pr-4 text-base leading-7 text-ink-soft sm:pr-10">
                         {item.answer}
                       </div>
                     </div>

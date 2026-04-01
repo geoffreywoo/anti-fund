@@ -91,10 +91,10 @@ export default function Nav() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-14">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-6 md:px-10 md:py-4 lg:px-14">
           <a href={homeHref} className="min-w-0 text-ink transition-colors hover:text-ink-soft">
             <div className="paper-label">Anti Fund</div>
-            <div className="mt-1 text-sm text-ink-soft md:text-base">
+            <div className="mt-1 hidden text-sm text-ink-soft sm:block md:text-base">
               Capital is abundant. Attention is scarce.
             </div>
           </a>

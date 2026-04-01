@@ -51,20 +51,20 @@ const pillars: Pillar[] = [
 
 export default function HowWeHelp() {
   return (
-    <section id="help" className="px-6 py-24 md:px-10 md:py-28 lg:px-14">
+    <section id="help" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
           <div className="paper-label">04 / Platform</div>
 
           <div className="space-y-10">
-            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+            <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               Community at Anti Fund is built through work. We are physically
               present and consistently on the ground with founders, operators,
               and decision makers. Founding and scaling a high-growth business
               is difficult, so we do not want to waste your time with busywork.
             </p>
 
-            <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+            <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               Instead, we are a phone call or text message away when you want
               to dig into product, go-to-market, fundraising, and strategy.
               The work compounds into durable relationships, trust, and access.
@@ -90,27 +90,29 @@ export default function HowWeHelp() {
                       {pillar.description}
                     </p>
                     {links.length ? (
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-6 text-ink-soft">
+                      <div className="space-y-2 text-sm leading-6 text-ink-soft">
                         <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
                           Watch
                         </span>
-                        {links.map((link, linkIndex) => (
-                          <span key={link.href} className="inline-flex items-center gap-3">
-                            <a
-                              href={link.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="paper-link"
-                            >
-                              {link.label}
-                            </a>
-                            {linkIndex < links.length - 1 ? (
-                              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                                /
-                              </span>
-                            ) : null}
-                          </span>
-                        ))}
+                        <div className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2">
+                          {links.map((link, linkIndex) => (
+                            <span key={link.href} className="inline-flex max-w-full items-center gap-3">
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="paper-link"
+                              >
+                                {link.label}
+                              </a>
+                              {linkIndex < links.length - 1 ? (
+                                <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted sm:inline">
+                                  /
+                                </span>
+                              ) : null}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     ) : null}
                   </div>
@@ -119,9 +121,9 @@ export default function HowWeHelp() {
               })}
             </div>
 
-            <div id="contact" className="border border-line bg-paper-alt px-6 py-6">
+            <div id="contact" className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Correspondence</p>
-              <p className="text-lg leading-8 text-ink-soft">
+              <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Building something anti with differentiated technology or
                 distribution advantages? Write to{" "}
                 <a href="mailto:founders@antifund.com" className="paper-link">

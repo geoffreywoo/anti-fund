@@ -4,27 +4,27 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="px-6 pb-20 pt-32 md:px-10 md:pb-24 md:pt-40 lg:px-14"
+      className="px-5 pb-16 pt-24 sm:px-6 md:px-10 md:pb-24 md:pt-40 lg:px-14"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="border-y border-line py-10 md:py-14">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_260px]">
+        <div className="border-y border-line py-8 md:py-14">
+          <div className="grid gap-10 md:gap-12 lg:grid-cols-[minmax(0,1.35fr)_260px]">
             <div>
-              <p className="paper-label mb-8">
+              <p className="paper-label mb-6 max-w-[18rem] leading-6 sm:mb-8 sm:max-w-none">
                 Anti Fund memorandum 01 / March 2026
               </p>
 
-              <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-[-0.05em] text-ink md:text-7xl lg:text-[5.75rem]">
+              <h1 className="max-w-4xl font-display text-[3.6rem] leading-[0.92] tracking-[-0.06em] text-ink sm:text-[4rem] md:text-7xl lg:text-[5.75rem]">
                 Capital is commodity. Attention is not.
               </h1>
 
-              <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-soft sm:text-xl md:mt-6 md:text-2xl">
                 The future is forged at the intersection of tech and culture.
               </p>
 
-              <div className="mt-10 border-t border-line pt-8">
+              <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
                 <p className="paper-label mb-3">Abstract</p>
-                <p className="max-w-3xl text-lg leading-8 text-ink-soft">
+                <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                   Anti Fund is founded on two axioms: the future is forged at
                   the intersection of tech and culture, and the best founders
                   are anti by definition. Startups live and die on two levers,
@@ -34,7 +34,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <aside className="border-t border-line pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <aside className="border-t border-line pt-6 md:pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <Image
                 src="/logo.png"
                 alt="Anti Fund"
@@ -44,7 +44,7 @@ export default function Hero() {
                 priority
               />
 
-              <dl className="mt-8 space-y-6">
+              <dl className="mt-6 grid gap-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 md:mt-8 lg:block lg:space-y-6">
                 <div>
                   <dt className="paper-label">Document type</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
@@ -52,7 +52,7 @@ export default function Hero() {
                   </dd>
                 </div>
 
-                <div>
+                <div className="sm:col-span-2 lg:col-span-1">
                   <dt className="paper-label">Keywords</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
                     technology x culture, attention asymmetry, earned distribution,
@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-4">
+        <div className="mt-6 flex items-center gap-4 md:mt-8">
           <span className="block h-px w-16 bg-line-strong" aria-hidden="true" />
           <a
             href="#thesis"
