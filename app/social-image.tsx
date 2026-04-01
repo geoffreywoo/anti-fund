@@ -30,7 +30,7 @@ function SocialImage({
         display: "flex",
         background: "#f4efe4",
         color: "#141414",
-        padding: "30px",
+        padding: "28px",
       }}
     >
       <div
@@ -38,6 +38,7 @@ function SocialImage({
           width: "100%",
           height: "100%",
           display: "flex",
+          flexDirection: "column",
           border: "1px solid #cdc5b7",
           background: "#faf8f1",
           overflow: "hidden",
@@ -45,24 +46,24 @@ function SocialImage({
       >
         <div
           style={{
-            width: "66%",
-            height: "100%",
+            width: "100%",
+            height: "58%",
             display: "flex",
             position: "relative",
-            borderRight: "1px solid #cdc5b7",
+            borderBottom: "1px solid #cdc5b7",
             background: "#e7e1d3",
           }}
         >
           <img
             src={teamPhotoSrc}
             alt=""
-            width="792"
-            height="570"
+            width="1144"
+            height="344"
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "center 24%",
+              objectPosition: "center 16%",
             }}
           />
           <div
@@ -71,110 +72,80 @@ function SocialImage({
               inset: 0,
               display: "flex",
               background:
-                "linear-gradient(180deg, rgba(20,20,20,0.02) 0%, rgba(20,20,20,0.26) 100%)",
+                "linear-gradient(180deg, rgba(20,20,20,0.02) 0%, rgba(20,20,20,0.14) 100%)",
             }}
           />
         </div>
 
         <div
           style={{
-            width: "34%",
-            height: "100%",
+            width: "100%",
+            height: "42%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "36px 34px",
+            padding: "30px 38px 32px",
           }}
         >
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              gap: "24px",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
             }}
           >
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-                borderBottom: "1px solid #cdc5b7",
-                paddingBottom: "20px",
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div
-                  style={{
-                    fontSize: 14,
-                    letterSpacing: "0.22em",
-                    textTransform: "uppercase",
-                    color: "#6d685d",
-                  }}
-                >
-                  Anti Fund memorandum 01
-                </div>
-                <div
-                  style={{
-                    marginTop: "10px",
-                    fontSize: 28,
-                    fontWeight: 600,
-                  }}
-                >
-                  Firm manifesto
-                </div>
-              </div>
-
-              <img
-                src={logoSrc}
-                alt=""
-                width="72"
-                height="60"
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-
-            <div
-              style={{
-                display: "flex",
                 flexDirection: "column",
-                gap: "14px",
+                gap: "18px",
+                maxWidth: "820px",
               }}
             >
               <div
                 style={{
-                  fontSize: 52,
-                  lineHeight: 0.96,
+                  fontSize: 14,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: "#6d685d",
+                }}
+              >
+                Anti Fund
+              </div>
+              <div
+                style={{
+                  fontSize: 58,
+                  lineHeight: 0.94,
                   letterSpacing: "-0.05em",
                   fontWeight: 700,
                 }}
               >
                 Capital is commodity. Attention is not.
               </div>
-              <div
-                style={{
-                  fontSize: 24,
-                  lineHeight: 1.3,
-                  color: "#373631",
-                }}
-              >
-                Geoffrey Woo, Jake Paul, and Logan Paul for Anti Fund.
-              </div>
             </div>
+
+            <img
+              src={logoSrc}
+              alt=""
+              width="72"
+              height="60"
+              style={{ objectFit: "contain" }}
+            />
           </div>
 
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              gap: "10px",
+              justifyContent: "space-between",
+              alignItems: "center",
               borderTop: "1px solid #cdc5b7",
-              paddingTop: "18px",
-              fontSize: 15,
+              paddingTop: "16px",
+              fontSize: 16,
               color: "#6d685d",
             }}
           >
-            <div>Technology x culture. Attention asymmetry. Power-law outcomes.</div>
             <div>antifund.com</div>
+            <div>Technology x culture</div>
           </div>
         </div>
       </div>
