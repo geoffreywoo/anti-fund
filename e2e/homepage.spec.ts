@@ -204,7 +204,7 @@ test("platform section links out to summit footage in new tabs", async ({
   await expect(communityEventsLink).toHaveAttribute("target", "_blank");
 });
 
-test("testimonial authors link out to their company websites in new tabs", async ({
+test("testimonial authors link to personal profiles when available", async ({
   page,
 }) => {
   await page.goto("/");
@@ -213,20 +213,39 @@ test("testimonial authors link out to their company websites in new tabs", async
   await proof.scrollIntoViewIfNeeded();
 
   const rampAuthor = proof.getByRole("link", { name: "Eric Glyman" });
-  const linedotAuthor = proof.getByRole("link", { name: "Gun Choi" });
+  const samAuthor = proof.getByRole("link", { name: "Sam Blond" });
+  const robAuthor = proof.getByRole("link", { name: "Rob Skillington" });
   const efferenceAuthor = proof.getByRole("link", { name: "Gianluca Bencomo" });
+  const gunAuthor = proof.getByText("Gun Choi", { exact: true });
+  const abrahamAuthor = proof.getByText("Abraham Othman", { exact: true });
 
   await expect(rampAuthor).toBeVisible();
-  await expect(rampAuthor).toHaveAttribute("href", "https://ramp.com/");
+  await expect(rampAuthor).toHaveAttribute("href", "https://x.com/eglyman");
   await expect(rampAuthor).toHaveAttribute("target", "_blank");
 
-  await expect(linedotAuthor).toBeVisible();
-  await expect(linedotAuthor).toHaveAttribute("href", "https://www.linedot.ai/");
-  await expect(linedotAuthor).toHaveAttribute("target", "_blank");
+  await expect(samAuthor).toBeVisible();
+  await expect(samAuthor).toHaveAttribute("href", "https://x.com/samdblond");
+  await expect(samAuthor).toHaveAttribute("target", "_blank");
+
+  await expect(robAuthor).toBeVisible();
+  await expect(robAuthor).toHaveAttribute(
+    "href",
+    "https://www.linkedin.com/in/robskillington/",
+  );
+  await expect(robAuthor).toHaveAttribute("target", "_blank");
 
   await expect(efferenceAuthor).toBeVisible();
-  await expect(efferenceAuthor).toHaveAttribute("href", "https://efference.ai/");
+  await expect(efferenceAuthor).toHaveAttribute(
+    "href",
+    "https://x.com/gianlucabencomo",
+  );
   await expect(efferenceAuthor).toHaveAttribute("target", "_blank");
+
+  await expect(gunAuthor).toBeVisible();
+  await expect(proof.getByRole("link", { name: "Gun Choi" })).toHaveCount(0);
+
+  await expect(abrahamAuthor).toBeVisible();
+  await expect(proof.getByRole("link", { name: "Abraham Othman" })).toHaveCount(0);
 });
 
 test.describe("reduced motion and metadata", () => {
