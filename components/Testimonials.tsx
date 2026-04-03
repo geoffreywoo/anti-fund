@@ -25,6 +25,24 @@ const testimonials = [
   },
   {
     quote:
+      "Geoff is an incredible visionary with sharp intuition. As our earliest investor, he has consistently given advice that proves true time and time again. His strong connections with the most influential minds in Silicon Valley are the exact fuel that early-stage founders can only dream of. Essentially, he brings his A-game. Founders just need to bring theirs.",
+    name: "Gun Choi",
+    title: "CEO & Co-founder, Linedot",
+  },
+  {
+    quote:
+      "Geoff and Steve are one of the best partners to have as a founder. They are incredibly well connected - Geoff introduced us to Karim from Ramp who became our investor. Steve is always responsive, pushing us to think in unconventional angles. I would highly recommend Anti Fund to any exceptional founders.",
+    name: "Yoon Yang",
+    title: "CEO & Co-founder, Pensive",
+  },
+  {
+    quote:
+      "Anti Fund was our first investor and a key sounding board for strategic decisions. They're direct and candid when it matters, skipping unnecessary niceties in favor of clear, actionable support. Geoff has been my most valuable investor from the start, pushing me towards market-validated technical verticals and a business development approach focused on generating meaningful signal before noise.",
+    name: "Gianluca Bencomo",
+    title: "CEO & Co-founder, Efference",
+  },
+  {
+    quote:
       'No other GP on the AngelList platform - out of hundreds of qualifying investors - beats the Anti Fund along both of these axes. It follows that Geoff and Jake may be able to justify a claim to being the "best investors on AngelList", in the sense that there\'s no other GP that dominates them along the data-driven axes that we believe can help to predict future investment performance.',
     name: "Abraham Othman",
     title:
