@@ -204,6 +204,31 @@ test("platform section links out to summit footage in new tabs", async ({
   await expect(communityEventsLink).toHaveAttribute("target", "_blank");
 });
 
+test("testimonial authors link out to their company websites in new tabs", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const proof = page.locator("#proof");
+  await proof.scrollIntoViewIfNeeded();
+
+  const rampAuthor = proof.getByRole("link", { name: "Eric Glyman" });
+  const linedotAuthor = proof.getByRole("link", { name: "Gun Choi" });
+  const efferenceAuthor = proof.getByRole("link", { name: "Gianluca Bencomo" });
+
+  await expect(rampAuthor).toBeVisible();
+  await expect(rampAuthor).toHaveAttribute("href", "https://ramp.com/");
+  await expect(rampAuthor).toHaveAttribute("target", "_blank");
+
+  await expect(linedotAuthor).toBeVisible();
+  await expect(linedotAuthor).toHaveAttribute("href", "https://www.linedot.ai/");
+  await expect(linedotAuthor).toHaveAttribute("target", "_blank");
+
+  await expect(efferenceAuthor).toBeVisible();
+  await expect(efferenceAuthor).toHaveAttribute("href", "https://efference.ai/");
+  await expect(efferenceAuthor).toHaveAttribute("target", "_blank");
+});
+
 test.describe("reduced motion and metadata", () => {
   test.use({ reducedMotion: "reduce" });
 
