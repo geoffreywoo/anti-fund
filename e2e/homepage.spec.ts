@@ -248,6 +248,33 @@ test("testimonial authors link to personal profiles when available", async ({
   await expect(proof.getByRole("link", { name: "Abraham Othman" })).toHaveCount(0);
 });
 
+test("testimonial company names link out and clickable testimonial links are underlined", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const proof = page.locator("#proof");
+  await proof.scrollIntoViewIfNeeded();
+
+  const rampCompany = proof.getByRole("link", { name: "Ramp" });
+  const linedotCompany = proof.getByRole("link", { name: "Linedot" });
+  const gunAuthor = proof.getByText("Gun Choi", { exact: true });
+
+  await expect(rampCompany).toBeVisible();
+  await expect(rampCompany).toHaveAttribute("href", "https://ramp.com/");
+  await expect(rampCompany).toHaveAttribute("target", "_blank");
+
+  await expect(linedotCompany).toBeVisible();
+  await expect(linedotCompany).toHaveAttribute("href", "https://www.linedot.ai/");
+  await expect(linedotCompany).toHaveAttribute("target", "_blank");
+
+  await expect(
+    proof.getByRole("link", { name: "Eric Glyman" }),
+  ).toHaveClass(/underline/);
+  await expect(rampCompany).toHaveClass(/underline/);
+  await expect(gunAuthor).not.toHaveClass(/underline/);
+});
+
 test.describe("reduced motion and metadata", () => {
   test.use({ reducedMotion: "reduce" });
 
