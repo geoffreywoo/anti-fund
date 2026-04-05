@@ -19,17 +19,19 @@ export default function Hero() {
               </h1>
 
               <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-soft sm:text-xl md:mt-6 md:text-2xl">
-                The future is forged at the intersection of tech and culture.
+                A venture firm for founders who move markets before consensus
+                catches up.
               </p>
 
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                  Anti Fund is founded on two axioms: the future is forged at
-                  the intersection of tech and culture, and the best founders
-                  are anti by definition. Startups live and die on two levers,
-                  capital and attention. One is abundant. The other wins
-                  markets.
+                  Anti Fund is built on two beliefs: the future is shaped where
+                  technology meets culture, and the founders who matter most
+                  rarely look conventional at first. Startups run on capital
+                  and attention. Capital is widely available. Attention
+                  compounds into talent, customers, leverage, and category
+                  position.
                 </p>
               </div>
             </div>

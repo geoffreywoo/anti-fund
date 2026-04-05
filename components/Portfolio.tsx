@@ -547,17 +547,18 @@ export default function Portfolio() {
             <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Observation 01 / Proof</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                Past investments include category-defining companies across AI,
-                robotics, software, and high-growth consumer, including{" "}
+                Anti Fund has backed category-defining companies across AI,
+                defense, software, fintech, robotics, and high-growth consumer,
+                including{" "}
                 <span className="font-semibold text-ink">
-                  OpenAI, Anduril, Ramp, Cognition, Polymarket, Physical
-                  Intelligence, Flock Safety, and Chronosphere.
+                  OpenAI, SpaceX, Anduril, Ramp, Cognition, Polymarket,
+                  Physical Intelligence, Flock Safety, and Chronosphere.
                 </span>
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
-                Anti Fund invests across all stages, as the first check or in
-                late-stage growth rounds. We partner with founders with
-                differentiated technology and/or distribution advantages.
+                We invest from first check through late-stage growth. We are
+                drawn to founders with technical edge, distribution instinct,
+                and the ambition to shape how markets think and behave.
               </p>
             </div>
 

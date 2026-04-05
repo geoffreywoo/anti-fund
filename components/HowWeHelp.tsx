@@ -11,17 +11,17 @@ const pillars: Pillar[] = [
   {
     title: "Product",
     description:
-      "Product relies on good taste. We dig into the actual product, positioning, and what should ship now versus later.",
+      "Product quality and positioning are inseparable. We get concrete about what should ship now, what should wait, and what will actually make the company feel inevitable.",
   },
   {
     title: "Go-to-market",
     description:
-      "The market is noisy. We help founders shape launch moments, narrative, and distribution so the company earns mindshare, not just meetings.",
+      "Go-to-market is not a slide. It is the moment the market decides whether to care. We help founders shape launch timing, narrative, and distribution that earns attention instead of renting it.",
   },
   {
     title: "Network",
     description:
-      "Community at Anti Fund is built through work. Summits, office visits, executive dinners, and working sessions create durable trust, access, and deal flow over time.",
+      "Community at Anti Fund is built through work. Our summits, office visits, dinners, and working sessions are designed to create real trust, uncommon access, and useful collisions over time.",
     links: [
       {
         label: "Anti Fund Summit",
@@ -40,12 +40,12 @@ const pillars: Pillar[] = [
   {
     title: "Fundraising",
     description:
-      "Top founders are not short on capital. We help sharpen the story, win the right partners, and use differentiated access as leverage when the round matters.",
+      "Great founders are rarely short on inbound capital. The edge is choosing the right counterparties, tightening the story, and creating leverage when the round matters most.",
   },
   {
     title: "Strategy",
     description:
-      "We stay close when the stakes are high: pivots, key hires, customer strategy, financing crunches, board pressure, and other existential decisions.",
+      "We stay close in consequential moments: product resets, senior hires, customer strategy, financing decisions, board pressure, and other forks in the road that define the company.",
   },
 ];
 
@@ -58,16 +58,17 @@ export default function HowWeHelp() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Community at Anti Fund is built through work. We are physically
-              present and consistently on the ground with founders, operators,
-              and decision makers. Founding and scaling a high-growth business
-              is difficult, so we do not want to waste your time with busywork.
+              Anti Fund is built through work, not optics. We spend time where
+              important companies are actually shaped: product reviews, launch
+              plans, distribution strategy, fundraising pressure, and moments
+              where the next decision matters more than the next deck.
             </p>
 
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Instead, we are a phone call or text message away when you want
-              to dig into product, go-to-market, fundraising, and strategy.
-              The work compounds into durable relationships, trust, and access.
+              We are most useful when conviction needs sharpening and leverage
+              needs creating. Founders call when a launch has to matter, a
+              round has to clear, a hire has to close, or a narrative has to
+              cut through noise.
             </p>
 
             <div className="border-y border-line">
@@ -124,12 +125,12 @@ export default function HowWeHelp() {
             <div id="contact" className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Correspondence</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                Building something anti with differentiated technology or
-                distribution advantages? Write to{" "}
+                Building something technically differentiated, culturally
+                resonant, or impossible to ignore? Write to{" "}
                 <a href="mailto:founders@antifund.com" className="paper-link">
                   founders@antifund.com
                 </a>
-                . Direct notes beat funnel-fill.
+                . Clear thinking beats generic outreach.
               </p>
             </div>
           </div>

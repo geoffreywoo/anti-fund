@@ -6,7 +6,7 @@ const faqItems = [
   {
     question: "What do you invest in, and at what stage?",
     answer:
-      "We invest across all stages, from first check to late-stage pre-IPO, in high-growth AI, robotics/automation, SaaS, and consumer companies with differentiated technology and/or distribution advantages. We like working with ambitious, fearless founders who have a unique view or angle on their market.",
+      "We invest across stages, from first check through late-stage pre-IPO, in high-growth AI, robotics, software, and consumer companies. We are especially drawn to founders with a non-consensus insight, a technical edge, or a distribution advantage that bends the market in their favor.",
   },
   {
     question: "What's your check size?",

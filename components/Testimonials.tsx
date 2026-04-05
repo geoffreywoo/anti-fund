@@ -82,9 +82,9 @@ export default function Testimonials() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              The strongest proof is not a slogan. It is what founders,
-              operators, and close observers say after seeing the work up
-              close.
+              The strongest proof is not our description of the firm. It is
+              what founders and operators say after we have been in the room,
+              in the work, and useful when the stakes are real.
             </p>
 
             <div className="border-y border-line">

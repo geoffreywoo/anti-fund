@@ -139,9 +139,10 @@ export default function Team() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Anti Fund combines operators, investors, and culture-shaping
-              distribution. The team reflects the same thesis as the portfolio:
-              tech depth matters, but so does the ability to command attention.
+              Most firms are built from one lane: finance, operating, or
+              media. Anti Fund is built from all three. The partnership
+              combines company building, institutional investing, and
+              global-scale distribution into one cap-table partner.
             </p>
 
             <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
@@ -163,10 +164,9 @@ export default function Team() {
                     Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    Anti Fund&apos;s general partners, left to right. The team
-                    sits at the center of technology, culture, and attention,
-                    which is exactly where the firm believes the future gets
-                    built.
+                    Different surfaces, one shared advantage: the ability to
+                    understand how products spread, how culture moves, and how
+                    attention becomes leverage.
                   </p>
                 </figcaption>
               </div>

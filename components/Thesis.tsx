@@ -1,12 +1,12 @@
 export default function Thesis() {
   const antiList = [
-    "Technology x culture",
-    "Attention asymmetry",
-    "Earned distribution",
-    "Asymmetric access",
-    "Narrative compounding",
-    "Iconoclast founders",
-    "Power-law outcomes",
+    "Technology and culture",
+    "Attention",
+    "Distribution",
+    "Founder instinct",
+    "Cultural force",
+    "Conviction",
+    "Long-term advantage",
   ];
 
   return (
@@ -35,33 +35,35 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Startups live and die on two levers: capital and attention.
-                  Capital is commodity, whereas attention is not. Every company
-                  competes for mindshare to recruit talent and win customers.
+                  Startups run on two currencies: capital and attention. One is
+                  widely available. The other determines who recruits best,
+                  launches strongest, and stays top of mind long enough to feel
+                  inevitable.
                 </p>
                 <p>
-                  Top founders are flooded by VCs, so the game becomes one of
-                  access and winning in addition to picking, research, and
-                  underwriting.
+                  Top founders are not short on meetings. They are short on
+                  partners who understand product, distribution, and how belief
+                  forms in public before the rest of the market recognizes what
+                  is happening.
                 </p>
                 <p>
-                  The market is noisy, and social media is now the dominant
-                  form of information exchange. The ability to command attention
-                  matters more than ever.
+                  In a world shaped by feeds, podcasts, group chats, and social
+                  media, distribution is no longer downstream of the company.
+                  It is part of the company.
                 </p>
               </div>
 
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Anti Fund is complementary on the cap table to the typical
-                  Sand Hill or Wall Street firm. Our principals understand how
-                  culture moves, how narrative compounds, and how distribution
-                  can become a strategic advantage.
+                  Anti Fund is designed to be complementary to traditional Sand
+                  Hill and Wall Street capital. We bring operating judgment,
+                  technical taste, and world-class distribution instinct to the
+                  same table.
                 </p>
                 <p>
-                  Venture is a power law business driven by iconoclasts who win.
-                  Anti Fund exists to find and fund these people at the
-                  intersection of technology, culture, and attention.
+                  Our partnership reflects the thesis itself: operators,
+                  investors, and culture-shaping principals backing founders
+                  who do not wait for permission to build the future.
                 </p>
               </div>
             </div>
