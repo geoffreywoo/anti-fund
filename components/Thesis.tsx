@@ -1,12 +1,12 @@
 export default function Thesis() {
   const antiList = [
-    "Technology and culture",
+    "Technology",
+    "Culture",
     "Attention",
     "Distribution",
-    "Founder instinct",
-    "Cultural force",
+    "Non-consensus founders",
     "Conviction",
-    "Long-term advantage",
+    "Category formation",
   ];
 
   return (
@@ -27,7 +27,7 @@ export default function Thesis() {
               <div className="border-l-2 border-ink pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom II</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  The best founders are anti by definition.
+                  The best founders look anti before they look inevitable.
                 </blockquote>
               </div>
             </div>
@@ -35,35 +35,35 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Startups run on two currencies: capital and attention. One is
-                  widely available. The other determines who recruits best,
-                  launches strongest, and stays top of mind long enough to feel
-                  inevitable.
+                  Startups run on two currencies: capital and attention.
+                  Capital can usually be found. Attention has to be earned, and
+                  it compounds into recruiting, distribution, fundraising
+                  leverage, and category position.
                 </p>
                 <p>
-                  Top founders are not short on meetings. They are short on
-                  partners who understand product, distribution, and how belief
-                  forms in public before the rest of the market recognizes what
-                  is happening.
+                  The best founders are not short on meetings. They are short
+                  on partners with judgment, trust, and the ability to help a
+                  company matter before the rest of the market knows what to do
+                  with it.
                 </p>
                 <p>
-                  In a world shaped by feeds, podcasts, group chats, and social
-                  media, distribution is no longer downstream of the company.
-                  It is part of the company.
+                  In practice, distribution is not a layer that sits on top of
+                  the company. It is part of product, recruiting, fundraising,
+                  and how the company becomes legible to the market.
                 </p>
               </div>
 
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Anti Fund is designed to be complementary to traditional Sand
-                  Hill and Wall Street capital. We bring operating judgment,
-                  technical taste, and world-class distribution instinct to the
-                  same table.
+                  Anti Fund is built to complement traditional institutional
+                  capital. We bring operating experience, technical fluency,
+                  and firsthand understanding of how culture and narrative move
+                  markets.
                 </p>
                 <p>
-                  Our partnership reflects the thesis itself: operators,
-                  investors, and culture-shaping principals backing founders
-                  who do not wait for permission to build the future.
+                  Our partnership is unusual by design. Different backgrounds,
+                  one shared lens: back founders with non-consensus insight and
+                  help them turn attention into durable advantage.
                 </p>
               </div>
             </div>

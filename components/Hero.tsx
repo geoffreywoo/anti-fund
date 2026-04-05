@@ -19,19 +19,17 @@ export default function Hero() {
               </h1>
 
               <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-soft sm:text-xl md:mt-6 md:text-2xl">
-                A venture firm for founders who move markets before consensus
-                catches up.
+                We back founders with technical edge, distribution instinct,
+                and the conviction to build what consensus misses.
               </p>
 
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                  Anti Fund is built on two beliefs: the future is shaped where
-                  technology meets culture, and the founders who matter most
-                  rarely look conventional at first. Startups run on capital
-                  and attention. Capital is widely available. Attention
-                  compounds into talent, customers, leverage, and category
-                  position.
+                  Anti Fund is built for a market where capital is abundant and
+                  attention is scarce. We invest behind founders with real
+                  technical edge, strong product instinct, and the ability to
+                  earn attention instead of renting it.
                 </p>
               </div>
             </div>

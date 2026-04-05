@@ -5,12 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
-    "The future is forged at the intersection of tech and culture. Capital is commodity. Attention is not.",
+    "We back founders with technical edge, distribution instinct, and the conviction to build what consensus misses.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
     title: "Anti Fund",
     description:
-      "The future is forged at the intersection of tech and culture. Capital is commodity. Attention is not.",
+      "We back founders with technical edge, distribution instinct, and the conviction to build what consensus misses.",
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anti Fund",
     description:
-      "The future is forged at the intersection of tech and culture. Capital is commodity. Attention is not.",
+      "We back founders with technical edge, distribution instinct, and the conviction to build what consensus misses.",
   },
 };
 
