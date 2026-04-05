@@ -110,7 +110,7 @@ test("portfolio company names link out to company websites in new tabs", async (
         ),
       ),
     );
-  expect(companyLinkHrefs).toHaveLength(34);
+  expect(companyLinkHrefs).toHaveLength(35);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
   await expect(firstGroup).toHaveAttribute("data-portfolio-group", "exits");
@@ -130,6 +130,7 @@ test("portfolio company names link out to company websites in new tabs", async (
 
   expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://rail.io/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://khloudfoods.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.eightsleep.com/")).toBeTruthy();
 

@@ -34,6 +34,14 @@ const softwareCompanies: Company[] = [
     partnered: "2023",
   },
   {
+    name: "Rail",
+    url: "https://rail.io/",
+    description:
+      "Stablecoin payments infrastructure. Seed investment in June 2022. Acquired by Ripple for $200M.",
+    stage: "Seed / Exit",
+    partnered: "2022",
+  },
+  {
     name: "Metis",
     url: "https://www.withmetis.ai/",
     description:
@@ -261,7 +269,7 @@ const consumerCompanies: Company[] = [
 const portfolioGroupSpecs = [
   {
     title: "Exits",
-    names: ["Chronosphere", "Metis", "Aerodome"],
+    names: ["Chronosphere", "Rail", "Metis", "Aerodome"],
   },
   {
     title: "Frontier Infrastructure & Defense",
