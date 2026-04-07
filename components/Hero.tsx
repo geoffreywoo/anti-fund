@@ -26,10 +26,11 @@ export default function Hero() {
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                  Anti Fund is built for a market where capital is abundant and
-                  attention is scarce. We invest behind founders with real
-                  technical edge, strong product instinct, and the ability to
-                  earn attention instead of renting it.
+                  Anti Fund is an investment firm focused on high-growth
+                  technology companies. We&apos;re built for a market where
+                  capital is abundant and attention is scarce. We invest behind
+                  founders with real technical edge, strong product instinct,
+                  and the ability to earn attention instead of renting it.
                 </p>
               </div>
             </div>
