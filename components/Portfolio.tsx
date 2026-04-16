@@ -78,6 +78,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "ElevenLabs",
+    url: "https://elevenlabs.io/",
+    description: "AI voice research and products.",
+    stage: "Series D",
+    partnered: "2026",
+  },
+  {
     name: "Cognition",
     url: "https://cognition.ai/",
     description: "An applied AI lab building end-to-end software agents.",
@@ -288,6 +295,7 @@ const portfolioGroupSpecs = [
     title: "Software, Finance & Applied AI",
     names: [
       "Ramp",
+      "ElevenLabs",
       "Erebor",
       "Cognition",
       "Lighter",
@@ -336,6 +344,10 @@ function getStagePartRank(stagePart: string) {
 
   if (normalized === "series e") {
     return 500;
+  }
+
+  if (normalized === "series d") {
+    return 450;
   }
 
   if (normalized === "series b") {
