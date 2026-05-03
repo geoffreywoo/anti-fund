@@ -102,7 +102,7 @@ const softwareCompanies: Company[] = [
     name: "Modal",
     url: "https://modal.com/",
     description: "AI infrastructure.",
-    stage: "Series B",
+    stage: "Series B / Series C",
     partnered: "2025",
   },
   {
@@ -364,6 +364,10 @@ function getStagePartRank(stagePart: string) {
 
   if (normalized === "series d") {
     return 450;
+  }
+
+  if (normalized === "series c") {
+    return 425;
   }
 
   if (normalized === "series b") {
