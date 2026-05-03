@@ -64,8 +64,8 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Firm</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Founder-first venture capital for high-growth technology
-                    companies.
+                    Investment firm for technical founders building companies
+                    the market cannot ignore.
                   </dd>
                 </div>
 
