@@ -137,10 +137,10 @@ export default function Team() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Most firms are built from one lane: finance, operating, or
-              media. Anti Fund is built from all three. The partnership
-              combines company building, institutional investing, and
-              global-scale distribution into one cap-table partner.
+              Anti Fund is built from company building, institutional
+              investing, and global distribution. The partnership is unusual on
+              purpose: technical judgment, capital formation, and cultural reach
+              in one firm.
             </p>
 
             <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
@@ -162,9 +162,10 @@ export default function Team() {
                     Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    Different surfaces, one shared advantage: the ability to
-                    understand how products spread, how culture moves, and how
-                    attention becomes leverage.
+                    The point is not fame for its own sake. It is surface area:
+                    a firm designed for a market where technical products need
+                    cultural velocity, and cultural velocity needs real company
+                    judgment.
                   </p>
                 </figcaption>
               </div>

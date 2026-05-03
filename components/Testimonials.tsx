@@ -1,4 +1,13 @@
-const testimonials = [
+type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  companyName?: string;
+  companyUrl?: string;
+  profileUrl?: string;
+};
+
+const founderTestimonials: Testimonial[] = [
   {
     quote:
       "Geoff was one of the earliest investors for both Ramp and Paribus, and he is a trusted advisor and a key strategic sounding board. With Ramp, Geoff has directly boosted our topline revenue and growth by introducing us to and helping us close key customers and hire superstar executives. Geoff is on my shortlist to bring onboard for any company I'm involved with.",
@@ -9,8 +18,7 @@ const testimonials = [
     profileUrl: "https://x.com/eglyman",
   },
   {
-    quote:
-      "Awesome working with Jake Paul, Geoffrey Woo and Anti Fund!!",
+    quote: "Awesome working with Jake Paul, Geoffrey Woo and Anti Fund!!",
     name: "Sam Blond",
     role: "CEO,",
     companyName: "Monaco",
@@ -27,8 +35,7 @@ const testimonials = [
     profileUrl: "https://www.linkedin.com/in/robskillington/",
   },
   {
-    quote:
-      "Thanks for all of support! Couldn't ask for a better partner.",
+    quote: "Thanks for all of support! Couldn't ask for a better partner.",
     name: "Aryan Shah",
     role: "CEO,",
     companyName: "Metis",
@@ -61,6 +68,9 @@ const testimonials = [
     companyUrl: "https://efference.ai/",
     profileUrl: "https://x.com/gianlucabencomo",
   },
+];
+
+const independentValidation: Testimonial[] = [
   {
     quote:
       'No other GP on the AngelList platform - out of hundreds of qualifying investors - beats the Anti Fund along both of these axes. It follows that Geoff and Jake may be able to justify a claim to being the "best investors on AngelList", in the sense that there\'s no other GP that dominates them along the data-driven axes that we believe can help to predict future investment performance.',
@@ -69,6 +79,68 @@ const testimonials = [
       "Former Chief Data Scientist, AngelList & CIO, Strawberry Tree Management Company LLC",
   },
 ];
+
+function TestimonialFigure({
+  testimonial,
+  index,
+  compact = false,
+}: {
+  testimonial: Testimonial;
+  index: number;
+  compact?: boolean;
+}) {
+  return (
+    <figure className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,1fr)] md:gap-6">
+      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div>
+        <blockquote
+          className={`max-w-4xl font-display leading-[1.2] tracking-[-0.02em] text-ink ${
+            compact || testimonial.quote.length > 240
+              ? "text-lg sm:text-xl md:text-[1.65rem]"
+              : "text-xl sm:text-2xl md:text-[2rem]"
+          }`}
+        >
+          "{testimonial.quote}"
+        </blockquote>
+        <figcaption className="mt-4">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+            {testimonial.profileUrl ? (
+              <a
+                href={testimonial.profileUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-ink"
+              >
+                {testimonial.name}
+              </a>
+            ) : (
+              testimonial.name
+            )}
+          </p>
+          <p className="mt-1 text-base leading-7 text-ink-soft">
+            {testimonial.companyName && testimonial.companyUrl ? (
+              <>
+                {testimonial.role}{" "}
+                <a
+                  href={testimonial.companyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-ink"
+                >
+                  {testimonial.companyName}
+                </a>
+              </>
+            ) : (
+              testimonial.role
+            )}
+          </p>
+        </figcaption>
+      </div>
+    </figure>
+  );
+}
 
 export default function Testimonials() {
   return (
@@ -87,61 +159,35 @@ export default function Testimonials() {
               in the work, and useful when the stakes are real.
             </p>
 
-            <div className="border-y border-line">
-              {testimonials.map((testimonial, index) => (
-                <figure
-                  key={testimonial.name}
-                  className="grid gap-4 border-b border-line py-6 last:border-b-0 md:grid-cols-[44px_minmax(0,1fr)] md:gap-6"
-                >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <blockquote
-                      className={`max-w-4xl font-display leading-[1.2] tracking-[-0.02em] text-ink ${
-                        testimonial.quote.length > 240
-                          ? "text-lg sm:text-xl md:text-[1.65rem]"
-                          : "text-xl sm:text-2xl md:text-[2rem]"
-                      }`}
-                    >
-                      "{testimonial.quote}"
-                    </blockquote>
-                    <figcaption className="mt-4">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                        {testimonial.profileUrl ? (
-                          <a
-                            href={testimonial.profileUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-ink"
-                          >
-                            {testimonial.name}
-                          </a>
-                        ) : (
-                          testimonial.name
-                        )}
-                      </p>
-                      <p className="mt-1 text-base leading-7 text-ink-soft">
-                        {testimonial.companyName && testimonial.companyUrl ? (
-                          <>
-                            {testimonial.role}{" "}
-                            <a
-                              href={testimonial.companyUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-ink"
-                            >
-                              {testimonial.companyName}
-                            </a>
-                          </>
-                        ) : (
-                          testimonial.role
-                        )}
-                      </p>
-                    </figcaption>
-                  </div>
-                </figure>
-              ))}
+            <div>
+              <p className="paper-label mb-3">Founder outcomes</p>
+              <div className="border-y border-line">
+                {founderTestimonials.map((testimonial, index) => (
+                  <TestimonialFigure
+                    key={testimonial.name}
+                    testimonial={testimonial}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
+              <p className="paper-label mb-3">Independent validation</p>
+              <p className="mb-2 max-w-3xl text-base leading-7 text-ink-soft">
+                Outside validation matters most when it comes from people who
+                have seen the data.
+              </p>
+              <div className="border-t border-line">
+                {independentValidation.map((testimonial, index) => (
+                  <TestimonialFigure
+                    key={testimonial.name}
+                    testimonial={testimonial}
+                    index={index}
+                    compact
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

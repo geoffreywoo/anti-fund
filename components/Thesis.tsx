@@ -1,12 +1,35 @@
 export default function Thesis() {
-  const antiList = [
-    "Technology",
-    "Culture",
-    "Attention",
-    "Distribution",
-    "Non-consensus founders",
-    "Conviction",
-    "Category formation",
+  const lookFor = [
+    {
+      title: "Technical edge",
+      description:
+        "A real reason the product can do something others cannot easily copy.",
+    },
+    {
+      title: "Product taste",
+      description:
+        "Judgment about what should exist, how it should feel, and why users will care now.",
+    },
+    {
+      title: "Earned distribution",
+      description:
+        "A path to attention that comes from product, community, narrative, or cultural timing.",
+    },
+    {
+      title: "Non-consensus insight",
+      description:
+        "A belief that looks early, strange, or unpopular before the market catches up.",
+    },
+    {
+      title: "Cultural timing",
+      description:
+        "A read on where demand, behavior, and taste are moving before it is obvious.",
+    },
+    {
+      title: "Category ambition",
+      description:
+        "The intent to define the market, not just compete inside someone else's frame.",
+    },
   ];
 
   return (
@@ -20,14 +43,14 @@ export default function Thesis() {
               <div className="border-l-2 border-ink pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom I</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  The future is forged at the intersection of tech and culture.
+                  Capital funds the company. Attention changes its slope.
                 </blockquote>
               </div>
 
               <div className="border-l-2 border-ink pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom II</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  The best founders look anti before they look inevitable.
+                  Taste, timing, and distribution decide who becomes legible.
                 </blockquote>
               </div>
             </div>
@@ -35,10 +58,10 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Startups run on two currencies: capital and attention.
-                  Capital can usually be found. Attention has to be earned, and
-                  it compounds into recruiting, distribution, fundraising
-                  leverage, and category position.
+                  Capital funds the company. Attention changes its slope. In
+                  markets flooded with compute, capital, and plausible demos,
+                  taste and distribution are no longer soft advantages. They
+                  decide who gets believed, hired, funded, and bought.
                 </p>
                 <p>
                   The best founders are not short on meetings. They are short
@@ -55,15 +78,16 @@ export default function Thesis() {
 
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Anti Fund is built to complement traditional institutional
-                  capital. We bring operating experience, technical fluency,
-                  and firsthand understanding of how culture and narrative move
-                  markets.
+                  We back builders whose advantage is difficult to spreadsheet:
+                  a technical breakthrough, a product instinct, a distribution
+                  channel, or a cultural read that gives the company a different
+                  slope.
                 </p>
                 <p>
-                  Our partnership is unusual by design. Different backgrounds,
-                  one shared lens: back founders with non-consensus insight and
-                  help them turn attention into durable advantage.
+                  Anti Fund is built to complement institutional capital. We
+                  bring company-building experience, technical fluency, and
+                  firsthand understanding of how culture and narrative move
+                  markets.
                 </p>
               </div>
             </div>
@@ -71,15 +95,20 @@ export default function Thesis() {
         </div>
 
         <div className="mt-10 border-y border-line py-6 md:mt-12">
-          <p className="paper-label mb-4">Key terms</p>
-          <div className="flex flex-wrap gap-2.5">
-            {antiList.map((item) => (
-              <span
-                key={item}
-                className="inline-flex min-h-[34px] items-center border border-line bg-paper-alt px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft"
+          <p className="paper-label mb-5">What We Look For</p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {lookFor.map((item) => (
+              <div
+                key={item.title}
+                className="border border-line bg-paper-alt px-4 py-4"
               >
-                {item}
-              </span>
+                <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-ink-soft sm:text-base sm:leading-7">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>

@@ -1,5 +1,20 @@
 import Image from "next/image";
 
+const proofCompanies = [
+  { name: "OpenAI", url: "https://openai.com/" },
+  { name: "SpaceX", url: "https://www.spacex.com/" },
+  { name: "Anduril", url: "https://www.anduril.com/" },
+  { name: "Ramp", url: "https://ramp.com/" },
+  { name: "Cognition", url: "https://cognition.ai/" },
+  { name: "Polymarket", url: "https://polymarket.com/" },
+  {
+    name: "Physical Intelligence",
+    url: "https://www.physicalintelligence.company/",
+  },
+  { name: "Flock Safety", url: "https://www.flocksafety.com/" },
+  { name: "Chronosphere", url: "https://chronosphere.io/" },
+];
+
 export default function Hero() {
   return (
     <section
@@ -11,7 +26,7 @@ export default function Hero() {
           <div className="grid gap-10 md:gap-12 lg:grid-cols-[minmax(0,1.35fr)_260px]">
             <div>
               <p className="paper-label mb-6 max-w-[18rem] leading-6 sm:mb-8 sm:max-w-none">
-                Anti Fund memorandum 01 / March 2026
+                Anti Fund / Investment firm
               </p>
 
               <h1 className="max-w-4xl font-display text-[3.6rem] leading-[0.92] tracking-[-0.06em] text-ink sm:text-[4rem] md:text-7xl lg:text-[5.75rem]">
@@ -19,8 +34,8 @@ export default function Hero() {
               </h1>
 
               <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-soft sm:text-xl md:mt-6 md:text-2xl">
-                We back founders with technical edge, distribution instinct,
-                and the conviction to build what consensus misses.
+                We invest in founders with technical edge, product taste, and
+                the ability to earn attention at the exact moment it matters.
               </p>
 
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
@@ -47,29 +62,52 @@ export default function Hero() {
 
               <dl className="mt-6 grid gap-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 md:mt-8 lg:block lg:space-y-6">
                 <div>
-                  <dt className="paper-label">Document type</dt>
+                  <dt className="paper-label">Firm</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Investment firm manifesto
-                  </dd>
-                </div>
-
-                <div className="sm:col-span-2 lg:col-span-1">
-                  <dt className="paper-label">Keywords</dt>
-                  <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    venture capital, technology, culture, founders, attention.
+                    Founder-first venture capital for high-growth technology
+                    companies.
                   </dd>
                 </div>
 
                 <div>
-                  <dt className="paper-label">Correspondence</dt>
+                  <dt className="paper-label">For founders</dt>
                   <dd className="mt-2 text-base text-ink">
                     <a href="mailto:founders@antifund.com" className="paper-link">
                       founders@antifund.com
                     </a>
                   </dd>
                 </div>
+
+                <div>
+                  <dt className="paper-label">For investors</dt>
+                  <dd className="mt-2 text-base text-ink">
+                    <a href="mailto:ir@antifund.com" className="paper-link">
+                      ir@antifund.com
+                    </a>
+                  </dd>
+                </div>
               </dl>
             </aside>
+          </div>
+
+          <div className="mt-10 border-t border-line pt-6 md:mt-12 md:pt-8">
+            <p className="paper-label mb-4">Selected proof</p>
+            <div
+              className="flex flex-wrap gap-x-4 gap-y-2 text-base leading-7 text-ink sm:text-lg"
+              aria-label="Selected Anti Fund investments"
+            >
+              {proofCompanies.map((company) => (
+                <a
+                  key={company.name}
+                  href={company.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="paper-link"
+                >
+                  {company.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 

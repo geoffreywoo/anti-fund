@@ -9,6 +9,16 @@ const faqItems = [
       "We invest across stages, from first check through late-stage pre-IPO, in high-growth AI, robotics, software, and consumer companies. We are especially drawn to founders with a non-consensus insight, a technical edge, or a distribution advantage that bends the market in their favor.",
   },
   {
+    question: "What makes Anti Fund different from a traditional venture firm?",
+    answer:
+      "Anti Fund combines company building, institutional investing, and global distribution. We are designed for founders who need more than capital: product judgment, narrative pressure-testing, network access, and the ability to make a company legible to the market.",
+  },
+  {
+    question: "How do you work with founders after investing?",
+    answer:
+      "We stay close during consequential moments: product launches, fundraising, senior hires, customer introductions, narrative resets, board pressure, and strategic forks where the next decision changes the company's slope.",
+  },
+  {
     question: "What's your check size?",
     answer:
       "We invest between $250K-$30M+. We are comfortable both leading and participating.",

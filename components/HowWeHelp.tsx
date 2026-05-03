@@ -11,12 +11,12 @@ const pillars: Pillar[] = [
   {
     title: "Product",
     description:
-      "Product quality and positioning are inseparable. We get concrete about what should ship now, what should wait, and what will actually make the company feel inevitable.",
+      "Product quality and positioning are inseparable. We pressure-test what should ship now, what should wait, and what will make the company feel inevitable.",
   },
   {
     title: "Go-to-market",
     description:
-      "Go-to-market is not a slide. It is the moment the market decides whether to care. We help founders shape launch timing, narrative, and distribution that earns attention instead of renting it.",
+      "Go-to-market is not a slide. It is the moment the market decides whether to care. We help founders shape timing, narrative, and distribution that earns attention instead of renting it.",
   },
   {
     title: "Network",
@@ -40,7 +40,7 @@ const pillars: Pillar[] = [
   {
     title: "Fundraising",
     description:
-      "Great founders are rarely short on inbound capital. The edge is choosing the right counterparties, tightening the story, and creating leverage when the round matters most.",
+      "Great founders are rarely short on inbound capital. The edge is choosing the right counterparties, tightening the story, and creating leverage when the round matters.",
   },
   {
     title: "Strategy",
@@ -58,17 +58,17 @@ export default function HowWeHelp() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Anti Fund is built through work, not optics. We spend time where
-              important companies are actually shaped: product reviews, launch
-              plans, distribution strategy, fundraising pressure, and moments
-              where the next decision matters more than the next deck.
+              We are most useful when a founder needs leverage: a launch that
+              has to matter, a round that has to clear, a senior hire that has
+              to close, or a narrative that has to cut through noise.
             </p>
 
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              We are most useful when conviction needs sharpening and leverage
-              needs creating. Founders call when a launch has to matter, a
-              round has to clear, a hire has to close, or a narrative has to
-              cut through noise.
+              This is not a platform built for optics. We spend time where
+              important companies are actually shaped: product decisions,
+              launch timing, distribution strategy, fundraising pressure, and
+              the moments where the next decision matters more than the next
+              deck.
             </p>
 
             <div className="border-y border-line">

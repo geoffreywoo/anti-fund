@@ -327,6 +327,22 @@ const portfolioGroupSpecs = [
   },
 ] as const;
 
+const proofPoints = [
+  {
+    title: "First checks",
+    description: "Useful before the market has a clean label for the company.",
+  },
+  {
+    title: "Growth rounds",
+    description: "Relevant when consensus capital is available but leverage matters.",
+  },
+  {
+    title: "Exits",
+    description:
+      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety.",
+  },
+];
+
 function toDataKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
@@ -462,8 +478,8 @@ function CompanyRow({
       className="portfolio-row border-b border-line py-4"
       style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
     >
-      <div className="space-y-4 md:hidden">
-        <div className="flex items-start justify-between gap-4">
+      <div className="space-y-3 md:hidden">
+        <div className="flex items-start gap-4">
           <div className="min-w-0">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
               {String(index + 1).padStart(2, "0")}
@@ -472,26 +488,27 @@ function CompanyRow({
               href={company.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link mt-2 inline-block font-display text-[1.9rem] leading-none tracking-[-0.03em] text-ink"
+              className="paper-link mt-2 inline-block font-display text-[1.65rem] leading-none tracking-[-0.03em] text-ink sm:text-[1.9rem]"
             >
               {company.name}
             </a>
             {company.personal ? "*" : ""}
           </div>
-
-          <div className="shrink-0 text-right">
-            <p className="paper-label">Since</p>
-            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-              {company.partnered}
-            </p>
-          </div>
         </div>
 
         <p className="text-base leading-7 text-ink-soft">{company.description}</p>
 
-        <div>
-          <p className="paper-label mb-2">Stage</p>
-          <StageLabel stage={company.stage} />
+        <div className="grid grid-cols-2 gap-4 border-t border-line pt-3">
+          <div>
+            <p className="paper-label mb-2">Stage</p>
+            <StageLabel stage={company.stage} />
+          </div>
+          <div>
+            <p className="paper-label mb-2">Since</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+              {company.partnered}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -565,7 +582,7 @@ export default function Portfolio() {
 
           <div className="space-y-10">
             <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
-              <p className="paper-label mb-3">Observation 01 / Proof</p>
+              <p className="paper-label mb-3">Proof, not theory</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Anti Fund has backed category-defining companies across AI,
                 defense, software, fintech, robotics, and high-growth consumer,
@@ -576,10 +593,23 @@ export default function Portfolio() {
                 </span>
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
-                We invest from first check through late-stage growth. We are
-                drawn to founders with technical edge, distribution instinct,
-                and the ambition to shape how markets think and behave.
+                The pattern is not one sector or one stage. It is founders with
+                technical edge, distribution instinct, and the ambition to shape
+                how markets think and behave, from first check through
+                late-stage growth.
               </p>
+              <div className="mt-5 grid gap-3 border-t border-line pt-5 sm:grid-cols-3">
+                {proofPoints.map((point) => (
+                  <div key={point.title} className="border border-line bg-paper px-3 py-3">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+                      {point.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-ink-soft">
+                      {point.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {portfolioGroups.map((group) => (
