@@ -12,7 +12,6 @@
   --font-display: "Source Serif 4", Georgia, serif;
   --font-body: "Source Serif 4", Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --font-accent: "Bungee Shade", "Cooper Black", "Arial Black", cursive;
   --z-grain: 0;
   --z-nav: 110;
   --z-modal: 120;
@@ -83,8 +82,6 @@ body::before {
 .jake-name {
   color: #f2c300;
   display: inline-block;
-  font-family: var(--font-accent);
-  letter-spacing: -0.04em;
   text-shadow:
     0 1px 0 var(--color-ink),
     1px 0 0 var(--color-ink),
