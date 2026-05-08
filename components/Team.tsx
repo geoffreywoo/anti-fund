@@ -26,14 +26,6 @@ function ExternalLink({
   );
 }
 
-function JakeName({ className = "" }: { className?: string }) {
-  return (
-    <span className={`jake-name ${className}`.trim()}>
-      Jake Paul
-    </span>
-  );
-}
-
 const team: TeamMember[] = [
   {
     name: "Geoffrey Woo",
@@ -167,8 +159,7 @@ export default function Team() {
                 <figcaption className="space-y-3 sm:space-y-4">
                   <p className="paper-label">General Partners</p>
                   <p className="max-w-2xl font-display text-[2rem] leading-[1.08] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
-                    Geoffrey Woo, <JakeName className="jake-name-display" />,
-                    and Logan Paul.
+                    Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
                     The point is not fame for its own sake. It is surface area:
@@ -191,11 +182,7 @@ export default function Team() {
                   </span>
                   <div>
                     <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink md:text-3xl">
-                      {member.name === "Jake Paul" ? (
-                        <JakeName className="jake-name-display" />
-                      ) : (
-                        member.name
-                      )}
+                      {member.name}
                     </h3>
                     <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
                       {member.title}

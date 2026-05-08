@@ -79,20 +79,6 @@ body::before {
   border-color: var(--color-ink);
 }
 
-.jake-name {
-  color: #f2c300;
-  display: inline-block;
-  text-shadow:
-    0 1px 0 var(--color-ink),
-    1px 0 0 var(--color-ink),
-    -1px 0 0 var(--color-ink);
-  -webkit-text-stroke: 0.2px var(--color-ink);
-}
-
-.jake-name-display {
-  transform: rotate(-1deg);
-}
-
 [data-reveal] {
   opacity: 0;
   transform: translateY(10px);
