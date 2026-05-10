@@ -4,6 +4,7 @@ type Pillar = {
   links?: Array<{
     label: string;
     href: string;
+    type: "watch" | "read";
   }>;
 };
 
@@ -26,14 +27,22 @@ const pillars: Pillar[] = [
       {
         label: "Anti Fund Summit",
         href: "https://www.youtube.com/watch?v=BWx8F_YgVt4",
+        type: "watch",
       },
       {
         label: "Another look at Anti Fund Summit",
         href: "https://www.youtube.com/watch?v=PIH2C-dLLUc",
+        type: "watch",
       },
       {
         label: "48 hours with Anti Fund",
         href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
+        type: "watch",
+      },
+      {
+        label: "The Profile: attention into ownership",
+        href: "https://www.readtheprofile.com/p/jake-paul-logan-paul-billionaire-plan-investment",
+        type: "read",
       },
     ],
   },
@@ -74,6 +83,8 @@ export default function HowWeHelp() {
             <div className="border-y border-line">
               {pillars.map((pillar, index) => {
                 const links = pillar.links ?? [];
+                const watchLinks = links.filter((link) => link.type === "watch");
+                const readLinks = links.filter((link) => link.type === "read");
 
                 return (
                 <div
@@ -91,29 +102,9 @@ export default function HowWeHelp() {
                       {pillar.description}
                     </p>
                     {links.length ? (
-                      <div className="space-y-2 text-sm leading-6 text-ink-soft">
-                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                          Watch
-                        </span>
-                        <div className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2">
-                          {links.map((link, linkIndex) => (
-                            <span key={link.href} className="inline-flex max-w-full items-center gap-3">
-                              <a
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="paper-link"
-                              >
-                                {link.label}
-                              </a>
-                              {linkIndex < links.length - 1 ? (
-                                <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted sm:inline">
-                                  /
-                                </span>
-                              ) : null}
-                            </span>
-                          ))}
-                        </div>
+                      <div className="space-y-3 text-sm leading-6 text-ink-soft">
+                        <LinkGroup label="Watch" links={watchLinks} />
+                        <LinkGroup label="Read" links={readLinks} />
                       </div>
                     ) : null}
                   </div>
@@ -137,5 +128,48 @@ export default function HowWeHelp() {
         </div>
       </div>
     </section>
+  );
+}
+
+function LinkGroup({
+  label,
+  links,
+}: {
+  label: string;
+  links: Array<{
+    label: string;
+    href: string;
+    type: "watch" | "read";
+  }>;
+}) {
+  if (!links.length) {
+    return null;
+  }
+
+  return (
+    <div className="space-y-2">
+      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+        {label}
+      </span>
+      <div className="flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2">
+        {links.map((link, linkIndex) => (
+          <span key={link.href} className="inline-flex max-w-full items-center gap-3">
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="paper-link"
+            >
+              {link.label}
+            </a>
+            {linkIndex < links.length - 1 ? (
+              <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted sm:inline">
+                /
+              </span>
+            ) : null}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
