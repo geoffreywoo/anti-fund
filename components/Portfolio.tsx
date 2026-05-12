@@ -78,6 +78,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "Monaco",
+    url: "https://www.monaco.com/",
+    description: "AI-native sales platform for startups.",
+    stage: "Series A / Series B",
+    partnered: "2026",
+  },
+  {
     name: "ElevenLabs",
     url: "https://elevenlabs.io/",
     description: "AI voice research and products.",
@@ -297,6 +304,7 @@ const portfolioGroupSpecs = [
       "Ramp",
       "ElevenLabs",
       "Erebor",
+      "Monaco",
       "Cognition",
       "Lighter",
       "Polymarket",
