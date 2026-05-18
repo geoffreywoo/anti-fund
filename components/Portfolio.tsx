@@ -64,6 +64,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "Cerebras",
+    url: "https://www.cerebras.ai/",
+    description: "Wafer-scale AI infrastructure and processors.",
+    stage: "IPO",
+    partnered: "2026",
+  },
+  {
     name: "Anduril",
     url: "https://www.anduril.com/",
     description: "Transforming defense capabilities with advanced technology.",
@@ -290,6 +297,7 @@ const portfolioGroupSpecs = [
     names: [
       "OpenAI",
       "SpaceX",
+      "Cerebras",
       "Anduril",
       "Etched",
       "Modal",
@@ -360,6 +368,10 @@ function getStagePartRank(stagePart: string) {
 
   if (normalized.includes("exit")) {
     return 700;
+  }
+
+  if (normalized === "ipo") {
+    return 650;
   }
 
   if (normalized === "growth") {

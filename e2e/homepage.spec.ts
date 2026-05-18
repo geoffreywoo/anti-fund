@@ -110,7 +110,7 @@ test("portfolio company names link out to company websites in new tabs", async (
         ),
       ),
     );
-  expect(companyLinkHrefs).toHaveLength(37);
+  expect(companyLinkHrefs).toHaveLength(38);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
   await expect(firstGroup).toHaveAttribute("data-portfolio-group", "exits");
