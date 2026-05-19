@@ -289,15 +289,10 @@ const consumerCompanies: Company[] = [
 
 const portfolioGroupSpecs = [
   {
-    title: "Exits",
-    names: ["Chronosphere", "Rail", "Metis", "Aerodome"],
-  },
-  {
     title: "Frontier Infrastructure & Defense",
     names: [
       "OpenAI",
       "SpaceX",
-      "Cerebras",
       "Anduril",
       "Etched",
       "Modal",
@@ -341,6 +336,10 @@ const portfolioGroupSpecs = [
       "W",
     ],
   },
+  {
+    title: "Exits",
+    names: ["Chronosphere", "Rail", "Aerodome", "Metis", "Cerebras"],
+  },
 ] as const;
 
 const proofPoints = [
@@ -355,7 +354,7 @@ const proofPoints = [
   {
     title: "Exits",
     description:
-      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety.",
+      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety, plus the Cerebras IPO.",
   },
 ];
 
@@ -462,7 +461,10 @@ function StageLabel({ stage }: { stage: string }) {
     <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
       {stageParts.map((part, index) => {
         const stageKey = toDataKey(part);
-        const isExit = stageKey === "exit" || part.toLowerCase().includes("exit");
+        const isLiquidityEvent =
+          stageKey === "ipo" ||
+          stageKey === "exit" ||
+          part.toLowerCase().includes("exit");
 
         return (
           <span
@@ -477,7 +479,7 @@ function StageLabel({ stage }: { stage: string }) {
             <span
               data-stage-part={stageKey}
               className={`font-mono text-[11px] uppercase tracking-[0.14em] ${
-                isExit ? "text-green-700" : "text-ink-muted"
+                isLiquidityEvent ? "text-green-700" : "text-ink-muted"
               }`}
             >
               {part}

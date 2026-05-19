@@ -113,7 +113,14 @@ test("portfolio company names link out to company websites in new tabs", async (
   expect(companyLinkHrefs).toHaveLength(38);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
-  await expect(firstGroup).toHaveAttribute("data-portfolio-group", "exits");
+  await expect(firstGroup).toHaveAttribute(
+    "data-portfolio-group",
+    "frontier-infrastructure-defense",
+  );
+
+  const lastGroup = portfolio.locator("[data-portfolio-group]").last();
+  await expect(lastGroup).toHaveAttribute("data-portfolio-group", "exits");
+  await expect(lastGroup.getByRole("link", { name: "Cerebras" })).toBeVisible();
 
   const hasVisibleExternalLink = async (href: string) =>
     portfolio.locator(`a[href="${href}"]`).evaluateAll((links) =>
@@ -136,7 +143,7 @@ test("portfolio company names link out to company websites in new tabs", async (
   expect(await hasVisibleExternalLink("https://www.eightsleep.com/")).toBeTruthy();
 
   const hasVisibleExitStage = await portfolio
-    .locator('[data-stage-part="exit"]')
+    .locator('[data-stage-part="exit"], [data-stage-part="ipo"]')
     .evaluateAll((stages) =>
       stages.some((stage) => {
         const element = stage as HTMLElement;
