@@ -70,6 +70,14 @@ export default function Hero() {
                 </div>
 
                 <div>
+                  <dt className="paper-label">Core belief</dt>
+                  <dd className="mt-2 text-base leading-7 text-ink-soft">
+                    The scarce asset is not money. It is making the right
+                    people care at the right moment.
+                  </dd>
+                </div>
+
+                <div>
                   <dt className="paper-label">For founders</dt>
                   <dd className="mt-2 text-base text-ink">
                     <a href="mailto:founders@antifund.com" className="paper-link">

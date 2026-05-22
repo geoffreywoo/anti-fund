@@ -3,7 +3,7 @@ export default function Thesis() {
     {
       title: "Technical edge",
       description:
-        "A real reason the product can do something others cannot easily copy.",
+        "A real reason the product can do something the market cannot simply finance into existence.",
     },
     {
       title: "Product taste",
@@ -13,12 +13,12 @@ export default function Thesis() {
     {
       title: "Earned distribution",
       description:
-        "A path to attention that comes from product, community, narrative, or cultural timing.",
+        "Attention produced by product, community, narrative, or timing, not rented media.",
     },
     {
       title: "Non-consensus insight",
       description:
-        "A belief that looks early, strange, or unpopular before the market catches up.",
+        "A belief that sounds early or strange before the market has language for it.",
     },
     {
       title: "Cultural timing",
@@ -30,6 +30,13 @@ export default function Thesis() {
       description:
         "The intent to define the market, not just compete inside someone else's frame.",
     },
+  ];
+
+  const operatingNotes = [
+    "Capital gets a company started. Attention changes who joins, buys, funds, and believes.",
+    "Distribution is not a department. It is how the product becomes legible to the market.",
+    "Taste is underwriting before the spreadsheet knows what to measure.",
+    "The best companies often look strange before they look inevitable.",
   ];
 
   return (
@@ -91,6 +98,25 @@ export default function Thesis() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-10 border-y border-line py-6 md:mt-12">
+          <p className="paper-label mb-5">Operating Notes</p>
+          <div className="grid gap-0 border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+            {operatingNotes.map((note, index) => (
+              <figure
+                key={note}
+                className="border-b border-line py-5 sm:px-5 sm:odd:border-r lg:border-b-0 lg:border-r lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+              >
+                <figcaption className="paper-label mb-4">
+                  Note {String(index + 1).padStart(2, "0")}
+                </figcaption>
+                <blockquote className="font-display text-2xl leading-[1.15] tracking-[-0.035em] text-ink sm:text-[1.7rem]">
+                  {note}
+                </blockquote>
+              </figure>
+            ))}
           </div>
         </div>
 
