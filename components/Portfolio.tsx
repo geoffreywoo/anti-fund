@@ -64,13 +64,6 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
-    name: "Cerebras",
-    url: "https://www.cerebras.ai/",
-    description: "Wafer-scale AI infrastructure and processors.",
-    stage: "IPO",
-    partnered: "2026",
-  },
-  {
     name: "Anduril",
     url: "https://www.anduril.com/",
     description: "Transforming defense capabilities with advanced technology.",
@@ -338,7 +331,7 @@ const portfolioGroupSpecs = [
   },
   {
     title: "Exits",
-    names: ["Chronosphere", "Rail", "Aerodome", "Metis", "Cerebras"],
+    names: ["Chronosphere", "Rail", "Aerodome", "Metis"],
   },
 ] as const;
 
@@ -354,7 +347,7 @@ const proofPoints = [
   {
     title: "Exits",
     description:
-      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety, plus the Cerebras IPO.",
+      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety.",
   },
 ];
 
