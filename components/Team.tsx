@@ -137,10 +137,12 @@ export default function Team() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Anti Fund is built from company building, institutional
-              investing, and global distribution. The partnership is unusual on
-              purpose: technical judgment, capital formation, and cultural reach
-              in one firm.
+              Anti Fund combines Geoffrey Woo&apos;s technical company-building
+              and venture judgment with Jake and Logan Paul&apos;s record turning
+              attention into owned companies, consumer demand, and global media
+              moments. Product depth, capital formation, and culture all belong
+              in the same room when the goal is to build category-defining
+              companies.
             </p>
 
             <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
@@ -162,10 +164,11 @@ export default function Team() {
                     Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    The point is not fame for its own sake. It is surface area:
-                    a firm designed for a market where technical products need
-                    cultural velocity, and cultural velocity needs real company
-                    judgment.
+                    Geoffrey brings the technical and founder judgment:
+                    product, engineering, company building, and capital
+                    formation. Jake and Logan bring operator judgment from
+                    building global audience businesses, consumer brands, combat
+                    sports, media, and creator-led demand.
                   </p>
                 </figcaption>
               </div>
