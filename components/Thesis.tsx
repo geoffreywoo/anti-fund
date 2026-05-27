@@ -11,9 +11,9 @@ export default function Thesis() {
         "Judgment about what should exist, how it should feel, and why users will care now.",
     },
     {
-      title: "Earned distribution",
+      title: "Earned demand",
       description:
-        "Attention produced by product, community, narrative, or timing, not rented media.",
+        "Demand produced by product, community, narrative, or timing, not bought reach.",
     },
     {
       title: "Non-consensus insight",
@@ -33,8 +33,8 @@ export default function Thesis() {
   ];
 
   const operatingNotes = [
-    "Capital gets a company started. Attention changes who joins, buys, funds, and believes.",
-    "Distribution is not a department. It is how the product becomes legible to the market.",
+    "Capital gets a company started. Belief changes who joins, buys, funds, and builds with it.",
+    "Demand is not a department. It is how the product becomes obvious to the market.",
     "Taste is underwriting before the spreadsheet knows what to measure.",
     "The best companies often look strange before they look inevitable.",
   ];
@@ -50,14 +50,14 @@ export default function Thesis() {
               <div className="border-l-2 border-ink pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom I</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  Capital funds the company. Attention changes its slope.
+                  Capital starts the company. Belief changes its trajectory.
                 </blockquote>
               </div>
 
               <div className="border-l-2 border-ink pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom II</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  Taste, timing, and distribution decide who becomes legible.
+                  Taste, timing, and demand decide what becomes inevitable.
                 </blockquote>
               </div>
             </div>
@@ -65,36 +65,35 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  Capital funds the company. Attention changes its slope. In
-                  markets flooded with compute, capital, and plausible demos,
-                  taste and distribution are no longer soft advantages. They
-                  decide who gets believed, hired, funded, and bought.
+                  In markets flooded with compute, capital, and plausible
+                  demos, product truth is not enough. The winning companies turn
+                  technical depth into belief from customers, recruits,
+                  investors, and culture.
                 </p>
                 <p>
-                  The best founders are not short on meetings. They are short
-                  on partners with judgment, trust, and the ability to help a
-                  company matter before the rest of the market knows what to do
-                  with it.
+                  The best founders are not short on meetings. They are short on
+                  partners who can see the shape of the company early, tell the
+                  truth, and help the market understand why it matters now.
                 </p>
                 <p>
                   In practice, distribution is not a layer that sits on top of
                   the company. It is part of product, recruiting, fundraising,
-                  and how the company becomes legible to the market.
+                  customer strategy, and the story people repeat when you are
+                  not in the room.
                 </p>
               </div>
 
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  We back builders whose advantage is difficult to spreadsheet:
-                  a technical breakthrough, a product instinct, a distribution
-                  channel, or a cultural read that gives the company a different
-                  slope.
+                  We back builders whose advantage is hard to reduce to a
+                  spreadsheet: technical breakthrough, founder taste,
+                  non-consensus timing, or an earned channel to demand.
                 </p>
                 <p>
                   Anti Fund is built to complement institutional capital. We
                   bring company-building experience, technical fluency, and
-                  firsthand understanding of how culture and narrative move
-                  markets.
+                  firsthand understanding of how products become culture and
+                  culture becomes market pull.
                 </p>
               </div>
             </div>

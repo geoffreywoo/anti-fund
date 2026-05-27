@@ -73,7 +73,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Erebor",
     url: "https://erebor.bank/",
-    description: "New bank.",
+    description: "Banking infrastructure for the innovation economy.",
     stage: "Series B",
     partnered: "2026",
   },
@@ -101,14 +101,14 @@ const softwareCompanies: Company[] = [
   {
     name: "Etched",
     url: "https://www.etched.com/",
-    description: "Transformer ASICs.",
+    description: "AI chips purpose-built for transformer inference.",
     stage: "Series B",
     partnered: "2025",
   },
   {
     name: "Modal",
     url: "https://modal.com/",
-    description: "AI infrastructure.",
+    description: "Cloud infrastructure for running AI and data workloads.",
     stage: "Series B / Series C",
     partnered: "2025",
   },
@@ -130,7 +130,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Kela Systems",
     url: "https://kelasys.com/",
-    description: "Defense tech.",
+    description: "Defense technology for modern military operations.",
     stage: "Series A",
     partnered: "2024",
   },
@@ -158,7 +158,7 @@ const softwareCompanies: Company[] = [
   {
     name: "WithCoverage",
     url: "https://withcoverage.com/",
-    description: "Risk management solution for ambitious businesses.",
+    description: "Risk management and insurance infrastructure for ambitious businesses.",
     stage: "Seed",
     partnered: "2024",
   },
@@ -172,7 +172,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Interaction",
     url: "https://poke.com/",
-    description: "Poke.com.",
+    description: "Consumer AI and social products at Poke.com.",
     stage: "Seed",
     partnered: "2025",
   },
@@ -189,14 +189,14 @@ const consumerCompanies: Company[] = [
   {
     name: "Betr",
     url: "https://betr.app/",
-    description: "Fast-growing online sports betting, fantasy, and media company.",
+    description: "Sports betting, fantasy, and media company built for modern fans.",
     stage: "Incubation",
     partnered: "2021",
   },
   {
     name: "W",
     url: "https://getw.com/",
-    description: "Personal care brand built to inspire young men to take Ws.",
+    description: "Men's personal care brand built by Jake Paul.",
     stage: "Incubation",
     partnered: "2024",
   },
@@ -231,7 +231,7 @@ const consumerCompanies: Company[] = [
   {
     name: "Happy Dad",
     url: "https://happydad.com/",
-    description: "Nelk's hard seltzer and tea.",
+    description: "Hard seltzer and iced tea brand built with Nelk.",
     stage: "Seed+",
     partnered: "2025",
   },
@@ -245,7 +245,7 @@ const consumerCompanies: Company[] = [
   {
     name: "Oats Overnight",
     url: "https://www.oatsovernight.com/",
-    description: "Oatmeal.",
+    description: "High-protein overnight oats sold direct-to-consumer.",
     stage: "Series A",
     partnered: "2022",
   },
@@ -338,11 +338,12 @@ const portfolioGroupSpecs = [
 const proofPoints = [
   {
     title: "First checks",
-    description: "Useful before the market has a clean label for the company.",
+    description: "Early ownership before the market has a clean label for the company.",
   },
   {
     title: "Growth rounds",
-    description: "Relevant when consensus capital is available but leverage matters.",
+    description:
+      "Selective access when allocation matters more than capital availability.",
   },
   {
     title: "Exits",
@@ -603,8 +604,8 @@ export default function Portfolio() {
             <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Proof, not theory</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                Anti Fund has backed category-defining companies across AI,
-                defense, software, fintech, robotics, and high-growth consumer,
+                Anti Fund has earned access across AI, defense, fintech,
+                robotics, software, and culture-native consumer companies,
                 including{" "}
                 <span className="font-semibold text-ink">
                   OpenAI, SpaceX, Anduril, Ramp, Cognition, Polymarket,
@@ -612,10 +613,9 @@ export default function Portfolio() {
                 </span>
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
-                The pattern is not one sector or one stage. It is founders with
-                technical edge, distribution instinct, and the ambition to shape
-                how markets think and behave, from first check through
-                late-stage growth.
+                The pattern is not one sector. It is a kind of founder:
+                technical, early to the market&apos;s next obsession, and
+                capable of turning product truth into demand.
               </p>
               <div className="mt-5 grid gap-3 border-t border-line pt-5 sm:grid-cols-3">
                 {proofPoints.map((point) => (

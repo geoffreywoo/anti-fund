@@ -138,11 +138,11 @@ export default function Team() {
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               Anti Fund combines Geoffrey Woo&apos;s technical company-building
-              and venture judgment with Jake and Logan Paul&apos;s record turning
-              attention into owned companies, consumer demand, and global media
-              moments. Product depth, capital formation, and culture all belong
-              in the same room when the goal is to build category-defining
-              companies.
+              and venture judgment with Jake and Logan Paul&apos;s record building
+              owned companies, global audiences, consumer demand, media
+              moments, and culture-shaping brands. This is not celebrity
+              capital. This is company-building capital for a market where
+              product, attention, trust, and timing compound together.
             </p>
 
             <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
@@ -164,11 +164,11 @@ export default function Team() {
                     Geoffrey Woo, Jake Paul, and Logan Paul.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    Geoffrey brings the technical and founder judgment:
-                    product, engineering, company building, and capital
-                    formation. Jake and Logan bring operator judgment from
-                    building global audience businesses, consumer brands, combat
-                    sports, media, and creator-led demand.
+                    Geoffrey brings technical and founder judgment: product,
+                    engineering, company-building, and capital formation. Jake
+                    and Logan bring operator judgment from building audience
+                    businesses, consumer brands, sports, media, and creator-led
+                    demand at global scale.
                   </p>
                 </figcaption>
               </div>

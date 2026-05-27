@@ -5,12 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
-    "We invest in founders with technical edge, product taste, and the ability to earn attention at the exact moment it matters.",
+    "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
     title: "Anti Fund",
     description:
-      "We invest in founders with technical edge, product taste, and the ability to earn attention at the exact moment it matters.",
+      "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anti Fund",
     description:
-      "We invest in founders with technical edge, product taste, and the ability to earn attention at the exact moment it matters.",
+      "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
   },
 };
 

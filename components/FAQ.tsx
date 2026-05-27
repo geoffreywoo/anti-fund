@@ -6,17 +6,17 @@ const faqItems = [
   {
     question: "What do you invest in, and at what stage?",
     answer:
-      "We invest across stages, from first check through late-stage pre-IPO, in high-growth AI, robotics, software, and consumer companies. We are especially drawn to founders with a non-consensus insight, a technical edge, or a distribution advantage that bends the market in their favor.",
+      "We invest across stages, from first check through late-stage pre-IPO, in high-growth AI, robotics, defense, software, fintech, and consumer companies. We look for founders with non-consensus insight, technical edge, or earned demand that can bend the market in their favor.",
   },
   {
     question: "What makes Anti Fund different from a traditional venture firm?",
     answer:
-      "Anti Fund combines company building, institutional investing, and global distribution. We are designed for founders who need more than capital: product judgment, narrative pressure-testing, network access, and the ability to make a company legible to the market.",
+      "Anti Fund combines technical company-building, institutional investing, and operators who have built global audiences, consumer brands, media moments, and owned companies. We help with product judgment, narrative, access, and demand, not just capital.",
   },
   {
     question: "How do you work with founders after investing?",
     answer:
-      "We stay close during consequential moments: product launches, fundraising, senior hires, customer introductions, narrative resets, board pressure, and strategic forks where the next decision changes the company's slope.",
+      "We stay close during consequential moments: product launches, fundraising, senior hires, customer introductions, narrative resets, board pressure, and strategic forks where the next decision changes what the company becomes.",
   },
   {
     question: "What's your check size?",

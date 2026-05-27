@@ -34,18 +34,18 @@ export default function Hero() {
               </h1>
 
               <p className="mt-5 max-w-3xl text-lg leading-8 text-ink-soft sm:text-xl md:mt-6 md:text-2xl">
-                We invest in founders with technical edge, product taste, and
-                the ability to earn attention at the exact moment it matters.
+                We back technical founders whose products, timing, and taste
+                can make markets move before consensus catches up.
               </p>
 
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
                 <p className="paper-label mb-3">Abstract</p>
                 <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                  Anti Fund is an investment firm focused on high-growth
-                  technology companies. We&apos;re built for a market where
-                  capital is abundant and attention is scarce. We invest behind
-                  founders with real technical edge, strong product instinct,
-                  and the ability to earn attention instead of renting it.
+                  Anti Fund invests in high-growth technology companies where
+                  technical edge and earned demand compound. We look for
+                  founders with product depth, non-consensus insight, and the
+                  ability to make the right people care before the market has
+                  caught up.
                 </p>
               </div>
             </div>
@@ -64,16 +64,16 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Firm</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Investment firm for technical founders building companies
-                    the market cannot ignore.
+                    Venture firm for technical founders building products and
+                    markets the rest of the world has to catch up to.
                   </dd>
                 </div>
 
                 <div>
                   <dt className="paper-label">Core belief</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    The scarce asset is not money. It is making the right
-                    people care at the right moment.
+                    The scarce asset is belief from the right people at the
+                    right moment.
                   </dd>
                 </div>
 

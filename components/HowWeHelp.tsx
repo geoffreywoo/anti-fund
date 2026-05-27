@@ -12,17 +12,17 @@ const pillars: Pillar[] = [
   {
     title: "Product",
     description:
-      "Product quality and positioning are inseparable. We pressure-test what should ship now, what should wait, and what will make the company feel inevitable.",
+      "Product quality and positioning are inseparable. We pressure-test what to ship, what to cut, and what will make the product feel inevitable to users, recruits, and investors.",
   },
   {
     title: "Go-to-market",
     description:
-      "Go-to-market is not a slide. It is the moment the market decides whether to care. We help founders shape timing, narrative, and distribution that earns attention instead of renting it.",
+      "Go-to-market is when the market decides whether to care. We help founders shape timing, narrative, and launch strategy that turns product truth into demand.",
   },
   {
     title: "Network",
     description:
-      "Community at Anti Fund is built through work. Our summits, office visits, dinners, and working sessions are designed to create real trust, uncommon access, and useful collisions over time.",
+      "Community at Anti Fund is built through work. Our summits, office visits, dinners, and working sessions create trust, uncommon access, and relationships founders can actually use.",
     links: [
       {
         label: "Anti Fund Summit",
@@ -49,7 +49,7 @@ const pillars: Pillar[] = [
   {
     title: "Fundraising",
     description:
-      "Great founders are rarely short on inbound capital. The edge is choosing the right counterparties, tightening the story, and creating leverage when the round matters.",
+      "Great founders are rarely short on inbound capital. The edge is creating leverage, choosing the right counterparties, and tightening the story when the round matters.",
   },
   {
     title: "Strategy",
@@ -63,21 +63,20 @@ export default function HowWeHelp() {
     <section id="help" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">04 / Platform</div>
+          <div className="paper-label">04 / Founder Leverage</div>
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
               We are most useful when a founder needs leverage: a launch that
-              has to matter, a round that has to clear, a senior hire that has
-              to close, or a narrative that has to cut through noise.
+              has to land, a round that has to clear, a senior hire that has to
+              close, or a market story that has to become obvious fast.
             </p>
 
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              This is not a platform built for optics. We spend time where
-              important companies are actually shaped: product decisions,
-              launch timing, distribution strategy, fundraising pressure, and
-              the moments where the next decision matters more than the next
-              deck.
+              This is not platform theater. We work where important companies
+              are actually shaped: product decisions, launch timing, demand
+              strategy, fundraising pressure, and the moments where the next
+              decision matters more than the next deck.
             </p>
 
             <div className="border-y border-line">
@@ -116,12 +115,12 @@ export default function HowWeHelp() {
             <div id="contact" className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Correspondence</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                Building something technically differentiated, culturally
-                resonant, or impossible to ignore? Write to{" "}
+                Building something technical, non-consensus, and too important
+                for the market to ignore? Write to{" "}
                 <a href="mailto:founders@antifund.com" className="paper-link">
                   founders@antifund.com
                 </a>
-                . Clear thinking beats generic outreach.
+                . Tell us what you believe before everyone else does.
               </p>
             </div>
           </div>
