@@ -71,6 +71,13 @@ const softwareCompanies: Company[] = [
     partnered: "2022",
   },
   {
+    name: "Helion",
+    url: "https://www.helionenergy.com/",
+    description: "Commercial fusion energy company building zero-carbon power.",
+    stage: "Series G",
+    partnered: "2026",
+  },
+  {
     name: "Erebor",
     url: "https://erebor.bank/",
     description: "Banking infrastructure for the innovation economy.",
@@ -287,6 +294,7 @@ const portfolioGroupSpecs = [
       "OpenAI",
       "SpaceX",
       "Anduril",
+      "Helion",
       "Etched",
       "Modal",
       "Physical Intelligence",
