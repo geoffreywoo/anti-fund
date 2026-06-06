@@ -102,7 +102,7 @@ const softwareCompanies: Company[] = [
     name: "Cognition",
     url: "https://cognition.ai/",
     description: "An applied AI lab building end-to-end software agents.",
-    stage: "Series B",
+    stage: "Series B / Series C / Series D",
     partnered: "2024",
   },
   {
