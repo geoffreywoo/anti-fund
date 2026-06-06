@@ -9,6 +9,8 @@
   --color-ink-muted: #6d685d;
   --color-line: #cdc5b7;
   --color-line-strong: #9f988a;
+  --color-accent: #6f1d1b;
+  --color-accent-quiet: #31533d;
   --font-display: "Source Serif 4", Georgia, serif;
   --font-body: "Source Serif 4", Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -23,7 +25,11 @@ html {
 
 body {
   background:
+    linear-gradient(90deg, rgba(49, 83, 61, 0.055) 0 1px, transparent 1px 25%),
     linear-gradient(180deg, rgba(250, 248, 241, 1) 0%, rgba(247, 243, 234, 1) 100%);
+  background-size:
+    min(24rem, 25vw) 100%,
+    100% 100%;
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -59,7 +65,7 @@ body::before {
 }
 
 .paper-label {
-  color: var(--color-ink-muted);
+  color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
@@ -77,6 +83,14 @@ body::before {
 
 .paper-link:hover {
   border-color: var(--color-ink);
+  color: var(--color-accent);
+}
+
+.paper-panel {
+  border-color: var(--color-line);
+  background:
+    linear-gradient(180deg, rgba(111, 29, 27, 0.035), transparent 42%),
+    var(--color-paper-alt);
 }
 
 [data-reveal] {

@@ -26,7 +26,7 @@ export default function Hero() {
           <div className="grid gap-10 md:gap-12 lg:grid-cols-[minmax(0,1.35fr)_260px]">
             <div>
               <p className="paper-label mb-6 max-w-[18rem] leading-6 sm:mb-8 sm:max-w-none">
-                Anti Fund / Investment firm
+                Anti Fund / Venture & Growth
               </p>
 
               <h1 className="max-w-4xl font-display text-[3.6rem] leading-[0.92] tracking-[-0.06em] text-ink sm:text-[4rem] md:text-7xl lg:text-[5.75rem]">
@@ -39,13 +39,12 @@ export default function Hero() {
               </p>
 
               <div className="mt-8 border-t border-line pt-6 md:mt-10 md:pt-8">
-                <p className="paper-label mb-3">Abstract</p>
+                <p className="paper-label mb-3">Point of view</p>
                 <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                  Anti Fund invests in high-growth technology companies where
-                  technical edge and earned demand compound. We look for
-                  founders with product depth, non-consensus insight, and the
-                  ability to make the right people care before the market has
-                  caught up.
+                  Breakout companies are not built by capital alone. They need
+                  technical truth, customer urgency, credible financing, and a
+                  market that understands why the timing is now. We underwrite
+                  those forces together.
                 </p>
               </div>
             </div>
@@ -56,7 +55,7 @@ export default function Hero() {
                 alt="Anti Fund"
                 width={96}
                 height={79}
-                className="h-auto w-20 md:w-24"
+                className="hidden h-auto w-20 md:w-24 lg:block"
                 priority
               />
 
@@ -64,16 +63,17 @@ export default function Hero() {
                 <div>
                   <dt className="paper-label">Firm</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    Venture firm for technical founders building products and
-                    markets the rest of the world has to catch up to.
+                    Multi-stage investment platform for frontier technology,
+                    applied software, fintech, defense, robotics, and consumer
+                    demand.
                   </dd>
                 </div>
 
                 <div>
                   <dt className="paper-label">Core belief</dt>
                   <dd className="mt-2 text-base leading-7 text-ink-soft">
-                    The scarce asset is belief from the right people at the
-                    right moment.
+                    The scarce asset is not capital. It is conviction from the
+                    right people before consensus has language for the company.
                   </dd>
                 </div>
 

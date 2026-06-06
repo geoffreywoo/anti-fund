@@ -110,7 +110,7 @@ test("portfolio company names link out to company websites in new tabs", async (
         ),
       ),
     );
-  expect(companyLinkHrefs).toHaveLength(38);
+  expect(companyLinkHrefs).toHaveLength(41);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
   await expect(firstGroup).toHaveAttribute(
@@ -138,7 +138,10 @@ test("portfolio company names link out to company websites in new tabs", async (
   expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.helionenergy.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://efference.ai/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://elevenlabs.io/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://usecreed.com/")).toBeTruthy();
+  expect(await hasVisibleExternalLink("https://www.pensive.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://rail.io/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://khloudfoods.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.eightsleep.com/")).toBeTruthy();
@@ -294,9 +297,9 @@ test.describe("reduced motion and metadata", () => {
   }) => {
     await page.goto("/");
 
-    await expect(page.getByText("What We Believe")).toBeVisible();
+    await expect(page.getByText("Investment Thesis")).toBeVisible();
     await expect(page.getByText("Select Investments")).toBeVisible();
-    await expect(page.getByText("Founder Proof")).toBeVisible();
+    await expect(page.getByText("Founder References")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
     await expect(
       page.getByAltText("Geoffrey Woo, Jake Paul, and Logan Paul seated together."),

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Wordmark from "@/components/Wordmark";
 
 const links = [
+  { href: "#thesis", label: "Thesis" },
   { href: "#team", label: "Team" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },

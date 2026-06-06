@@ -137,12 +137,10 @@ export default function Team() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Anti Fund combines Geoffrey Woo&apos;s technical company-building
-              and venture judgment with Jake and Logan Paul&apos;s record building
-              owned companies, global audiences, consumer demand, media
-              moments, and culture-shaping brands. This is not celebrity
-              capital. This is company-building capital for a market where
-              product, attention, trust, and timing compound together.
+              Anti Fund is built around an unusual partnership: technical
+              company-building, venture judgment, capital formation, owned
+              company experience, media distribution, consumer demand, and
+              institutional relationships in one firm.
             </p>
 
             <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
@@ -161,14 +159,14 @@ export default function Team() {
                 <figcaption className="space-y-3 sm:space-y-4">
                   <p className="paper-label">General Partners</p>
                   <p className="max-w-2xl font-display text-[2rem] leading-[1.08] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
-                    Geoffrey Woo, Jake Paul, and Logan Paul.
+                    Technical judgment, capital formation, and market access
+                    under one roof.
                   </p>
                   <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    Geoffrey brings technical and founder judgment: product,
-                    engineering, company-building, and capital formation. Jake
-                    and Logan bring operator judgment from building audience
-                    businesses, consumer brands, sports, media, and creator-led
-                    demand at global scale.
+                    Geoffrey Woo brings engineering, product, venture, and
+                    founder experience. Jake and Logan Paul bring operating
+                    leverage from owned companies, media, sports, consumer
+                    brands, and global audience infrastructure.
                   </p>
                 </figcaption>
               </div>

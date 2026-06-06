@@ -12,17 +12,17 @@ const pillars: Pillar[] = [
   {
     title: "Product",
     description:
-      "Product quality and positioning are inseparable. We pressure-test what to ship, what to cut, and what will make the product feel inevitable to users, recruits, and investors.",
+      "We pressure-test what to build, what to cut, and what has to be true for customers, recruits, and investors to care.",
   },
   {
     title: "Go-to-market",
     description:
-      "Go-to-market is when the market decides whether to care. We help founders shape timing, narrative, and launch strategy that turns product truth into demand.",
+      "We help turn product truth into market pull: launch timing, customer sequencing, partner access, and narrative discipline.",
   },
   {
     title: "Network",
     description:
-      "Community at Anti Fund is built through work. Our summits, office visits, dinners, and working sessions create trust, uncommon access, and relationships founders can actually use.",
+      "The network is built around practical access: customers, co-investors, operators, talent, media, and founder-to-founder relationships.",
     links: [
       {
         label: "Anti Fund Summit",
@@ -40,7 +40,7 @@ const pillars: Pillar[] = [
         type: "watch",
       },
       {
-        label: "The Profile: attention into ownership",
+        label: "The Profile: Jake and Logan Paul investment profile",
         href: "https://www.readtheprofile.com/p/jake-paul-logan-paul-billionaire-plan-investment",
         type: "read",
       },
@@ -49,12 +49,12 @@ const pillars: Pillar[] = [
   {
     title: "Fundraising",
     description:
-      "Great founders are rarely short on inbound capital. The edge is creating leverage, choosing the right counterparties, and tightening the story when the round matters.",
+      "We help founders create leverage before financing moments: investor sequencing, materials, narrative, syndicate construction, and close strategy.",
   },
   {
     title: "Strategy",
     description:
-      "We stay close in consequential moments: product resets, senior hires, customer strategy, financing decisions, board pressure, and other forks in the road that define the company.",
+      "We stay close in consequential moments: product resets, senior hires, customer strategy, financing decisions, board pressure, and the forks that define the company.",
   },
 ];
 
@@ -67,16 +67,16 @@ export default function HowWeHelp() {
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              We are most useful when a founder needs leverage: a launch that
-              has to land, a round that has to clear, a senior hire that has to
-              close, or a market story that has to become obvious fast.
+              Anti Fund is most useful when a founder is about to make a move
+              that changes the company: what to launch, who to hire, which
+              customers to pursue, how to finance, or how to enter the market
+              with credibility.
             </p>
 
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              This is not platform theater. We work where important companies
-              are actually shaped: product decisions, launch timing, demand
-              strategy, fundraising pressure, and the moments where the next
-              decision matters more than the next deck.
+              This is not platform theater. The work is direct and situational:
+              product positioning, customer and talent access, financing
+              strategy, and the operating choices that determine the next stage.
             </p>
 
             <div className="border-y border-line">
@@ -112,7 +112,7 @@ export default function HowWeHelp() {
               })}
             </div>
 
-            <div id="contact" className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
+            <div id="contact" className="paper-panel border px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Correspondence</p>
               <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Building something technical, non-consensus, and too important
@@ -120,7 +120,9 @@ export default function HowWeHelp() {
                 <a href="mailto:founders@antifund.com" className="paper-link">
                   founders@antifund.com
                 </a>
-                . Tell us what you believe before everyone else does.
+                {" "}
+                with the product, the market, and what you know before everyone
+                else does.
               </p>
             </div>
           </div>

@@ -150,17 +150,17 @@ export default function Testimonials() {
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">05 / Founder Proof</div>
+          <div className="paper-label">05 / Founder References</div>
 
           <div className="space-y-10">
             <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              The strongest proof is not our description of the firm. It is
-              what founders and operators say after we have been in the room,
-              in the work, and useful when the stakes are real.
+              References matter when they describe work the firm actually did:
+              customers closed, executives recruited, rounds shaped, strategy
+              sharpened, and hard founder decisions made with more signal.
             </p>
 
             <div>
-              <p className="paper-label mb-3">Founder outcomes</p>
+              <p className="paper-label mb-3">Operating Evidence</p>
               <div className="border-y border-line">
                 {founderTestimonials.map((testimonial, index) => (
                   <TestimonialFigure
@@ -172,11 +172,11 @@ export default function Testimonials() {
               </div>
             </div>
 
-            <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
+            <div className="paper-panel border px-5 py-5 sm:px-6 sm:py-6">
               <p className="paper-label mb-3">Independent validation</p>
               <p className="mb-2 max-w-3xl text-base leading-7 text-ink-soft">
-                Outside validation matters most when it comes from people who
-                have seen the data.
+                Outside validation matters when it comes from people who have
+                seen the data, not just the brand.
               </p>
               <div className="border-t border-line">
                 {independentValidation.map((testimonial, index) => (

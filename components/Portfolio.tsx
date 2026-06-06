@@ -78,6 +78,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "Efference",
+    url: "https://efference.ai/",
+    description: "Integrated perception and compute stack for robotics.",
+    stage: "First Investor",
+    partnered: "2025",
+  },
+  {
     name: "Erebor",
     url: "https://erebor.bank/",
     description: "Banking infrastructure for the innovation economy.",
@@ -147,6 +154,20 @@ const softwareCompanies: Company[] = [
     description: "End-to-end creator marketing AI.",
     stage: "Seed / Series A",
     partnered: "2022",
+  },
+  {
+    name: "Creed",
+    url: "https://usecreed.com/",
+    description: "AI-enabled Bible study and prayer companion app.",
+    stage: "Seed",
+    partnered: "2025",
+  },
+  {
+    name: "Pensive",
+    url: "https://www.pensive.com/",
+    description: "AI grading and tutoring platform for higher education.",
+    stage: "Seed",
+    partnered: "2025",
   },
   {
     name: "Merge",
@@ -300,6 +321,7 @@ const portfolioGroupSpecs = [
       "Physical Intelligence",
       "Kela Systems",
       "Merge",
+      "Efference",
     ],
   },
   {
@@ -317,6 +339,8 @@ const portfolioGroupSpecs = [
       "Cluely",
       "Interaction",
       "Natural",
+      "Creed",
+      "Pensive",
     ],
   },
   {
@@ -345,16 +369,16 @@ const portfolioGroupSpecs = [
 
 const proofPoints = [
   {
-    title: "First checks",
-    description: "Early ownership before the market has a clean label for the company.",
+    title: "Early conviction",
+    description: "Ownership before a category has a clean institutional label.",
   },
   {
-    title: "Growth rounds",
+    title: "Growth access",
     description:
-      "Selective access when allocation matters more than capital availability.",
+      "Selective allocation in rounds where reputation, speed, and judgment matter.",
   },
   {
-    title: "Exits",
+    title: "Real outcomes",
     description:
       "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety.",
   },
@@ -405,6 +429,10 @@ function getStagePartRank(stagePart: string) {
 
   if (normalized === "seed") {
     return 200;
+  }
+
+  if (normalized === "pre-seed" || normalized === "first investor") {
+    return 150;
   }
 
   if (normalized === "incubation") {
@@ -609,26 +637,32 @@ export default function Portfolio() {
           <div className="paper-label">03 / Select Investments</div>
 
           <div className="space-y-10">
-            <div className="border border-line bg-paper-alt px-5 py-5 sm:px-6 sm:py-6">
-              <p className="paper-label mb-3">Proof, not theory</p>
-              <p className="text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                Anti Fund has earned access across AI, defense, fintech,
-                robotics, software, and culture-native consumer companies,
-                including{" "}
+            <div className="paper-panel border px-5 py-5 sm:px-6 sm:py-6">
+              <p className="paper-label mb-3">Portfolio Proof</p>
+              <p className="max-w-4xl font-display text-2xl leading-[1.12] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
+                We do not underwrite sectors. We underwrite moments when a
+                non-obvious company becomes legible to institutions.
+              </p>
+              <p className="mt-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
+                The portfolio spans AI, defense, fintech, robotics, software,
+                and culture-native consumer markets, including{" "}
                 <span className="font-semibold text-ink">
                   OpenAI, SpaceX, Anduril, Ramp, Cognition, Polymarket,
                   Physical Intelligence, Flock Safety, and Chronosphere.
                 </span>
               </p>
               <p className="mt-4 text-base leading-7 text-ink-soft">
-                The pattern is not one sector. It is a kind of founder:
-                technical, early to the market&apos;s next obsession, and
-                capable of turning product truth into demand.
+                The common thread is not sector exposure. It is an inflection:
+                technical or market insight early enough to matter, paired with
+                founders who can convert that insight into company value.
               </p>
               <div className="mt-5 grid gap-3 border-t border-line pt-5 sm:grid-cols-3">
                 {proofPoints.map((point) => (
-                  <div key={point.title} className="border border-line bg-paper px-3 py-3">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+                  <div
+                    key={point.title}
+                    className="border border-line bg-paper px-3 py-3"
+                  >
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
                       {point.title}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-ink-soft">

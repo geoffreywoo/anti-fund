@@ -3,61 +3,63 @@ export default function Thesis() {
     {
       title: "Technical edge",
       description:
-        "A real reason the product can do something the market cannot simply finance into existence.",
+        "A product, model, system, or operating capability that capital alone cannot easily copy.",
     },
     {
-      title: "Product taste",
+      title: "Product judgment",
       description:
-        "Judgment about what should exist, how it should feel, and why users will care now.",
+        "Taste about what should exist, who needs it first, and why the user will change behavior.",
     },
     {
-      title: "Earned demand",
+      title: "Earned market pull",
       description:
-        "Demand produced by product, community, narrative, or timing, not bought reach.",
+        "Demand created by product performance, customer urgency, community, or trusted distribution.",
     },
     {
       title: "Non-consensus insight",
       description:
-        "A belief that sounds early or strange before the market has language for it.",
+        "A well-formed view before the category has a settled consensus.",
     },
     {
-      title: "Cultural timing",
+      title: "Market timing",
       description:
-        "A read on where demand, behavior, and taste are moving before it is obvious.",
+        "Evidence that customer behavior, regulation, infrastructure, or culture has opened a window.",
     },
     {
       title: "Category ambition",
       description:
-        "The intent to define the market, not just compete inside someone else's frame.",
+        "A path to define the market standard, not just participate in the segment.",
     },
   ];
 
   const operatingNotes = [
-    "Capital gets a company started. Belief changes who joins, buys, funds, and builds with it.",
-    "Demand is not a department. It is how the product becomes obvious to the market.",
-    "Taste is underwriting before the spreadsheet knows what to measure.",
-    "The best companies often look strange before they look inevitable.",
+    "Technology matters when it changes customer behavior.",
+    "Attention matters when it compounds recruiting, financing, customers, and trust.",
+    "The best founders know something precise before the market has consensus.",
+    "Brand is useful when it lowers friction for a product that already works.",
   ];
 
   return (
     <section id="thesis" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">01 / What We Believe</div>
+          <div className="paper-label">01 / Investment Thesis</div>
 
           <div className="space-y-10">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-              <div className="border-l-2 border-ink pl-4 sm:pl-6">
+              <div className="border-l-2 border-accent pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom I</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  Capital starts the company. Belief changes its trajectory.
+                  Technical truth is not enough. The market has to understand
+                  what changed.
                 </blockquote>
               </div>
 
-              <div className="border-l-2 border-ink pl-4 sm:pl-6">
+              <div className="border-l-2 border-accent-quiet pl-4 sm:pl-6">
                 <p className="paper-label mb-4">Axiom II</p>
                 <blockquote className="font-display text-[2.35rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-4xl md:text-5xl">
-                  Taste, timing, and demand decide what becomes inevitable.
+                  The best rounds do more than fund the company. They change
+                  who believes.
                 </blockquote>
               </div>
             </div>
@@ -65,35 +67,36 @@ export default function Thesis() {
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  In markets flooded with compute, capital, and plausible
-                  demos, product truth is not enough. The winning companies turn
-                  technical depth into belief from customers, recruits,
-                  investors, and culture.
+                  Anti Fund underwrites the conversion from technical insight to
+                  institutional-scale value. We care about product depth,
+                  customer urgency, financing strategy, and the sequence that
+                  turns an early advantage into a durable company.
                 </p>
                 <p>
-                  The best founders are not short on meetings. They are short on
-                  partners who can see the shape of the company early, tell the
-                  truth, and help the market understand why it matters now.
+                  Our edge is most useful in narrow windows: a round that sets
+                  the next price, a launch that defines the category, a senior
+                  hire who changes the company, a customer who proves the market,
+                  or a story the right people need to understand fast.
                 </p>
                 <p>
-                  In practice, distribution is not a layer that sits on top of
-                  the company. It is part of product, recruiting, fundraising,
-                  customer strategy, and the story people repeat when you are
-                  not in the room.
+                  Distribution is not a slogan here. It is part of company
+                  design: who needs the product, how trust is built, which
+                  counterparties matter, and what sequence creates compounding
+                  advantage.
                 </p>
               </div>
 
               <div className="space-y-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 <p>
-                  We back builders whose advantage is hard to reduce to a
-                  spreadsheet: technical breakthrough, founder taste,
-                  non-consensus timing, or an earned channel to demand.
+                  We look for builders with a real edge: proprietary technology,
+                  exceptional product judgment, customer pull, or a non-obvious
+                  read on where a category is going.
                 </p>
                 <p>
-                  Anti Fund is built to complement institutional capital. We
-                  bring company-building experience, technical fluency, and
-                  firsthand understanding of how products become culture and
-                  culture becomes market pull.
+                  Anti Fund is built to sit beside institutional capital. We
+                  bring technical fluency, founder experience, financing
+                  judgment, and operating access across technology, media,
+                  sports, and consumer markets.
                 </p>
               </div>
             </div>

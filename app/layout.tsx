@@ -5,12 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anti Fund",
   description:
-    "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
+    "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
     title: "Anti Fund",
     description:
-      "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
+      "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anti Fund",
     description:
-      "We back technical founders whose products, timing, and taste can make markets move before consensus catches up.",
+      "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
   },
 };
 
