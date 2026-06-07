@@ -24,12 +24,7 @@ html {
 }
 
 body {
-  background:
-    linear-gradient(90deg, rgba(49, 83, 61, 0.055) 0 1px, transparent 1px 25%),
-    linear-gradient(180deg, rgba(250, 248, 241, 1) 0%, rgba(247, 243, 234, 1) 100%);
-  background-size:
-    min(24rem, 25vw) 100%,
-    100% 100%;
+  background: linear-gradient(180deg, rgba(250, 248, 241, 1) 0%, rgba(247, 243, 234, 1) 100%);
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;

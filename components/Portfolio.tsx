@@ -59,8 +59,8 @@ const softwareCompanies: Company[] = [
   {
     name: "SpaceX",
     url: "https://www.spacex.com/",
-    description: "Making humans interplanetary through space technology.",
-    stage: "Growth",
+    description: "xAI Series D position merged into SpaceX.",
+    stage: "xAI Series D / Merged into SpaceX",
     partnered: "2026",
   },
   {
@@ -419,24 +419,28 @@ function getStagePartRank(stagePart: string) {
     return 600;
   }
 
-  if (normalized === "series e") {
+  if (normalized.includes("series e")) {
     return 500;
   }
 
-  if (normalized === "series d") {
+  if (normalized.includes("series d")) {
     return 450;
   }
 
-  if (normalized === "series c") {
+  if (normalized.includes("series c")) {
     return 425;
   }
 
-  if (normalized === "series b") {
+  if (normalized.includes("series b")) {
     return 400;
   }
 
-  if (normalized === "series a") {
+  if (normalized.includes("series a")) {
     return 300;
+  }
+
+  if (normalized.includes("merged")) {
+    return 275;
   }
 
   if (normalized === "seed+") {
@@ -510,7 +514,8 @@ function StageLabel({ stage }: { stage: string }) {
         const isLiquidityEvent =
           stageKey === "ipo" ||
           stageKey === "exit" ||
-          part.toLowerCase().includes("exit");
+          part.toLowerCase().includes("exit") ||
+          part.toLowerCase().includes("merged");
 
         return (
           <span

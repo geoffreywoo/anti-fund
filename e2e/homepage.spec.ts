@@ -137,6 +137,12 @@ test("portfolio company names link out to company websites in new tabs", async (
 
   expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
+  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
+    "xAI Series D",
+  );
+  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
+    "Merged into SpaceX",
+  );
   expect(await hasVisibleExternalLink("https://www.helionenergy.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.saronic.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://efference.ai/")).toBeTruthy();
