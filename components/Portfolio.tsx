@@ -78,6 +78,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "Saronic",
+    url: "https://www.saronic.com/",
+    description: "Autonomous surface vessels for maritime defense.",
+    stage: "Series D",
+    partnered: "2026",
+  },
+  {
     name: "Efference",
     url: "https://efference.ai/",
     description: "Integrated perception and compute stack for robotics.",
@@ -236,6 +243,13 @@ const consumerCompanies: Company[] = [
     partnered: "2022",
   },
   {
+    name: "Sesh",
+    url: "https://seshproducts.com/",
+    description: "Tobacco-free nicotine pouch brand.",
+    stage: "Seed / Series A",
+    partnered: "2024",
+  },
+  {
     name: "Ketone-IQ",
     url: "https://ketone.com/",
     description: "Energy from ketones, not sugar or caffeine.",
@@ -316,6 +330,7 @@ const portfolioGroupSpecs = [
       "SpaceX",
       "Anduril",
       "Helion",
+      "Saronic",
       "Etched",
       "Modal",
       "Physical Intelligence",
@@ -353,6 +368,7 @@ const portfolioGroupSpecs = [
       "Kings League",
       "Happy Dad",
       "Passes",
+      "Sesh",
       "Ketone-IQ",
       "SipMargs",
       "Khloud",
