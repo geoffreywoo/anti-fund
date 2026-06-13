@@ -117,6 +117,7 @@ test("portfolio company names link out to company websites in new tabs", async (
     "data-portfolio-group",
     "frontier-infrastructure-defense",
   );
+  await expect(firstGroup.getByRole("link", { name: "Cognition" })).toBeVisible();
 
   const lastGroup = portfolio.locator("[data-portfolio-group]").last();
   await expect(lastGroup).toHaveAttribute("data-portfolio-group", "outcomes");
