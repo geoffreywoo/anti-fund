@@ -110,7 +110,7 @@ test("portfolio company names link out to company websites in new tabs", async (
         ),
       ),
     );
-  expect(companyLinkHrefs).toHaveLength(43);
+  expect(companyLinkHrefs).toHaveLength(44);
 
   const firstGroup = portfolio.locator("[data-portfolio-group]").first();
   await expect(firstGroup).toHaveAttribute(
@@ -119,8 +119,9 @@ test("portfolio company names link out to company websites in new tabs", async (
   );
 
   const lastGroup = portfolio.locator("[data-portfolio-group]").last();
-  await expect(lastGroup).toHaveAttribute("data-portfolio-group", "exits");
+  await expect(lastGroup).toHaveAttribute("data-portfolio-group", "outcomes");
   await expect(lastGroup.getByRole("link", { name: "Metis" })).toBeVisible();
+  await expect(lastGroup.getByRole("link", { name: "SpaceX" })).toBeVisible();
 
   const hasVisibleExternalLink = async (href: string) =>
     portfolio.locator(`a[href="${href}"]`).evaluateAll((links) =>
@@ -137,8 +138,20 @@ test("portfolio company names link out to company websites in new tabs", async (
 
   expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
   expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
+  expect(
+    await hasVisibleExternalLink("https://www.nasdaq.com/market-activity/stocks/spcx"),
+  ).toBeTruthy();
   await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
     "xAI Series D",
+  );
+  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
+    "$1.77T IPO",
+  );
+  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
+    "$SPCX",
+  );
+  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
+    "IPO",
   );
   await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
     "Merged into SpaceX",

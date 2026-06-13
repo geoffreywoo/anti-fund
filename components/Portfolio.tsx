@@ -6,6 +6,10 @@ type Company = {
   description: string;
   stage: string;
   partnered: string;
+  ticker?: {
+    label: string;
+    url: string;
+  };
   personal?: boolean;
 };
 
@@ -59,9 +63,14 @@ const softwareCompanies: Company[] = [
   {
     name: "SpaceX",
     url: "https://www.spacex.com/",
-    description: "xAI Series D position merged into SpaceX.",
-    stage: "xAI Series D / Merged into SpaceX",
+    description:
+      "xAI Series D position merged into SpaceX, with additional ownership purchased in the $1.77T IPO.",
+    stage: "IPO / xAI Series D / Merged into SpaceX",
     partnered: "2026",
+    ticker: {
+      label: "$SPCX",
+      url: "https://www.nasdaq.com/market-activity/stocks/spcx",
+    },
   },
   {
     name: "Anduril",
@@ -327,7 +336,6 @@ const portfolioGroupSpecs = [
     title: "Frontier Infrastructure & Defense",
     names: [
       "OpenAI",
-      "SpaceX",
       "Anduril",
       "Helion",
       "Saronic",
@@ -378,8 +386,8 @@ const portfolioGroupSpecs = [
     ],
   },
   {
-    title: "Exits",
-    names: ["Chronosphere", "Rail", "Aerodome", "Metis"],
+    title: "Outcomes",
+    names: ["Chronosphere", "Rail", "Aerodome", "Metis", "SpaceX"],
   },
 ] as const;
 
@@ -549,6 +557,25 @@ function CompanyRow({
   company: Company;
   index: number;
 }) {
+  const description = (
+    <>
+      {company.description}
+      {company.ticker ? (
+        <>
+          {" "}
+          <a
+            href={company.ticker.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="paper-link"
+          >
+            {company.ticker.label}
+          </a>
+        </>
+      ) : null}
+    </>
+  );
+
   return (
     <div
       data-company={toDataKey(company.name)}
@@ -573,7 +600,7 @@ function CompanyRow({
           </div>
         </div>
 
-        <p className="text-base leading-7 text-ink-soft">{company.description}</p>
+        <p className="text-base leading-7 text-ink-soft">{description}</p>
 
         <div className="grid grid-cols-2 gap-4 border-t border-line pt-3">
           <div>
@@ -604,7 +631,7 @@ function CompanyRow({
           </a>
           {company.personal ? "*" : ""}
         </div>
-        <span className="text-base leading-7 text-ink-soft">{company.description}</span>
+        <span className="text-base leading-7 text-ink-soft">{description}</span>
         <StageLabel stage={company.stage} />
         <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
           {company.partnered}
