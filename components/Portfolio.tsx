@@ -94,6 +94,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "General Matter",
+    url: "https://generalmatter.com/",
+    description: "Nuclear fuel infrastructure.",
+    stage: "Growth",
+    partnered: "2026",
+  },
+  {
     name: "Efference",
     url: "https://efference.ai/",
     description: "Integrated perception and compute stack for robotics.",
@@ -339,6 +346,7 @@ const portfolioGroupSpecs = [
       "Anduril",
       "Helion",
       "Saronic",
+      "General Matter",
       "Cognition",
       "Etched",
       "Modal",
