@@ -54,8 +54,9 @@ export default function Hero() {
                 src="/logo.png"
                 alt="Anti Fund"
                 width={96}
-                height={79}
-                className="hidden h-auto w-20 md:w-24 lg:block"
+                height={80}
+                className="hidden lg:block"
+                style={{ width: 96, height: "auto" }}
                 priority
               />
 
