@@ -384,15 +384,15 @@ test.describe("reduced motion and metadata", () => {
       "content",
       /opengraph-image/,
     );
-    await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
-      "href",
-      /icon/,
-    );
+    const iconLink = page.locator('link[rel="icon"]');
+    await expect(iconLink).toHaveAttribute("href", /icon/);
+    const iconHref = await iconLink.getAttribute("href");
+    expect(iconHref).toBeTruthy();
 
     const [ogResponse, twitterResponse, iconResponse] = await Promise.all([
       request.get("/opengraph-image.jpg"),
       request.get("/twitter-image.jpg"),
-      request.get("/icon"),
+      request.get(new URL(iconHref!, page.url()).toString()),
     ]);
 
     expect(ogResponse.ok()).toBeTruthy();
