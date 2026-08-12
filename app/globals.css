@@ -62,9 +62,17 @@ body::before {
 .paper-label {
   color: var(--color-accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.66rem;
+  line-height: 1.45;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .paper-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+  }
 }
 
 .paper-link {
@@ -79,6 +87,45 @@ body::before {
 .paper-link:hover {
   border-color: var(--color-ink);
   color: var(--color-accent);
+}
+
+.nav-section-link {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-section-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav-section-link:hover,
+.nav-section-link[data-active] {
+  color: var(--color-ink);
+}
+
+.nav-section-link:hover::after {
+  transform: scaleX(0.35);
+}
+
+.nav-section-link[data-active]::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-row:hover .portfolio-logo,
+  .portfolio-row:focus-within .portfolio-logo {
+    transform: translateY(-1px);
+  }
 }
 
 .paper-panel {
@@ -104,10 +151,12 @@ body::before {
 
 [data-reveal] .portfolio-row {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(6px);
   transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
   transition-delay: var(--row-delay, 0ms);
 }
 
@@ -165,10 +214,13 @@ body::before {
 }
 
 #thesis,
+#edge,
 #portfolio,
 #team,
 #faq,
 #help,
+#proof,
+#media,
 #contact {
   scroll-margin-top: 80px;
 }
@@ -180,11 +232,17 @@ body::before {
 
   [data-reveal],
   [data-reveal] .portfolio-row,
-  .animate-fade-up {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
+  .animate-fade-up,
+  .portfolio-logo {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .nav-section-link,
+  .nav-section-link::after {
+    transition: none !important;
   }
 }
 
@@ -201,7 +259,8 @@ body::before {
 
   [data-reveal],
   [data-reveal] .portfolio-row,
-  .animate-fade-up {
+  .animate-fade-up,
+  .portfolio-logo {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

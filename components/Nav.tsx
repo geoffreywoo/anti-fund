@@ -5,16 +5,18 @@ import { usePathname } from "next/navigation";
 import Wordmark from "@/components/Wordmark";
 
 const links = [
-  { href: "#thesis", label: "Thesis" },
+  { href: "#edge", label: "Edge" },
   { href: "#team", label: "Team" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { href: "#help", label: "Work" },
+  { href: "#media", label: "Media" },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
   const menuId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -33,6 +35,59 @@ export default function Nav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isHome) {
+      setActiveHref(null);
+      return;
+    }
+
+    let frameId: number | null = null;
+
+    const updateActiveSection = () => {
+      frameId = null;
+      const marker = 96;
+      let nextActive: string | null = null;
+
+      for (const link of links) {
+        const section = document.querySelector<HTMLElement>(link.href);
+
+        if (section && section.getBoundingClientRect().top <= marker) {
+          nextActive = link.href;
+        }
+      }
+
+      const finalSection = document.querySelector<HTMLElement>(
+        links[links.length - 1].href,
+      );
+
+      if (finalSection && finalSection.getBoundingClientRect().bottom <= marker) {
+        nextActive = null;
+      }
+
+      setActiveHref((current) =>
+        current === nextActive ? current : nextActive,
+      );
+    };
+
+    const scheduleUpdate = () => {
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(updateActiveSection);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, [isHome]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -90,6 +145,11 @@ export default function Nav() {
     setIsOpen(false);
   };
 
+  const closeMenuAndRestoreFocus = () => {
+    setIsOpen(false);
+    window.requestAnimationFrame(() => buttonRef.current?.focus());
+  };
+
   return (
     <>
       <header className="site-header fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
@@ -98,14 +158,16 @@ export default function Nav() {
             <Wordmark className="block text-[1.65rem] sm:text-[1.9rem]" />
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-            {links.map((link, index) => (
+          <nav aria-label="Primary" className="hidden items-center gap-5 md:flex lg:gap-7">
+            {links.map((link) => (
               <a
                 key={link.href}
                 href={isHome ? link.href : `/${link.href}`}
-                className="paper-link font-mono text-[11px] uppercase tracking-[0.18em]"
+                className="nav-section-link relative inline-flex py-1 font-mono text-[11px] uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                data-active={activeHref === link.href ? "" : undefined}
+                aria-current={activeHref === link.href ? "location" : undefined}
               >
-                {String(index + 1).padStart(2, "0")} {link.label}
+                {link.label}
               </a>
             ))}
           </nav>
@@ -137,24 +199,40 @@ export default function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
-          className="fixed inset-0 z-[var(--z-modal)] bg-paper px-6 pb-10 pt-28"
+          className="fixed inset-0 z-[var(--z-modal)] bg-paper px-6 pb-10 pt-3"
         >
           <div className="mx-auto max-w-3xl">
-            <p className="paper-label mb-8">Contents</p>
+            <div className="mb-12 flex items-center justify-between border-b border-line pb-3">
+              <Wordmark className="text-[1.65rem]" />
+              <button
+                type="button"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center border border-line-strong px-3 text-ink transition-colors hover:bg-paper-alt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-label="Close navigation menu"
+                onClick={closeMenuAndRestoreFocus}
+              >
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
+                  Close
+                </span>
+              </button>
+            </div>
+            <p className="paper-label mb-6">Contents</p>
             <nav aria-label="Mobile primary">
               <div className="border-y border-line">
-                {links.map((link, index) => (
+                {links.map((link) => (
                   <a
                     key={link.href}
                     href={isHome ? link.href : `/${link.href}`}
-                    className="flex min-h-14 items-baseline justify-between border-b border-line py-5 last:border-b-0"
+                    className="flex min-h-14 items-baseline border-b border-line py-5 transition-colors duration-200 last:border-b-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    data-active={activeHref === link.href ? "" : undefined}
+                    aria-current={activeHref === link.href ? "location" : undefined}
                     onClick={closeMenu}
                   >
-                    <span className="font-display text-3xl leading-none tracking-[-0.03em] text-ink">
+                    <span
+                      className={`font-display text-3xl leading-none tracking-normal transition-colors duration-200 ${
+                        activeHref === link.href ? "text-accent" : "text-ink"
+                      }`}
+                    >
                       {link.label}
-                    </span>
-                    <span className="font-mono text-xs uppercase tracking-[0.18em] text-ink-muted">
-                      {String(index + 1).padStart(2, "0")}
                     </span>
                   </a>
                 ))}

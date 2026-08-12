@@ -9,7 +9,7 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npm run dev -- --port 3100",
+    command: "node node_modules/next/dist/bin/next dev --port 3100",
     url: "http://localhost:3100",
     reuseExistingServer: false,
     timeout: 120_000,

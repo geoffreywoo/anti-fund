@@ -15,24 +15,7 @@
 
 **Priority:** P1
 
-**Depends on / blocked by:** Needs final proof source material from Geoffrey.
-
-## P1 — Cut over `antifund.com` in Vercel and verify the redirect path
-**What:** Point the apex and `www` records to Vercel, attach the domain in project settings, and verify SSL plus the `www` redirect.
-
-**Why:** The site code is ready, but the approved Phase 2 plan also called for the production domain cutover.
-
-**Pros:** Completes the public launch path, removes the preview-domain feel.
-
-**Cons:** This is an operational change outside the repo and needs dashboard access.
-
-**Context:** The implementation is ready for preview verification first, then the DNS move can happen cleanly.
-
-**Effort estimate:** human: ~15-30 min / CC: blocked on dashboard access
-
-**Priority:** P1
-
-**Depends on / blocked by:** Vercel + DNS access.
+**Depends on / blocked by:** Needs final proof source material from Geoff.
 
 ## P2 — Verify Lighthouse mobile performance is at or above 90
 **What:** Run a real Lighthouse mobile pass against the deployed preview or production URL and trim any remaining bottlenecks if the score misses 90.
@@ -66,7 +49,7 @@
 
 **Priority:** P1
 
-**Depends on / blocked by:** Needs final proof source material from Geoffrey and a shipped Phase 2 baseline.
+**Depends on / blocked by:** Needs final proof source material from Geoff and a shipped Phase 2 baseline.
 
 ## P2 — Add lightweight CTA instrumentation
 **What:** Track whether the founder CTA is getting used, either with a lightweight analytics event or an alias-based email flow that makes inbound measurable.

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 type TeamMember = {
   name: string;
   title: string;
+  profileUrl?: string;
   bio: ReactNode;
 };
 
@@ -28,22 +29,21 @@ function ExternalLink({
 
 const team: TeamMember[] = [
   {
-    name: "Geoffrey Woo",
+    name: "Geoff Woo",
     title: "Co-founder & Managing Partner",
+    profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
-        <ExternalLink href="https://geoffreywoo.com">Geoffrey Woo</ExternalLink>{" "}
-        is co-founder & managing partner of Anti Fund and an entrepreneur. He
-        co-founded <ExternalLink href="https://archive.com">Archive</ExternalLink>
-        , <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink>, and{" "}
-        <ExternalLink href="https://getw.com">W</ExternalLink>. He previously
-        founded and{" "}
+        Geoff Woo is an entrepreneur and engineer. He co-founded{" "}
+        <ExternalLink href="https://archive.com">Archive</ExternalLink>,{" "}
+        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink>, and{" "}
+        <ExternalLink href="https://getw.com">W</ExternalLink>. His first
+        company, Glassmap (YC S11), was{" "}
         <ExternalLink href="https://techcrunch.com/2012/11/01/groupon-quietly-acquires-location-based-social-recommendations-startup-glassmap/">
-          sold Glassmap (YC S11) to Groupon
+          acquired by Groupon
         </ExternalLink>
-        . He earned a BS with Honors & Distinction in Computer Science, but
-        dropped out of the MS program, at Stanford University and is
-        co-inventor and co-author of numerous{" "}
+        . A Stanford Computer Science graduate, he is a co-inventor and
+        co-author of numerous{" "}
         <ExternalLink href="https://patents.google.com/?inventor=Geoffrey+Woo">
           US patents
         </ExternalLink>{" "}
@@ -58,34 +58,21 @@ const team: TeamMember[] = [
   {
     name: "Jake Paul",
     title: "Co-founder & Managing Partner",
+    profileUrl: "https://en.wikipedia.org/wiki/Jake_Paul",
     bio: (
       <>
-        <ExternalLink href="https://en.wikipedia.org/wiki/Jake_Paul">
-          Jake Paul
-        </ExternalLink>{" "}
-        is co-founder & managing partner of Anti Fund and a professional boxer.
-        Jake holds the record for the most streamed sporting event in history
-        with 65M peak concurrent streams,{" "}
-        <ExternalLink href="https://www.netflix.com/tudum/articles/jake-paul-vs-mike-tyson-live-release-date-news">
-          Paul vs Tyson on Netflix
-        </ExternalLink>
-        , was a top 5{" "}
+        Jake Paul is an entrepreneur and professional boxer. His Paul vs Tyson
+        event reached 65M peak concurrent streams on Netflix, and he was among
+        Google's five{" "}
         <ExternalLink href="https://trends.withgoogle.com/year-in-search/2024/">
-          most Googled athlete
+          most-searched athletes
         </ExternalLink>{" "}
-        in 2024, and has 70M+ followers across social media, including 28M+ on{" "}
-        <ExternalLink href="https://www.instagram.com/jakepaul/">
-          Instagram
-        </ExternalLink>{" "}
-        and 20M+ on{" "}
-        <ExternalLink href="https://www.youtube.com/@jakepaul">
-          YouTube
-        </ExternalLink>
-        . He is founder of{" "}
+        in 2024. He founded{" "}
         <ExternalLink href="https://mostvaluablepromotions.com">
           Most Valuable Promotions
         </ExternalLink>
-        , <ExternalLink href="https://betr.app">Betr</ExternalLink>, and{" "}
+        {" "}and co-founded <ExternalLink href="https://betr.app">Betr</ExternalLink>{" "}
+        and{" "}
         <ExternalLink href="https://getw.com">W</ExternalLink>.
       </>
     ),
@@ -93,22 +80,13 @@ const team: TeamMember[] = [
   {
     name: "Logan Paul",
     title: "General Partner",
+    profileUrl: "https://www.instagram.com/loganpaul/",
     bio: (
       <>
-        Logan Paul is general partner of Anti Fund and a professional wrestler.
-        He is founder of{" "}
-        <ExternalLink href="https://drinkprime.com">Prime</ExternalLink>, the
-        fastest growing beverage brand in history, and Lunchly. He also hosts
-        Impaulsive, one of the biggest podcasts in the world. He is one of the
-        most followed celebrities across social media, including 26M+ on{" "}
-        <ExternalLink href="https://www.instagram.com/loganpaul/">
-          Instagram
-        </ExternalLink>{" "}
-        and 23M+ on{" "}
-        <ExternalLink href="https://www.youtube.com/@loganpaulvlogs">
-          YouTube
-        </ExternalLink>
-        .
+        Logan Paul is an entrepreneur, creator, and professional wrestler. He
+        co-founded <ExternalLink href="https://drinkprime.com">PRIME</ExternalLink>,
+        hosts Impaulsive, and brings global consumer, media, and distribution
+        experience.
       </>
     ),
   },
@@ -117,12 +95,10 @@ const team: TeamMember[] = [
     title: "Partner",
     bio: (
       <>
-        Steve Han is a partner at Anti Fund. He was previously at March
-        Capital and Deutsche Bank. Born in Korea and raised across India and
-        China, he holds dual degrees in Economics and Environmental Economics
-        & Policy from the University of California, Berkeley. Steve served in
-        the ROK Army as secretary to the Commanding General of the 17th
-        Infantry Division, selected out of 12,000 soldiers.
+        Steve Han previously invested at March Capital and worked at Deutsche
+        Bank. Born in Korea and raised across India and China, he studied
+        Economics and Environmental Economics & Policy at UC Berkeley and
+        served in the ROK Army.
       </>
     ),
   },
@@ -130,68 +106,64 @@ const team: TeamMember[] = [
 
 export default function Team() {
   return (
-    <section id="team" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
+    <section id="team" className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">02 / Team</div>
+        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
+          <div className="paper-label">03 / Team</div>
 
-          <div className="space-y-10">
-            <p className="max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-              Anti Fund is built around an unusual partnership: technical
-              company-building, venture judgment, capital formation, owned
-              company experience, media distribution, consumer demand, and
-              institutional relationships in one firm.
-            </p>
+          <div className="space-y-6 sm:space-y-8">
+            <h2 className="font-display text-[2.15rem] leading-[1.04] text-ink sm:text-4xl md:text-5xl">
+              Team.
+            </h2>
 
-            <figure className="border border-line bg-paper-alt p-3 sm:p-4 md:p-6">
-              <div className="grid gap-4 sm:gap-6 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:items-end">
-                <div className="overflow-hidden border border-line bg-paper">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-[minmax(0,420px)_minmax(0,1fr)] md:items-start">
+              <figure>
+                <div className="overflow-hidden border border-line bg-paper-alt">
                   <Image
                     src="/team-general-partners.jpg"
-                    alt="Geoffrey Woo, Jake Paul, and Logan Paul seated together."
+                    alt="Geoff Woo, Jake Paul, and Logan Paul seated together."
                     width={2048}
                     height={2560}
-                    className="h-auto w-full object-cover"
-                    priority
+                    className="aspect-[4/3] h-auto w-full object-cover object-[center_42%] md:aspect-[4/5] md:object-center"
                   />
                 </div>
+                <figcaption className="mt-2 paper-label sm:mt-3">General Partners</figcaption>
+              </figure>
 
-                <figcaption className="space-y-3 sm:space-y-4">
-                  <p className="paper-label">General Partners</p>
-                  <p className="max-w-2xl font-display text-[2rem] leading-[1.08] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
-                    Technical judgment, capital formation, and market access
-                    under one roof.
-                  </p>
-                  <p className="max-w-2xl text-base leading-7 text-ink-soft">
-                    Geoffrey Woo brings engineering, product, venture, and
-                    founder experience. Jake and Logan Paul bring operating
-                    leverage from owned companies, media, sports, consumer
-                    brands, and global audience infrastructure.
-                  </p>
-                </figcaption>
+              <div data-team-roster className="border-y border-line">
+                {team.map((member, index) => (
+                  <article
+                    key={member.name}
+                    className="grid grid-cols-[28px_minmax(0,1fr)] gap-x-3 border-b border-line py-5 last:border-b-0 sm:grid-cols-[36px_minmax(0,1fr)] sm:gap-x-4 sm:py-6"
+                  >
+                    <span className="font-mono text-[11px] uppercase text-ink-muted">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-[1.45rem] leading-none text-ink sm:text-3xl">
+                        {member.profileUrl ? (
+                          <a
+                            href={member.profileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="paper-link"
+                          >
+                            {member.name}
+                          </a>
+                        ) : (
+                          member.name
+                        )}
+                      </h3>
+                      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ink-muted sm:mt-2 sm:text-[11px] sm:tracking-normal">
+                        {member.title}
+                      </p>
+                      <p className="mt-3 max-w-3xl text-[0.95rem] leading-6 text-ink-soft sm:mt-4 sm:text-base sm:leading-7">
+                        {member.bio}
+                      </p>
+                    </div>
+                  </article>
+                ))}
               </div>
-            </figure>
-
-            <div className="border-y border-line">
-              {team.map((member, index) => (
-                <div
-                  key={member.name}
-                  className="grid gap-4 border-b border-line py-5 last:border-b-0 md:grid-cols-[44px_minmax(0,260px)_minmax(0,1fr)] md:gap-6 md:py-6"
-                >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-display text-2xl leading-none tracking-[-0.03em] text-ink md:text-3xl">
-                      {member.name}
-                    </h3>
-                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-                      {member.title}
-                    </p>
-                  </div>
-                  <p className="text-base leading-7 text-ink-soft">{member.bio}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>

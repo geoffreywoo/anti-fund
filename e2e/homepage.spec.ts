@@ -1,76 +1,134 @@
 import { expect, test } from "@playwright/test";
 
-test("desktop nav reaches proof and founder CTA with the right anchor offset", async ({
+test("primary navigation keeps outreach out of the main presentation", async ({
   page,
 }) => {
   await page.goto("/");
 
   const primaryNav = page.getByRole("navigation", { name: "Primary" });
   await expect(primaryNav).toBeVisible();
+  await expect(primaryNav.getByRole("link")).toHaveCount(5);
+  await expect(primaryNav.getByRole("link")).toHaveText([
+    "Edge",
+    "Team",
+    "Portfolio",
+    "Work",
+    "Media",
+  ]);
+  await expect(primaryNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(primaryNav.locator('a[href^="mailto:"]')).toHaveCount(0);
 
-  await primaryNav.getByRole("link", { name: "Portfolio" }).click();
-  await expect(page).toHaveURL(/#portfolio/);
-  await expect
-    .poll(async () =>
-      page.locator("#portfolio").evaluate((element) =>
-        Math.round(element.getBoundingClientRect().top),
-      ),
-    )
-    .toBeLessThan(140);
+  const hero = page.locator("#top");
+  await expect(
+    hero.getByRole("heading", {
+      name: "Capital is a commodity. Attention is not.",
+    }),
+  ).toBeVisible();
+  await expect(hero).not.toContainText("For anti-consensus founders");
+  await expect(hero.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await expect(hero).not.toContainText("Pitch Anti Fund");
+  await expect(hero).not.toContainText("Investor relations");
 
-  await expect(page.locator("#portfolio")).toContainText("Proof");
-
-  await primaryNav.getByRole("link", { name: "Contact" }).click();
-  await expect(page).toHaveURL(/#contact/);
-
-  const founderLink = page.locator(
-    '#contact a[href="mailto:founders@antifund.com"]',
+  const edgeLink = primaryNav.getByRole("link", { name: "Edge" });
+  await edgeLink.click();
+  await expect(page).toHaveURL(/#edge/);
+  await expect(edgeLink).toHaveAttribute("aria-current", "location");
+  await expect(page.locator("#edge")).toContainText(
+    "See the future early. Make it impossible to ignore.",
   );
-  await expect(founderLink).toBeVisible();
-  await expect(founderLink).toContainText("founders@antifund.com");
+
+  const portfolioLink = primaryNav.getByRole("link", { name: "Portfolio" });
+  await portfolioLink.click();
+  await expect(page).toHaveURL(/#portfolio/);
+  await expect(portfolioLink).toHaveAttribute("aria-current", "location");
+  await expect(
+    page.getByRole("heading", { name: "Selected investments." }),
+  ).toBeVisible();
+
+  const footer = page.locator("#contact");
+  await footer.scrollIntoViewIfNeeded();
+  await expect(footer.getByRole("link", { name: "Founder correspondence" })).toHaveAttribute(
+    "href",
+    "mailto:founders@antifund.com",
+  );
+  await expect(
+    footer.getByRole("link", { name: "Limited partner correspondence" }),
+  ).toHaveAttribute("href", "mailto:ir@antifund.com");
+  await expect(footer).not.toContainText("founders@antifund.com");
+  await expect(footer).not.toContainText("ir@antifund.com");
+  await expect
+    .poll(async () => primaryNav.locator('[aria-current="location"]').count())
+    .toBe(0);
 });
 
-test("team section appears before portfolio in the homepage flow", async ({
+test("homepage preserves the complete substance layer in order", async ({
   page,
 }) => {
   await page.goto("/");
+
+  await expect(page.locator("main section")).toHaveCount(9);
 
   const positions = await page.evaluate(() => {
-    const team = document.querySelector("#team");
-    const portfolio = document.querySelector("#portfolio");
-
-    return {
-      teamTop: team?.getBoundingClientRect().top ?? null,
-      portfolioTop: portfolio?.getBoundingClientRect().top ?? null,
-    };
+    const ids = [
+      "top",
+      "edge",
+      "thesis",
+      "team",
+      "portfolio",
+      "help",
+      "proof",
+      "media",
+      "faq",
+      "contact",
+    ];
+    return ids.map((id) => ({
+      id,
+      top: document.querySelector(`#${id}`)?.getBoundingClientRect().top ?? null,
+    }));
   });
 
-  expect(positions.teamTop).not.toBeNull();
-  expect(positions.portfolioTop).not.toBeNull();
-  expect((positions.teamTop as number) < (positions.portfolioTop as number)).toBeTruthy();
+  expect(positions.every((position) => position.top !== null)).toBeTruthy();
+  expect(positions.map((position) => position.top)).toEqual(
+    positions
+      .map((position) => position.top)
+      .sort((left, right) => (left as number) - (right as number)),
+  );
+
+  await expect(page.locator("#edge")).toContainText("Technical conviction");
+  await expect(page.locator("#edge")).toContainText("Earned attention");
+  await expect(page.locator("#edge")).toContainText("Founder leverage");
+  await expect(page.locator("#thesis")).toContainText("Conviction before consensus.");
+  await expect(page.locator("#thesis")).not.toContainText("At the earliest stage");
+  await expect(page.locator("#help")).toContainText("Consequential decisions");
+  await expect(page.locator("#help")).toContainText(
+    "Conviction is only the beginning.",
+  );
+  await expect(page.locator("#help")).not.toContainText("perform helpfulness");
+  await expect(page.locator("#proof")).toContainText("Founder References");
+  await expect(page.locator("#proof")).toContainText(
+    "The useful measure of a venture partner is the work founders can name.",
+  );
+  await expect(page.locator("#faq")).toContainText("What's your check size?");
+
+  const edgeCopy = await page.locator("#edge").innerText();
+  expect(edgeCopy).not.toContain("$30M");
+  expect(edgeCopy).not.toContain("$100M");
+  expect(edgeCopy).not.toContain("$180M");
+  expect(edgeCopy).not.toContain("Firm AUM");
+  expect(edgeCopy).not.toContain("Pre-seed");
+  expect(edgeCopy).not.toContain("Growth & pre-IPO");
 });
 
-test("faq supports keyboard navigation and one-open-at-a-time behavior", async ({
+test("deep links reveal long sections instead of leaving a blank viewport", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/#portfolio");
 
-  const faq = page.locator("#faq");
-  await faq.scrollIntoViewIfNeeded();
-
-  const buttons = faq.getByRole("button");
-  await buttons.nth(0).focus();
-  await page.keyboard.press("ArrowDown");
-  await expect(buttons.nth(1)).toBeFocused();
-
-  const checkSizeButton = faq.getByRole("button", { name: "What's your check size?" });
-  await checkSizeButton.click();
-  await expect(checkSizeButton).toHaveAttribute("aria-expanded", "true");
-  await expect(faq).toContainText("$250K-$30M+");
-
-  await buttons.nth(0).click();
-  await expect(buttons.nth(0)).toHaveAttribute("aria-expanded", "true");
-  await expect(checkSizeButton).toHaveAttribute("aria-expanded", "false");
+  const revealWrapper = page.locator("#portfolio").locator("..");
+  await expect(revealWrapper).toHaveAttribute("data-revealed", "");
+  await expect(
+    page.getByRole("heading", { name: "Selected investments." }),
+  ).toBeVisible();
 });
 
 test("footer links to the legal page and the legal page renders key notices", async ({
@@ -91,261 +149,218 @@ test("footer links to the legal page and the legal page renders key notices", as
   );
 });
 
-test("portfolio company names link out to company websites in new tabs", async ({
+test("the full selected portfolio is visible and links out", async ({
   page,
 }) => {
   await page.goto("/");
 
   const portfolio = page.locator("#portfolio");
   await portfolio.scrollIntoViewIfNeeded();
+  await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
 
-  const companyLinkHrefs = await portfolio
-    .locator('a[target="_blank"]')
-    .evaluateAll((links) =>
-      Array.from(
-        new Set(
-          links
-            .map((link) => link.getAttribute("href"))
-            .filter((href): href is string => Boolean(href)),
-        ),
-      ),
-    );
-  expect(companyLinkHrefs).toHaveLength(45);
-
-  const firstGroup = portfolio.locator("[data-portfolio-group]").first();
-  await expect(firstGroup).toHaveAttribute(
-    "data-portfolio-group",
-    "frontier-infrastructure-defense",
-  );
-  await expect(firstGroup.getByRole("link", { name: "Cognition" })).toBeVisible();
-
-  const lastGroup = portfolio.locator("[data-portfolio-group]").last();
-  await expect(lastGroup).toHaveAttribute("data-portfolio-group", "outcomes");
-  await expect(lastGroup.getByRole("link", { name: "Metis" })).toBeVisible();
-  await expect(lastGroup.getByRole("link", { name: "SpaceX" })).toBeVisible();
-
-  const hasVisibleExternalLink = async (href: string) =>
-    portfolio.locator(`a[href="${href}"]`).evaluateAll((links) =>
-      links.some((link) => {
-        const element = link as HTMLElement;
-        const style = window.getComputedStyle(element);
-        return (
-          style.display !== "none" &&
-          style.visibility !== "hidden" &&
-          element.getAttribute("target") === "_blank"
-        );
-      }),
-    );
-
-  expect(await hasVisibleExternalLink("https://openai.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://www.spacex.com/")).toBeTruthy();
-  expect(
-    await hasVisibleExternalLink("https://www.nasdaq.com/market-activity/stocks/spcx"),
-  ).toBeTruthy();
-  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
-    "xAI Series D",
+  const investmentIndex = portfolio.locator("[data-portfolio-index]");
+  await expect(investmentIndex).toBeVisible();
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(51);
+  for (const company of [
+    "Aeon",
+    "Westmag",
+    "Orbital",
+    "Trajectory",
+    "Enigma",
+    "Melius",
+  ]) {
+    await expect(portfolio.getByRole("link", { name: company })).toBeVisible();
+  }
+  await expect(portfolio.getByRole("link", { name: "Metis" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Poke.com" })).toBeVisible();
+  await expect(portfolio.locator('[data-company="poke-com"]')).toContainText(
+    "acquired by Cognition in July 2026",
   );
   await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
     "$1.77T IPO",
   );
-  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
-    "$SPCX",
-  );
-  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
-    "IPO",
-  );
-  await expect(portfolio.locator('[data-company="spacex"]')).toContainText(
-    "Merged into SpaceX",
-  );
-  expect(await hasVisibleExternalLink("https://www.helionenergy.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://www.saronic.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://generalmatter.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://efference.ai/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://elevenlabs.io/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://usecreed.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://www.pensive.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://seshproducts.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://rail.io/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://khloudfoods.com/")).toBeTruthy();
-  expect(await hasVisibleExternalLink("https://www.eightsleep.com/")).toBeTruthy();
 
-  const hasVisibleExitStage = await portfolio
-    .locator('[data-stage-part="exit"], [data-stage-part="ipo"]')
-    .evaluateAll((stages) =>
-      stages.some((stage) => {
-        const element = stage as HTMLElement;
-        const style = window.getComputedStyle(element);
-        return (
-          style.display !== "none" &&
-          style.visibility !== "hidden" &&
-          element.classList.contains("text-green-700")
-        );
-      }),
-    );
-  expect(hasVisibleExitStage).toBeTruthy();
-
-  const sinceValuesByGroup = await portfolio.locator("[data-portfolio-group]").evaluateAll(
-    (groups) =>
+  const sinceValuesByGroup = await portfolio
+    .locator("[data-portfolio-group]")
+    .evaluateAll((groups) =>
       groups.map((group) =>
-        Array.from(group.querySelectorAll("[data-company]")).map((row) => {
-          const cells = row.querySelectorAll("span");
-          return Number(cells[cells.length - 1]?.textContent?.trim());
-        }),
+        Array.from(group.querySelectorAll("[data-company]")).map((row) =>
+          Number(row.querySelector("[data-partnered]")?.textContent?.trim()),
+        ),
       ),
-  );
+    );
 
   for (const sinceValues of sinceValuesByGroup) {
-    expect(sinceValues).toEqual([...sinceValues].sort((left, right) => left - right));
+    expect(sinceValues).toEqual(
+      [...sinceValues].sort((left, right) => left - right),
+    );
   }
 });
 
-test("platform section links out to summit footage in new tabs", async ({
+test("team biographies and every founder reference remain available", async ({
   page,
 }) => {
   await page.goto("/");
 
-  const help = page.locator("#help");
-  await help.scrollIntoViewIfNeeded();
-
-  const firstSummitLink = help.getByRole("link", {
-    name: "Anti Fund Summit",
-    exact: true,
-  });
-  const secondSummitLink = help.getByRole("link", {
-    name: "Another look at Anti Fund Summit",
-  });
-  const communityEventsLink = help.getByRole("link", {
-    name: "48 hours with Anti Fund",
-  });
-
-  await expect(firstSummitLink).toBeVisible();
-  await expect(firstSummitLink).toHaveAttribute(
-    "href",
-    "https://www.youtube.com/watch?v=BWx8F_YgVt4",
-  );
-  await expect(firstSummitLink).toHaveAttribute("target", "_blank");
-
-  await expect(secondSummitLink).toBeVisible();
-  await expect(secondSummitLink).toHaveAttribute(
-    "href",
-    "https://www.youtube.com/watch?v=PIH2C-dLLUc",
-  );
-  await expect(secondSummitLink).toHaveAttribute("target", "_blank");
-
-  await expect(communityEventsLink).toBeVisible();
-  await expect(communityEventsLink).toHaveAttribute(
-    "href",
-    "https://www.youtube.com/watch?v=4ND2P-HydlM",
-  );
-  await expect(communityEventsLink).toHaveAttribute("target", "_blank");
-});
-
-test("testimonial authors link to personal profiles when available", async ({
-  page,
-}) => {
-  await page.goto("/");
-
-  const proof = page.locator("#proof");
-  await proof.scrollIntoViewIfNeeded();
-
-  const rampAuthor = proof.getByRole("link", { name: "Eric Glyman" });
-  const samAuthor = proof.getByRole("link", { name: "Sam Blond" });
-  const robAuthor = proof.getByRole("link", { name: "Rob Skillington" });
-  const efferenceAuthor = proof.getByRole("link", { name: "Gianluca Bencomo" });
-  const gunAuthor = proof.getByText("Gun Choi", { exact: true });
-  const abrahamAuthor = proof.getByText("Abraham Othman", { exact: true });
-
-  await expect(rampAuthor).toBeVisible();
-  await expect(rampAuthor).toHaveAttribute("href", "https://x.com/eglyman");
-  await expect(rampAuthor).toHaveAttribute("target", "_blank");
-
-  await expect(samAuthor).toBeVisible();
-  await expect(samAuthor).toHaveAttribute("href", "https://x.com/samdblond");
-  await expect(samAuthor).toHaveAttribute("target", "_blank");
-
-  await expect(robAuthor).toBeVisible();
-  await expect(robAuthor).toHaveAttribute(
-    "href",
-    "https://www.linkedin.com/in/robskillington/",
-  );
-  await expect(robAuthor).toHaveAttribute("target", "_blank");
-
-  await expect(efferenceAuthor).toBeVisible();
-  await expect(efferenceAuthor).toHaveAttribute(
-    "href",
-    "https://x.com/gianlucabencomo",
-  );
-  await expect(efferenceAuthor).toHaveAttribute("target", "_blank");
-
-  await expect(gunAuthor).toBeVisible();
-  await expect(proof.getByRole("link", { name: "Gun Choi" })).toHaveCount(0);
-
-  await expect(abrahamAuthor).toBeVisible();
-  await expect(proof.getByRole("link", { name: "Abraham Othman" })).toHaveCount(0);
-});
-
-test("testimonial company names link out and clickable testimonial links are underlined", async ({
-  page,
-}) => {
-  await page.goto("/");
-
-  const proof = page.locator("#proof");
-  await proof.scrollIntoViewIfNeeded();
-
-  const rampCompany = proof.getByRole("link", { name: "Ramp" });
-  const linedotCompany = proof.getByRole("link", { name: "Linedot" });
-  const gunAuthor = proof.getByText("Gun Choi", { exact: true });
-
-  await expect(rampCompany).toBeVisible();
-  await expect(rampCompany).toHaveAttribute("href", "https://ramp.com/");
-  await expect(rampCompany).toHaveAttribute("target", "_blank");
-
-  await expect(linedotCompany).toBeVisible();
-  await expect(linedotCompany).toHaveAttribute("href", "https://www.linedot.ai/");
-  await expect(linedotCompany).toHaveAttribute("target", "_blank");
-
+  const team = page.locator("#team");
+  await team.scrollIntoViewIfNeeded();
   await expect(
-    proof.getByRole("link", { name: "Eric Glyman" }),
-  ).toHaveClass(/underline/);
-  await expect(rampCompany).toHaveClass(/underline/);
-  await expect(gunAuthor).not.toHaveClass(/underline/);
+    page.getByAltText("Geoff Woo, Jake Paul, and Logan Paul seated together."),
+  ).toBeVisible();
+
+  const roster = team.locator("[data-team-roster]");
+  await expect(roster).toBeVisible();
+  await expect(team.locator("[data-team-bios]")).toHaveCount(0);
+  await expect(roster.getByRole("link", { name: "US patents" })).toBeVisible();
+  await expect(
+    roster.getByRole("link", { name: "peer-reviewed science papers" }),
+  ).toBeVisible();
+  await expect(roster).toContainText(
+    "Steve Han previously invested at March Capital",
+  );
+
+  const proof = page.locator("#proof");
+  await proof.scrollIntoViewIfNeeded();
+  await expect(proof.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
+  await expect(proof.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
+
+  const featuredReference = proof.locator("[data-featured-reference]");
+  await expect(featuredReference).toBeVisible();
+  await expect(featuredReference).toContainText(
+    "Geoff has directly boosted our topline revenue",
+  );
+  await expect(featuredReference).toHaveCSS("background-color", "rgb(20, 20, 20)");
+
+  const moreReferences = proof.locator("[data-founder-references]");
+  await moreReferences.locator("summary").click();
+  await expect(moreReferences).toHaveAttribute("open", "");
+  await expect(moreReferences.getByRole("link", { name: "Sam Blond" })).toBeVisible();
+  await expect(moreReferences).toContainText("Abraham Othman");
+});
+
+test("the typography stays limited to the editorial and technical faces", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  const fonts = await page.evaluate(() => ({
+    body: window.getComputedStyle(document.body).fontFamily,
+    label: window.getComputedStyle(
+      document.querySelector(".paper-label") as HTMLElement,
+    ).fontFamily,
+  }));
+
+  expect(fonts.body).toContain("Source Serif 4");
+  expect(fonts.label).toContain("IBM Plex Mono");
+});
+
+test("media retains both features and the complete archive", async ({ page }) => {
+  await page.goto("/");
+
+  const media = page.locator("#media");
+  await media.scrollIntoViewIfNeeded();
+  await expect(
+    media.getByRole("heading", { name: "In conversation. On the ground." }),
+  ).toBeVisible();
+  await expect(media.locator("article")).toHaveCount(2);
+  await expect(
+    media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul on The a16z Show."),
+  ).toBeVisible();
+  await expect(
+    media.getByAltText("Geoff Woo, Palmer Luckey, and Jake Paul at Anduril."),
+  ).toBeVisible();
+
+  const expectedLinks = [
+    [
+      "Jake Paul & Geoff Woo on The a16z Show",
+      "https://www.youtube.com/watch?v=yfafpyhB-8E",
+    ],
+    [
+      "Inside Anduril with Palmer Luckey",
+      "https://www.youtube.com/watch?v=pLgkMr4axwo",
+    ],
+    ["Anti Fund Summit", "https://www.youtube.com/watch?v=BWx8F_YgVt4"],
+    [
+      "Another look at Anti Fund Summit",
+      "https://www.youtube.com/watch?v=PIH2C-dLLUc",
+    ],
+    ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
+    [
+      "The Profile: Jake and Logan Paul's investment plan",
+      "https://www.readtheprofile.com/p/jake-paul-logan-paul-billionaire-plan-investment",
+    ],
+  ] as const;
+
+  for (const [name, href] of expectedLinks) {
+    const link = media.getByRole("link", { name, exact: true });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", href);
+    await expect(link).toHaveAttribute("target", "_blank");
+  }
+});
+
+test("faq keeps investor contact behind deliberate disclosure", async ({ page }) => {
+  await page.goto("/");
+
+  const faq = page.locator("#faq");
+  await faq.scrollIntoViewIfNeeded();
+
+  const investorButton = faq.getByRole("button", {
+    name: "How can I invest in the fund?",
+  });
+  const investorPanel = faq.locator("#faq-panel-5");
+  await expect(investorButton).toHaveAttribute("aria-expanded", "false");
+  await expect(investorPanel).toHaveAttribute("aria-hidden", "true");
+  await investorButton.click();
+  await expect(investorButton).toHaveAttribute("aria-expanded", "true");
+  await expect(investorPanel).toHaveAttribute("aria-hidden", "false");
+  await expect(faq).toContainText("ir@antifund.com");
+
+  const buttons = faq.getByRole("button");
+  await buttons.nth(0).focus();
+  await page.keyboard.press("ArrowDown");
+  await expect(buttons.nth(1)).toBeFocused();
 });
 
 test.describe("reduced motion and metadata", () => {
-  test.use({ reducedMotion: "reduce" });
-
-  test("revealed content stays visible and metadata assets resolve", async ({
+  test("all substance stays visible and metadata assets resolve", async ({
     page,
     request,
   }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
 
-    await expect(page.getByText("Investment Thesis")).toBeVisible();
-    await expect(page.getByText("Select Investments")).toBeVisible();
-    await expect(page.getByText("Founder References")).toBeVisible();
-    await expect(page.locator("#contact")).toBeVisible();
-    await expect(
-      page.getByAltText("Geoffrey Woo, Jake Paul, and Logan Paul seated together."),
-    ).toBeVisible();
-
-    const patentsLink = page.locator('#team a[href*="patents.google.com"]');
-    const papersLink = page.locator('#team a[href*="scholar.google.com"]');
-    await expect(patentsLink).toBeVisible();
-    await expect(patentsLink).toHaveAttribute("target", "_blank");
-    await expect(papersLink).toBeVisible();
-    await expect(papersLink).toHaveAttribute("target", "_blank");
-
-    const footer = page.locator("footer");
-    await expect(footer).toContainText("Legal");
+    for (const id of [
+      "edge",
+      "thesis",
+      "portfolio",
+      "help",
+      "team",
+      "proof",
+      "media",
+      "faq",
+      "contact",
+    ]) {
+      await expect(page.locator(`#${id}`)).toBeVisible();
+    }
 
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
       /opengraph-image/,
     );
-    await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
-      "href",
-      /icon/,
-    );
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", /icon/);
+
+    expect(
+      await page.evaluate(() =>
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      ),
+    ).toBeTruthy();
+
+    const portfolioLogo = page.locator(".portfolio-logo").first();
+    await expect(portfolioLogo).toHaveCSS("transition-duration", "0s");
+    await expect(portfolioLogo).toHaveCSS("transform", "none");
 
     const [ogResponse, twitterResponse, iconResponse] = await Promise.all([
       request.get("/opengraph-image.jpg"),

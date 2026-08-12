@@ -1,0 +1,311 @@
+{
+  "logos": [
+    {
+      "name": "Ramp",
+      "website": "https://ramp.com/",
+      "source": "https://ramp.com/apple-touch-icon.png",
+      "file": "/portfolio-logos/ramp.png"
+    },
+    {
+      "name": "Chronosphere",
+      "website": "https://chronosphere.io/",
+      "source": "https://chronosphere.io/wp-content/uploads/2023/10/cropped-favicon-180x180.png",
+      "file": "/portfolio-logos/chronosphere.png"
+    },
+    {
+      "name": "Aerodome",
+      "website": "https://www.aerodome.com/",
+      "source": "https://cdn.prod.website-files.com/6821cc9ecc966b7f252b372e/69de39fd8544c7e90b3a7f09_256.png",
+      "file": "/portfolio-logos/aerodome.png"
+    },
+    {
+      "name": "Rail",
+      "website": "https://rail.io/",
+      "source": "https://docs.rail.io/assets/favicon.3e3a585988bb0ae8ce7ebea0ea3e2a346b36bf87ae1a2ab1c23d1604f44d0a8e.8a5edab2.png",
+      "file": "/portfolio-logos/rail.png"
+    },
+    {
+      "name": "Metis",
+      "website": "https://www.withmetis.ai/",
+      "source": "https://cdn.prod.website-files.com/69375fb54b725651291ff5e7/693936a57f7f28d4d81ed524_Webclip.png",
+      "file": "/portfolio-logos/metis.png"
+    },
+    {
+      "name": "OpenAI",
+      "website": "https://openai.com/",
+      "source": "https://images.ctfassets.net/kftzwdyauwt9/3hUGLn3ypllZ0oa01qOYVq/28e8188e6f11b84c3e876569d492734f/Blossom_Light.svg?q=90&w=3840",
+      "file": "/portfolio-logos/openai.png"
+    },
+    {
+      "name": "SpaceX",
+      "website": "https://www.spacex.com/",
+      "source": "https://www.spacex.com/assets/favicon-spacex.ico",
+      "file": "/portfolio-logos/spacex.png"
+    },
+    {
+      "name": "Anduril",
+      "website": "https://www.anduril.com/",
+      "source": "https://www.anduril.com/assets/favicon/apple-touch-icon.xxx1TpF2gg.png",
+      "file": "/portfolio-logos/anduril.png"
+    },
+    {
+      "name": "Helion",
+      "website": "https://www.helionenergy.com/",
+      "source": "https://cdn.prod.website-files.com/6995dc80c8af0e2cfe2a7e86/699cba487f9a4b1d3d422e43_helion_transparent_webclip_32x32%202.png",
+      "file": "/portfolio-logos/helion.png"
+    },
+    {
+      "name": "Saronic",
+      "website": "https://www.saronic.com/",
+      "source": "https://www.saronic.com/icon.png?74e253651fc7b0d2",
+      "file": "/portfolio-logos/saronic.png"
+    },
+    {
+      "name": "General Matter",
+      "website": "https://generalmatter.com/",
+      "source": "https://generalmatter.com/apple-touch-icon.png",
+      "file": "/portfolio-logos/general-matter.png"
+    },
+    {
+      "name": "General Galactic",
+      "website": "https://www.gengalactic.com/",
+      "source": "https://cdn.prod.website-files.com/684655668a5f31ba4f1f451e/6849d395b74e0aa2dd03450c_weblclip_GG.png",
+      "file": "/portfolio-logos/general-galactic.png"
+    },
+    {
+      "name": "Aeon",
+      "website": "https://www.aeonindustrial.com/",
+      "source": "https://www.aeonindustrial.com/favicon.ico",
+      "file": "/portfolio-logos/aeon.png"
+    },
+    {
+      "name": "Westmag",
+      "website": "https://www.westmag.com/",
+      "source": "https://www.westmag.com/apple-icon?0f7cdd02db0bb630",
+      "file": "/portfolio-logos/westmag.png"
+    },
+    {
+      "name": "Orbital",
+      "website": "https://orbital.inc/",
+      "source": "https://orbital.inc/images/logo_white.png",
+      "file": "/portfolio-logos/orbital.png"
+    },
+    {
+      "name": "Trajectory",
+      "website": "https://trajectory.ai/",
+      "source": "https://framerusercontent.com/images/Gpbqdl4Q22EOotcAq1jwB3irtSs.svg",
+      "file": "/portfolio-logos/trajectory.png"
+    },
+    {
+      "name": "Enigma",
+      "website": "https://enigma.inc/",
+      "source": "https://enigma.inc/favicon/apple-touch-icon-180.png",
+      "file": "/portfolio-logos/enigma.png"
+    },
+    {
+      "name": "Melius",
+      "website": "https://www.melius.com/",
+      "source": "https://www.melius.com/icon.png?icon.13uenq14_tdxn.png?dpl=dpl_HDM6uo4z2jBKEKCRm8619J9Sdjnx",
+      "file": "/portfolio-logos/melius.png"
+    },
+    {
+      "name": "Efference",
+      "website": "https://efference.ai/",
+      "source": "https://efference.ai/assets/favicon.png",
+      "file": "/portfolio-logos/efference.png"
+    },
+    {
+      "name": "Erebor",
+      "website": "https://erebor.bank/",
+      "source": "https://erebor.bank/apple-touch-icon.png",
+      "file": "/portfolio-logos/erebor.png"
+    },
+    {
+      "name": "Monaco",
+      "website": "https://www.monaco.com/",
+      "source": "https://www.monaco.com/apple-touch-icon.png",
+      "file": "/portfolio-logos/monaco.png"
+    },
+    {
+      "name": "ElevenLabs",
+      "website": "https://elevenlabs.io/",
+      "source": "https://elevenlabs.io/apple-icon.png?6592732ab34b1d42",
+      "file": "/portfolio-logos/elevenlabs.png"
+    },
+    {
+      "name": "Cognition",
+      "website": "https://cognition.ai/",
+      "source": "https://cognition.com/apple-icon.png?apple-icon.0w.tojn~2x_cp.png?dpl=dpl_ErKAQv3Lyp3cJu1peftKokc7Uge2",
+      "file": "/portfolio-logos/cognition.png"
+    },
+    {
+      "name": "Etched",
+      "website": "https://www.etched.com/",
+      "source": "https://www.etched.com/favicon.png",
+      "file": "/portfolio-logos/etched.png"
+    },
+    {
+      "name": "Modal",
+      "website": "https://modal.com/",
+      "source": "https://modal.com/assets/favicon.svg",
+      "file": "/portfolio-logos/modal.png"
+    },
+    {
+      "name": "Lighter",
+      "website": "https://lighter.xyz/",
+      "source": "https://framerusercontent.com/images/uTdLWjhUvfSiBaN37kYNLsUu4.png",
+      "file": "/portfolio-logos/lighter.png"
+    },
+    {
+      "name": "Polymarket",
+      "website": "https://polymarket.com/",
+      "source": "https://polymarket.com/icons/apple-touch-icon.png",
+      "file": "/portfolio-logos/polymarket.png"
+    },
+    {
+      "name": "Kela Systems",
+      "website": "https://kelasys.com/",
+      "source": "https://kela.io/media/kela-symbol-black.png",
+      "file": "/portfolio-logos/kela-systems.png"
+    },
+    {
+      "name": "Archive",
+      "website": "https://archive.com/",
+      "source": "https://cdn.prod.website-files.com/655df4c2463edaf5ae7ad4bf/656782ac26215a01662e4685_256_256%20(1).png",
+      "file": "/portfolio-logos/archive.png"
+    },
+    {
+      "name": "Creed",
+      "website": "https://usecreed.com/",
+      "source": "https://usecreed.com/images/logo_simplified.png",
+      "file": "/portfolio-logos/creed.png"
+    },
+    {
+      "name": "Pensive",
+      "website": "https://www.pensive.com/",
+      "source": "https://www.pensive.com/favicon.png",
+      "file": "/portfolio-logos/pensive.png"
+    },
+    {
+      "name": "Merge",
+      "website": "https://www.merge.io/",
+      "source": "https://www.merge.io/favicon.ico",
+      "file": "/portfolio-logos/merge.png"
+    },
+    {
+      "name": "Physical Intelligence",
+      "website": "https://www.physicalintelligence.company/",
+      "source": "https://www.pi.website/icon.png",
+      "file": "/portfolio-logos/physical-intelligence.png"
+    },
+    {
+      "name": "WithCoverage",
+      "website": "https://withcoverage.com/",
+      "source": "https://www.withcoverage.com/favicon-light.png",
+      "file": "/portfolio-logos/withcoverage.png"
+    },
+    {
+      "name": "Cluely",
+      "website": "https://cluely.com/",
+      "source": "https://cluely.com/favicon/light/favicon-512x512.png",
+      "file": "/portfolio-logos/cluely.png"
+    },
+    {
+      "name": "Poke.com",
+      "website": "https://poke.com/",
+      "source": "https://poke.com/icons/poke-512.png",
+      "file": "/portfolio-logos/poke-com.png"
+    },
+    {
+      "name": "Natural",
+      "website": "https://www.natural.co/",
+      "source": "https://www.natural.com/favicon-512.png",
+      "file": "/portfolio-logos/natural.png"
+    },
+    {
+      "name": "Betr",
+      "website": "https://betr.app/",
+      "source": "https://cdn.prod.website-files.com/62ed9b0abe9f7f955b2c20a8/62ed9b0abe9f7f5a402c210b_betr%20favicon-svg.png",
+      "file": "/portfolio-logos/betr.png"
+    },
+    {
+      "name": "W",
+      "website": "https://getw.com/",
+      "source": "https://getw.com/cdn/shop/files/W_FAVICON_v2.jpg?crop=center&height=32&v=1750337638&width=32",
+      "file": "/portfolio-logos/w.png"
+    },
+    {
+      "name": "Passes",
+      "website": "https://www.passes.com/",
+      "source": "https://www.passes.com/assets/favicon/favicon-black-32x32.png",
+      "file": "/portfolio-logos/passes.png"
+    },
+    {
+      "name": "Sesh",
+      "website": "https://seshproducts.com/",
+      "source": "https://seshproducts.com/cdn/shop/files/fev-icon.png?v=1773868515&width=32",
+      "file": "/portfolio-logos/sesh.png"
+    },
+    {
+      "name": "Ketone-IQ",
+      "website": "https://ketone.com/",
+      "source": "https://ketone.com/cdn/shop/files/Favicon_29c3c936-7875-44bb-8e93-19dc7fa45c44.png?crop=center&height=32&v=1764152783&width=32",
+      "file": "/portfolio-logos/ketone-iq.png"
+    },
+    {
+      "name": "SipMargs",
+      "website": "https://www.sipmargs.com/",
+      "source": "https://www.sipmargs.com/cdn/shop/files/yellow_logo.png?v=1740422581&width=420",
+      "file": "/portfolio-logos/sipmargs.png"
+    },
+    {
+      "name": "Khloud",
+      "website": "https://khloudfoods.com/",
+      "source": "https://khloudfoods.com/cdn/shop/files/Khloud_Icons_KhloudDust_Outlined-02_1.svg?crop=center&height=180&v=1745863385&width=180",
+      "file": "/portfolio-logos/khloud.png"
+    },
+    {
+      "name": "Happy Dad",
+      "website": "https://happydad.com/",
+      "source": "https://happydad.com/cdn/shop/files/logo2024.svg?v=1709329390&width=180",
+      "file": "/portfolio-logos/happy-dad.png"
+    },
+    {
+      "name": "Wander",
+      "website": "https://www.wander.com/",
+      "source": "https://www.wander.com/apple-touch-icon.png",
+      "file": "/portfolio-logos/wander.png"
+    },
+    {
+      "name": "Oats Overnight",
+      "website": "https://www.oatsovernight.com/",
+      "source": "https://oatsovernight.com/cdn/shop/t/520/assets/static.apple-touch-icon_small.png?v=94955160578668621301784922698",
+      "file": "/portfolio-logos/oats-overnight.png"
+    },
+    {
+      "name": "Palm Tree Crew",
+      "website": "https://www.palmtreecrew.com/",
+      "source": "https://palmtreecrew.com/wp-content/uploads/2025/05/cropped-Favicon-2-180x180.png",
+      "file": "/portfolio-logos/palm-tree-crew.png"
+    },
+    {
+      "name": "Kings League",
+      "website": "https://kingsleague.pro/",
+      "source": "https://kingsleague.pro/img/favicon-kl.png",
+      "file": "/portfolio-logos/kings-league.png"
+    },
+    {
+      "name": "Olipop",
+      "website": "https://drinkolipop.com/",
+      "source": "https://drinkolipop.com/cdn/shop/files/favicon_32x32.png?v=1613174610",
+      "file": "/portfolio-logos/olipop.png"
+    },
+    {
+      "name": "Eight Sleep",
+      "website": "https://www.eightsleep.com/",
+      "source": "https://www.eightsleep.com/apple-touch-icon.png",
+      "file": "/portfolio-logos/eight-sleep.png"
+    }
+  ],
+  "failures": []
+}

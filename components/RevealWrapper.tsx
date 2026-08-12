@@ -55,7 +55,7 @@ export default function RevealWrapper({
           }
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.01 },
     );
 
     observer.observe(node);

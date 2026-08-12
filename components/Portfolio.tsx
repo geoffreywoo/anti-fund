@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
 type Company = {
@@ -17,7 +18,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Ramp",
     url: "https://ramp.com/",
-    description: "Easy-to-use corporate cards.",
+    description: "Corporate cards and finance automation.",
     stage: "Seed / Series B / Series E",
     partnered: "2019",
     personal: true,
@@ -25,7 +26,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Chronosphere",
     url: "https://chronosphere.io/",
-    description: "Observability platform. Acquired by Palo Alto Networks for $3.35B.",
+    description: "Cloud observability platform; acquired by Palo Alto Networks for $3.35B.",
     stage: "Seed / Exit",
     partnered: "2019",
     personal: true,
@@ -33,15 +34,14 @@ const softwareCompanies: Company[] = [
   {
     name: "Aerodome",
     url: "https://www.aerodome.com/",
-    description: "Public safety drones and air support acquired by Flock Safety.",
+    description: "Public-safety drone infrastructure; acquired by Flock Safety.",
     stage: "Seed / Exit",
     partnered: "2023",
   },
   {
     name: "Rail",
     url: "https://rail.io/",
-    description:
-      "Stablecoin payments infrastructure. Seed investment in June 2022. Acquired by Ripple for $200M.",
+    description: "Stablecoin payments infrastructure; acquired by Ripple for $200M.",
     stage: "Seed / Exit",
     partnered: "2022",
   },
@@ -49,14 +49,14 @@ const softwareCompanies: Company[] = [
     name: "Metis",
     url: "https://www.withmetis.ai/",
     description:
-      "Post-training and continual-learning layer for enterprise agents. Acquired by DoorDash in March 2026.",
+      "Continual-learning infrastructure for enterprise agents; acquired by DoorDash in March 2026.",
     stage: "Seed / Exit",
     partnered: "2025",
   },
   {
     name: "OpenAI",
     url: "https://openai.com/",
-    description: "Building safe and beneficial AGI.",
+    description: "Frontier AI research and products.",
     stage: "Growth",
     partnered: "2025",
   },
@@ -64,7 +64,7 @@ const softwareCompanies: Company[] = [
     name: "SpaceX",
     url: "https://www.spacex.com/",
     description:
-      "xAI Series D position merged into SpaceX, with additional ownership purchased in the $1.77T IPO.",
+      "Space and launch infrastructure, including the former xAI position and additional ownership purchased in the $1.77T IPO.",
     stage: "IPO / xAI Series D / Merged into SpaceX",
     partnered: "2026",
     ticker: {
@@ -75,14 +75,14 @@ const softwareCompanies: Company[] = [
   {
     name: "Anduril",
     url: "https://www.anduril.com/",
-    description: "Transforming defense capabilities with advanced technology.",
+    description: "Autonomous defense systems and manufacturing.",
     stage: "Series E",
     partnered: "2022",
   },
   {
     name: "Helion",
     url: "https://www.helionenergy.com/",
-    description: "Commercial fusion energy company building zero-carbon power.",
+    description: "Commercial fusion energy.",
     stage: "Series G",
     partnered: "2026",
   },
@@ -101,9 +101,51 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "General Galactic",
+    url: "https://www.gengalactic.com/",
+    description: "Spacecraft and propulsion for orbital logistics.",
+    stage: "Seed",
+    partnered: "2026",
+  },
+  {
+    name: "Aeon",
+    url: "https://www.aeonindustrial.com/",
+    description: "Autonomous tactical systems for U.S. and allied defense.",
+    stage: "Seed",
+    partnered: "2026",
+  },
+  {
+    name: "Westmag",
+    url: "https://www.westmag.com/",
+    description: "American-made motors and actuators for drones and robots.",
+    stage: "Seed",
+    partnered: "2025",
+  },
+  {
+    name: "Orbital",
+    url: "https://orbital.inc/",
+    description: "AI compute infrastructure in low Earth orbit.",
+    stage: "Pre-Seed",
+    partnered: "2026",
+  },
+  {
+    name: "Trajectory",
+    url: "https://trajectory.ai/",
+    description: "Continual-learning infrastructure for production AI.",
+    stage: "Seed",
+    partnered: "2025",
+  },
+  {
+    name: "Enigma",
+    url: "https://enigma.inc/",
+    description: "AI models and interfaces for intuitive human-robot interaction.",
+    stage: "Seed",
+    partnered: "2026",
+  },
+  {
     name: "Efference",
     url: "https://efference.ai/",
-    description: "Integrated perception and compute stack for robotics.",
+    description: "Perception and compute infrastructure for robotics.",
     stage: "First Investor",
     partnered: "2025",
   },
@@ -117,7 +159,7 @@ const softwareCompanies: Company[] = [
   {
     name: "Monaco",
     url: "https://www.monaco.com/",
-    description: "AI-native sales platform for startups.",
+    description: "AI-native sales infrastructure for startups.",
     stage: "Series A / Series B",
     partnered: "2026",
   },
@@ -131,106 +173,112 @@ const softwareCompanies: Company[] = [
   {
     name: "Cognition",
     url: "https://cognition.ai/",
-    description: "An applied AI lab building end-to-end software agents.",
+    description: "Applied AI systems and end-to-end software agents.",
     stage: "Series B / Series C / Series D",
     partnered: "2024",
   },
   {
     name: "Etched",
     url: "https://www.etched.com/",
-    description: "AI chips purpose-built for transformer inference.",
+    description: "Purpose-built chips for transformer inference.",
     stage: "Series B",
     partnered: "2025",
   },
   {
     name: "Modal",
     url: "https://modal.com/",
-    description: "Cloud infrastructure for running AI and data workloads.",
+    description: "Cloud infrastructure for AI and data workloads.",
     stage: "Series B / Series C",
     partnered: "2025",
   },
   {
     name: "Lighter",
     url: "https://lighter.xyz/",
-    description:
-      "A fully verifiable decentralized exchange built with custom ZK infrastructure, inheriting Ethereum security and composability.",
+    description: "Verifiable exchange infrastructure built with custom ZK systems.",
     stage: "Series B",
     partnered: "2025",
   },
   {
     name: "Polymarket",
     url: "https://polymarket.com/",
-    description: "The world's largest prediction market.",
+    description: "Global prediction-market platform.",
     stage: "Series A",
     partnered: "2021",
   },
   {
     name: "Kela Systems",
     url: "https://kelasys.com/",
-    description: "Defense technology for modern military operations.",
+    description: "Defense systems for modern military operations.",
     stage: "Series A",
     partnered: "2024",
   },
   {
     name: "Archive",
     url: "https://archive.com/",
-    description: "End-to-end creator marketing AI.",
+    description: "AI-powered creator marketing infrastructure.",
     stage: "Seed / Series A",
     partnered: "2022",
   },
   {
     name: "Creed",
     url: "https://usecreed.com/",
-    description: "AI-enabled Bible study and prayer companion app.",
+    description: "AI-guided Bible study and prayer.",
     stage: "Seed",
     partnered: "2025",
   },
   {
     name: "Pensive",
     url: "https://www.pensive.com/",
-    description: "AI grading and tutoring platform for higher education.",
+    description: "AI grading and tutoring for higher education.",
     stage: "Seed",
     partnered: "2025",
   },
   {
     name: "Merge",
     url: "https://www.merge.io/",
-    description: "Brain-computer interface.",
+    description: "Brain-computer interfaces.",
     stage: "Seed",
     partnered: "2025",
   },
   {
     name: "Physical Intelligence",
     url: "https://www.physicalintelligence.company/",
-    description: "Bringing general-purpose AI into the physical world.",
+    description: "General-purpose AI for the physical world.",
     stage: "Seed",
     partnered: "2024",
   },
   {
     name: "WithCoverage",
     url: "https://withcoverage.com/",
-    description: "Risk management and insurance infrastructure for ambitious businesses.",
+    description: "Insurance and risk infrastructure for ambitious businesses.",
     stage: "Seed",
     partnered: "2024",
   },
   {
     name: "Cluely",
     url: "https://cluely.com/",
-    description: "AI desktop assistant.",
+    description: "Real-time AI desktop assistance.",
     stage: "Seed",
     partnered: "2025",
   },
   {
-    name: "Interaction",
+    name: "Poke.com",
     url: "https://poke.com/",
-    description: "Consumer AI and social products at Poke.com.",
+    description: "Personal AI agent acquired by Cognition in July 2026.",
+    stage: "Seed / Exit",
+    partnered: "2025",
+  },
+  {
+    name: "Melius",
+    url: "https://www.melius.com/",
+    description: "Creative workspace for AI agents and generative models.",
     stage: "Seed",
     partnered: "2025",
   },
   {
     name: "Natural",
     url: "https://www.natural.co/",
-    description: "Payments for AI agents.",
+    description: "Payments infrastructure for AI agents.",
     stage: "Seed",
     partnered: "2025",
   },
@@ -240,21 +288,21 @@ const consumerCompanies: Company[] = [
   {
     name: "Betr",
     url: "https://betr.app/",
-    description: "Sports betting, fantasy, and media company built for modern fans.",
+    description: "Sports betting, fantasy, and media.",
     stage: "Incubation",
     partnered: "2021",
   },
   {
     name: "W",
     url: "https://getw.com/",
-    description: "Men's personal care brand built by Jake Paul.",
+    description: "Men's personal care.",
     stage: "Incubation",
     partnered: "2024",
   },
   {
     name: "Passes",
     url: "https://www.passes.com/",
-    description: "Creator commerce platform.",
+    description: "Creator commerce infrastructure.",
     stage: "Seed",
     partnered: "2022",
   },
@@ -268,28 +316,28 @@ const consumerCompanies: Company[] = [
   {
     name: "Ketone-IQ",
     url: "https://ketone.com/",
-    description: "Energy from ketones, not sugar or caffeine.",
+    description: "Ketone-based energy and performance products.",
     stage: "Seed",
     partnered: "2022",
   },
   {
     name: "SipMargs",
     url: "https://www.sipmargs.com/",
-    description: "Sparkling margarita RTD with Alix Earle.",
+    description: "Sparkling margarita ready-to-drink beverages.",
     stage: "Seed",
     partnered: "2024",
   },
   {
     name: "Khloud",
     url: "https://khloudfoods.com/",
-    description: "Khloe Kardashian's protein popcorn.",
+    description: "High-protein popcorn.",
     stage: "Seed",
     partnered: "2025",
   },
   {
     name: "Happy Dad",
     url: "https://happydad.com/",
-    description: "Hard seltzer and iced tea brand built with Nelk.",
+    description: "Hard seltzer and ready-to-drink beverages.",
     stage: "Seed+",
     partnered: "2025",
   },
@@ -310,7 +358,7 @@ const consumerCompanies: Company[] = [
   {
     name: "Palm Tree Crew",
     url: "https://www.palmtreecrew.com/",
-    description: "Live entertainment and tropical lifestyle.",
+    description: "Live entertainment and lifestyle platform.",
     stage: "Series A",
     partnered: "2023",
   },
@@ -324,14 +372,14 @@ const consumerCompanies: Company[] = [
   {
     name: "Olipop",
     url: "https://drinkolipop.com/",
-    description: "Healthy prebiotic soda.",
+    description: "Prebiotic soda.",
     stage: "Series B",
     partnered: "2022",
   },
   {
     name: "Eight Sleep",
     url: "https://www.eightsleep.com/",
-    description: "Smart beds.",
+    description: "Temperature-controlled sleep systems.",
     stage: "Seed",
     partnered: "2021",
     personal: true,
@@ -340,13 +388,19 @@ const consumerCompanies: Company[] = [
 
 const portfolioGroupSpecs = [
   {
-    title: "Frontier Infrastructure & Defense",
+    title: "AI, Infrastructure & National Resilience",
     names: [
       "OpenAI",
       "Anduril",
       "Helion",
       "Saronic",
       "General Matter",
+      "General Galactic",
+      "Aeon",
+      "Westmag",
+      "Orbital",
+      "Trajectory",
+      "Enigma",
       "Cognition",
       "Etched",
       "Modal",
@@ -368,7 +422,7 @@ const portfolioGroupSpecs = [
       "Archive",
       "WithCoverage",
       "Cluely",
-      "Interaction",
+      "Melius",
       "Natural",
       "Creed",
       "Pensive",
@@ -394,27 +448,10 @@ const portfolioGroupSpecs = [
     ],
   },
   {
-    title: "Outcomes",
-    names: ["Chronosphere", "Rail", "Aerodome", "Metis", "SpaceX"],
+    title: "Realized & Public Outcomes",
+    names: ["Chronosphere", "Rail", "Aerodome", "Metis", "Poke.com", "SpaceX"],
   },
 ] as const;
-
-const proofPoints = [
-  {
-    title: "Early conviction",
-    description: "Ownership before a category has a clean institutional label.",
-  },
-  {
-    title: "Growth access",
-    description:
-      "Selective allocation in rounds where reputation, speed, and judgment matter.",
-  },
-  {
-    title: "Real outcomes",
-    description:
-      "Portfolio companies acquired by Palo Alto Networks, Ripple, DoorDash, and Flock Safety.",
-  },
-];
 
 function toDataKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -482,12 +519,71 @@ function getStageRank(stage: string) {
   return Math.max(...stage.split("/").map((part) => getStagePartRank(part)));
 }
 
-function getSortedStageParts(stage: string) {
-  return stage
+function formatSeriesLabel(letters: string[]) {
+  const sortedLetters = [...new Set(letters)].sort();
+
+  if (sortedLetters.length === 1) {
+    return `Series ${sortedLetters[0]}`;
+  }
+
+  const isContiguous = sortedLetters.every(
+    (letter, index) =>
+      index === 0 ||
+      letter.charCodeAt(0) === sortedLetters[index - 1].charCodeAt(0) + 1,
+  );
+
+  if (isContiguous) {
+    return `Series ${sortedLetters[0]}-${sortedLetters[sortedLetters.length - 1]}`;
+  }
+
+  if (sortedLetters.length === 2) {
+    return `Series ${sortedLetters[0]} & ${sortedLetters[1]}`;
+  }
+
+  return `Series ${sortedLetters.slice(0, -1).join(", ")} & ${
+    sortedLetters[sortedLetters.length - 1]
+  }`;
+}
+
+function formatStageLabel(stage: string) {
+  if (stage === "IPO / xAI Series D / Merged into SpaceX") {
+    return "xAI Series D \u00B7 SpaceX merger \u00B7 IPO";
+  }
+
+  const parts = stage
     .split("/")
     .map((part) => part.trim())
-    .filter(Boolean)
-    .sort((left, right) => getStagePartRank(right) - getStagePartRank(left));
+    .filter(Boolean);
+  const seriesLetters = parts
+    .map((part) => part.match(/^Series ([A-Z])$/i)?.[1]?.toUpperCase())
+    .filter((letter): letter is string => Boolean(letter));
+  const seriesLabel = seriesLetters.length
+    ? formatSeriesLabel(seriesLetters)
+    : null;
+  let hasInsertedSeries = false;
+
+  return parts
+    .flatMap((part) => {
+      if (/^Series [A-Z]$/i.test(part)) {
+        if (hasInsertedSeries || !seriesLabel) {
+          return [];
+        }
+
+        hasInsertedSeries = true;
+        return [seriesLabel];
+      }
+
+      if (part.toLowerCase() === "exit") {
+        return ["Acquired"];
+      }
+
+      if (part.toLowerCase().includes("merged into spacex")) {
+        return ["SpaceX merger"];
+      }
+
+      return [part];
+    })
+    .join(" \u00B7 ");
 }
 
 function sortCompanies(companies: Company[]) {
@@ -521,40 +617,39 @@ const portfolioGroups = portfolioGroupSpecs.map((group) => ({
 }));
 
 function StageLabel({ stage }: { stage: string }) {
-  const stageParts = getSortedStageParts(stage);
+  const isLiquidityEvent = /exit|ipo|merged/i.test(stage);
 
   return (
-    <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-      {stageParts.map((part, index) => {
-        const stageKey = toDataKey(part);
-        const isLiquidityEvent =
-          stageKey === "ipo" ||
-          stageKey === "exit" ||
-          part.toLowerCase().includes("exit") ||
-          part.toLowerCase().includes("merged");
+    <span
+      data-stage-part={toDataKey(stage)}
+      className={isLiquidityEvent ? "text-green-700" : "text-ink-muted"}
+    >
+      {formatStageLabel(stage)}
+    </span>
+  );
+}
 
-        return (
-          <span
-            key={`${part}-${index}`}
-            className="inline-flex items-center gap-1"
-          >
-            {index > 0 ? (
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-                /
-              </span>
-            ) : null}
-            <span
-              data-stage-part={stageKey}
-              className={`font-mono text-[11px] uppercase tracking-[0.14em] ${
-                isLiquidityEvent ? "text-green-700" : "text-ink-muted"
-              }`}
-            >
-              {part}
-            </span>
-          </span>
-        );
-      })}
-    </div>
+function CompanyLogo({ company }: { company: Company }) {
+  const needsDarkSurface = ["Creed", "Natural", "Orbital", "Rail"].includes(
+    company.name,
+  );
+
+  return (
+    <span
+      className={`portfolio-logo relative flex size-[1.35rem] shrink-0 items-center justify-center overflow-hidden transition-transform duration-200 ease-out md:size-7 ${
+        needsDarkSurface ? "rounded-[3px] bg-ink p-1" : ""
+      }`}
+    >
+      <Image
+        src={`/portfolio-logos/${toDataKey(company.name)}.png`}
+        alt=""
+        width={28}
+        height={28}
+        unoptimized
+        data-portfolio-logo={toDataKey(company.name)}
+        className="size-full object-contain"
+      />
+    </span>
   );
 }
 
@@ -587,63 +682,49 @@ function CompanyRow({
   return (
     <div
       data-company={toDataKey(company.name)}
-      className="portfolio-row border-b border-line py-4"
-      style={{ "--row-delay": `${index * 50}ms` } as CSSProperties}
+      className="group portfolio-row -mx-1 border-b border-line px-1 py-3.5 transition-colors duration-200 ease-out hover:bg-paper-alt/60 focus-within:bg-paper-alt/60 sm:py-4 lg:mx-0 lg:px-1"
+      style={{
+        "--row-delay": `${Math.min(index * 24, 240)}ms`,
+      } as CSSProperties}
     >
-      <div className="space-y-3 md:hidden">
-        <div className="flex items-start gap-4">
+      <div>
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <div className="min-w-0">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-              {String(index + 1).padStart(2, "0")}
-            </p>
             <a
               href={company.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link mt-2 inline-block font-display text-[1.65rem] leading-none tracking-[-0.03em] text-ink sm:text-[1.9rem]"
+              className="paper-link inline-flex max-w-full items-center gap-2 font-display text-[1.25rem] leading-[1.05] tracking-normal text-ink sm:text-[1.45rem]"
             >
-              {company.name}
+              <CompanyLogo company={company} />
+              <span>{company.name}</span>
             </a>
-            {company.personal ? "*" : ""}
+            {company.personal ? (
+              <span
+                aria-label="Personal investment"
+                className="ml-0.5 align-top font-mono text-[10px] text-ink-muted"
+              >
+                *
+              </span>
+            ) : null}
           </div>
-        </div>
 
-        <p className="text-base leading-7 text-ink-soft">{description}</p>
-
-        <div className="grid grid-cols-2 gap-4 border-t border-line pt-3">
-          <div>
-            <p className="paper-label mb-2">Stage</p>
+          <div
+            data-portfolio-meta
+            className="flex max-w-full flex-wrap items-center justify-end gap-x-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-muted sm:text-[11px]"
+          >
+            <span>
+              Invested{" "}
+              <span data-partnered>{company.partnered}</span>
+            </span>
+            <span aria-hidden="true">{"\u00B7"}</span>
             <StageLabel stage={company.stage} />
           </div>
-          <div>
-            <p className="paper-label mb-2">Since</p>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-              {company.partnered}
-            </p>
-          </div>
         </div>
-      </div>
 
-      <div className="hidden gap-3 md:grid md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <div className="min-w-0">
-          <a
-            href={company.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="paper-link inline-block font-display text-2xl leading-none tracking-[-0.03em] text-ink"
-          >
-            {company.name}
-          </a>
-          {company.personal ? "*" : ""}
-        </div>
-        <span className="text-base leading-7 text-ink-soft">{description}</span>
-        <StageLabel stage={company.stage} />
-        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-          {company.partnered}
-        </span>
+        <p className="mt-2 text-[0.86rem] leading-[1.45] text-ink-soft sm:text-[0.9rem] sm:leading-6">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -658,25 +739,8 @@ function CompanyGroup({
 }) {
   return (
     <div data-portfolio-group={toDataKey(title)}>
-      <p className="paper-label mb-3">{title}</p>
-      <div className="border-y border-line">
-        <div className="hidden border-b border-line bg-paper-alt/70 px-0 py-3 md:grid md:grid-cols-[44px_minmax(0,220px)_minmax(0,1fr)_120px_90px] md:gap-6">
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            No.
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            Name
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            Description
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            Stage
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            Since
-          </span>
-        </div>
+      <p className="paper-label mb-2.5 sm:mb-3">{title}</p>
+      <div className="grid border-t border-line lg:grid-cols-2 lg:gap-x-8">
         {companies.map((company, index) => (
           <CompanyRow key={company.name} company={company} index={index} />
         ))}
@@ -687,59 +751,34 @@ function CompanyGroup({
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
+    <section id="portfolio" className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
-          <div className="paper-label">03 / Select Investments</div>
+        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
+          <div className="paper-label">04 / Portfolio</div>
 
-          <div className="space-y-10">
-            <div className="paper-panel border px-5 py-5 sm:px-6 sm:py-6">
-              <p className="paper-label mb-3">Portfolio Proof</p>
-              <p className="max-w-4xl font-display text-2xl leading-[1.12] tracking-[-0.03em] text-ink sm:text-3xl md:text-4xl">
-                We do not underwrite sectors. We underwrite moments when a
-                non-obvious company becomes legible to institutions.
-              </p>
-              <p className="mt-5 text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
-                The portfolio spans AI, defense, fintech, robotics, software,
-                and culture-native consumer markets, including{" "}
-                <span className="font-semibold text-ink">
-                  OpenAI, SpaceX, Anduril, Ramp, Cognition, Polymarket,
-                  Physical Intelligence, Flock Safety, and Chronosphere.
-                </span>
-              </p>
-              <p className="mt-4 text-base leading-7 text-ink-soft">
-                The common thread is not sector exposure. It is an inflection:
-                technical or market insight early enough to matter, paired with
-                founders who can convert that insight into company value.
-              </p>
-              <div className="mt-5 grid gap-3 border-t border-line pt-5 sm:grid-cols-3">
-                {proofPoints.map((point) => (
-                  <div
-                    key={point.title}
-                    className="border border-line bg-paper px-3 py-3"
-                  >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-                      {point.title}
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-ink-soft">
-                      {point.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+          <div className="space-y-6 sm:space-y-8">
+            <div>
+              <h2 className="max-w-4xl font-display text-[2.15rem] leading-[1.04] tracking-normal text-ink sm:text-4xl md:text-5xl">
+                Selected investments.
+              </h2>
             </div>
 
-            {portfolioGroups.map((group) => (
-              <CompanyGroup
-                key={group.key}
-                title={group.title}
-                companies={group.companies}
-              />
-            ))}
-
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
-              * Personal investment
-            </p>
+            <div
+              data-portfolio-index
+              data-mobile-layout="compact"
+              className="space-y-7 sm:space-y-9 md:space-y-10"
+            >
+              {portfolioGroups.map((group) => (
+                <CompanyGroup
+                  key={group.key}
+                  title={group.title}
+                  companies={group.companies}
+                />
+              ))}
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+                * Personal investment
+              </p>
+            </div>
           </div>
         </div>
       </div>

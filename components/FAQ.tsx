@@ -6,12 +6,17 @@ const faqItems = [
   {
     question: "What do you invest in, and at what stage?",
     answer:
-      "We invest across stages, from first check through late-stage pre-IPO, in high-growth AI, robotics, defense, software, fintech, and consumer companies. We look for technical edge, customer urgency, category ambition, and a non-consensus view that can become institutional-scale value.",
+      "Our venture strategy backs technical founders at pre-seed and seed. Our growth and opportunities strategy makes concentrated growth and pre-IPO investments. The current focus is AI, robotics, defense, energy, semiconductors, manufacturing, frontier infrastructure, and selective software and consumer technology.",
+  },
+  {
+    question: "How does the venture-and-growth strategy work?",
+    answer:
+      "Anti Fund forms conviction at pre-seed and seed, then makes concentrated growth and pre-IPO investments in category leaders. The stage changes; the standard does not.",
   },
   {
     question: "What makes Anti Fund different from a traditional venture firm?",
     answer:
-      "Anti Fund combines technical underwriting, institutional investment discipline, founder operating experience, and partners who have built global media, sports, and consumer companies. The goal is not attention for its own sake. It is to help the right market understand the company faster.",
+      "Most firms choose between technical underwriting and distribution. Anti Fund combines both. Attention is not promotion for its own sake; it is useful when it helps a company recruit exceptional people, earn customer trust, win financing, and become legible before consensus catches up.",
   },
   {
     question: "How do you work with founders after investing?",
@@ -26,7 +31,7 @@ const faqItems = [
   {
     question: "How can I invest in the fund?",
     answer:
-      "We're not raising right now, but do reach out to ir@antifund.com if you're interested in future funds.",
+      "We build long-term relationships with a limited group of aligned LPs. Prospective investors can contact ir@antifund.com.",
   },
 ];
 
@@ -41,12 +46,16 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="px-5 py-20 sm:px-6 md:px-10 md:py-28 lg:px-14">
+    <section id="faq" className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 border-t border-line pt-6 lg:grid-cols-[140px_minmax(0,1fr)]">
+        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
           <div className="paper-label">Appendix A / FAQ</div>
 
-          <div className="border-y border-line">
+          <div>
+            <h2 className="mb-6 max-w-4xl font-display text-[2.15rem] leading-[1.04] text-ink sm:mb-8 sm:text-4xl md:text-5xl">
+              Questions founders and investors ask.
+            </h2>
+            <div className="border-y border-line">
             {faqItems.map((item, index) => {
               const isOpen = openIndex === index;
               const buttonId = `faq-button-${index}`;
@@ -60,7 +69,7 @@ export default function FAQ() {
                       buttonRefs.current[index] = node;
                     }}
                     type="button"
-                    className="flex min-h-16 w-full items-start justify-between gap-6 py-5 text-left"
+                    className="flex min-h-14 w-full items-start justify-between gap-4 py-4 text-left sm:min-h-16 sm:gap-6 sm:py-5"
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() =>
@@ -84,7 +93,7 @@ export default function FAQ() {
                       }
                     }}
                   >
-                    <span className="max-w-3xl font-display text-xl leading-[1.08] tracking-[-0.03em] text-ink sm:text-2xl md:text-[2rem]">
+                    <span className="max-w-3xl text-base font-medium leading-6 text-ink sm:text-xl sm:leading-7 md:text-2xl">
                       {item.question}
                     </span>
                     <span
@@ -108,9 +117,11 @@ export default function FAQ() {
                       id={panelId}
                       role="region"
                       aria-labelledby={buttonId}
+                      aria-hidden={!isOpen}
+                      inert={!isOpen}
                       className="min-h-0"
                     >
-                      <div className="max-w-3xl pb-6 pr-4 text-base leading-7 text-ink-soft sm:pr-10">
+                      <div className="max-w-3xl pb-5 pr-4 text-[0.95rem] leading-6 text-ink-soft sm:pb-6 sm:pr-10 sm:text-base sm:leading-7">
                         {item.answer}
                       </div>
                     </div>
@@ -118,6 +129,7 @@ export default function FAQ() {
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
       </div>

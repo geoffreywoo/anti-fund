@@ -102,7 +102,7 @@ export default function LegalPage() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_260px]">
               <div>
                 <p className="paper-label mb-8">Anti Fund legal / effective March 31, 2026</p>
-                <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-[-0.05em] text-ink md:text-7xl lg:text-[5.5rem]">
+                <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-normal text-ink md:text-7xl lg:text-[5.5rem]">
                   Legal terms for a public-facing fund website.
                 </h1>
                 <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
@@ -151,7 +151,7 @@ export default function LegalPage() {
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-ink md:text-3xl">
+                  <h2 className="text-2xl font-semibold tracking-normal text-ink md:text-3xl">
                     {section.title}
                   </h2>
                   <div className="mt-4 space-y-4 text-base leading-8 text-ink-soft md:text-lg">

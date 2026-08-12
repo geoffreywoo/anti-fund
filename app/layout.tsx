@@ -3,23 +3,23 @@ import Nav from "@/components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Anti Fund",
+  title: "Anti Fund | Venture & Growth",
   description:
-    "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
+    "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
-    title: "Anti Fund",
+    title: "Anti Fund | Venture & Growth",
     description:
-      "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
+      "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
     url: "https://antifund.com",
     siteName: "Anti Fund",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anti Fund",
+    title: "Anti Fund | Venture & Growth",
     description:
-      "Anti Fund is a venture and growth investment platform for technical founders building category-defining companies.",
+      "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
   },
 };
 

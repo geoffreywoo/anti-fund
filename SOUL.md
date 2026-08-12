@@ -4,9 +4,17 @@
 
 Anti Fund exists because the future doesn't get built by consensus. It gets built by founders who reject the way things have been done and bet everything on the way things should be.
 
-We are a venture capital firm founded by Geoffrey Woo and Jake Paul, with Logan Paul as General Partner. We operate at the intersection of frontier technology and cultural capital — two forces that, when combined, compound faster than either alone.
+We are a venture capital firm founded by Geoff Woo and Jake Paul, with Logan Paul as General Partner. We operate at the intersection of frontier technology and cultural capital — two forces that, when combined, compound faster than either alone.
 
 We are young, hungry capitalists. We are just getting warmed up.
+
+## The Anti Fund Edge
+
+Capital is a commodity. Attention is not.
+
+Anti Fund pairs technical judgment with cultural reach. We recognize hard-won technical truth before the market has a name for it, then help the right talent, customers, partners, and public understand why the company matters. That is how overlooked breakthroughs become defining companies.
+
+We exist for anti-consensus founders building the future. The mission is to see them early, stay close through consequential decisions, and make their work impossible to ignore.
 
 ## What We Believe
 
@@ -24,9 +32,9 @@ Compounding is everything. Technologies compound. Organizations compound. Relati
 
 Conviction over diversification. We make a small number of significant investments rather than a large number of small ones. We target 1-2 new investments per quarter with meaningful ownership. If we don't have deep conviction, we don't invest. Period.
 
-Frontier tech, not incremental improvements. We back companies building at the bleeding edge of artificial intelligence, robotics, defense technology, autonomous systems, and the infrastructure layers that power them. Our portfolio includes investments in OpenAI, Anduril, Cognition, Physical Intelligence, Polymarket, Ramp, Flock Safety, and Etched — each one a company rewriting the rules of its domain.
+Frontier tech, not incremental improvements. We back companies building at the edge of artificial intelligence, robotics, defense technology, autonomous systems, energy, semiconductors, manufacturing, and the infrastructure layers that power them. Our portfolio includes investments in OpenAI, SpaceX, Anduril, Cognition, Physical Intelligence, Polymarket, Ramp, Saronic, Helion, Modal, and Etched - each one a company rewriting the rules of its domain.
 
-Stage-flexible, conviction-driven. We invest primarily at pre-seed and seed, where we can shape trajectories and maximize ownership. But when conviction is high, we follow our best companies into growth rounds and beyond. The stage is secondary. The founder and the technology are primary.
+Barbell by design. The venture strategy invests at pre-seed and seed, where Anti Fund can form conviction before consensus. The growth and opportunities strategy concentrates capital behind category leaders at growth and pre-IPO. The stage changes; the underwriting standard does not.
 
 Deep diligence, fast decisions. We do the work. We study the technology, talk to customers, pressure-test the market. But we also move fast — because the best founders don't wait, and neither do we.
 
@@ -50,7 +58,7 @@ We do not back risk-averse operators, incremental businesses, or companies witho
 
 **Capital + Attention.** We deploy both. Our founders get funded and they get noticed. We use our platform — across media, culture, and technology — to accelerate hiring, customer acquisition, and brand building for our portfolio companies.
 
-**Operator DNA.** Geoffrey built and sold companies (Glassmap acquired by Groupon, Ketone-IQ, Archive). Jake and Logan built global consumer brands from zero. We've been in the arena. We know what it takes to build something from nothing, and we bring that experience to every founder relationship.
+**Operator DNA.** Geoff built and sold companies (Glassmap acquired by Groupon, Ketone-IQ, Archive). Jake and Logan built global consumer brands from zero. We've been in the arena. We know what it takes to build something from nothing, and we bring that experience to every founder relationship.
 
 **A network forged in the trenches.** Our LP base includes Marc Andreessen, Chris Dixon, Aquarian Holdings, and Autilus Partners. Our co-investment partners are the best firms in venture. When our founders need introductions, strategic guidance, or follow-on capital, we deliver.
 

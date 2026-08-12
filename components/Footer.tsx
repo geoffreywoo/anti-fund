@@ -8,54 +8,53 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="px-5 pb-16 pt-10 sm:px-6 md:px-10 md:pb-20 md:pt-12 lg:px-14">
-      <div className="mx-auto max-w-6xl border-t border-line pt-8">
-        <div className="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] md:gap-12">
-          <div>
-            <a href="/legal" className="paper-link inline-block text-base">
-              Legal
+    <footer
+      id="contact"
+      className="px-5 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-10 md:px-10 md:pb-20 md:pt-12 lg:px-14"
+    >
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-line pt-5 sm:gap-6 sm:pt-6 md:flex-row md:items-end md:justify-between">
+        <Wordmark className="text-[2rem] sm:text-[2.15rem]" />
+
+        <div className="flex flex-col gap-3 md:items-end">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a
+              href="mailto:founders@antifund.com"
+              aria-label="Founder correspondence"
+              className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
+            >
+              Founders
+            </a>
+            <a
+              href="mailto:ir@antifund.com"
+              aria-label="Limited partner correspondence"
+              className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
+            >
+              LPs
             </a>
           </div>
 
-          <div className="space-y-6">
-            <div>
-              <p className="paper-label mb-2">For founders</p>
-              <a href="mailto:founders@antifund.com" className="paper-link text-base">
-                founders@antifund.com
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-5">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
+              >
+                {link.label}
               </a>
-            </div>
-
-            <div>
-              <p className="paper-label mb-2">For investors</p>
-              <a href="mailto:ir@antifund.com" className="paper-link text-base">
-                ir@antifund.com
-              </a>
-            </div>
-
-            <div>
-              <p className="paper-label mb-2">External references</p>
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
-                {links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="paper-link font-mono text-[11px] uppercase tracking-[0.14em]"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
+            ))}
+            <a
+              href="/legal"
+              className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
+            >
+              Legal
+            </a>
+            <span className="font-mono text-[11px] uppercase text-ink-muted">
+              &copy; {new Date().getFullYear()}
+            </span>
           </div>
-        </div>
-
-        <div className="mt-10 flex flex-col gap-2 border-t border-line pt-6 md:flex-row md:items-center md:justify-between">
-          <Wordmark className="text-[2.15rem]" />
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            &copy; {new Date().getFullYear()} / Memorandum edition
-          </p>
         </div>
       </div>
     </footer>
