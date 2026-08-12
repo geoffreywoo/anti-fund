@@ -408,7 +408,7 @@ test.describe("reduced motion and metadata", () => {
       /opengraph-image/,
     );
     const iconLink = page.locator('link[rel="icon"]');
-    await expect(iconLink).toHaveAttribute("href", /icon/);
+    await expect(iconLink).toHaveAttribute("href", /icon.*\.png/);
     const iconHref = await iconLink.getAttribute("href");
     expect(iconHref).toBeTruthy();
 
@@ -431,5 +431,6 @@ test.describe("reduced motion and metadata", () => {
     expect(ogResponse.ok()).toBeTruthy();
     expect(twitterResponse.ok()).toBeTruthy();
     expect(iconResponse.ok()).toBeTruthy();
+    expect(iconResponse.headers()["content-type"]).toContain("image/png");
   });
 });
