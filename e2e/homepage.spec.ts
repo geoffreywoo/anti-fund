@@ -296,7 +296,9 @@ test("the typography stays limited to the editorial and technical faces", async 
   expect(fonts.label).toContain("IBM Plex Mono");
 });
 
-test("media retains both features and the complete archive", async ({ page }) => {
+test("media highlights three features and preserves the complete archive", async ({
+  page,
+}) => {
   await page.goto("/");
 
   const media = page.locator("#media");
@@ -304,7 +306,10 @@ test("media retains both features and the complete archive", async ({ page }) =>
   await expect(
     media.getByRole("heading", { name: "In conversation. On the ground." }),
   ).toBeVisible();
-  await expect(media.locator("article")).toHaveCount(2);
+  await expect(media.locator("article")).toHaveCount(3);
+  await expect(
+    media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
+  ).toBeVisible();
   await expect(
     media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul on The a16z Show."),
   ).toBeVisible();
@@ -313,6 +318,7 @@ test("media retains both features and the complete archive", async ({ page }) =>
   ).toBeVisible();
 
   const expectedLinks = [
+    ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [
       "Jake Paul & Geoff Woo on The a16z Show",
       "https://www.youtube.com/watch?v=yfafpyhB-8E",
@@ -321,12 +327,23 @@ test("media retains both features and the complete archive", async ({ page }) =>
       "Inside Anduril with Palmer Luckey",
       "https://www.youtube.com/watch?v=pLgkMr4axwo",
     ],
+    [
+      "20VC: Jake Paul & Geoff Woo on attention as an investing edge",
+      "https://www.youtube.com/watch?v=rWn3KgO9Dvk",
+    ],
+    [
+      "The Pomp Podcast: Geoff Woo on AI choke points and defense",
+      "https://www.youtube.com/watch?v=jjf-GBgkTIk",
+    ],
+    [
+      "Trailblazers with Erica Wenger: Geoff Woo on building Anti Fund",
+      "https://podcasts.apple.com/us/podcast/geoff-woo-the-ugly-truth-about-venture-capital/id1562612842?i=1000777712667",
+    ],
     ["Anti Fund Summit", "https://www.youtube.com/watch?v=BWx8F_YgVt4"],
     [
       "Another look at Anti Fund Summit",
       "https://www.youtube.com/watch?v=PIH2C-dLLUc",
     ],
-    ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [
       "The Profile: Jake and Logan Paul's investment plan",
       "https://www.readtheprofile.com/p/jake-paul-logan-paul-billionaire-plan-investment",
