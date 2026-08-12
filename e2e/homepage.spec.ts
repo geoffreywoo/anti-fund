@@ -149,6 +149,46 @@ test("footer links to the legal page and the legal page renders key notices", as
   );
 });
 
+test("daily operations publishes complete OAuth disclosure and policy pages", async ({
+  page,
+}) => {
+  await page.goto("/daily-operations");
+
+  await expect(
+    page.getByRole("heading", { name: "Geoffrey Daily Operations", exact: true }),
+  ).toBeVisible();
+  await expect(page.locator("main")).toContainText(
+    "Google Calendar, Gmail, and Google Drive",
+  );
+  await expect(page.locator("main")).toContainText("read-only");
+
+  const policyNav = page.getByRole("navigation", {
+    name: "Daily Operations policies",
+  });
+  await expect(
+    policyNav.getByRole("link", { name: "Privacy policy" }),
+  ).toHaveAttribute("href", "/daily-operations/privacy");
+  await expect(
+    policyNav.getByRole("link", { name: "Terms of use" }),
+  ).toHaveAttribute("href", "/daily-operations/terms");
+
+  await page.goto("/daily-operations/privacy");
+  await expect(page.getByRole("heading", { name: "Privacy policy" })).toBeVisible();
+  await expect(page.locator("main")).toContainText(
+    "accesses, uses, stores, and shares Google user data",
+  );
+  await expect(page.locator("main")).toContainText("Limited Use requirements");
+  await expect(page.locator("main")).toContainText("not retained");
+  await expect(page.locator("main")).toContainText("geoff@antifund.com");
+
+  await page.goto("/daily-operations/terms");
+  await expect(page.getByRole("heading", { name: "Terms of use" })).toBeVisible();
+  await expect(page.locator("main")).toContainText(
+    "private, owner-operated application",
+  );
+  await expect(page.locator("main")).toContainText("read-only");
+});
+
 test("the full selected portfolio is visible and links out", async ({
   page,
 }) => {
@@ -350,7 +390,10 @@ test.describe("reduced motion and metadata", () => {
       "content",
       /opengraph-image/,
     );
-    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", /icon/);
+    const iconLink = page.locator('link[rel="icon"]');
+    await expect(iconLink).toHaveAttribute("href", /icon/);
+    const iconHref = await iconLink.getAttribute("href");
+    expect(iconHref).toBeTruthy();
 
     expect(
       await page.evaluate(() =>
@@ -365,7 +408,7 @@ test.describe("reduced motion and metadata", () => {
     const [ogResponse, twitterResponse, iconResponse] = await Promise.all([
       request.get("/opengraph-image.jpg"),
       request.get("/twitter-image.jpg"),
-      request.get("/icon"),
+      request.get(new URL(iconHref!, page.url()).toString()),
     ]);
 
     expect(ogResponse.ok()).toBeTruthy();
