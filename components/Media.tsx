@@ -2,6 +2,15 @@ import Image from "next/image";
 
 const featured = [
   {
+    source: "Anti Fund / Silicon Valley",
+    title: "48 hours with Anti Fund",
+    description:
+      "Geoff Woo and Logan Paul across Silicon Valley, with Sam Altman, Sequoia, and the Anti Fund founder network.",
+    href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
+    imageSrc: "/media/48-hours-anti-fund.jpg",
+    alt: "Geoff Woo and Logan Paul in Silicon Valley.",
+  },
+  {
     source: "a16z / The a16z Show",
     title: "Jake Paul & Geoff Woo on The a16z Show",
     description:
@@ -23,6 +32,21 @@ const featured = [
 
 const archive = [
   {
+    label: "20VC: Jake Paul & Geoff Woo on attention as an investing edge",
+    href: "https://www.youtube.com/watch?v=rWn3KgO9Dvk",
+    type: "Watch",
+  },
+  {
+    label: "The Pomp Podcast: Geoff Woo on AI choke points and defense",
+    href: "https://www.youtube.com/watch?v=jjf-GBgkTIk",
+    type: "Watch",
+  },
+  {
+    label: "Trailblazers with Erica Wenger: Geoff Woo on building Anti Fund",
+    href: "https://podcasts.apple.com/us/podcast/geoff-woo-the-ugly-truth-about-venture-capital/id1562612842?i=1000777712667",
+    type: "Listen",
+  },
+  {
     label: "Anti Fund Summit",
     href: "https://www.youtube.com/watch?v=BWx8F_YgVt4",
     type: "Watch",
@@ -30,11 +54,6 @@ const archive = [
   {
     label: "Another look at Anti Fund Summit",
     href: "https://www.youtube.com/watch?v=PIH2C-dLLUc",
-    type: "Watch",
-  },
-  {
-    label: "48 hours with Anti Fund",
-    href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
     type: "Watch",
   },
   {
@@ -64,11 +83,13 @@ export default function Media() {
               </p>
             </div>
 
-            <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
-              {featured.map((item) => (
+            <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {featured.map((item, index) => (
                 <article
                   key={item.href}
-                  className="overflow-hidden border border-line bg-paper-alt"
+                  className={`overflow-hidden border border-line bg-paper-alt ${
+                    index === 0 ? "md:col-span-2 xl:col-span-1" : ""
+                  }`}
                 >
                   <a
                     href={item.href}
@@ -81,7 +102,11 @@ export default function Media() {
                       alt={item.alt}
                       width={1280}
                       height={720}
-                      sizes="(min-width: 768px) 50vw, 100vw"
+                      sizes={
+                        index === 0
+                          ? "(min-width: 1280px) 30vw, (min-width: 768px) 90vw, 100vw"
+                          : "(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw"
+                      }
                       className="aspect-video h-auto w-full object-cover"
                     />
                   </a>
