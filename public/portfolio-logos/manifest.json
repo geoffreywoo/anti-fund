@@ -157,6 +157,18 @@
       "file": "/portfolio-logos/lighter.png"
     },
     {
+      "name": "Entropy",
+      "website": "https://x.com/entropyio?s=11",
+      "source": "https://entropy.io/apple-touch-icon.png?v=entropy-7",
+      "file": "/portfolio-logos/entropy.png"
+    },
+    {
+      "name": "Liquid",
+      "website": "https://www.liquid.trade/",
+      "source": "https://www.liquid.trade/favicon/web-app-manifest-512x512.png",
+      "file": "/portfolio-logos/liquid.png"
+    },
+    {
       "name": "Polymarket",
       "website": "https://polymarket.com/",
       "source": "https://polymarket.com/icons/apple-touch-icon.png",

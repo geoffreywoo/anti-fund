@@ -3,12 +3,13 @@ import Nav from "@/components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Anti Fund | Venture & Growth",
+  title: "Anti Fund",
+  applicationName: "Anti Fund",
   description:
     "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
   metadataBase: new URL("https://antifund.com"),
   openGraph: {
-    title: "Anti Fund | Venture & Growth",
+    title: "Anti Fund",
     description:
       "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
     url: "https://antifund.com",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anti Fund | Venture & Growth",
+    title: "Anti Fund",
     description:
       "Anti Fund backs technical founders from pre-seed through growth across AI, robotics, defense, energy, and frontier infrastructure.",
   },
