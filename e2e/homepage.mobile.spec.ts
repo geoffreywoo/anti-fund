@@ -80,9 +80,11 @@ test("mobile overlay stays focused on content while outreach remains in the foot
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
   await expect(investmentIndex).toHaveAttribute("data-mobile-layout", "compact");
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(51);
-  await expect(portfolio.locator("[data-portfolio-meta]")).toHaveCount(51);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(53);
+  await expect(portfolio.locator("[data-portfolio-meta]")).toHaveCount(53);
   await expect(portfolio.getByRole("link", { name: "Metis" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Entropy" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Liquid" })).toBeVisible();
 
   const andurilRow = portfolio.locator('[data-company="anduril"]');
   await expect(andurilRow).toContainText("Series E");

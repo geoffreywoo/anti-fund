@@ -5,6 +5,16 @@ test("primary navigation keeps outreach out of the main presentation", async ({
 }) => {
   await page.goto("/");
 
+  await expect(page).toHaveTitle("Anti Fund");
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    "Anti Fund",
+  );
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
+    "content",
+    "Anti Fund",
+  );
+
   const primaryNav = page.getByRole("navigation", { name: "Primary" });
   await expect(primaryNav).toBeVisible();
   await expect(primaryNav.getByRole("link")).toHaveCount(5);
@@ -202,7 +212,7 @@ test("the full selected portfolio is visible and links out", async ({
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(51);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(53);
   for (const company of [
     "Aeon",
     "Westmag",
@@ -210,9 +220,25 @@ test("the full selected portfolio is visible and links out", async ({
     "Trajectory",
     "Enigma",
     "Melius",
+    "Entropy",
+    "Liquid",
   ]) {
     await expect(portfolio.getByRole("link", { name: company })).toBeVisible();
   }
+  const entropyRow = portfolio.locator('[data-company="entropy"]');
+  await expect(entropyRow.getByRole("link", { name: "Entropy" })).toHaveAttribute(
+    "href",
+    "https://x.com/entropyio?s=11",
+  );
+  await expect(entropyRow).toContainText("Invested 2026");
+  await expect(entropyRow).toContainText("Seed");
+  const liquidRow = portfolio.locator('[data-company="liquid"]');
+  await expect(liquidRow.getByRole("link", { name: "Liquid" })).toHaveAttribute(
+    "href",
+    "https://www.liquid.trade/",
+  );
+  await expect(liquidRow).toContainText("Invested 2026");
+  await expect(liquidRow).toContainText("Series A");
   await expect(portfolio.getByRole("link", { name: "Metis" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Poke.com" })).toBeVisible();
   await expect(portfolio.locator('[data-company="poke-com"]')).toContainText(
@@ -411,6 +437,10 @@ test.describe("reduced motion and metadata", () => {
     await expect(iconLink).toHaveAttribute("href", /icon.*\.png/);
     const iconHref = await iconLink.getAttribute("href");
     expect(iconHref).toBeTruthy();
+    const appleIconLink = page.locator('link[rel="apple-touch-icon"]');
+    await expect(appleIconLink).toHaveAttribute("href", /apple-icon.*\.png/);
+    const appleIconHref = await appleIconLink.getAttribute("href");
+    expect(appleIconHref).toBeTruthy();
 
     expect(
       await page.evaluate(() =>
@@ -422,15 +452,19 @@ test.describe("reduced motion and metadata", () => {
     await expect(portfolioLogo).toHaveCSS("transition-duration", "0s");
     await expect(portfolioLogo).toHaveCSS("transform", "none");
 
-    const [ogResponse, twitterResponse, iconResponse] = await Promise.all([
-      request.get("/opengraph-image.jpg"),
-      request.get("/twitter-image.jpg"),
-      request.get(new URL(iconHref!, page.url()).toString()),
-    ]);
+    const [ogResponse, twitterResponse, iconResponse, appleIconResponse] =
+      await Promise.all([
+        request.get("/opengraph-image.jpg"),
+        request.get("/twitter-image.jpg"),
+        request.get(new URL(iconHref!, page.url()).toString()),
+        request.get(new URL(appleIconHref!, page.url()).toString()),
+      ]);
 
     expect(ogResponse.ok()).toBeTruthy();
     expect(twitterResponse.ok()).toBeTruthy();
     expect(iconResponse.ok()).toBeTruthy();
     expect(iconResponse.headers()["content-type"]).toContain("image/png");
+    expect(appleIconResponse.ok()).toBeTruthy();
+    expect(appleIconResponse.headers()["content-type"]).toContain("image/png");
   });
 });

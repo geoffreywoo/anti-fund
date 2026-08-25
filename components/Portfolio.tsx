@@ -199,6 +199,22 @@ const softwareCompanies: Company[] = [
     partnered: "2025",
   },
   {
+    name: "Entropy",
+    url: "https://x.com/entropyio?s=11",
+    description:
+      "Perpetual futures for private-market and other hard-to-access assets.",
+    stage: "Seed",
+    partnered: "2026",
+  },
+  {
+    name: "Liquid",
+    url: "https://www.liquid.trade/",
+    description:
+      "24/7, non-custodial trading across crypto, stocks, commodities, FX, and prediction markets.",
+    stage: "Series A",
+    partnered: "2026",
+  },
+  {
     name: "Polymarket",
     url: "https://polymarket.com/",
     description: "Global prediction-market platform.",
@@ -418,6 +434,8 @@ const portfolioGroupSpecs = [
       "Erebor",
       "Monaco",
       "Lighter",
+      "Entropy",
+      "Liquid",
       "Polymarket",
       "Archive",
       "WithCoverage",
