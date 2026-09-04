@@ -67,18 +67,18 @@ export default function Media() {
   return (
     <section
       id="media"
-      className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14"
+      className="page-section"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
+        <div className="section-frame">
           <div className="paper-label">07 / Media & Field Notes</div>
 
-          <div className="space-y-8 sm:space-y-10">
+          <div className="section-body">
             <div>
-              <h2 className="max-w-4xl font-display text-[2.15rem] leading-[1.04] text-ink sm:text-4xl md:text-5xl">
+              <h2 className="section-heading">
                 In conversation. On the ground.
               </h2>
-              <p className="mt-4 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-5 sm:text-lg sm:leading-8">
+              <p className="section-lede">
                 Conversations and field visits show the thesis in practice.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function Media() {
 
                   <div className="px-4 py-4 sm:px-6 sm:py-6">
                     <p className="paper-label">{item.source}</p>
-                    <h3 className="mt-3 font-display text-[1.4rem] leading-[1.08] text-ink sm:mt-4 sm:text-3xl">
+                    <h3 className="mt-3 font-display text-2xl leading-[1.15] tracking-[-0.015em] text-ink sm:mt-4 sm:text-[1.65rem]">
                       <a
                         href={item.href}
                         target="_blank"

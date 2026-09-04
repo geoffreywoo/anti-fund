@@ -9,14 +9,15 @@ const faqItems = [
       "Our venture strategy backs technical founders at pre-seed and seed. Our growth and opportunities strategy makes concentrated growth and pre-IPO investments. The current focus is AI, robotics, defense, energy, semiconductors, manufacturing, frontier infrastructure, and selective software and consumer technology.",
   },
   {
-    question: "How does the venture-and-growth strategy work?",
+    question: "What should founders send?",
     answer:
-      "Anti Fund forms conviction at pre-seed and seed, then makes concentrated growth and pre-IPO investments in category leaders. The stage changes; the standard does not.",
+      "Tell us what you’re building, why it matters, and what you see that others don’t. Send a deck or product link to",
+    email: "founders@antifund.com",
   },
   {
     question: "What makes Anti Fund different from a traditional venture firm?",
     answer:
-      "Most firms choose between technical underwriting and distribution. Anti Fund combines both. Attention is not promotion for its own sake; it is useful when it helps a company recruit exceptional people, earn customer trust, win financing, and become legible before consensus catches up.",
+      "We combine technical underwriting with the ability to command attention. Attention is not promotion for its own sake; it is useful when it helps a company recruit exceptional people, earn customer trust, win financing, and earn recognition before consensus catches up.",
   },
   {
     question: "How do you work with founders after investing?",
@@ -31,7 +32,8 @@ const faqItems = [
   {
     question: "How can I invest in the fund?",
     answer:
-      "We build long-term relationships with a limited group of aligned LPs. Prospective investors can contact ir@antifund.com.",
+      "We build long-term relationships with a limited group of aligned LPs. Prospective investors can contact",
+    email: "ir@antifund.com",
   },
 ];
 
@@ -46,13 +48,13 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14">
+    <section id="faq" className="page-section">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
+        <div className="section-frame">
           <div className="paper-label">Appendix A / FAQ</div>
 
           <div>
-            <h2 className="mb-6 max-w-4xl font-display text-[2.15rem] leading-[1.04] text-ink sm:mb-8 sm:text-4xl md:text-5xl">
+            <h2 className="section-heading mb-6 sm:mb-8">
               Questions founders and investors ask.
             </h2>
             <div className="border-y border-line">
@@ -123,6 +125,9 @@ export default function FAQ() {
                     >
                       <div className="max-w-3xl pb-5 pr-4 text-[0.95rem] leading-6 text-ink-soft sm:pb-6 sm:pr-10 sm:text-base sm:leading-7">
                         {item.answer}
+                        {item.email ? (
+                          <> <a className="paper-link" href={`mailto:${item.email}`}>{item.email}</a>.</>
+                        ) : null}
                       </div>
                     </div>
                   </div>

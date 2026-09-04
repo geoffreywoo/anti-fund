@@ -11,12 +11,144 @@
   --color-line-strong: #9f988a;
   --color-accent: #6f1d1b;
   --color-accent-quiet: #31533d;
-  --font-display: "Source Serif 4", Georgia, serif;
-  --font-body: "Source Serif 4", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --z-grain: 0;
   --z-nav: 110;
   --z-modal: 120;
+}
+
+@theme inline {
+  --font-display: var(--font-source-serif), Georgia, serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+:root {
+  --page-gutter: 20px;
+  --section-space: 56px;
+}
+
+/* One spacing rhythm for the editorial rail and its content. */
+.header-inner {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.page-section {
+  padding: 0 var(--page-gutter) var(--section-space);
+}
+
+.section-frame {
+  display: grid;
+  gap: 20px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 24px;
+}
+
+.section-body > * + * {
+  margin-top: 32px;
+}
+
+.section-heading {
+  max-width: 22ch;
+  color: var(--color-ink);
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-size: clamp(1.875rem, 3.75vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.section-lede {
+  max-width: 65ch;
+  margin-top: 20px;
+  color: var(--color-ink-soft);
+  font-size: 18px;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.axiom-quote {
+  max-width: 24ch;
+  color: var(--color-ink);
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-size: clamp(1.625rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.hero-section {
+  padding: 96px var(--page-gutter) 32px;
+}
+
+.hero-frame {
+  padding-block: 28px 32px;
+}
+
+.hero-heading {
+  color: var(--color-ink);
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-size: clamp(2.25rem, 6.25vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.hero-lede {
+  max-width: 52ch;
+  margin-top: 24px;
+  color: var(--color-ink-soft);
+  font-size: clamp(1.125rem, 1.75vw, 1.375rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  padding-right: 64px;
+}
+
+.hero-actions > a {
+  flex: 1 1 190px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-gutter: 24px;
+    --section-space: 72px;
+  }
+
+  .section-frame { gap: 24px; }
+  .section-body > * + * { margin-top: 40px; }
+  .hero-frame { padding-block: 40px; }
+  .hero-actions > a { flex: 0 1 auto; }
+}
+
+@media (min-width: 768px) {
+  :root { --page-gutter: 40px; }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 56px;
+    --section-space: 88px;
+  }
+
+  .section-frame {
+    grid-template-columns: 152px minmax(0, 1fr);
+    gap: 32px;
+    padding-top: 28px;
+  }
+
+  .section-frame > .paper-label { padding-top: 6px; }
+  .hero-section { padding-top: 112px; }
+  .hero-frame { padding-block: 40px; }
+  .hero-actions { padding-right: 0; }
 }
 
 html {
@@ -26,11 +158,36 @@ html {
 body {
   background: linear-gradient(180deg, rgba(250, 248, 241, 1) 0%, rgba(247, 243, 234, 1) 100%);
   color: var(--color-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   line-height: 1.65;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+[data-featured-reference] :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 1.25rem;
+  z-index: calc(var(--z-modal) + 1);
+  padding: 0.5rem 0.75rem;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+  transform: none;
 }
 
 ::selection {
@@ -61,18 +218,12 @@ body::before {
 
 .paper-label {
   color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  line-height: 1.45;
-  letter-spacing: 0.12em;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-@media (min-width: 640px) {
-  .paper-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-  }
 }
 
 .paper-link {
@@ -214,6 +365,8 @@ body::before {
 }
 
 #thesis,
+#investors,
+#main-content,
 #edge,
 #portfolio,
 #team,

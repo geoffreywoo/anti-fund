@@ -8,8 +8,8 @@ const links = [
   { href: "#edge", label: "Edge" },
   { href: "#team", label: "Team" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#help", label: "Work" },
-  { href: "#media", label: "Media" },
+  { href: "#help", label: "Founders" },
+  { href: "#investors", label: "LPs" },
   { href: "/manifesto", label: "Manifesto" },
 ];
 
@@ -51,21 +51,22 @@ export default function Nav() {
       frameId = null;
       const marker = 96;
       let nextActive: string | null = null;
+      let nearestTop = -Infinity;
 
       for (const link of sectionLinks) {
         const section = document.querySelector<HTMLElement>(link.href);
 
-        if (section && section.getBoundingClientRect().top <= marker) {
+        const bounds = section?.getBoundingClientRect();
+
+        if (
+          bounds &&
+          bounds.top <= marker &&
+          bounds.bottom > marker &&
+          bounds.top > nearestTop
+        ) {
           nextActive = link.href;
+          nearestTop = bounds.top;
         }
-      }
-
-      const finalSection = document.querySelector<HTMLElement>(
-        sectionLinks[sectionLinks.length - 1].href,
-      );
-
-      if (finalSection && finalSection.getBoundingClientRect().bottom <= marker) {
-        nextActive = null;
       }
 
       setActiveHref((current) =>
@@ -94,7 +95,6 @@ export default function Nav() {
 
   useEffect(() => {
     if (!isOpen) {
-      document.body.style.overflow = "";
       return;
     }
 
@@ -102,6 +102,15 @@ export default function Nav() {
     document.body.style.overflow = "hidden";
 
     const dialog = dialogRef.current;
+    const backgroundElements = Array.from(document.body.children)
+      .filter((element): element is HTMLElement =>
+        element instanceof HTMLElement && !element.contains(dialog),
+      )
+      .map((element) => ({ element, wasInert: element.inert }));
+
+    for (const { element } of backgroundElements) {
+      element.inert = true;
+    }
     const focusableSelector =
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
     const focusableElements = dialog
@@ -115,7 +124,7 @@ export default function Nav() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
-        buttonRef.current?.focus();
+        window.requestAnimationFrame(() => buttonRef.current?.focus());
         return;
       }
 
@@ -127,7 +136,10 @@ export default function Nav() {
       const last = focusableElements[focusableElements.length - 1];
       const active = document.activeElement as HTMLElement | null;
 
-      if (event.shiftKey && active === first) {
+      if (!active || !dialog?.contains(active)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && active === first) {
         event.preventDefault();
         last.focus();
       } else if (!event.shiftKey && active === last) {
@@ -138,14 +150,38 @@ export default function Nav() {
 
     document.addEventListener("keydown", handleKeyDown);
 
+    const desktopMedia = window.matchMedia("(min-width: 768px)");
+    const handleDesktopChange = () => {
+      if (desktopMedia.matches) {
+        setIsOpen(false);
+        window.requestAnimationFrame(() => {
+          document.querySelector<HTMLElement>('nav[aria-label="Primary"] a')?.focus();
+        });
+      }
+    };
+    desktopMedia.addEventListener("change", handleDesktopChange);
+
     return () => {
       document.body.style.overflow = previousOverflow;
+      for (const { element, wasInert } of backgroundElements) {
+        element.inert = wasInert;
+      }
       document.removeEventListener("keydown", handleKeyDown);
+      desktopMedia.removeEventListener("change", handleDesktopChange);
     };
   }, [isOpen]);
 
-  const closeMenu = () => {
+  const closeMenu = (href: string) => {
     setIsOpen(false);
+    if (href.startsWith("#")) {
+      window.requestAnimationFrame(() => {
+        const section = document.querySelector<HTMLElement>(href);
+        if (section) {
+          section.tabIndex = -1;
+          section.focus({ preventScroll: true });
+        }
+      });
+    }
   };
 
   const closeMenuAndRestoreFocus = () => {
@@ -156,12 +192,12 @@ export default function Nav() {
   return (
     <>
       <header className="site-header fixed inset-x-0 top-0 z-[var(--z-nav)] border-b border-line/70 bg-paper/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-6 md:px-10 md:py-4 lg:px-14">
+        <div className="header-inner flex items-center justify-between py-3 md:py-4">
           <a href={homeHref} className="min-w-0 text-ink transition-colors hover:text-ink-soft">
             <Wordmark className="block text-[1.65rem] sm:text-[1.9rem]" />
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-5 md:flex lg:gap-7">
+          <nav aria-label="Primary" className="hidden items-center gap-4 md:flex lg:gap-6">
             {links.map((link) => {
               const isRoute = link.href.startsWith("/");
               const isActive = isRoute
@@ -177,7 +213,7 @@ export default function Nav() {
                 <a
                   key={link.href}
                   href={href}
-                  className="nav-section-link relative inline-flex py-1 font-mono text-[11px] uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  className="nav-section-link relative inline-flex py-1 font-mono text-xs uppercase tracking-[0.08em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                   data-active={isActive ? "" : undefined}
                   aria-current={
                     isActive ? (isRoute ? "page" : "location") : undefined
@@ -198,7 +234,7 @@ export default function Nav() {
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setIsOpen((open) => !open)}
           >
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.08em]">
               {isOpen ? "Close" : "Menu"}
             </span>
           </button>
@@ -216,7 +252,7 @@ export default function Nav() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
-          className="fixed inset-0 z-[var(--z-modal)] bg-paper px-6 pb-10 pt-3"
+          className="fixed inset-0 z-[var(--z-modal)] overflow-y-auto overscroll-contain bg-paper px-6 pb-10 pt-3"
         >
           <div className="mx-auto max-w-3xl">
             <div className="mb-12 flex items-center justify-between border-b border-line pb-3">
@@ -227,7 +263,7 @@ export default function Nav() {
                 aria-label="Close navigation menu"
                 onClick={closeMenuAndRestoreFocus}
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
+                <span className="font-mono text-[11px] uppercase tracking-[0.08em]">
                   Close
                 </span>
               </button>
@@ -255,7 +291,7 @@ export default function Nav() {
                       aria-current={
                         isActive ? (isRoute ? "page" : "location") : undefined
                       }
-                      onClick={closeMenu}
+                      onClick={() => closeMenu(href)}
                     >
                       <span
                         className={`font-display text-3xl leading-none tracking-normal transition-colors duration-200 ${
