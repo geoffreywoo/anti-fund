@@ -219,13 +219,14 @@ test("public routes and homepage images load without browser errors", async ({ p
     await page.evaluate(() => document.fonts.ready);
 
     if (route === "/") {
-      // Exercise the rendered URLs, including Next image optimization and lazy assets.
-      await page.locator("img").evaluateAll((images) => {
-        images.forEach((image) => { (image as HTMLImageElement).loading = "eager"; });
-      });
-      await expect.poll(() => page.locator("img").evaluateAll((images) =>
-        (images as HTMLImageElement[]).filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
-      ), { timeout: 30_000 }).toEqual([]);
+      // Trigger native lazy loading without changing React-owned image attributes.
+      for (const image of await page.locator("img:visible").all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect.poll(() => image.evaluate((element) => {
+          const image = element as HTMLImageElement;
+          return image.complete && image.naturalWidth > 0;
+        }), { timeout: 30_000 }).toBeTruthy();
+      }
     }
   }
   expect(failedResponses).toEqual([]);
