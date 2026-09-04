@@ -95,78 +95,80 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
   return (
-    <main className="overflow-x-hidden pt-28 md:pt-36">
-      <section className="px-6 pb-16 md:px-10 lg:px-14">
-        <div className="mx-auto max-w-6xl">
-          <div className="border-y border-line py-10 md:py-14">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_260px]">
-              <div>
-                <p className="paper-label mb-8">Anti Fund legal / effective March 31, 2026</p>
-                <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-normal text-ink md:text-7xl lg:text-[5.5rem]">
-                  Legal terms for a public-facing fund website.
-                </h1>
-                <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
-                  This page governs use of the Anti Fund website and explains
-                  how to interpret the materials, portfolio references, and
-                  testimonials presented here.
-                </p>
+    <>
+      <main id="main-content" tabIndex={-1} className="overflow-x-hidden pt-28 md:pt-36">
+        <section className="px-6 pb-16 md:px-10 lg:px-14">
+          <div className="mx-auto max-w-6xl">
+            <div className="border-y border-line py-10 md:py-14">
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_260px]">
+                <div>
+                  <p className="paper-label mb-8">Anti Fund legal / effective March 31, 2026</p>
+                  <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-normal text-ink md:text-7xl lg:text-[5.5rem]">
+                    Legal terms for a public-facing fund website.
+                  </h1>
+                  <p className="mt-6 max-w-3xl text-xl leading-8 text-ink-soft md:text-2xl">
+                    This page governs use of the Anti Fund website and explains
+                    how to interpret the materials, portfolio references, and
+                    testimonials presented here.
+                  </p>
+                </div>
+
+                <aside className="border-t border-line pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                  <dl className="space-y-6">
+                    <div>
+                      <dt className="paper-label">Maintained by</dt>
+                      <dd className="mt-2 text-base leading-7 text-ink-soft">
+                        Anti Fund Investment Fund LLC
+                      </dd>
+                    </div>
+
+                    <div>
+                      <dt className="paper-label">Scope</dt>
+                      <dd className="mt-2 text-base leading-7 text-ink-soft">
+                        Terms of use, disclaimers, references, and contact.
+                      </dd>
+                    </div>
+
+                    <div>
+                      <dt className="paper-label">Homepage</dt>
+                      <dd className="mt-2 text-base text-ink">
+                        <a href="/" className="paper-link">
+                          Return to Anti Fund
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                </aside>
               </div>
+            </div>
 
-              <aside className="border-t border-line pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <dl className="space-y-6">
-                  <div>
-                    <dt className="paper-label">Maintained by</dt>
-                    <dd className="mt-2 text-base leading-7 text-ink-soft">
-                      Anti Fund Investment Fund LLC
-                    </dd>
+            <div className="mt-12 grid gap-8">
+              {sections.map((section, index) => (
+                <section
+                  key={section.title}
+                  className="border-t border-line pt-6 md:grid md:grid-cols-[180px_minmax(0,1fr)] md:gap-8"
+                >
+                  <div className="paper-label">
+                    {String(index + 1).padStart(2, "0")}
                   </div>
-
                   <div>
-                    <dt className="paper-label">Scope</dt>
-                    <dd className="mt-2 text-base leading-7 text-ink-soft">
-                      Terms of use, disclaimers, references, and contact.
-                    </dd>
+                    <h2 className="text-2xl font-semibold tracking-normal text-ink md:text-3xl">
+                      {section.title}
+                    </h2>
+                    <div className="mt-4 space-y-4 text-base leading-8 text-ink-soft md:text-lg">
+                      {section.body.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
                   </div>
-
-                  <div>
-                    <dt className="paper-label">Homepage</dt>
-                    <dd className="mt-2 text-base text-ink">
-                      <a href="/" className="paper-link">
-                        Return to Anti Fund
-                      </a>
-                    </dd>
-                  </div>
-                </dl>
-              </aside>
+                </section>
+              ))}
             </div>
           </div>
+        </section>
 
-          <div className="mt-12 grid gap-8">
-            {sections.map((section, index) => (
-              <section
-                key={section.title}
-                className="border-t border-line pt-6 md:grid md:grid-cols-[180px_minmax(0,1fr)] md:gap-8"
-              >
-                <div className="paper-label">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div>
-                  <h2 className="text-2xl font-semibold tracking-normal text-ink md:text-3xl">
-                    {section.title}
-                  </h2>
-                  <div className="mt-4 space-y-4 text-base leading-8 text-ink-soft md:text-lg">
-                    {section.body.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

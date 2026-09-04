@@ -6,7 +6,7 @@ import {
   manifestoPublished,
 } from "../content/manifesto";
 
-test("primary navigation keeps outreach out of the main presentation", async ({
+test("founders and LPs can reach relevant content and contact paths", async ({
   page,
 }) => {
   await page.goto("/");
@@ -28,8 +28,8 @@ test("primary navigation keeps outreach out of the main presentation", async ({
     "Edge",
     "Team",
     "Portfolio",
-    "Work",
-    "Media",
+    "Founders",
+    "LPs",
     "Manifesto",
   ]);
   await expect(primaryNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
@@ -41,13 +41,27 @@ test("primary navigation keeps outreach out of the main presentation", async ({
       name: "Capital is a commodity. Attention is not.",
     }),
   ).toBeVisible();
-  await expect(hero).not.toContainText("For anti-consensus founders");
   await expect(hero.locator('a[href^="mailto:"]')).toHaveCount(0);
-  await expect(hero).not.toContainText("Pitch Anti Fund");
-  await expect(hero).not.toContainText("Investor relations");
-  await expect(hero.locator("p")).toHaveText(
-    "We back technical founders early, then help make their companies impossible to ignore.",
-  );
+  await expect(hero).toContainText("technical founders at formation");
+  await expect(hero).toContainText("category leaders at growth");
+  const founderAction = hero.getByRole("link", { name: "For founders", exact: true });
+  const investorAction = hero.getByRole("link", { name: "For limited partners", exact: true });
+  await expect(founderAction).toHaveAttribute("href", "#help");
+  await expect(investorAction).toHaveAttribute("href", "#investors");
+  await investorAction.click();
+  await expect(page).toHaveURL(/#investors$/);
+  const investors = page.locator("#investors");
+  await expect(investors.getByRole("heading", { name: "Venture", exact: true })).toBeVisible();
+  await expect(investors).toContainText("Pre-seed & seed");
+  await expect(investors).toContainText("Growth & pre-IPO");
+  await expect(investors.locator('a[href="mailto:ir@antifund.com"]')).toBeVisible();
+  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
+  await founderAction.click();
+  await expect(page).toHaveURL(/#help$/);
+  await expect(primaryNav.getByRole("link", { name: "Founders", exact: true })).toHaveAttribute("aria-current", "location");
+  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).not.toHaveAttribute("aria-current", "location");
+  await expect(page.locator('#help a[href="mailto:founders@antifund.com"]')).toBeVisible();
+  await expect(page.locator("#help")).toContainText("Send a deck or product link.");
   const heroLogo = hero.getByRole("img", { name: "Anti Fund" });
   await expect(heroLogo).toHaveAttribute("src", /logo\.png/);
   await expect(hero.locator("[data-hero-logo]")).toHaveCount(0);
@@ -78,8 +92,8 @@ test("primary navigation keeps outreach out of the main presentation", async ({
   await expect(
     footer.getByRole("link", { name: "Limited partner correspondence" }),
   ).toHaveAttribute("href", "mailto:ir@antifund.com");
-  await expect(footer).not.toContainText("founders@antifund.com");
-  await expect(footer).not.toContainText("ir@antifund.com");
+  await expect(footer).toContainText("founders@antifund.com");
+  await expect(footer).toContainText("ir@antifund.com");
   await expect
     .poll(async () => primaryNav.locator('[aria-current="location"]').count())
     .toBe(0);
@@ -97,10 +111,10 @@ test("homepage preserves the complete substance layer in order", async ({
       "top",
       "edge",
       "thesis",
-      "team",
-      "portfolio",
       "help",
+      "team",
       "proof",
+      "portfolio",
       "media",
       "faq",
       "contact",
@@ -118,12 +132,10 @@ test("homepage preserves the complete substance layer in order", async ({
       .sort((left, right) => (left as number) - (right as number)),
   );
 
-  await expect(page.locator("#edge")).toContainText("Technical conviction");
-  await expect(page.locator("#edge")).toContainText("Earned attention");
-  await expect(page.locator("#edge")).toContainText("Founder leverage");
-  await expect(page.locator("#edge")).toContainText(
-    "Earned attention creates signal before consensus and leverage for founders",
-  );
+  await expect(page.locator("main footer")).toHaveCount(0);
+  await expect(page.getByRole("contentinfo")).toHaveCount(1);
+  await expect(page.locator("#edge article")).toHaveCount(3);
+  await expect(page.locator("#edge").getByRole("heading", { level: 2 })).toContainText("Technical conviction");
   await expect(
     page.locator("#thesis").getByRole("heading", {
       name: "Conviction before consensus.",
@@ -149,9 +161,6 @@ test("homepage preserves the complete substance layer in order", async ({
   );
   await expect(page.locator("#help")).not.toContainText("perform helpfulness");
   await expect(page.locator("#proof")).toContainText("Founder References");
-  await expect(page.locator("#proof")).toContainText(
-    "The useful measure of a venture partner is the work founders can name.",
-  );
   await expect(page.locator("#faq")).toContainText("What's your check size?");
 
   const edgeCopy = await page.locator("#edge").innerText();
@@ -173,6 +182,54 @@ test("deep links reveal long sections instead of leaving a blank viewport", asyn
   await expect(
     page.getByRole("heading", { name: "Selected investments." }),
   ).toBeVisible();
+});
+
+test("skip link moves keyboard focus past the navigation on public routes", async ({ page }) => {
+  for (const route of ["/", "/manifesto", "/legal", "/daily-operations", "/daily-operations/privacy", "/daily-operations/terms"]) {
+    await page.goto(route);
+    await page.keyboard.press("Tab");
+    const skipLink = page.getByRole("link", { name: "Skip to content", exact: true });
+    await expect(skipLink).toBeFocused();
+    await expect(skipLink).toBeInViewport();
+    await expect(skipLink).toHaveAttribute("href", "#main-content");
+    await page.keyboard.press("Enter");
+    await expect(page.locator("main#main-content")).toBeFocused();
+    await expect(page.getByRole("main")).toHaveCount(1);
+    await expect(page.getByRole("contentinfo")).toHaveCount(1);
+  }
+});
+
+test("public routes and homepage images load without browser errors", async ({ page }) => {
+  const browserErrors: string[] = [];
+  const failedResponses: string[] = [];
+  page.on("pageerror", (error) => browserErrors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") browserErrors.push(message.text());
+  });
+  page.on("response", (response) => {
+    if (response.status() >= 400 && new URL(response.url()).origin === new URL(page.url()).origin) {
+      failedResponses.push(`${response.status()} ${response.url()}`);
+    }
+  });
+
+  for (const route of ["/", "/manifesto", "/legal", "/daily-operations", "/daily-operations/privacy", "/daily-operations/terms"]) {
+    const response = await page.goto(route);
+    expect(response?.ok(), route).toBeTruthy();
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+
+    if (route === "/") {
+      // Exercise the rendered URLs, including Next image optimization and lazy assets.
+      await page.locator("img").evaluateAll((images) => {
+        images.forEach((image) => { (image as HTMLImageElement).loading = "eager"; });
+      });
+      await expect.poll(() => page.locator("img").evaluateAll((images) =>
+        (images as HTMLImageElement[]).filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
+      ), { timeout: 30_000 }).toEqual([]);
+    }
+  }
+  expect(failedResponses).toEqual([]);
+  expect(browserErrors).toEqual([]);
 });
 
 test("footer links to the legal page and the legal page renders key notices", async ({
@@ -381,26 +438,32 @@ test("team biographies and every founder reference remain available", async ({
   const proof = page.locator("#proof");
   await proof.scrollIntoViewIfNeeded();
   await expect(proof.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
-  await expect(proof.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
+  await expect(proof.getByRole("link", { name: "Gianluca Bencomo" })).toBeVisible();
+  await expect(proof.getByRole("link", { name: "Rob Skillington" })).toBeHidden();
 
   const featuredReference = proof.locator("[data-featured-reference]");
   await expect(featuredReference).toBeVisible();
   await expect(featuredReference).toContainText(
-    "Geoff has directly boosted our topline revenue",
+    "Anti Fund was our first investor",
   );
+  await expect(featuredReference).toContainText("Gianluca Bencomo");
+  await expect(proof).toContainText("Ramp was a personal investment by Geoff Woo.");
   await expect(featuredReference).toHaveCSS("background-color", "rgb(20, 20, 20)");
 
   const moreReferences = proof.locator("[data-founder-references]");
   await moreReferences.locator("summary").click();
   await expect(moreReferences).toHaveAttribute("open", "");
   await expect(moreReferences.getByRole("link", { name: "Sam Blond" })).toBeVisible();
-  await expect(moreReferences).toContainText("Abraham Othman");
+  await expect(moreReferences.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
+  await expect(proof.locator("blockquote")).toHaveCount(7);
+  await expect(proof).not.toContainText("Abraham Othman");
 });
 
 test("the typography stays limited to the editorial and technical faces", async ({
   page,
 }) => {
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
 
   const fonts = await page.evaluate(() => ({
     body: window.getComputedStyle(document.body).fontFamily,
@@ -409,8 +472,9 @@ test("the typography stays limited to the editorial and technical faces", async 
     ).fontFamily,
   }));
 
-  expect(fonts.body).toContain("Source Serif 4");
-  expect(fonts.label).toContain("IBM Plex Mono");
+  expect(fonts.body.replaceAll("_", " ")).toMatch(/Source Serif 4/i);
+  expect(fonts.label.replaceAll("_", " ")).toMatch(/IBM Plex Mono/i);
+  await expect(page.locator('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]')).toHaveCount(0);
 });
 
 test("media highlights three features and preserves the complete archive", async ({
@@ -475,7 +539,7 @@ test("media highlights three features and preserves the complete archive", async
   }
 });
 
-test("faq keeps investor contact behind deliberate disclosure", async ({ page }) => {
+test("faq disclosure and keyboard navigation work", async ({ page }) => {
   await page.goto("/");
 
   const faq = page.locator("#faq");
@@ -490,7 +554,13 @@ test("faq keeps investor contact behind deliberate disclosure", async ({ page })
   await investorButton.click();
   await expect(investorButton).toHaveAttribute("aria-expanded", "true");
   await expect(investorPanel).toHaveAttribute("aria-hidden", "false");
-  await expect(faq).toContainText("ir@antifund.com");
+  await expect(investorPanel.getByRole("link", { name: "ir@antifund.com", exact: true })).toHaveAttribute("href", "mailto:ir@antifund.com");
+  await investorButton.click();
+  await expect(investorPanel).toHaveAttribute("aria-hidden", "true");
+  await expect(investorPanel.getByRole("link", { name: "ir@antifund.com", exact: true })).toHaveCount(0);
+
+  await faq.getByRole("button", { name: "What should founders send?", exact: true }).click();
+  await expect(faq.getByRole("link", { name: "founders@antifund.com", exact: true })).toHaveAttribute("href", "mailto:founders@antifund.com");
 
   const buttons = faq.getByRole("button");
   await buttons.nth(0).focus();

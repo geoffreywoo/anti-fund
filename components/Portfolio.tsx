@@ -466,7 +466,7 @@ const portfolioGroupSpecs = [
     ],
   },
   {
-    title: "Realized & Public Outcomes",
+    title: "Acquisitions & Public Listings",
     names: ["Chronosphere", "Rail", "Aerodome", "Metis", "Poke.com", "SpaceX"],
   },
 ] as const;
@@ -700,7 +700,7 @@ function CompanyRow({
   return (
     <div
       data-company={toDataKey(company.name)}
-      className="group portfolio-row -mx-1 border-b border-line px-1 py-3.5 transition-colors duration-200 ease-out hover:bg-paper-alt/60 focus-within:bg-paper-alt/60 sm:py-4 lg:mx-0 lg:px-1"
+      className="group portfolio-row -mx-1 border-b border-line px-1 py-4 transition-colors duration-200 ease-out hover:bg-paper-alt/60 focus-within:bg-paper-alt/60 xl:mx-0"
       style={{
         "--row-delay": `${Math.min(index * 24, 240)}ms`,
       } as CSSProperties}
@@ -712,7 +712,7 @@ function CompanyRow({
               href={company.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="paper-link inline-flex max-w-full items-center gap-2 font-display text-[1.25rem] leading-[1.05] tracking-normal text-ink sm:text-[1.45rem]"
+              className="paper-link inline-flex max-w-full items-center gap-2 font-display text-[1.25rem] leading-[1.15] tracking-normal text-ink sm:text-[1.45rem]"
             >
               <CompanyLogo company={company} />
               <span>{company.name}</span>
@@ -729,7 +729,7 @@ function CompanyRow({
 
           <div
             data-portfolio-meta
-            className="flex max-w-full flex-wrap items-center justify-end gap-x-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-muted sm:text-[11px]"
+            className="flex max-w-full flex-wrap items-center justify-end gap-x-1.5 font-mono text-[11px] uppercase leading-[1.5] tracking-[0.06em] text-ink-muted"
           >
             <span>
               Invested{" "}
@@ -740,7 +740,7 @@ function CompanyRow({
           </div>
         </div>
 
-        <p className="mt-2 text-[0.86rem] leading-[1.45] text-ink-soft sm:text-[0.9rem] sm:leading-6">
+        <p className="mt-2 text-[15px] leading-[1.55] text-ink-soft">
           {description}
         </p>
       </div>
@@ -758,7 +758,7 @@ function CompanyGroup({
   return (
     <div data-portfolio-group={toDataKey(title)}>
       <p className="paper-label mb-2.5 sm:mb-3">{title}</p>
-      <div className="grid border-t border-line lg:grid-cols-2 lg:gap-x-8">
+      <div className="grid border-t border-line xl:grid-cols-2 xl:gap-x-8">
         {companies.map((company, index) => (
           <CompanyRow key={company.name} company={company} index={index} />
         ))}
@@ -769,14 +769,14 @@ function CompanyGroup({
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14">
+    <section id="portfolio" className="page-section">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
-          <div className="paper-label">04 / Portfolio</div>
+        <div className="section-frame">
+          <div className="paper-label">06 / Portfolio</div>
 
           <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="max-w-4xl font-display text-[2.15rem] leading-[1.04] tracking-normal text-ink sm:text-4xl md:text-5xl">
+              <h2 className="section-heading">
                 Selected investments.
               </h2>
             </div>
@@ -793,7 +793,7 @@ export default function Portfolio() {
                   companies={group.companies}
                 />
               ))}
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-muted">
+              <p className="font-mono text-[11px] uppercase leading-[1.5] tracking-[0.08em] text-ink-muted">
                 * Personal investment
               </p>
             </div>

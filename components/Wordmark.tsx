@@ -5,7 +5,7 @@ export default function Wordmark({
 }) {
   return (
     <span
-      className={`font-display uppercase leading-none tracking-normal text-ink ${className}`.trim()}
+      className={`font-display font-medium uppercase leading-none tracking-[-0.035em] text-ink ${className}`.trim()}
     >
       Anti Fund
     </span>

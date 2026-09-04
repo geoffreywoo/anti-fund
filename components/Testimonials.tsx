@@ -5,6 +5,7 @@ type Testimonial = {
   companyName?: string;
   companyUrl?: string;
   profileUrl?: string;
+  context?: string;
 };
 
 const founderTestimonials: Testimonial[] = [
@@ -12,6 +13,7 @@ const founderTestimonials: Testimonial[] = [
     quote:
       "Geoff was one of the earliest investors for both Ramp and Paribus, and he is a trusted advisor and a key strategic sounding board. With Ramp, Geoff has directly boosted our topline revenue and growth by introducing us to and helping us close key customers and hire superstar executives. Geoff is on my shortlist to bring onboard for any company I'm involved with.",
     name: "Eric Glyman",
+    context: "Ramp was a personal investment by Geoff Woo.",
     role: "CEO & Co-founder,",
     companyName: "Ramp",
     companyUrl: "https://ramp.com/",
@@ -29,6 +31,7 @@ const founderTestimonials: Testimonial[] = [
     quote:
       "Geoff was one of our first investors and committed to backing Chronosphere before our company was even set up. He is incredibly networked in tech and investor circles and has been a key strategic thought partner. He is one of those rare humans that wields deep technical, product, and business expertise.",
     name: "Rob Skillington",
+    context: "Chronosphere was a personal investment by Geoff Woo.",
     role: "CTO & Co-founder,",
     companyName: "Chronosphere",
     companyUrl: "https://chronosphere.io/",
@@ -70,23 +73,12 @@ const founderTestimonials: Testimonial[] = [
   },
 ];
 
-const independentValidation: Testimonial[] = [
-  {
-    quote:
-      'No other GP on the AngelList platform - out of hundreds of qualifying investors - beats the Anti Fund along both of these axes. It follows that Geoff and Jake may be able to justify a claim to being the "best investors on AngelList", in the sense that there\'s no other GP that dominates them along the data-driven axes that we believe can help to predict future investment performance.',
-    name: "Abraham Othman",
-    role:
-      "Former Chief Data Scientist, AngelList & CIO, Strawberry Tree Management Company LLC",
-  },
-];
-
-const featuredFounderTestimonials = founderTestimonials.filter((testimonial) =>
-  ["Eric Glyman", "Rob Skillington"].includes(testimonial.name),
+const featuredNames = ["Gianluca Bencomo", "Eric Glyman"];
+const featuredFounderTestimonials = featuredNames.map(
+  (name) => founderTestimonials.find((testimonial) => testimonial.name === name)!,
 );
-
 const additionalFounderTestimonials = founderTestimonials.filter(
-  (testimonial) =>
-    !["Eric Glyman", "Rob Skillington"].includes(testimonial.name),
+  (testimonial) => !featuredNames.includes(testimonial.name),
 );
 
 function TestimonialFigure({
@@ -107,7 +99,7 @@ function TestimonialFigure({
       }`}
     >
       <span
-        className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
+        className={`font-mono text-[11px] uppercase tracking-[0.08em] ${
           inverse ? "text-paper/55" : "text-ink-muted"
         }`}
       >
@@ -115,19 +107,19 @@ function TestimonialFigure({
       </span>
       <div>
         <blockquote
-          className={`max-w-4xl font-display leading-[1.2] tracking-normal ${
+          className={`max-w-[58ch] font-display leading-[1.35] tracking-[-0.01em] ${
             inverse ? "text-paper" : "text-ink"
           } ${
             compact || testimonial.quote.length > 240
-              ? "text-lg sm:text-xl md:text-[1.65rem]"
-              : "text-xl sm:text-2xl md:text-[2rem]"
+              ? "text-xl md:text-[1.5rem]"
+              : "text-2xl md:text-[1.75rem]"
           }`}
         >
           "{testimonial.quote}"
         </blockquote>
         <figcaption className="mt-3 sm:mt-4">
           <p
-            className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
+            className={`font-mono text-[11px] uppercase tracking-[0.08em] ${
               inverse ? "text-paper/65" : "text-ink-muted"
             }`}
           >
@@ -169,6 +161,11 @@ function TestimonialFigure({
               testimonial.role
             )}
           </p>
+          {testimonial.context ? (
+            <p className={`mt-2 text-sm leading-6 ${inverse ? "text-paper/75" : "text-ink-muted"}`}>
+              {testimonial.context}
+            </p>
+          ) : null}
         </figcaption>
       </div>
     </figure>
@@ -179,18 +176,18 @@ export default function Testimonials() {
   return (
     <section
       id="proof"
-      className="px-5 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:px-14"
+      className="page-section"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 border-t border-line pt-5 sm:gap-8 sm:pt-6 lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-10">
-          <div className="paper-label">06 / Founder References</div>
+        <div className="section-frame">
+          <div className="paper-label">05 / Founder References</div>
 
-          <div className="space-y-8 sm:space-y-10">
+          <div className="section-body">
             <div>
-              <h2 className="max-w-4xl font-display text-[2.15rem] leading-[1.04] text-ink sm:text-4xl md:text-5xl">
+              <h2 className="section-heading">
                 What founders say after the wire.
               </h2>
-              <p className="mt-4 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-5 sm:text-lg sm:leading-8">
+              <p className="section-lede">
                 The useful measure of a venture partner is the work founders can
                 name.
               </p>
@@ -240,17 +237,7 @@ export default function Testimonials() {
                   />
                 ))}
 
-                <div className="border-t border-line pt-8">
-                  <p className="paper-label mb-3">Independent validation</p>
-                  {independentValidation.map((testimonial, index) => (
-                    <TestimonialFigure
-                      key={testimonial.name}
-                      testimonial={testimonial}
-                      index={index}
-                      compact
-                    />
-                  ))}
-                </div>
+
               </div>
             </details>
           </div>

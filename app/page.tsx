@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Edge from "@/components/Edge";
 import Thesis from "@/components/Thesis";
@@ -10,37 +11,41 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import RevealWrapper from "@/components/RevealWrapper";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "https://antifund.com" },
+};
+
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
-      <Hero />
-      <RevealWrapper>
-        <Edge />
-      </RevealWrapper>
-      <RevealWrapper delay={50}>
-        <Thesis />
-      </RevealWrapper>
-      <RevealWrapper delay={100}>
-        <Team />
-      </RevealWrapper>
-      <RevealWrapper delay={150}>
-        <Portfolio />
-      </RevealWrapper>
-      <RevealWrapper delay={200}>
-        <HowWeHelp />
-      </RevealWrapper>
-      <RevealWrapper delay={250}>
-        <Testimonials />
-      </RevealWrapper>
-      <RevealWrapper delay={300}>
-        <Media />
-      </RevealWrapper>
-      <RevealWrapper delay={350}>
-        <FAQ />
-      </RevealWrapper>
-      <RevealWrapper delay={400}>
-        <Footer />
-      </RevealWrapper>
-    </main>
+    <>
+      <main id="main-content" tabIndex={-1} className="overflow-x-hidden">
+        <Hero />
+        <RevealWrapper>
+          <Edge />
+        </RevealWrapper>
+        <RevealWrapper delay={50}>
+          <Thesis />
+        </RevealWrapper>
+        <RevealWrapper delay={100}>
+          <HowWeHelp />
+        </RevealWrapper>
+        <RevealWrapper delay={150}>
+          <Team />
+        </RevealWrapper>
+        <RevealWrapper delay={200}>
+          <Testimonials />
+        </RevealWrapper>
+        <RevealWrapper delay={250}>
+          <Portfolio />
+        </RevealWrapper>
+        <RevealWrapper delay={300}>
+          <Media />
+        </RevealWrapper>
+        <RevealWrapper delay={350}>
+          <FAQ />
+        </RevealWrapper>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function ManifestoPage() {
   return (
     <>
-      <main className="overflow-x-hidden px-6 pb-16 pt-28 md:px-10 md:pt-36 lg:px-14">
+      <main id="main-content" tabIndex={-1} className="overflow-x-hidden px-6 pb-16 pt-28 md:px-10 md:pt-36 lg:px-14">
         <div className="mx-auto max-w-6xl">
           <header className="border-y border-line py-10 md:py-14">
             <p className="paper-label mb-8">

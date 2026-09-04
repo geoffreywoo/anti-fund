@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, Source_Serif_4 } from "next/font/google";
 import Nav from "@/components/Nav";
 import "./globals.css";
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: "variable",
+  axes: ["opsz"],
+  display: "swap",
+  variable: "--font-source-serif",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-plex-mono",
+});
 
 export const metadata: Metadata = {
   title: "Anti Fund",
@@ -30,20 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${sourceSerif.variable} ${plexMono.variable}`}>
       <body className="min-h-screen">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Nav />
         {children}
       </body>

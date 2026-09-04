@@ -10,17 +10,20 @@ test.use({
   hasTouch: true,
 });
 
-test("mobile overlay stays focused on content while outreach remains in the footer", async ({
+test("mobile navigation preserves content and founder and LP paths", async ({
   page,
 }) => {
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
 
   const heroLineCount = await page.locator("#top h1").evaluate((heading) => {
-    const range = document.createRange();
-    range.selectNodeContents(heading);
-    return range.getClientRects().length;
+    const lineHeight = Number.parseFloat(window.getComputedStyle(heading).lineHeight);
+    return Math.round(heading.getBoundingClientRect().height / lineHeight);
   });
-  expect(heroLineCount).toBe(2);
+  expect(heroLineCount).toBeGreaterThanOrEqual(2);
+  expect(heroLineCount).toBeLessThanOrEqual(3);
+  await expect(page.locator("#top").getByRole("link", { name: "For founders", exact: true })).toHaveAttribute("href", "#help");
+  await expect(page.locator("#top").getByRole("link", { name: "For limited partners", exact: true })).toHaveAttribute("href", "#investors");
 
   const heroLogo = page.locator('#top img[src*="logo.png"]:visible');
   await expect(heroLogo).toHaveCount(1);
@@ -50,8 +53,8 @@ test("mobile overlay stays focused on content while outreach remains in the foot
     "Edge",
     "Team",
     "Portfolio",
-    "Work",
-    "Media",
+    "Founders",
+    "LPs",
     "Manifesto",
   ]);
   await expect(dialog.getByRole("link", { name: "Contact" })).toHaveCount(0);
@@ -121,15 +124,73 @@ test("mobile overlay stays focused on content while outreach remains in the foot
   await expect(
     footer.getByRole("link", { name: "Limited partner correspondence" }),
   ).toBeVisible();
-  await expect(footer).not.toContainText("founders@antifund.com");
-  await expect(footer).not.toContainText("ir@antifund.com");
+  await expect(footer).toContainText("founders@antifund.com");
+  await expect(footer).toContainText("ir@antifund.com");
 
   await menuButton.click();
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("link", { name: "Media" })).not.toHaveAttribute(
-    "aria-current",
-    "location",
-  );
+  await expect(dialog.locator('[aria-current="location"]')).toHaveCount(0);
+});
+
+test("short-screen menu scrolls, traps focus, and restores the page on Escape", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 420 });
+  await page.goto("/");
+  const menuButton = page.getByRole("button", { name: "Open navigation menu" });
+  await menuButton.click();
+  const dialog = page.getByRole("dialog", { name: "Navigation menu" });
+  const closeButton = dialog.getByRole("button", { name: "Close navigation menu" });
+  const lastLink = dialog.getByRole("link", { name: "Manifesto", exact: true });
+  await expect(closeButton).toBeFocused();
+  await expect(page.locator("main")).toHaveAttribute("inert", "");
+  await page.keyboard.press("Shift+Tab");
+  await expect(lastLink).toBeFocused();
+  await expect(lastLink).toBeInViewport();
+  await page.keyboard.press("Tab");
+  await expect(closeButton).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(menuButton).toBeFocused();
+  await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe("");
+
+  await menuButton.click();
+  await lastLink.click();
+  await expect(page).toHaveURL(/\/manifesto$/);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Anti Fund Manifesto", exact: true })).toBeVisible();
+  await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+});
+
+test("resizing an open menu to desktop restores scrolling and keyboard navigation", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await expect(page.getByRole("dialog", { name: "Navigation menu" })).toBeVisible();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(page.getByRole("dialog", { name: "Navigation menu" })).toBeHidden();
+  await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe("");
+  const primaryNav = page.getByRole("navigation", { name: "Primary" });
+  await expect(primaryNav.getByRole("link", { name: "Edge", exact: true })).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(primaryNav.getByRole("link", { name: "Team", exact: true })).toBeFocused();
+  await primaryNav.getByRole("link", { name: "LPs", exact: true }).click();
+  await expect(page).toHaveURL(/#investors$/);
+  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
+  await page.setViewportSize({ width: 375, height: 667 });
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Open navigation menu" })).toBeVisible();
+});
+
+test("mobile LP navigation focuses the destination and leaves outreach usable", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await page.getByRole("dialog").getByRole("link", { name: "LPs", exact: true }).click();
+  await expect(page).toHaveURL(/#investors$/);
+  await expect(page.locator("#investors")).toBeFocused();
+  await expect(page.locator('#investors a[href="mailto:ir@antifund.com"]')).toBeVisible();
+  await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await expect(page.getByRole("dialog").getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
 });
 
 test("the manifesto stays readable and route-aware on mobile", async ({ page }) => {
