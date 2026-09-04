@@ -1,4 +1,10 @@
 import { expect, test } from "@playwright/test";
+import {
+  manifestoHomepageExcerpt,
+  manifestoMission,
+  manifestoParagraphs,
+  manifestoPublished,
+} from "../content/manifesto";
 
 test("primary navigation keeps outreach out of the main presentation", async ({
   page,
@@ -17,13 +23,14 @@ test("primary navigation keeps outreach out of the main presentation", async ({
 
   const primaryNav = page.getByRole("navigation", { name: "Primary" });
   await expect(primaryNav).toBeVisible();
-  await expect(primaryNav.getByRole("link")).toHaveCount(5);
+  await expect(primaryNav.getByRole("link")).toHaveCount(6);
   await expect(primaryNav.getByRole("link")).toHaveText([
     "Edge",
     "Team",
     "Portfolio",
     "Work",
     "Media",
+    "Manifesto",
   ]);
   await expect(primaryNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
   await expect(primaryNav.locator('a[href^="mailto:"]')).toHaveCount(0);
@@ -38,14 +45,21 @@ test("primary navigation keeps outreach out of the main presentation", async ({
   await expect(hero.locator('a[href^="mailto:"]')).toHaveCount(0);
   await expect(hero).not.toContainText("Pitch Anti Fund");
   await expect(hero).not.toContainText("Investor relations");
-
-  const edgeLink = primaryNav.getByRole("link", { name: "Edge" });
-  await edgeLink.click();
-  await expect(page).toHaveURL(/#edge/);
-  await expect(edgeLink).toHaveAttribute("aria-current", "location");
-  await expect(page.locator("#edge")).toContainText(
-    "See the future early. Make it impossible to ignore.",
+  await expect(hero.locator("p")).toHaveText(
+    "We back technical founders early, then help make their companies impossible to ignore.",
   );
+  const heroLogo = hero.getByRole("img", { name: "Anti Fund" });
+  await expect(heroLogo).toHaveAttribute("src", /logo\.png/);
+  await expect(hero.locator("[data-hero-logo]")).toHaveCount(0);
+
+  const manifestoLink = primaryNav.getByRole("link", { name: "Manifesto" });
+  await expect(manifestoLink).toHaveAttribute("href", "/manifesto");
+
+  const teamLink = primaryNav.getByRole("link", { name: "Team" });
+  await teamLink.click();
+  await expect(page).toHaveURL(/#team/);
+  await expect(teamLink).toHaveAttribute("aria-current", "location");
+  await expect(page.getByRole("heading", { name: "Team." })).toBeVisible();
 
   const portfolioLink = primaryNav.getByRole("link", { name: "Portfolio" });
   await portfolioLink.click();
@@ -107,8 +121,28 @@ test("homepage preserves the complete substance layer in order", async ({
   await expect(page.locator("#edge")).toContainText("Technical conviction");
   await expect(page.locator("#edge")).toContainText("Earned attention");
   await expect(page.locator("#edge")).toContainText("Founder leverage");
-  await expect(page.locator("#thesis")).toContainText("Conviction before consensus.");
-  await expect(page.locator("#thesis")).not.toContainText("At the earliest stage");
+  await expect(page.locator("#edge")).toContainText(
+    "Earned attention creates signal before consensus and leverage for founders",
+  );
+  await expect(
+    page.locator("#thesis").getByRole("heading", {
+      name: "Conviction before consensus.",
+    }),
+  ).toBeVisible();
+  const thesis = page.locator("#thesis");
+  await expect(thesis.getByText("Axiom I", { exact: true })).toBeVisible();
+  await expect(thesis).toContainText(
+    "The best founders are anti before they are obvious.",
+  );
+  await expect(thesis.getByText("Axiom II", { exact: true })).toBeVisible();
+  await expect(thesis).toContainText(
+    "Technical truth creates the edge. Distribution compounds it.",
+  );
+  await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
+    manifestoHomepageExcerpt,
+  );
+  await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
+  await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
   await expect(page.locator("#help")).toContainText("Consequential decisions");
   await expect(page.locator("#help")).toContainText(
     "Conviction is only the beginning.",
@@ -146,6 +180,10 @@ test("footer links to the legal page and the legal page renders key notices", as
 }) => {
   await page.goto("/");
 
+  await expect(
+    page.locator("#contact").getByRole("link", { name: "Manifesto" }),
+  ).toHaveAttribute("href", "/manifesto");
+
   const legalLink = page.getByRole("link", { name: "Legal" });
   await expect(legalLink).toBeVisible();
   await expect(legalLink).toHaveAttribute("href", "/legal");
@@ -157,6 +195,59 @@ test("footer links to the legal page and the legal page renders key notices", as
   await expect(page.locator("main")).toContainText(
     "Nothing on this website constitutes an offer to sell",
   );
+});
+
+test("the dated manifesto route preserves the complete source and site navigation", async ({
+  page,
+}) => {
+  await page.goto("/manifesto");
+
+  await expect(page).toHaveTitle("Manifesto | Anti Fund");
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    "https://antifund.com/manifesto",
+  );
+  await expect(
+    page.getByRole("heading", { name: "Anti Fund Manifesto", exact: true }),
+  ).toBeVisible();
+  await expect(page.locator("header time")).toHaveText(manifestoPublished);
+
+  const paragraphs = page.locator("[data-manifesto-paragraph]");
+  await expect(page.locator("[data-manifesto-body]")).toHaveCount(1);
+  await expect(paragraphs).toHaveCount(manifestoParagraphs.length);
+  await expect(paragraphs).toHaveText([...manifestoParagraphs]);
+  const isSingleUninterruptedFlow = await paragraphs.evaluateAll((nodes) =>
+    nodes.length > 0 &&
+    nodes.every(
+      (node, index) =>
+        node.parentElement === nodes[0].parentElement &&
+        (index === 0 || node.previousElementSibling === nodes[index - 1]),
+    ),
+  );
+  expect(isSingleUninterruptedFlow).toBeTruthy();
+  await expect(
+    page.locator(
+      "[data-manifesto-body] section, [data-manifesto-body] h2, [data-manifesto-body] h3, [data-manifesto-body] hr",
+    ),
+  ).toHaveCount(0);
+  await expect(paragraphs.nth(3)).toContainText(
+    "define the singularity era",
+  );
+  await expect(page.locator("main header")).not.toContainText(manifestoMission);
+  await expect(page.locator("main footer")).toHaveCount(0);
+  await expect(page.getByRole("contentinfo")).toHaveCount(1);
+
+  const primaryNav = page.getByRole("navigation", { name: "Primary" });
+  await expect(
+    primaryNav.getByRole("link", { name: "Manifesto" }),
+  ).toHaveAttribute("aria-current", "page");
+  await expect(primaryNav.getByRole("link", { name: "Team" })).toHaveAttribute(
+    "href",
+    "/#team",
+  );
+  await expect(
+    page.locator("[data-manifesto-note]").getByRole("link", { name: "Legal" }),
+  ).toHaveAttribute("href", "/legal");
 });
 
 test("daily operations publishes complete OAuth disclosure and policy pages", async ({

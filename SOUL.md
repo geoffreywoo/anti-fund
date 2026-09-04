@@ -14,7 +14,7 @@ Capital is a commodity. Attention is not.
 
 Anti Fund pairs technical judgment with cultural reach. We recognize hard-won technical truth before the market has a name for it, then help the right talent, customers, partners, and public understand why the company matters. That is how overlooked breakthroughs become defining companies.
 
-We exist for anti-consensus founders building the future. The mission is to see them early, stay close through consequential decisions, and make their work impossible to ignore.
+Anti Fund predicts the future by backing the people who have the burning internal fire to change it.
 
 ## What We Believe
 

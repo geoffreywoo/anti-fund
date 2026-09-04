@@ -1,4 +1,8 @@
 import { expect, test } from "@playwright/test";
+import {
+  manifestoHomepageExcerpt,
+  manifestoParagraphs,
+} from "../content/manifesto";
 
 test.use({
   viewport: { width: 375, height: 667 },
@@ -17,6 +21,9 @@ test("mobile overlay stays focused on content while outreach remains in the foot
     return range.getClientRects().length;
   });
   expect(heroLineCount).toBe(2);
+
+  const heroLogo = page.locator('#top img[src*="logo.png"]:visible');
+  await expect(heroLogo).toHaveCount(1);
 
   const mobileEffects = await page.evaluate(() => {
     const header = document.querySelector(".site-header");
@@ -38,15 +45,19 @@ test("mobile overlay stays focused on content while outreach remains in the foot
 
   const dialog = page.getByRole("dialog", { name: "Navigation menu" });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("link")).toHaveCount(5);
+  await expect(dialog.getByRole("link")).toHaveCount(6);
   await expect(dialog.getByRole("link")).toHaveText([
     "Edge",
     "Team",
     "Portfolio",
     "Work",
     "Media",
+    "Manifesto",
   ]);
   await expect(dialog.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(
+    dialog.getByRole("link", { name: "Manifesto" }),
+  ).toHaveAttribute("href", "/manifesto");
   const closeButton = dialog.getByRole("button", {
     name: "Close navigation menu",
   });
@@ -67,6 +78,16 @@ test("mobile overlay stays focused on content while outreach remains in the foot
 
   await expect(dialog).toBeHidden();
   await expect(page).toHaveURL(/#portfolio/);
+
+  const thesis = page.locator("#thesis");
+  await thesis.scrollIntoViewIfNeeded();
+  await expect(thesis.getByText("Axiom I", { exact: true })).toBeVisible();
+  await expect(thesis.getByText("Axiom II", { exact: true })).toBeVisible();
+  await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
+    manifestoHomepageExcerpt,
+  );
+  await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
+  await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth > window.innerWidth + 1,
@@ -108,5 +129,36 @@ test("mobile overlay stays focused on content while outreach remains in the foot
   await expect(dialog.getByRole("link", { name: "Media" })).not.toHaveAttribute(
     "aria-current",
     "location",
+  );
+});
+
+test("the manifesto stays readable and route-aware on mobile", async ({ page }) => {
+  await page.goto("/manifesto");
+
+  await expect(
+    page.getByRole("heading", { name: "Anti Fund Manifesto", exact: true }),
+  ).toBeVisible();
+  await expect(page.locator("[data-manifesto-paragraph]")).toHaveCount(
+    manifestoParagraphs.length,
+  );
+  await expect(
+    page.locator(
+      "[data-manifesto-body] section, [data-manifesto-body] h2, [data-manifesto-body] h3, [data-manifesto-body] hr",
+    ),
+  ).toHaveCount(0);
+
+  const hasHorizontalOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > window.innerWidth + 1,
+  );
+  expect(hasHorizontalOverflow).toBeFalsy();
+
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const dialog = page.getByRole("dialog", { name: "Navigation menu" });
+  await expect(
+    dialog.getByRole("link", { name: "Manifesto" }),
+  ).toHaveAttribute("aria-current", "page");
+  await expect(dialog.getByRole("link", { name: "Team" })).toHaveAttribute(
+    "href",
+    "/#team",
   );
 });
