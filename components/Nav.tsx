@@ -10,7 +10,10 @@ const links = [
   { href: "#portfolio", label: "Portfolio" },
   { href: "#help", label: "Work" },
   { href: "#media", label: "Media" },
+  { href: "/manifesto", label: "Manifesto" },
 ];
+
+const sectionLinks = links.filter((link) => link.href.startsWith("#"));
 
 export default function Nav() {
   const pathname = usePathname();
@@ -49,7 +52,7 @@ export default function Nav() {
       const marker = 96;
       let nextActive: string | null = null;
 
-      for (const link of links) {
+      for (const link of sectionLinks) {
         const section = document.querySelector<HTMLElement>(link.href);
 
         if (section && section.getBoundingClientRect().top <= marker) {
@@ -58,7 +61,7 @@ export default function Nav() {
       }
 
       const finalSection = document.querySelector<HTMLElement>(
-        links[links.length - 1].href,
+        sectionLinks[sectionLinks.length - 1].href,
       );
 
       if (finalSection && finalSection.getBoundingClientRect().bottom <= marker) {
@@ -159,17 +162,31 @@ export default function Nav() {
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-5 md:flex lg:gap-7">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={isHome ? link.href : `/${link.href}`}
-                className="nav-section-link relative inline-flex py-1 font-mono text-[11px] uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                data-active={activeHref === link.href ? "" : undefined}
-                aria-current={activeHref === link.href ? "location" : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isRoute = link.href.startsWith("/");
+              const isActive = isRoute
+                ? pathname === link.href
+                : activeHref === link.href;
+              const href = isRoute
+                ? link.href
+                : isHome
+                  ? link.href
+                  : `/${link.href}`;
+
+              return (
+                <a
+                  key={link.href}
+                  href={href}
+                  className="nav-section-link relative inline-flex py-1 font-mono text-[11px] uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  data-active={isActive ? "" : undefined}
+                  aria-current={
+                    isActive ? (isRoute ? "page" : "location") : undefined
+                  }
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
           <button
@@ -218,24 +235,38 @@ export default function Nav() {
             <p className="paper-label mb-6">Contents</p>
             <nav aria-label="Mobile primary">
               <div className="border-y border-line">
-                {links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={isHome ? link.href : `/${link.href}`}
-                    className="flex min-h-14 items-baseline border-b border-line py-5 transition-colors duration-200 last:border-b-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                    data-active={activeHref === link.href ? "" : undefined}
-                    aria-current={activeHref === link.href ? "location" : undefined}
-                    onClick={closeMenu}
-                  >
-                    <span
-                      className={`font-display text-3xl leading-none tracking-normal transition-colors duration-200 ${
-                        activeHref === link.href ? "text-accent" : "text-ink"
-                      }`}
+                {links.map((link) => {
+                  const isRoute = link.href.startsWith("/");
+                  const isActive = isRoute
+                    ? pathname === link.href
+                    : activeHref === link.href;
+                  const href = isRoute
+                    ? link.href
+                    : isHome
+                      ? link.href
+                      : `/${link.href}`;
+
+                  return (
+                    <a
+                      key={link.href}
+                      href={href}
+                      className="flex min-h-14 items-baseline border-b border-line py-5 transition-colors duration-200 last:border-b-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      data-active={isActive ? "" : undefined}
+                      aria-current={
+                        isActive ? (isRoute ? "page" : "location") : undefined
+                      }
+                      onClick={closeMenu}
                     >
-                      {link.label}
-                    </span>
-                  </a>
-                ))}
+                      <span
+                        className={`font-display text-3xl leading-none tracking-normal transition-colors duration-200 ${
+                          isActive ? "text-accent" : "text-ink"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </a>
+                  );
+                })}
               </div>
             </nav>
           </div>

@@ -46,6 +46,12 @@ export default function Footer() {
               </a>
             ))}
             <a
+              href="/manifesto"
+              className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
+            >
+              Manifesto
+            </a>
+            <a
               href="/legal"
               className="paper-link font-mono text-[11px] uppercase tracking-[0.12em]"
             >

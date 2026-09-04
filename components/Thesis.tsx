@@ -1,3 +1,10 @@
+import Link from "next/link";
+import {
+  manifestoEdition,
+  manifestoHomepageExcerpt,
+  manifestoPublished,
+} from "@/content/manifesto";
+
 export default function Thesis() {
   return (
     <section
@@ -29,12 +36,25 @@ export default function Thesis() {
               </div>
             </div>
 
-            <div className="max-w-3xl text-base leading-[1.65] text-ink-soft sm:text-lg sm:leading-8">
-              <p>
-                Anti Fund looks for companies that can define the standard in
-                AI, robotics, defense, energy, manufacturing, semiconductors,
-                software, and selective consumer markets. The sector matters,
-                but the inflection matters more.
+            <div id="manifesto" className="border-t border-line pt-6 sm:pt-8">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+                <p id="homepage-manifesto-title" className="paper-label">
+                  Manifesto {manifestoEdition} / {" "}
+                  <time dateTime="2026-09">{manifestoPublished}</time>
+                </p>
+                <Link
+                  href="/manifesto"
+                  className="paper-link w-fit font-mono text-[11px] uppercase tracking-[0.12em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  Read the full manifesto
+                </Link>
+              </div>
+
+              <p
+                className="mt-8 max-w-3xl text-base leading-[1.7] text-ink-soft sm:mt-10 sm:text-lg sm:leading-8"
+                data-home-manifesto-excerpt
+              >
+                {manifestoHomepageExcerpt}
               </p>
             </div>
           </div>

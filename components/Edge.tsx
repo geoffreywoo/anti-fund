@@ -31,9 +31,10 @@ export default function Edge() {
               See the future early. Make it impossible to ignore.
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-5 sm:text-lg sm:leading-8">
-              Capital can fund a company. Attention recruits talent, earns trust,
-              and shapes categories. Anti Fund pairs technical judgment with
-              uncommon reach to help breakthroughs become defining companies.
+              Capital can fund a company. Earned attention creates signal before
+              consensus and leverage for founders: attracting talent, earning
+              trust, and shaping categories. Anti Fund pairs that uncommon reach
+              with technical judgment.
             </p>
 
             <div className="mt-8 grid border-y border-line sm:mt-10 md:grid-cols-3">
