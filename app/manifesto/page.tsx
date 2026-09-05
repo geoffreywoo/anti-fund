@@ -14,8 +14,19 @@ export const metadata: Metadata = {
     title: "Anti Fund Manifesto",
     description: manifestoMission,
     url: "https://antifund.com/manifesto",
+    images: [{
+      url: "/opengraph-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "Anti Fund wordmark with pig logo.",
+    }],
   },
   twitter: {
+    card: "summary_large_image",
+    images: [{
+      url: "/twitter-image.jpg",
+      alt: "Anti Fund wordmark with pig logo.",
+    }],
     title: "Anti Fund Manifesto",
     description: manifestoMission,
   },
