@@ -493,13 +493,14 @@ test("media highlights three features and preserves the complete archive", async
     media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
   ).toBeVisible();
   await expect(
-    media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul on The a16z Show."),
+    media.getByAltText("Jake Paul and Geoff Woo visit hardware startups in El Segundo."),
   ).toBeVisible();
   await expect(
     media.getByAltText("Geoff Woo, Palmer Luckey, and Jake Paul at Anduril."),
   ).toBeVisible();
 
   const expectedLinks = [
+    ["Jake Paul & Geoff Woo visit El Segundo", "https://www.youtube.com/watch?v=DhVwnSa31WM&t=4s"],
     ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [
       "Jake Paul & Geoff Woo on The a16z Show",

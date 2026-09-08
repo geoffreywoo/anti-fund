@@ -2,6 +2,15 @@ import Image from "next/image";
 
 const featured = [
   {
+    source: "Field visit / El Segundo",
+    title: "Jake Paul & Geoff Woo visit El Segundo",
+    description:
+      "On the ground with the hardware startups building in El Segundo.",
+    href: "https://www.youtube.com/watch?v=DhVwnSa31WM&t=4s",
+    imageSrc: "/media/el-segundo-jake-geoff.jpg",
+    alt: "Jake Paul and Geoff Woo visit hardware startups in El Segundo.",
+  },
+  {
     source: "Anti Fund / Silicon Valley",
     title: "48 hours with Anti Fund",
     description:
@@ -9,15 +18,6 @@ const featured = [
     href: "https://www.youtube.com/watch?v=4ND2P-HydlM",
     imageSrc: "/media/48-hours-anti-fund.jpg",
     alt: "Geoff Woo and Logan Paul in Silicon Valley.",
-  },
-  {
-    source: "a16z / The a16z Show",
-    title: "Jake Paul & Geoff Woo on The a16z Show",
-    description:
-      "Anti Fund's growth strategy, the firm's origin story, founder taste, and why attention compounds as an operating advantage.",
-    href: "https://www.youtube.com/watch?v=yfafpyhB-8E",
-    imageSrc: "/media/a16z-anti-fund.jpg",
-    alt: "Geoff Woo, Jake Paul, and Logan Paul on The a16z Show.",
   },
   {
     source: "Field visit / Anduril",
@@ -31,6 +31,11 @@ const featured = [
 ];
 
 const archive = [
+  {
+    label: "Jake Paul & Geoff Woo on The a16z Show",
+    href: "https://www.youtube.com/watch?v=yfafpyhB-8E",
+    type: "Watch",
+  },
   {
     label: "20VC: Jake Paul & Geoff Woo on attention as an investing edge",
     href: "https://www.youtube.com/watch?v=rWn3KgO9Dvk",
