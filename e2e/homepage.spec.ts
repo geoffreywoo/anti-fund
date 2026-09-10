@@ -358,10 +358,14 @@ test("the full selected portfolio is visible and links out", async ({
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
+  const boring = portfolio.locator('[data-company="the-boring-company"]');
+  await expect(boring).toContainText("Series D");
+  await expect(boring).toContainText("2026");
+  await expect(boring.getByRole("link", { name: "The Boring Company", exact: true })).toHaveAttribute("href", "https://www.boringcompany.com/");
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(53);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(54);
   for (const company of [
     "Aeon",
     "Westmag",

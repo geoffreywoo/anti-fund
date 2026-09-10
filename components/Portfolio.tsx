@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 
 type Company = {
   name: string;
+  logoSrc?: string;
   url: string;
   description: string;
   stage: string;
@@ -15,6 +16,14 @@ type Company = {
 };
 
 const softwareCompanies: Company[] = [
+  {
+    name: "The Boring Company",
+    logoSrc: "/portfolio-logos/the-boring-company.svg",
+    url: "https://www.boringcompany.com/",
+    description: "Tunnel boring machines and underground transportation infrastructure.",
+    stage: "Series D",
+    partnered: "2026",
+  },
   {
     name: "Ramp",
     url: "https://ramp.com/",
@@ -409,6 +418,7 @@ const portfolioGroupSpecs = [
       "OpenAI",
       "Anduril",
       "Helion",
+      "The Boring Company",
       "Saronic",
       "General Matter",
       "General Galactic",
@@ -648,7 +658,7 @@ function StageLabel({ stage }: { stage: string }) {
 }
 
 function CompanyLogo({ company }: { company: Company }) {
-  const needsDarkSurface = ["Creed", "Natural", "Orbital", "Rail"].includes(
+  const needsDarkSurface = ["Creed", "Natural", "Orbital", "Rail", "The Boring Company"].includes(
     company.name,
   );
 
@@ -659,7 +669,7 @@ function CompanyLogo({ company }: { company: Company }) {
       }`}
     >
       <Image
-        src={`/portfolio-logos/${toDataKey(company.name)}.png`}
+        src={company.logoSrc ?? `/portfolio-logos/${toDataKey(company.name)}.png`}
         alt=""
         width={28}
         height={28}
