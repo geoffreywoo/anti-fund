@@ -106,13 +106,9 @@ const team: TeamMember[] = [
     title: "Managing Director, Capital Formation",
     bio: (
       <>
-        Laura Brady is Managing Director, Capital Formation at Anti Fund and
-        Chief Executive Officer of Jake Paul's family office. She was previously
-        EVP at Strive, where she led Client Solutions and Business Development
-        as the firm grew to nearly $2.5B in AUM, and spent 15 years in capital
-        markets at Bank of America and Knight Capital across equities trading,
-        prime brokerage, and hedge fund consulting. She holds a BA in Government
-        from Harvard University.
+        Laura Brady is CEO of Jake Paul's family office. She was previously
+        EVP at Strive and spent 15 years in capital markets at Bank of America
+        and Knight Capital. She holds a BA in Government from Harvard University.
       </>
     ),
   },
