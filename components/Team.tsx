@@ -5,7 +5,7 @@ type TeamMember = {
   name: string;
   title: string;
   profileUrl?: string;
-  bio: ReactNode;
+  bio?: ReactNode;
 };
 
 function ExternalLink({
@@ -97,8 +97,22 @@ const team: TeamMember[] = [
       <>
         Steve Han previously invested at March Capital and worked at Deutsche
         Bank. Born in Korea and raised across India and China, he studied
-        Economics and Environmental Economics & Policy at UC Berkeley and
-        served in the ROK Army.
+        Economics and Environmental Economics & Policy at UC Berkeley.
+      </>
+    ),
+  },
+  {
+    name: "Laura Brady",
+    title: "Managing Director, Capital Formation",
+    bio: (
+      <>
+        Laura Brady is Managing Director, Capital Formation at Anti Fund and
+        Chief Executive Officer of Jake Paul's family office. She was previously
+        EVP at Strive, where she led Client Solutions and Business Development
+        as the firm grew to nearly $2.5B in AUM, and spent 15 years in capital
+        markets at Bank of America and Knight Capital across equities trading,
+        prime brokerage, and hedge fund consulting. She holds a BA in Government
+        from Harvard University.
       </>
     ),
   },
@@ -158,9 +172,11 @@ export default function Team() {
                       <p className="mt-2 font-mono text-[11px] uppercase leading-[1.5] tracking-[0.08em] text-ink-muted">
                         {member.title}
                       </p>
-                      <p className="mt-3 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-4">
-                        {member.bio}
-                      </p>
+                      {member.bio && (
+                        <p className="mt-3 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-4">
+                          {member.bio}
+                        </p>
+                      )}
                     </div>
                   </article>
                 ))}
