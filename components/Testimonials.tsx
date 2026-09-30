@@ -13,7 +13,7 @@ const founderTestimonials: Testimonial[] = [
     quote:
       "Geoff was one of the earliest investors for both Ramp and Paribus, and he is a trusted advisor and a key strategic sounding board. With Ramp, Geoff has directly boosted our topline revenue and growth by introducing us to and helping us close key customers and hire superstar executives. Geoff is on my shortlist to bring onboard for any company I'm involved with.",
     name: "Eric Glyman",
-    context: "Ramp was a personal investment by Geoff Woo.",
+    context: "Geoff Woo invested personally in Ramp's Seed and Series B rounds. Anti Fund invested in Series D.",
     role: "CEO & Co-founder,",
     companyName: "Ramp",
     companyUrl: "https://ramp.com/",
