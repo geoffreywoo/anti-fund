@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Source_Serif_4 } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
@@ -16,6 +16,13 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
   display: "swap",
   variable: "--font-plex-mono",
+});
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-plex-sans",
 });
 
 export const metadata: Metadata = {
@@ -46,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sourceSerif.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${plexMono.variable} ${plexSans.variable}`}>
       <body className="min-h-screen">
         <a className="skip-link" href="#main-content">
           Skip to content

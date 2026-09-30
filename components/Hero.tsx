@@ -7,8 +7,8 @@ export default function Hero() {
       className="hero-section"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="hero-frame border-t border-line">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-center lg:gap-16">
+        <div className="hero-frame">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_140px] lg:items-center lg:gap-12">
             <div className="relative">
               <h1 className="hero-heading">
                 <span className="block">Capital is a commodity.</span>{" "}
@@ -38,13 +38,13 @@ export default function Hero() {
               </div>
             </div>
 
-            <aside className="hidden border-l border-line pl-10 lg:flex lg:justify-center">
+            <aside className="hidden lg:flex lg:justify-end">
               <Image
                 src="/logo.png"
                 alt="Anti Fund"
                 width={180}
                 height={150}
-                className="h-auto w-36"
+                className="h-auto w-28"
                 priority
               />
             </aside>

@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
 import {
-  manifestoHomepageExcerpt,
   manifestoMission,
   manifestoParagraphs,
   manifestoPublished,
@@ -23,16 +22,15 @@ test("founders and LPs can reach relevant content and contact paths", async ({
 
   const primaryNav = page.getByRole("navigation", { name: "Primary" });
   await expect(primaryNav).toBeVisible();
-  await expect(primaryNav.getByRole("link")).toHaveCount(6);
+  await expect(primaryNav.getByRole("link")).toHaveCount(5);
   await expect(primaryNav.getByRole("link")).toHaveText([
-    "Edge",
-    "Team",
     "Portfolio",
-    "Founders",
-    "LPs",
+    "Approach",
+    "Team",
+    "Contact",
     "Manifesto",
   ]);
-  await expect(primaryNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(primaryNav.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "#contact");
   await expect(primaryNav.locator('a[href^="mailto:"]')).toHaveCount(0);
 
   const hero = page.locator("#top");
@@ -51,15 +49,15 @@ test("founders and LPs can reach relevant content and contact paths", async ({
   await investorAction.click();
   await expect(page).toHaveURL(/#investors$/);
   const investors = page.locator("#investors");
-  await expect(investors.getByRole("heading", { name: "Venture", exact: true })).toBeVisible();
+  await expect(investors.getByRole("heading", { name: "For limited partners", exact: true })).toBeVisible();
+  await expect(investors.locator("dt")).toHaveText(["Venture", "Growth & opportunities"]);
   await expect(investors).toContainText("Pre-seed & seed");
   await expect(investors).toContainText("Growth & pre-IPO");
   await expect(investors.locator('a[href="mailto:ir@antifund.com"]')).toBeVisible();
-  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
+  await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
   await founderAction.click();
   await expect(page).toHaveURL(/#help$/);
-  await expect(primaryNav.getByRole("link", { name: "Founders", exact: true })).toHaveAttribute("aria-current", "location");
-  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).not.toHaveAttribute("aria-current", "location");
+  await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
   await expect(page.locator('#help a[href="mailto:founders@antifund.com"]')).toBeVisible();
   await expect(page.locator("#help")).toContainText("Send a deck or product link.");
   const heroLogo = hero.getByRole("img", { name: "Anti Fund" });
@@ -73,7 +71,7 @@ test("founders and LPs can reach relevant content and contact paths", async ({
   await teamLink.click();
   await expect(page).toHaveURL(/#team/);
   await expect(teamLink).toHaveAttribute("aria-current", "location");
-  await expect(page.getByRole("heading", { name: "Team." })).toBeVisible();
+  await expect(page.locator("#team").getByRole("heading", { level: 2 })).toBeVisible();
 
   const portfolioLink = primaryNav.getByRole("link", { name: "Portfolio" });
   await portfolioLink.click();
@@ -94,94 +92,61 @@ test("founders and LPs can reach relevant content and contact paths", async ({
   ).toHaveAttribute("href", "mailto:ir@antifund.com");
   await expect(footer).toContainText("founders@antifund.com");
   await expect(footer).toContainText("ir@antifund.com");
-  await expect
-    .poll(async () => primaryNav.locator('[aria-current="location"]').count())
-    .toBe(0);
+  await primaryNav.getByRole("link", { name: "Contact", exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
 });
 
-test("homepage preserves the complete substance layer in order", async ({
+test("homepage leads with investments and keeps supporting content accessible", async ({
   page,
 }) => {
   await page.goto("/");
 
-  await expect(page.locator("main section")).toHaveCount(9);
-
-  const positions = await page.evaluate(() => {
-    const ids = [
-      "top",
-      "edge",
-      "thesis",
-      "help",
-      "team",
-      "proof",
-      "portfolio",
-      "media",
-      "faq",
-      "contact",
-    ];
-    return ids.map((id) => ({
-      id,
-      top: document.querySelector(`#${id}`)?.getBoundingClientRect().top ?? null,
-    }));
+  const contentOrder = await page.evaluate(() => {
+    const ids = ["top", "portfolio", "edge", "thesis", "team", "media"];
+    const sections = ids.map((id) => document.querySelector(`#${id}`));
+    return sections.every((section, index) =>
+      section !== null &&
+      (index === 0 || Boolean(
+        sections[index - 1]!.compareDocumentPosition(section) & Node.DOCUMENT_POSITION_FOLLOWING,
+      )),
+    );
   });
-
-  expect(positions.every((position) => position.top !== null)).toBeTruthy();
-  expect(positions.map((position) => position.top)).toEqual(
-    positions
-      .map((position) => position.top)
-      .sort((left, right) => (left as number) - (right as number)),
-  );
-
+  expect(contentOrder).toBeTruthy();
+  await expect(page.locator("#top + #portfolio")).toHaveCount(1);
   await expect(page.locator("main footer")).toHaveCount(0);
   await expect(page.getByRole("contentinfo")).toHaveCount(1);
   await expect(page.locator("#edge article")).toHaveCount(3);
   await expect(page.locator("#edge").getByRole("heading", { level: 2 })).toContainText("Technical conviction");
-  await expect(
-    page.locator("#thesis").getByRole("heading", {
-      name: "Conviction before consensus.",
-    }),
-  ).toBeVisible();
+  await expect(page.locator("#edge #proof")).toHaveCount(1);
+
   const thesis = page.locator("#thesis");
-  await expect(thesis.getByText("Axiom I", { exact: true })).toBeVisible();
-  await expect(thesis).toContainText(
-    "The best founders are anti before they are obvious.",
-  );
-  await expect(thesis.getByText("Axiom II", { exact: true })).toBeVisible();
-  await expect(thesis).toContainText(
-    "Technical truth creates the edge. Distribution compounds it.",
-  );
   await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
-    manifestoHomepageExcerpt,
+    "The best founders are anti before they are obvious.",
   );
   await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
   await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
-  await expect(page.locator("#help")).toContainText("Consequential decisions");
-  await expect(page.locator("#help")).toContainText(
-    "Conviction is only the beginning.",
-  );
-  await expect(page.locator("#help")).not.toContainText("perform helpfulness");
-  await expect(page.locator("#proof")).toContainText("Founder References");
-  await expect(page.locator("#faq")).toContainText("What's your check size?");
+  await expect(thesis).not.toContainText("Axiom I");
+  await expect(thesis).not.toContainText("Axiom II");
+  await expect(page.locator("#contact #help")).toBeVisible();
+  await expect(page.locator("#contact #investors")).toBeVisible();
+  await expect(page.locator("#contact #faq")).toBeVisible();
 
   const edgeCopy = await page.locator("#edge").innerText();
   expect(edgeCopy).not.toContain("$30M");
   expect(edgeCopy).not.toContain("$100M");
   expect(edgeCopy).not.toContain("$180M");
   expect(edgeCopy).not.toContain("Firm AUM");
-  expect(edgeCopy).not.toContain("Pre-seed");
-  expect(edgeCopy).not.toContain("Growth & pre-IPO");
 });
 
-test("deep links reveal long sections instead of leaving a blank viewport", async ({
+test("deep links display their destination without waiting for a reveal animation", async ({
   page,
 }) => {
-  await page.goto("/#portfolio");
-
-  const revealWrapper = page.locator("#portfolio").locator("..");
-  await expect(revealWrapper).toHaveAttribute("data-revealed", "");
-  await expect(
-    page.getByRole("heading", { name: "Selected investments." }),
-  ).toBeVisible();
+  for (const id of ["portfolio", "edge", "team", "contact"]) {
+    await page.goto(`/#${id}`);
+    await expect(page.locator(`#${id}`)).toBeInViewport();
+    await expect(page.locator(`#${id}`).getByRole("heading", { level: 2 }).first()).toBeVisible();
+  }
 });
 
 test("skip link moves keyboard focus past the navigation on public routes", async ({ page }) => {
@@ -348,16 +313,32 @@ test("daily operations publishes complete OAuth disclosure and policy pages", as
   await expect(page.locator("main")).toContainText("read-only");
 });
 
-test("the full selected portfolio is visible and links out", async ({
+test("selected investments lead to the complete portfolio through a keyboard disclosure", async ({
   page,
 }) => {
   await page.goto("/");
 
   const portfolio = page.locator("#portfolio");
   await portfolio.scrollIntoViewIfNeeded();
+  const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
+  const investmentSummary = allInvestments.locator("summary");
+  await expect(portfolio.locator("[data-company]")).toHaveCount(54);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
+  await expect(allInvestments.locator("[data-company]")).toHaveCount(44);
+  await expect(allInvestments).not.toHaveAttribute("open", "");
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
-  await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
+  await investmentSummary.focus();
+  await page.keyboard.press("Enter");
+  await expect(allInvestments).toHaveAttribute("open", "");
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(54);
+  await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
+
+  const companyKeys = await portfolio.locator("[data-company]").evaluateAll((rows) =>
+    rows.map((row) => row.getAttribute("data-company")),
+  );
+  expect(new Set(companyKeys).size).toBe(54);
+
   const boring = portfolio.locator('[data-company="the-boring-company"]');
   await expect(boring).toContainText("Series D");
   await expect(boring).toContainText("2026");
@@ -401,7 +382,11 @@ test("the full selected portfolio is visible and links out", async ({
     "$1.77T IPO",
   );
 
-  const sinceValuesByGroup = await portfolio
+  await expect(portfolio).toContainText("* Personal investment");
+  await expect(portfolio.locator('[data-company="ramp"] [aria-label="Personal investment"]')).toBeVisible();
+  await expect(portfolio.locator('[data-company="chronosphere"] [aria-label="Personal investment"]')).toBeVisible();
+
+  const sinceValuesByGroup = await allInvestments
     .locator("[data-portfolio-group]")
     .evaluateAll((groups) =>
       groups.map((group) =>
@@ -410,12 +395,13 @@ test("the full selected portfolio is visible and links out", async ({
         ),
       ),
     );
-
   for (const sinceValues of sinceValuesByGroup) {
-    expect(sinceValues).toEqual(
-      [...sinceValues].sort((left, right) => left - right),
-    );
+    expect(sinceValues).toEqual([...sinceValues].sort((left, right) => left - right));
   }
+  await investmentSummary.focus();
+  await page.keyboard.press("Space");
+  await expect(allInvestments).not.toHaveAttribute("open", "");
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
 });
 
 test("team biographies and every founder reference remain available", async ({
@@ -431,73 +417,102 @@ test("team biographies and every founder reference remain available", async ({
 
   const roster = team.locator("[data-team-roster]");
   await expect(roster).toBeVisible();
-  await expect(team.locator("[data-team-bios]")).toHaveCount(0);
+  await expect(roster.locator("article")).toHaveCount(5);
+  const biographies = roster.locator("[data-team-bio]");
+  await expect(biographies).toHaveCount(5);
+  await expect(roster.getByRole("link", { name: "US patents", includeHidden: true })).toBeHidden();
+
+  for (const biography of await biographies.all()) {
+    await expect(biography).not.toHaveAttribute("open", "");
+    const summary = biography.locator("summary");
+    await expect(summary).toHaveText("Full biography");
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(biography).toHaveAttribute("open", "");
+  }
   await expect(roster.getByRole("link", { name: "US patents" })).toBeVisible();
   await expect(
     roster.getByRole("link", { name: "peer-reviewed science papers" }),
   ).toBeVisible();
-  await expect(roster).toContainText(
-    "Steve Han previously invested at March Capital",
-  );
+  await expect(roster).toContainText("Steve Han previously invested at March Capital");
+  await expect(roster).toContainText("65M peak concurrent streams on Netflix");
+  await expect(roster).toContainText("BA in Government from Harvard University");
 
   const proof = page.locator("#proof");
   await proof.scrollIntoViewIfNeeded();
-  await expect(proof.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
   await expect(proof.getByRole("link", { name: "Gianluca Bencomo" })).toBeVisible();
-  await expect(proof.getByRole("link", { name: "Rob Skillington" })).toBeHidden();
+  await expect(proof.getByRole("link", { name: "Eric Glyman", includeHidden: true })).toBeHidden();
+  await expect(proof.getByRole("link", { name: "Rob Skillington", includeHidden: true })).toBeHidden();
 
   const featuredReference = proof.locator("[data-featured-reference]");
   await expect(featuredReference).toBeVisible();
-  await expect(featuredReference).toContainText(
-    "Anti Fund was our first investor",
-  );
+  await expect(featuredReference).toContainText("Anti Fund was our first investor");
   await expect(featuredReference).toContainText("Gianluca Bencomo");
-  await expect(proof).toContainText("Ramp was a personal investment by Geoff Woo.");
-  await expect(featuredReference).toHaveCSS("background-color", "rgb(20, 20, 20)");
+  await expect(proof.locator("blockquote:visible")).toHaveCount(1);
 
   const moreReferences = proof.locator("[data-founder-references]");
-  await moreReferences.locator("summary").click();
+  const referenceSummary = moreReferences.locator("summary");
+  await expect(referenceSummary).toContainText("More founder references");
+  await referenceSummary.focus();
+  await page.keyboard.press("Enter");
   await expect(moreReferences).toHaveAttribute("open", "");
+  await expect(moreReferences.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
   await expect(moreReferences.getByRole("link", { name: "Sam Blond" })).toBeVisible();
   await expect(moreReferences.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
-  await expect(proof.locator("blockquote")).toHaveCount(7);
+  await expect(proof.locator("blockquote:visible")).toHaveCount(7);
+  await expect(proof).toContainText("Ramp was a personal investment by Geoff Woo.");
   await expect(proof).not.toContainText("Abraham Othman");
+  await referenceSummary.focus();
+  await page.keyboard.press("Space");
+  await expect(moreReferences).not.toHaveAttribute("open", "");
+  await expect(proof.locator("blockquote:visible")).toHaveCount(1);
 });
 
-test("the typography stays limited to the editorial and technical faces", async ({
+test("typography pairs readable sans body copy with serif identity and mono metadata", async ({
   page,
 }) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
 
   const fonts = await page.evaluate(() => ({
-    body: window.getComputedStyle(document.body).fontFamily,
+    body: window.getComputedStyle(document.querySelector("main") as HTMLElement).fontFamily,
+    hero: window.getComputedStyle(document.querySelector("#top h1") as HTMLElement).fontFamily,
     label: window.getComputedStyle(
       document.querySelector(".paper-label") as HTMLElement,
     ).fontFamily,
   }));
 
-  expect(fonts.body.replaceAll("_", " ")).toMatch(/Source Serif 4/i);
+  expect(fonts.body.replaceAll("_", " ")).toMatch(/IBM Plex Sans/i);
+  expect(fonts.hero.replaceAll("_", " ")).toMatch(/Source Serif 4/i);
   expect(fonts.label.replaceAll("_", " ")).toMatch(/IBM Plex Mono/i);
   await expect(page.locator('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]')).toHaveCount(0);
 });
 
-test("media highlights three features and preserves the complete archive", async ({
+test("one field story leads to the complete media archive through a disclosure", async ({
   page,
 }) => {
   await page.goto("/");
 
   const media = page.locator("#media");
   await media.scrollIntoViewIfNeeded();
-  await expect(
-    media.getByRole("heading", { name: "In conversation. On the ground." }),
-  ).toBeVisible();
-  await expect(media.locator("article")).toHaveCount(3);
-  await expect(
-    media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
-  ).toBeVisible();
+  await expect(media.getByRole("heading", { level: 2 })).toBeVisible();
+  await expect(media.locator("article:visible")).toHaveCount(1);
   await expect(
     media.getByAltText("Jake Paul and Geoff Woo visit hardware startups in El Segundo."),
+  ).toBeVisible();
+  await expect(
+    media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
+  ).toBeHidden();
+
+  const archive = media.locator("[data-media-archive]");
+  const archiveSummary = archive.locator("summary");
+  await expect(archiveSummary).toContainText("More conversations & field notes");
+  await archiveSummary.focus();
+  await page.keyboard.press("Enter");
+  await expect(archive).toHaveAttribute("open", "");
+  await expect(media.locator("article:visible")).toHaveCount(3);
+  await expect(
+    media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
   ).toBeVisible();
   await expect(
     media.getByAltText("Geoff Woo, Palmer Luckey, and Jake Paul at Anduril."),
@@ -543,6 +558,10 @@ test("media highlights three features and preserves the complete archive", async
     await expect(link).toHaveAttribute("href", href);
     await expect(link).toHaveAttribute("target", "_blank");
   }
+  await archiveSummary.focus();
+  await page.keyboard.press("Space");
+  await expect(archive).not.toHaveAttribute("open", "");
+  await expect(media.locator("article:visible")).toHaveCount(1);
 });
 
 test("faq disclosure and keyboard navigation work", async ({ page }) => {
@@ -550,6 +569,12 @@ test("faq disclosure and keyboard navigation work", async ({ page }) => {
 
   const faq = page.locator("#faq");
   await faq.scrollIntoViewIfNeeded();
+  const faqSummary = faq.locator("summary");
+  await expect(faqSummary).toContainText("Common questions");
+  await expect(faq.getByRole("button", { name: "How can I invest in the fund?", includeHidden: true })).toBeHidden();
+  await faqSummary.focus();
+  await page.keyboard.press("Enter");
+  await expect(faq).toHaveAttribute("open", "");
 
   const investorButton = faq.getByRole("button", {
     name: "How can I invest in the fund?",
@@ -572,6 +597,10 @@ test("faq disclosure and keyboard navigation work", async ({ page }) => {
   await buttons.nth(0).focus();
   await page.keyboard.press("ArrowDown");
   await expect(buttons.nth(1)).toBeFocused();
+  await faqSummary.focus();
+  await page.keyboard.press("Space");
+  await expect(faq).not.toHaveAttribute("open", "");
+  await expect(buttons.nth(0)).toBeHidden();
 });
 
 test.describe("reduced motion and metadata", () => {

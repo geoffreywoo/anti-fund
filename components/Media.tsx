@@ -68,100 +68,101 @@ const archive = [
   },
 ];
 
+function FieldStory({ item }: { item: (typeof featured)[number] }) {
+  return (
+    <article className="grid gap-4 sm:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] sm:items-center sm:gap-6">
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block overflow-hidden border border-line bg-paper-alt focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        <Image
+          src={item.imageSrc}
+          alt={item.alt}
+          width={1280}
+          height={720}
+          sizes="(min-width: 1280px) 380px, (min-width: 1024px) 32vw, (min-width: 640px) 42vw, calc(100vw - 40px)"
+          className="aspect-video h-auto w-full object-cover"
+        />
+      </a>
+      <div>
+        <p className="paper-label">{item.source}</p>
+        <h3 className="mt-2 font-body text-lg font-medium leading-snug text-ink sm:text-xl">
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="paper-link"
+          >
+            {item.title}
+          </a>
+        </h3>
+        <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-soft">
+          {item.description}
+        </p>
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="paper-link mt-3 inline-block py-1 font-body text-sm"
+          aria-label={`Watch ${item.title}`}
+        >
+          Watch the visit <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+  );
+}
+
 export default function Media() {
   return (
-    <section
-      id="media"
-      className="page-section"
-    >
+    <section id="media" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">07 / Media & Field Notes</div>
+          <div className="paper-label">Field notes</div>
 
-          <div className="section-body">
-            <div>
-              <h2 className="section-heading">
-                In conversation. On the ground.
-              </h2>
-              <p className="section-lede">
-                Conversations and field visits show the thesis in practice.
-              </p>
+          <div className="space-y-6 sm:space-y-8">
+            <h2 className="section-heading">On the ground.</h2>
+
+            <div data-featured-field-story>
+              <FieldStory item={featured[0]} />
             </div>
 
-            <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {featured.map((item, index) => (
-                <article
-                  key={item.href}
-                  className={`overflow-hidden border border-line bg-paper-alt ${
-                    index === 0 ? "md:col-span-2 xl:col-span-1" : ""
-                  }`}
-                >
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block border-b border-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-accent"
-                  >
-                    <Image
-                      src={item.imageSrc}
-                      alt={item.alt}
-                      width={1280}
-                      height={720}
-                      sizes={
-                        index === 0
-                          ? "(min-width: 1280px) 30vw, (min-width: 768px) 90vw, 100vw"
-                          : "(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw"
-                      }
-                      className="aspect-video h-auto w-full object-cover"
-                    />
-                  </a>
-
-                  <div className="px-4 py-4 sm:px-6 sm:py-6">
-                    <p className="paper-label">{item.source}</p>
-                    <h3 className="mt-3 font-display text-2xl leading-[1.15] tracking-[-0.015em] text-ink sm:mt-4 sm:text-[1.65rem]">
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="paper-link"
-                      >
-                        {item.title}
-                      </a>
-                    </h3>
-                    <p className="mt-3 text-[0.95rem] leading-6 text-ink-soft sm:mt-4 sm:text-base sm:leading-7">
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div>
-              <p className="paper-label mb-3">Archive</p>
-              <div className="border-y border-line">
-                {archive.map((item, index) => (
-                  <div
-                    key={item.href}
-                    className="grid grid-cols-[24px_minmax(0,1fr)_40px] items-start gap-3 border-b border-line py-3.5 last:border-b-0 sm:grid-cols-[44px_minmax(0,1fr)_70px] sm:items-baseline sm:gap-6 sm:py-4"
-                  >
-                    <span className="font-mono text-[10px] uppercase text-ink-muted sm:text-[11px]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="paper-link text-[0.95rem] leading-6 sm:text-base sm:leading-7"
-                    >
-                      {item.label}
-                    </a>
-                    <span className="pt-0.5 text-right font-mono text-[10px] uppercase text-ink-muted sm:pt-0 sm:text-left sm:text-[11px]">
-                      {item.type}
-                    </span>
-                  </div>
+            <details data-media-archive className="border-y border-line">
+              <summary className="cursor-pointer py-4 font-body text-sm leading-relaxed text-ink hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+                More conversations &amp; field notes
+              </summary>
+              <div className="space-y-6 border-t border-line py-6 sm:space-y-8">
+                {featured.slice(1).map((item) => (
+                  <FieldStory key={item.href} item={item} />
                 ))}
+
+                <div>
+                  <p className="paper-label mb-3">Conversations &amp; events</p>
+                  <div className="border-t border-line">
+                    {archive.map((item) => (
+                      <div
+                        key={item.href}
+                        className="grid grid-cols-[minmax(0,1fr)_48px] items-baseline gap-4 border-b border-line py-3 last:border-b-0"
+                      >
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="paper-link font-body text-[15px] leading-relaxed"
+                        >
+                          {item.label}
+                        </a>
+                        <span className="text-right font-mono text-xs text-ink-muted">
+                          {item.type}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </details>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 type TeamMember = {
   name: string;
   title: string;
+  summary: string;
   profileUrl?: string;
   bio?: ReactNode;
 };
@@ -31,6 +32,7 @@ const team: TeamMember[] = [
   {
     name: "Geoff Woo",
     title: "Co-founder & Managing Partner",
+    summary: "Entrepreneur and engineer; co-founder of Archive, Ketone-IQ, and W.",
     profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
@@ -58,6 +60,7 @@ const team: TeamMember[] = [
   {
     name: "Jake Paul",
     title: "Co-founder & Managing Partner",
+    summary: "Entrepreneur and professional boxer; founder of Most Valuable Promotions.",
     profileUrl: "https://en.wikipedia.org/wiki/Jake_Paul",
     bio: (
       <>
@@ -80,6 +83,7 @@ const team: TeamMember[] = [
   {
     name: "Logan Paul",
     title: "General Partner",
+    summary: "Co-founder of PRIME, host of Impaulsive, and professional wrestler.",
     profileUrl: "https://www.instagram.com/loganpaul/",
     bio: (
       <>
@@ -93,6 +97,7 @@ const team: TeamMember[] = [
   {
     name: "Steve Han",
     title: "Partner",
+    summary: "Former investor at March Capital; previously at Deutsche Bank.",
     bio: (
       <>
         Steve Han previously invested at March Capital and worked at Deutsche
@@ -104,6 +109,7 @@ const team: TeamMember[] = [
   {
     name: "Laura Brady",
     title: "Managing Director, Capital Formation",
+    summary: "CEO of Jake Paul's family office; 15 years in capital markets.",
     bio: (
       <>
         Laura Brady is CEO of Jake Paul's family office. She was previously
@@ -119,22 +125,22 @@ export default function Team() {
     <section id="team" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">04 / Team</div>
+          <div className="paper-label">Team</div>
 
           <div className="space-y-6 sm:space-y-8">
             <h2 className="section-heading">
-              Team.
+              People behind the fund.
             </h2>
 
-            <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:items-start">
-              <figure className="w-full max-w-[560px] lg:max-w-[360px]">
+            <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.32fr)_minmax(0,0.68fr)] lg:items-start">
+              <figure className="w-full max-w-[560px] lg:max-w-[280px]">
                 <div className="overflow-hidden border border-line bg-paper-alt">
                   <Image
                     src="/team-general-partners.jpg"
                     alt="Geoff Woo, Jake Paul, and Logan Paul seated together."
                     width={2048}
                     height={2560}
-                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) calc(38vw - 123px), (min-width: 640px) 560px, calc(100vw - 40px)"
+                    sizes="(min-width: 1280px) 280px, (min-width: 1024px) 25vw, (min-width: 640px) 560px, calc(100vw - 40px)"
                     className="aspect-[4/3] h-auto w-full object-cover object-[center_42%] lg:aspect-[4/5] lg:object-center"
                   />
                 </div>
@@ -142,16 +148,13 @@ export default function Team() {
               </figure>
 
               <div data-team-roster className="border-y border-line">
-                {team.map((member, index) => (
+                {team.map((member) => (
                   <article
                     key={member.name}
-                    className="grid grid-cols-[28px_minmax(0,1fr)] gap-x-3 border-b border-line py-5 last:border-b-0 sm:grid-cols-[36px_minmax(0,1fr)] sm:gap-x-4 sm:py-6"
+                    className="border-b border-line py-4 last:border-b-0"
                   >
-                    <span className="font-mono text-[11px] uppercase text-ink-muted">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     <div>
-                      <h3 className="font-display text-[26px] leading-[1.15] text-ink sm:text-[28px]">
+                      <h3 className="font-body text-lg font-medium leading-snug text-ink sm:text-xl">
                         {member.profileUrl ? (
                           <a
                             href={member.profileUrl}
@@ -165,13 +168,21 @@ export default function Team() {
                           member.name
                         )}
                       </h3>
-                      <p className="mt-2 font-mono text-[11px] uppercase leading-[1.5] tracking-[0.08em] text-ink-muted">
+                      <p className="mt-1 font-body text-xs leading-relaxed text-ink-muted">
                         {member.title}
                       </p>
+                      <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-soft">
+                        {member.summary}
+                      </p>
                       {member.bio && (
-                        <p className="mt-3 max-w-3xl text-base leading-[1.65] text-ink-soft sm:mt-4">
-                          {member.bio}
-                        </p>
+                        <details data-team-bio className="mt-1">
+                          <summary className="min-h-11 w-fit cursor-pointer py-3 font-body text-xs leading-relaxed text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+                            Full biography
+                          </summary>
+                          <p className="max-w-3xl pb-2 pt-1 font-body text-[15px] leading-relaxed text-ink-soft">
+                            {member.bio}
+                          </p>
+                        </details>
                       )}
                     </div>
                   </article>

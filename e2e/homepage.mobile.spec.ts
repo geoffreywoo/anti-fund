@@ -1,8 +1,5 @@
 import { expect, test } from "@playwright/test";
-import {
-  manifestoHomepageExcerpt,
-  manifestoParagraphs,
-} from "../content/manifesto";
+import { manifestoParagraphs } from "../content/manifesto";
 
 test.use({
   viewport: { width: 375, height: 667 },
@@ -48,16 +45,15 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   const dialog = page.getByRole("dialog", { name: "Navigation menu" });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("link")).toHaveCount(6);
+  await expect(dialog.getByRole("link")).toHaveCount(5);
   await expect(dialog.getByRole("link")).toHaveText([
-    "Edge",
-    "Team",
     "Portfolio",
-    "Founders",
-    "LPs",
+    "Approach",
+    "Team",
+    "Contact",
     "Manifesto",
   ]);
-  await expect(dialog.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(dialog.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "#contact");
   await expect(
     dialog.getByRole("link", { name: "Manifesto" }),
   ).toHaveAttribute("href", "/manifesto");
@@ -84,10 +80,8 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   const thesis = page.locator("#thesis");
   await thesis.scrollIntoViewIfNeeded();
-  await expect(thesis.getByText("Axiom I", { exact: true })).toBeVisible();
-  await expect(thesis.getByText("Axiom II", { exact: true })).toBeVisible();
   await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
-    manifestoHomepageExcerpt,
+    "The best founders are anti before they are obvious.",
   );
   await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
   await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
@@ -99,6 +93,12 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   const portfolio = page.locator("#portfolio");
   await portfolio.scrollIntoViewIfNeeded();
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
+  const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
+  await expect(allInvestments).not.toHaveAttribute("open", "");
+  await allInvestments.locator("summary").click();
+  await expect(allInvestments).toHaveAttribute("open", "");
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(54);
   await expect(portfolio.getByRole("link", { name: "Chronosphere" })).toBeVisible();
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
@@ -129,7 +129,10 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   await menuButton.click();
   await expect(dialog).toBeVisible();
-  await expect(dialog.locator('[aria-current="location"]')).toHaveCount(0);
+  await dialog.getByRole("link", { name: "Contact", exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("#contact")).toBeFocused();
 });
 
 test("short-screen menu scrolls, traps focus, and restores the page on Escape", async ({ page }) => {
@@ -170,27 +173,28 @@ test("resizing an open menu to desktop restores scrolling and keyboard navigatio
   await expect(page.locator("main")).not.toHaveAttribute("inert", "");
   await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe("");
   const primaryNav = page.getByRole("navigation", { name: "Primary" });
-  await expect(primaryNav.getByRole("link", { name: "Edge", exact: true })).toBeFocused();
+  await expect(primaryNav.getByRole("link", { name: "Portfolio", exact: true })).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(primaryNav.getByRole("link", { name: "Team", exact: true })).toBeFocused();
-  await primaryNav.getByRole("link", { name: "LPs", exact: true }).click();
-  await expect(page).toHaveURL(/#investors$/);
-  await expect(primaryNav.getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
+  await expect(primaryNav.getByRole("link", { name: "Approach", exact: true })).toBeFocused();
+  await primaryNav.getByRole("link", { name: "Contact", exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
   await page.setViewportSize({ width: 375, height: 667 });
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Open navigation menu" })).toBeVisible();
 });
 
-test("mobile LP navigation focuses the destination and leaves outreach usable", async ({ page }) => {
+test("mobile contact navigation focuses the destination and leaves both outreach paths usable", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Open navigation menu" }).click();
-  await page.getByRole("dialog").getByRole("link", { name: "LPs", exact: true }).click();
-  await expect(page).toHaveURL(/#investors$/);
-  await expect(page.locator("#investors")).toBeFocused();
+  await page.getByRole("dialog").getByRole("link", { name: "Contact", exact: true }).click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.locator("#contact")).toBeFocused();
+  await expect(page.locator('#help a[href="mailto:founders@antifund.com"]')).toBeVisible();
   await expect(page.locator('#investors a[href="mailto:ir@antifund.com"]')).toBeVisible();
   await expect(page.locator("main")).not.toHaveAttribute("inert", "");
   await page.getByRole("button", { name: "Open navigation menu" }).click();
-  await expect(page.getByRole("dialog").getByRole("link", { name: "LPs", exact: true })).toHaveAttribute("aria-current", "location");
+  await expect(page.getByRole("dialog").getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
 });
 
 test("the manifesto stays readable and route-aware on mobile", async ({ page }) => {

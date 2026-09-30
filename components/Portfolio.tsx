@@ -1,5 +1,4 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
 
 type Company = {
   name: string;
@@ -634,13 +633,33 @@ const companyByName = new Map(
   [...softwareCompanies, ...consumerCompanies].map((company) => [company.name, company]),
 );
 
+const featuredCompanyNames = [
+  "Anduril",
+  "OpenAI",
+  "Cognition",
+  "Physical Intelligence",
+  "Etched",
+  "Modal",
+  "Efference",
+  "General Matter",
+  "Saronic",
+  "Helion",
+];
+const featuredCompanySet = new Set(featuredCompanyNames);
+const featuredCompanies = featuredCompanyNames
+  .map((name) => companyByName.get(name))
+  .filter((company): company is Company => Boolean(company));
+
 const portfolioGroups = portfolioGroupSpecs.map((group) => ({
   ...group,
   key: toDataKey(group.title),
   companies: sortCompanies(
     group.names
       .map((name) => companyByName.get(name))
-      .filter((company): company is Company => Boolean(company)),
+      .filter(
+        (company): company is Company =>
+          company !== undefined && !featuredCompanySet.has(company.name),
+      ),
   ),
 }));
 
@@ -681,13 +700,7 @@ function CompanyLogo({ company }: { company: Company }) {
   );
 }
 
-function CompanyRow({
-  company,
-  index,
-}: {
-  company: Company;
-  index: number;
-}) {
+function CompanyRow({ company }: { company: Company }) {
   const description = (
     <>
       {company.description}
@@ -710,49 +723,43 @@ function CompanyRow({
   return (
     <div
       data-company={toDataKey(company.name)}
-      className="group portfolio-row -mx-1 border-b border-line px-1 py-4 transition-colors duration-200 ease-out hover:bg-paper-alt/60 focus-within:bg-paper-alt/60 xl:mx-0"
-      style={{
-        "--row-delay": `${Math.min(index * 24, 240)}ms`,
-      } as CSSProperties}
+      className="portfolio-row border-b border-line py-4"
     >
       <div>
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-          <div className="min-w-0">
-            <a
-              href={company.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="paper-link inline-flex max-w-full items-center gap-2 font-display text-[1.25rem] leading-[1.15] tracking-normal text-ink sm:text-[1.45rem]"
-            >
-              <CompanyLogo company={company} />
-              <span>{company.name}</span>
-            </a>
-            {company.personal ? (
-              <span
-                aria-label="Personal investment"
-                className="ml-0.5 align-top font-mono text-[10px] text-ink-muted"
-              >
-                *
-              </span>
-            ) : null}
-          </div>
-
-          <div
-            data-portfolio-meta
-            className="flex max-w-full flex-wrap items-center justify-end gap-x-1.5 font-mono text-[11px] uppercase leading-[1.5] tracking-[0.06em] text-ink-muted"
+        <div className="min-w-0">
+          <a
+            href={company.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex max-w-full items-center gap-2.5 font-body text-lg font-medium leading-[1.3] tracking-[-0.02em] text-ink transition-colors hover:text-accent sm:text-xl"
           >
-            <span>
-              Invested{" "}
-              <span data-partnered>{company.partnered}</span>
+            <CompanyLogo company={company} />
+            <span>{company.name}</span>
+          </a>
+          {company.personal ? (
+            <span
+              aria-label="Personal investment"
+              className="ml-0.5 align-top font-mono text-[10px] text-ink-muted"
+            >
+              *
             </span>
-            <span aria-hidden="true">{"\u00B7"}</span>
-            <StageLabel stage={company.stage} />
-          </div>
+          ) : null}
         </div>
 
-        <p className="mt-2 text-[15px] leading-[1.55] text-ink-soft">
+        <p className="mt-2 text-sm leading-[1.55] text-ink-soft">
           {description}
         </p>
+
+        <div
+          data-portfolio-meta
+          className="mt-2.5 flex max-w-full flex-wrap items-baseline gap-x-1.5 font-mono text-xs leading-[1.5] text-ink-muted"
+        >
+          <span>
+            Invested <span data-partnered>{company.partnered}</span>
+          </span>
+          <span aria-hidden="true">{"\u00B7"}</span>
+          <StageLabel stage={company.stage} />
+        </div>
       </div>
     </div>
   );
@@ -768,9 +775,9 @@ function CompanyGroup({
   return (
     <div data-portfolio-group={toDataKey(title)}>
       <p className="paper-label mb-2.5 sm:mb-3">{title}</p>
-      <div className="grid border-t border-line xl:grid-cols-2 xl:gap-x-8">
-        {companies.map((company, index) => (
-          <CompanyRow key={company.name} company={company} index={index} />
+      <div className="grid border-t border-line md:grid-cols-2 md:gap-x-8">
+        {companies.map((company) => (
+          <CompanyRow key={company.name} company={company} />
         ))}
       </div>
     </div>
@@ -782,7 +789,7 @@ export default function Portfolio() {
     <section id="portfolio" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">06 / Portfolio</div>
+          <div className="paper-label">Portfolio</div>
 
           <div className="space-y-6 sm:space-y-8">
             <div>
@@ -794,16 +801,34 @@ export default function Portfolio() {
             <div
               data-portfolio-index
               data-mobile-layout="compact"
-              className="space-y-7 sm:space-y-9 md:space-y-10"
+              className="space-y-6 sm:space-y-8"
             >
-              {portfolioGroups.map((group) => (
-                <CompanyGroup
-                  key={group.key}
-                  title={group.title}
-                  companies={group.companies}
-                />
-              ))}
-              <p className="font-mono text-[11px] uppercase leading-[1.5] tracking-[0.08em] text-ink-muted">
+              <div
+                data-featured-investments
+                className="grid border-t border-line md:grid-cols-2 md:gap-x-8"
+              >
+                {featuredCompanies.map((company) => (
+                  <CompanyRow key={company.name} company={company} />
+                ))}
+              </div>
+
+              <details data-portfolio-disclosure className="group border-b border-line">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 pb-5 font-body text-base font-medium text-ink [&::-webkit-details-marker]:hidden">
+                  <span>View all investments</span>
+                  <span aria-hidden="true" className="font-mono text-xl font-normal group-open:rotate-45">+</span>
+                </summary>
+                <div data-remaining-investments className="space-y-7 border-t border-line py-6 sm:space-y-9 sm:py-8">
+                  {portfolioGroups.map((group) => (
+                    <CompanyGroup
+                      key={group.key}
+                      title={group.title}
+                      companies={group.companies}
+                    />
+                  ))}
+                </div>
+              </details>
+
+              <p className="font-mono text-xs leading-[1.5] text-ink-muted">
                 * Personal investment
               </p>
             </div>
