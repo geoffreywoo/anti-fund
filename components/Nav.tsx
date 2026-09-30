@@ -5,11 +5,10 @@ import { usePathname } from "next/navigation";
 import Wordmark from "@/components/Wordmark";
 
 const links = [
-  { href: "#edge", label: "Edge" },
-  { href: "#team", label: "Team" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#help", label: "Founders" },
-  { href: "#investors", label: "LPs" },
+  { href: "#edge", label: "Approach" },
+  { href: "#team", label: "Team" },
+  { href: "#contact", label: "Contact" },
   { href: "/manifesto", label: "Manifesto" },
 ];
 
@@ -67,6 +66,13 @@ export default function Nav() {
           nextActive = link.href;
           nearestTop = bounds.top;
         }
+      }
+
+      // A short footer cannot always reach the fixed-header marker.
+      const footer = document.getElementById("contact");
+      const atPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      if (atPageEnd && footer && footer.getBoundingClientRect().top < window.innerHeight) {
+        nextActive = "#contact";
       }
 
       setActiveHref((current) =>
@@ -294,7 +300,7 @@ export default function Nav() {
                       onClick={() => closeMenu(href)}
                     >
                       <span
-                        className={`font-display text-3xl leading-none tracking-normal transition-colors duration-200 ${
+                        className={`font-body text-3xl leading-none tracking-normal transition-colors duration-200 ${
                           isActive ? "text-accent" : "text-ink"
                         }`}
                       >

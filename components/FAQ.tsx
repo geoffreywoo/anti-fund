@@ -48,16 +48,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="page-section">
-      <div className="mx-auto max-w-6xl">
-        <div className="section-frame">
-          <div className="paper-label">Appendix A / FAQ</div>
-
-          <div>
-            <h2 className="section-heading mb-6 sm:mb-8">
-              Questions founders and investors ask.
-            </h2>
-            <div className="border-y border-line">
+    <div className="border-t border-line">
             {faqItems.map((item, index) => {
               const isOpen = openIndex === index;
               const buttonId = `faq-button-${index}`;
@@ -95,7 +86,7 @@ export default function FAQ() {
                       }
                     }}
                   >
-                    <span className="max-w-3xl text-base font-medium leading-6 text-ink sm:text-xl sm:leading-7 md:text-2xl">
+                    <span className="max-w-3xl text-base font-medium leading-6 text-ink">
                       {item.question}
                     </span>
                     <span
@@ -134,10 +125,6 @@ export default function FAQ() {
                 </div>
               );
             })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }

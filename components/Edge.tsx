@@ -1,55 +1,54 @@
-const advantages = [
+import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
+
+const capabilities = [
   {
-    name: "See what others miss",
-    description:
-      "We recognize hard-won technical truth before the market has a name for it.",
+    name: "Product & judgment",
+    description: "We pressure-test what to build, what to cut, and what has to be true. Direct answers through product resets, board pressure, and financing decisions.",
   },
   {
-    name: "Make the right people care",
-    description:
-      "We help the right talent, customers, partners, and public understand why the company matters.",
+    name: "Customers & distribution",
+    description: "We help you reach customers and partners, sharpen the story, and make the launch count.",
   },
   {
-    name: "Show up when it matters",
-    description:
-      "We work with founders on product decisions, key hires, customer introductions, and the next financing.",
+    name: "Capital & talent",
+    description: "We introduce investors and senior hires who understand what you are building, and help you make the case.",
   },
 ];
 
 export default function Edge() {
   return (
-    <section
-      id="edge"
-      className="page-section"
-    >
+    <section id="edge" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">01 / The Anti Fund Edge</div>
-
-          <div>
-            <h2 className="section-heading">
-              Technical conviction. Cultural firepower.
-            </h2>
-            <p className="section-lede">
-              We study the technology, pressure-test the market, and back founders
-              with a view the crowd has missed. Then we help them reach the people
-              who matter: customers, talent, partners, and their next investors.
-            </p>
-
-            <div className="mt-8 grid border-y border-line sm:mt-10 md:grid-cols-3">
-              {advantages.map((advantage) => (
-                <article
-                  key={advantage.name}
-                  className="border-b border-line py-5 last:border-b-0 sm:py-6 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
-                >
-                  <h3 className="font-display text-2xl leading-[1.15] tracking-[-0.015em] text-ink">
-                    {advantage.name}
-                  </h3>
-                  <p className="mt-3 text-base leading-[1.6] text-ink-soft">
-                    {advantage.description}
-                  </p>
+          <div className="paper-label">Approach</div>
+          <div className="section-body">
+            <div>
+              <h2 className="section-heading">Technical conviction. Cultural firepower.</h2>
+              <p className="section-lede">
+                We study the technology, pressure-test the market, and back founders
+                with a view the crowd has missed. Then we help them reach the people
+                who matter.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+              {capabilities.map((capability) => (
+                <article key={capability.name}>
+                  <h3 className="font-body text-base font-semibold leading-snug text-ink">{capability.name}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{capability.description}</p>
                 </article>
               ))}
+            </div>
+            <Testimonials />
+            <div id="thesis" className="border-t border-line pt-5">
+              <div id="manifesto" className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                <p data-home-manifesto-excerpt className="max-w-[42ch] text-base text-ink-soft">
+                  The best founders are anti before they are obvious.
+                </p>
+                <Link href="/manifesto" className="paper-link inline-flex min-h-11 w-fit shrink-0 items-center font-mono text-xs">
+                  Read the manifesto
+                </Link>
+              </div>
             </div>
           </div>
         </div>
