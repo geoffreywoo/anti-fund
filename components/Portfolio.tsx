@@ -27,9 +27,8 @@ const softwareCompanies: Company[] = [
     name: "Ramp",
     url: "https://ramp.com/",
     description: "Corporate cards and finance automation.",
-    stage: "Seed / Series B / Series E",
+    stage: "Seed (personal) / Series B (personal) / Series D (Anti Fund)",
     partnered: "2019",
-    personal: true,
   },
   {
     name: "Chronosphere",

@@ -383,7 +383,10 @@ test("selected investments lead to the complete portfolio through a keyboard dis
   );
 
   await expect(portfolio).toContainText("* Personal investment");
-  await expect(portfolio.locator('[data-company="ramp"] [aria-label="Personal investment"]')).toBeVisible();
+  const ramp = portfolio.locator('[data-company="ramp"]');
+  await expect(ramp).toContainText("Seed (personal) · Series B (personal) · Series D (Anti Fund)");
+  await expect(ramp).not.toContainText("Series E");
+  await expect(ramp.locator('[aria-label="Personal investment"]')).toHaveCount(0);
   await expect(portfolio.locator('[data-company="chronosphere"] [aria-label="Personal investment"]')).toBeVisible();
 
   const sinceValuesByGroup = await allInvestments
@@ -460,7 +463,7 @@ test("team biographies and every founder reference remain available", async ({
   await expect(moreReferences.getByRole("link", { name: "Sam Blond" })).toBeVisible();
   await expect(moreReferences.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
   await expect(proof.locator("blockquote:visible")).toHaveCount(7);
-  await expect(proof).toContainText("Ramp was a personal investment by Geoff Woo.");
+  await expect(proof).toContainText("Geoff Woo invested personally in Ramp's Seed and Series B rounds. Anti Fund invested in Series D.");
   await expect(proof).not.toContainText("Abraham Othman");
   await referenceSummary.focus();
   await page.keyboard.press("Space");
