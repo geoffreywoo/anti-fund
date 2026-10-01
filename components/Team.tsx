@@ -125,13 +125,9 @@ export default function Team() {
     <section id="team" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">Team</div>
+          <h2 className="paper-label">Team</h2>
 
           <div className="space-y-6 sm:space-y-8">
-            <h2 className="section-heading">
-              People behind the fund.
-            </h2>
-
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.32fr)_minmax(0,0.68fr)] lg:items-start">
               <figure className="w-full max-w-[560px] lg:max-w-[280px]">
                 <div className="overflow-hidden border border-line bg-paper-alt">

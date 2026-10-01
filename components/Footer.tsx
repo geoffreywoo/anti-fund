@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FAQ from "@/components/FAQ";
 import Wordmark from "@/components/Wordmark";
 
@@ -15,10 +16,9 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-6xl border-t border-line pt-6 sm:pt-8">
         <div className="mb-8 grid gap-8 sm:mb-10 lg:grid-cols-[120px_minmax(0,1fr)] lg:gap-8">
-          <p className="paper-label">Contact</p>
+          <h2 className="paper-label">Contact</h2>
           <div>
-            <h2 className="section-heading">The future doesn&apos;t wait for consensus. Neither do we.</h2>
-            <div className="mt-7 grid gap-8 sm:grid-cols-2 sm:gap-10">
+            <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
               <div id="help" aria-labelledby="founders-title">
                 <h3 id="founders-title" className="text-lg font-medium text-ink">For founders</h3>
                 <p className="mt-3 max-w-[38ch] text-[15px] leading-relaxed text-ink-soft">
@@ -52,7 +52,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-5 border-t border-line pt-6 md:flex-row md:items-end md:justify-between">
-        <Wordmark className="text-[2rem] sm:text-[2.15rem]" />
+        <div className="flex items-center gap-3">
+          <Wordmark className="text-[2rem] sm:text-[2.15rem]" />
+          <Image src="/logo.png" alt="" width={48} height={40} className="h-auto w-12" />
+        </div>
 
         <div className="flex flex-col gap-3 md:items-end">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-5">

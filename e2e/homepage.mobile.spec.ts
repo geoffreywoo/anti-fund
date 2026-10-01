@@ -19,11 +19,10 @@ test("mobile navigation preserves content and founder and LP paths", async ({
   });
   expect(heroLineCount).toBeGreaterThanOrEqual(2);
   expect(heroLineCount).toBeLessThanOrEqual(3);
-  await expect(page.locator("#top").getByRole("link", { name: "For founders", exact: true })).toHaveAttribute("href", "#help");
-  await expect(page.locator("#top").getByRole("link", { name: "For limited partners", exact: true })).toHaveAttribute("href", "#investors");
-
-  const heroLogo = page.locator('#top img[src*="logo.png"]:visible');
-  await expect(heroLogo).toHaveCount(1);
+  const hero = page.locator("#top");
+  await expect(hero.getByRole("link")).toHaveCount(0);
+  await expect(hero.locator("img")).toHaveCount(0);
+  await expect(hero).toContainText("Venture & Growth");
 
   const mobileEffects = await page.evaluate(() => {
     const header = document.querySelector(".site-header");
@@ -81,7 +80,7 @@ test("mobile navigation preserves content and founder and LP paths", async ({
   const thesis = page.locator("#thesis");
   await thesis.scrollIntoViewIfNeeded();
   await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
-    "The best founders are anti before they are obvious.",
+    "Our investment thesis",
   );
   await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
   await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
@@ -120,6 +119,13 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   const footer = page.locator("#contact");
   await footer.scrollIntoViewIfNeeded();
+  await expect(footer.getByRole("heading", { name: "Contact", level: 2, exact: true })).toBeVisible();
+  const footerLogo = footer.locator('img[src*="logo.png"]');
+  await expect(footerLogo).toBeVisible();
+  await expect(footerLogo).toHaveAttribute("alt", "");
+  const footerLogoWidth = await footerLogo.evaluate((image) => image.getBoundingClientRect().width);
+  expect(footerLogoWidth).toBeGreaterThan(0);
+  expect(footerLogoWidth).toBeLessThanOrEqual(48);
   await expect(footer.getByRole("link", { name: "Founder correspondence" })).toBeVisible();
   await expect(
     footer.getByRole("link", { name: "Limited partner correspondence" }),

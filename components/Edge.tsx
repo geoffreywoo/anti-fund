@@ -21,11 +21,10 @@ export default function Edge() {
     <section id="edge" className="page-section">
       <div className="mx-auto max-w-6xl">
         <div className="section-frame">
-          <div className="paper-label">Approach</div>
+          <h2 className="paper-label">Investment approach</h2>
           <div className="section-body">
             <div>
-              <h2 className="section-heading">Technical conviction. Cultural firepower.</h2>
-              <p className="section-lede">
+              <p className="max-w-[65ch] text-base leading-[1.65] text-ink-soft">
                 We study the technology, pressure-test the market, and back founders
                 with a view the crowd has missed. Then we help them reach the people
                 who matter.
@@ -43,7 +42,7 @@ export default function Edge() {
             <div id="thesis" className="border-t border-line pt-5">
               <div id="manifesto" className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
                 <p data-home-manifesto-excerpt className="max-w-[42ch] text-base text-ink-soft">
-                  The best founders are anti before they are obvious.
+                  Our investment thesis
                 </p>
                 <Link href="/manifesto" className="paper-link inline-flex min-h-11 w-fit shrink-0 items-center font-mono text-xs">
                   Read the manifesto

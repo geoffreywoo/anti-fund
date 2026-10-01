@@ -39,15 +39,16 @@ test("founders and LPs can reach relevant content and contact paths", async ({
       name: "Capital is a commodity. Attention is not.",
     }),
   ).toBeVisible();
-  await expect(hero.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await expect(hero.getByRole("link")).toHaveCount(0);
+  await expect(hero.locator("img")).toHaveCount(0);
+  await expect(hero).toContainText("Venture & Growth");
   await expect(hero).toContainText("technical founders at formation");
   await expect(hero).toContainText("category leaders at growth");
-  const founderAction = hero.getByRole("link", { name: "For founders", exact: true });
-  const investorAction = hero.getByRole("link", { name: "For limited partners", exact: true });
-  await expect(founderAction).toHaveAttribute("href", "#help");
-  await expect(investorAction).toHaveAttribute("href", "#investors");
-  await investorAction.click();
-  await expect(page).toHaveURL(/#investors$/);
+  const contactLink = primaryNav.getByRole("link", { name: "Contact", exact: true });
+  await contactLink.click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.locator("#contact")).toBeInViewport();
+  await expect(contactLink).toHaveAttribute("aria-current", "location");
   const investors = page.locator("#investors");
   await expect(investors.getByRole("heading", { name: "For limited partners", exact: true })).toBeVisible();
   await expect(investors.locator("dt")).toHaveText(["Venture", "Growth & opportunities"]);
@@ -55,14 +56,8 @@ test("founders and LPs can reach relevant content and contact paths", async ({
   await expect(investors).toContainText("Growth & pre-IPO");
   await expect(investors.locator('a[href="mailto:ir@antifund.com"]')).toBeVisible();
   await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
-  await founderAction.click();
-  await expect(page).toHaveURL(/#help$/);
-  await expect(primaryNav.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute("aria-current", "location");
   await expect(page.locator('#help a[href="mailto:founders@antifund.com"]')).toBeVisible();
   await expect(page.locator("#help")).toContainText("Send a deck or product link.");
-  const heroLogo = hero.getByRole("img", { name: "Anti Fund" });
-  await expect(heroLogo).toHaveAttribute("src", /logo\.png/);
-  await expect(hero.locator("[data-hero-logo]")).toHaveCount(0);
 
   const manifestoLink = primaryNav.getByRole("link", { name: "Manifesto" });
   await expect(manifestoLink).toHaveAttribute("href", "/manifesto");
@@ -71,7 +66,7 @@ test("founders and LPs can reach relevant content and contact paths", async ({
   await teamLink.click();
   await expect(page).toHaveURL(/#team/);
   await expect(teamLink).toHaveAttribute("aria-current", "location");
-  await expect(page.locator("#team").getByRole("heading", { level: 2 })).toBeVisible();
+  await expect(page.locator("#team").getByRole("heading", { name: "Team", level: 2, exact: true })).toBeVisible();
 
   const portfolioLink = primaryNav.getByRole("link", { name: "Portfolio" });
   await portfolioLink.click();
@@ -83,6 +78,13 @@ test("founders and LPs can reach relevant content and contact paths", async ({
 
   const footer = page.locator("#contact");
   await footer.scrollIntoViewIfNeeded();
+  await expect(footer.getByRole("heading", { name: "Contact", level: 2, exact: true })).toBeVisible();
+  const footerLogo = footer.locator('img[src*="logo.png"]');
+  await expect(footerLogo).toBeVisible();
+  await expect(footerLogo).toHaveAttribute("alt", "");
+  const footerLogoWidth = await footerLogo.evaluate((image) => image.getBoundingClientRect().width);
+  expect(footerLogoWidth).toBeGreaterThan(0);
+  expect(footerLogoWidth).toBeLessThanOrEqual(48);
   await expect(footer.getByRole("link", { name: "Founder correspondence" })).toHaveAttribute(
     "href",
     "mailto:founders@antifund.com",
@@ -117,12 +119,12 @@ test("homepage leads with investments and keeps supporting content accessible", 
   await expect(page.locator("main footer")).toHaveCount(0);
   await expect(page.getByRole("contentinfo")).toHaveCount(1);
   await expect(page.locator("#edge article")).toHaveCount(3);
-  await expect(page.locator("#edge").getByRole("heading", { level: 2 })).toContainText("Technical conviction");
+  await expect(page.locator("#edge").getByRole("heading", { name: "Investment approach", level: 2, exact: true })).toBeVisible();
   await expect(page.locator("#edge #proof")).toHaveCount(1);
 
   const thesis = page.locator("#thesis");
   await expect(thesis.locator("[data-home-manifesto-excerpt]")).toHaveText(
-    "The best founders are anti before they are obvious.",
+    "Our investment thesis",
   );
   await expect(thesis.locator("[data-manifesto-paragraph]")).toHaveCount(0);
   await expect(thesis.locator('a[href="/manifesto"]')).toBeVisible();
@@ -446,32 +448,32 @@ test("team biographies and every founder reference remain available", async ({
 
   const proof = page.locator("#proof");
   await proof.scrollIntoViewIfNeeded();
-  await expect(proof.getByRole("link", { name: "Gianluca Bencomo" })).toBeVisible();
+  await expect(proof.locator("blockquote")).toHaveCount(7);
+  await expect(proof.locator("blockquote:visible")).toHaveCount(0);
+  await expect(proof.getByRole("link", { name: "Gianluca Bencomo", includeHidden: true })).toBeHidden();
   await expect(proof.getByRole("link", { name: "Eric Glyman", includeHidden: true })).toBeHidden();
   await expect(proof.getByRole("link", { name: "Rob Skillington", includeHidden: true })).toBeHidden();
 
-  const featuredReference = proof.locator("[data-featured-reference]");
-  await expect(featuredReference).toBeVisible();
-  await expect(featuredReference).toContainText("Anti Fund was our first investor");
-  await expect(featuredReference).toContainText("Gianluca Bencomo");
-  await expect(proof.locator("blockquote:visible")).toHaveCount(1);
-
-  const moreReferences = proof.locator("[data-founder-references]");
-  const referenceSummary = moreReferences.locator("summary");
-  await expect(referenceSummary).toContainText("More founder references");
+  const references = proof.locator("[data-founder-references]");
+  await expect(references).toHaveCount(1);
+  await expect(references).not.toHaveAttribute("open", "");
+  const referenceSummary = references.locator("summary");
+  await expect(referenceSummary).toHaveText("Founder references");
   await referenceSummary.focus();
   await page.keyboard.press("Enter");
-  await expect(moreReferences).toHaveAttribute("open", "");
-  await expect(moreReferences.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
-  await expect(moreReferences.getByRole("link", { name: "Sam Blond" })).toBeVisible();
-  await expect(moreReferences.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
+  await expect(references).toHaveAttribute("open", "");
+  await expect(references.getByRole("link", { name: "Gianluca Bencomo" })).toBeVisible();
+  await expect(references.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
+  await expect(references.getByRole("link", { name: "Sam Blond" })).toBeVisible();
+  await expect(references.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
+  await expect(references).toContainText("Anti Fund was our first investor");
   await expect(proof.locator("blockquote:visible")).toHaveCount(7);
   await expect(proof).toContainText("Geoff Woo invested personally in Ramp's Seed and Series B rounds. Anti Fund invested in Series D.");
   await expect(proof).not.toContainText("Abraham Othman");
   await referenceSummary.focus();
   await page.keyboard.press("Space");
-  await expect(moreReferences).not.toHaveAttribute("open", "");
-  await expect(proof.locator("blockquote:visible")).toHaveCount(1);
+  await expect(references).not.toHaveAttribute("open", "");
+  await expect(proof.locator("blockquote:visible")).toHaveCount(0);
 });
 
 test("typography pairs readable sans body copy with serif identity and mono metadata", async ({
