@@ -32,11 +32,11 @@ const team: TeamMember[] = [
   {
     name: "Geoff Woo",
     title: "Co-founder & Managing Partner",
-    summary: "Entrepreneur and engineer; co-founder of Archive, Ketone-IQ, and W.",
+    summary: "Entrepreneur and computer scientist; co-founder of Archive, Ketone-IQ, and W.",
     profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
-        Geoff Woo is an entrepreneur and engineer. He co-founded{" "}
+        Geoff Woo is an entrepreneur and computer scientist. He co-founded{" "}
         <ExternalLink href="https://archive.com">Archive</ExternalLink>,{" "}
         <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink>, and{" "}
         <ExternalLink href="https://getw.com">W</ExternalLink>. His first

@@ -93,7 +93,7 @@ test("mobile navigation preserves content and founder and LP paths", async ({
 
   const portfolio = page.locator("#portfolio");
   await portfolio.scrollIntoViewIfNeeded();
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
   const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
   await expect(allInvestments).not.toHaveAttribute("open", "");
   await allInvestments.locator("summary").click();

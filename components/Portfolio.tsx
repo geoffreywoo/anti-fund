@@ -643,6 +643,8 @@ const featuredCompanyNames = [
   "General Matter",
   "Saronic",
   "Helion",
+  "Ramp",
+  "Erebor",
 ];
 const featuredCompanySet = new Set(featuredCompanyNames);
 const featuredCompanies = featuredCompanyNames
