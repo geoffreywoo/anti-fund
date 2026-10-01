@@ -323,11 +323,13 @@ test("selected investments lead to the complete portfolio through a keyboard dis
   const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
   const investmentSummary = allInvestments.locator("summary");
   await expect(portfolio.locator("[data-company]")).toHaveCount(54);
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
-  await expect(allInvestments.locator("[data-company]")).toHaveCount(44);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
+  await expect(allInvestments.locator("[data-company]")).toHaveCount(42);
   await expect(allInvestments).not.toHaveAttribute("open", "");
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Ramp", exact: true })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Erebor", exact: true })).toBeVisible();
   await investmentSummary.focus();
   await page.keyboard.press("Enter");
   await expect(allInvestments).toHaveAttribute("open", "");
@@ -405,7 +407,7 @@ test("selected investments lead to the complete portfolio through a keyboard dis
   await investmentSummary.focus();
   await page.keyboard.press("Space");
   await expect(allInvestments).not.toHaveAttribute("open", "");
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(10);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
 });
 
 test("team biographies and every founder reference remain available", async ({
