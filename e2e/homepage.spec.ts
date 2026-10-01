@@ -384,7 +384,8 @@ test("selected investments lead to the complete portfolio through a keyboard dis
 
   await expect(portfolio).toContainText("* Personal investment");
   const ramp = portfolio.locator('[data-company="ramp"]');
-  await expect(ramp).toContainText("Seed (personal) · Series B (personal) · Series D (Anti Fund)");
+  await expect(ramp).toContainText("Seed* · Series B* · Series D");
+  await expect(ramp).not.toContainText("Series D*");
   await expect(ramp).not.toContainText("Series E");
   await expect(ramp.locator('[aria-label="Personal investment"]')).toHaveCount(0);
   await expect(portfolio.locator('[data-company="chronosphere"] [aria-label="Personal investment"]')).toBeVisible();
