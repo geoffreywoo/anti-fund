@@ -73,9 +73,6 @@ const founderTestimonials: Testimonial[] = [
   },
 ];
 
-const featured = founderTestimonials.find((item) => item.name === "Gianluca Bencomo")!;
-const additional = founderTestimonials.filter((item) => item !== featured);
-
 function TestimonialFigure({ testimonial }: { testimonial: Testimonial }) {
   return (
     <figure className="py-5">
@@ -99,13 +96,10 @@ function TestimonialFigure({ testimonial }: { testimonial: Testimonial }) {
 export default function Testimonials() {
   return (
     <div id="proof" aria-label="Founder references">
-      <div data-featured-reference className="border-l-2 border-accent-quiet pl-5 sm:pl-6">
-        <TestimonialFigure testimonial={featured} />
-      </div>
-      <details data-founder-references className="disclosure mt-3">
-        <summary>More founder references</summary>
+      <details data-founder-references className="disclosure">
+        <summary>Founder references</summary>
         <div className="divide-y divide-line">
-          {additional.map((testimonial) => <TestimonialFigure key={testimonial.name} testimonial={testimonial} />)}
+          {founderTestimonials.map((testimonial) => <TestimonialFigure key={testimonial.name} testimonial={testimonial} />)}
         </div>
       </details>
     </div>

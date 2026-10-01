@@ -105,18 +105,6 @@
   text-wrap: pretty;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
-  padding-right: 64px;
-}
-
-.hero-actions > a {
-  flex: 1 1 190px;
-}
-
 @media (min-width: 640px) {
   :root {
     --page-gutter: 24px;
@@ -126,7 +114,6 @@
   .section-frame { gap: 24px; }
   .section-body > * + * { margin-top: 28px; }
   .hero-frame { padding-block: 24px; }
-  .hero-actions > a { flex: 0 1 auto; }
 }
 
 @media (min-width: 768px) {
@@ -148,7 +135,6 @@
   .section-frame > .paper-label { padding-top: 6px; }
   .hero-section { padding-top: 104px; }
   .hero-frame { padding-block: 24px; }
-  .hero-actions { padding-right: 0; }
 }
 
 html {
