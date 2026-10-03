@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
 // Compares the hardcoded public portfolio in components/Portfolio.tsx against
-// the LP portal company registry (anti-fund-lp-model/data/company-registry.json)
-// and reports drift in both directions. Personal/angel positions on the public
-// site are expected to be absent from the fund registry and are skipped.
+// a company registry and reports drift in both directions. Personal/angel
+// positions on the public site are expected to be absent from the fund
+// registry and are skipped.
+//
+// Accepted registries (both share the { entities: [{ name, aliases }] } shape):
+//   - the LP portal registry (anti-fund-lp-model/data/company-registry.json)
+//   - the tracker's canonical export (https://tracker.antifund.com/api/registry/export,
+//     authenticated via the REGISTRY_EXPORT_TOKEN environment variable)
 //
 // Usage: node scripts/check-portfolio-drift.mjs --registry <path-or-url> [--strict]
 
@@ -54,8 +59,22 @@ if (publicCompanies.length === 0) {
   process.exit(1);
 }
 
+async function fetchRegistry(url) {
+  const token = process.env.REGISTRY_EXPORT_TOKEN;
+  const response = await fetch(url, {
+    headers: token ? { authorization: `Bearer ${token}` } : {},
+  });
+  if (!response.ok) {
+    console.error(
+      `[portfolio-drift] registry fetch failed: ${response.status} ${response.statusText}`,
+    );
+    process.exit(1);
+  }
+  return response.text();
+}
+
 const registryRaw = /^https?:\/\//.test(registrySource)
-  ? await (await fetch(registrySource)).text()
+  ? await fetchRegistry(registrySource)
   : await readFile(resolve(process.cwd(), registrySource), "utf8");
 const registry = JSON.parse(registryRaw);
 
