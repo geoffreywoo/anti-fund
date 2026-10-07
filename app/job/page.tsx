@@ -6,14 +6,14 @@ const applicationHref =
 
 const responsibilities = [
   {
-    title: "A sourcing edge",
+    title: "Proprietary data and a sourcing edge",
     description:
-      "Build pipelines that surface technical founders and breakout companies before everyone else, using signals like GitHub activity, research papers, hiring, launches, traffic, and social data.",
+      "Build proprietary datasets and automated information flows that surface technical founders and breakout companies before everyone else. Connect signals from GitHub activity, research papers, hiring, launches, traffic, and social data to produce original investment insight.",
   },
   {
-    title: "Internal tools and agents",
+    title: "Build and manage agents",
     description:
-      "Build our deal pipeline, research agents, diligence workflows, and memo tooling.",
+      "Build, deploy, and manage agents for sourcing, research, and diligence. Evaluate their work, improve their reliability, and connect their outputs to our deal pipeline, memo tooling, and investment decisions.",
   },
   {
     title: "Own the stats",
@@ -21,14 +21,14 @@ const responsibilities = [
       "Keep company metrics, marks, fund data, and market comps across the portfolio in one source of truth.",
   },
   {
-    title: "Research",
+    title: "Technical judgment and relationships",
     description:
-      "Go deep on our thesis areas and support technical diligence on live deals.",
+      "Go deep on our thesis areas, evaluate technology, and support diligence on live deals. Build relationships with founders and researchers through direct, in-person engagement. Use those conversations to pressure-test the data and sharpen our investment judgment.",
   },
   {
-    title: "Automate everything else",
+    title: "Build for scale",
     description:
-      "Build automations for fund operations, portfolio monitoring, and reporting.",
+      "Automate fund operations, portfolio monitoring, and reporting. Build systems that let a small, exceptional team operate at greater scale with reliable information and clear accountability.",
   },
 ] as const;
 
@@ -46,12 +46,14 @@ const requirements = [
   "2–4 years of experience in software engineering, data science, or a technical role at a startup, AI lab, or investment firm.",
   "Based in San Francisco or New York City only.",
   "A strong builder experimenting with the latest AI tools, who can build automations, agents, and workflows that people actually use.",
+  "Able to manage and evaluate agents, trace their sources, and apply your own judgment to their outputs.",
   "Comfortable with data and infrastructure: Python, SQL, APIs, scraping, databases, and cloud.",
+  "Curious about founders and technology, and comfortable moving between code, research, and in-person relationships.",
   "High agency. Fast mover. Problem solver.",
 ] as const;
 
 const description =
-  "Join Anti Fund as a Member of Technical Staff / Associate. Build the data, tools, and agents behind the fund. Full time, based in San Francisco or New York City only.";
+  "Help build the venture capital firm of the future at Anti Fund. Member of Technical Staff / Associate: agents, proprietary data, and investment judgment. Full time in San Francisco or NYC only.";
 
 export const metadata: Metadata = {
   title: "Member of Technical Staff / Associate | Anti Fund",
@@ -86,12 +88,12 @@ export default function JobPage() {
                   </h1>
                   <p className="mt-4 text-lg font-medium text-accent">Associate at Anti Fund</p>
                   <p className="mt-6 font-display text-2xl leading-tight text-ink sm:text-3xl">
-                    Build the machine behind the fund.
+                    Build the venture capital firm of the future.
                   </p>
                   <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-ink-soft sm:text-lg">
-                    The data, tools, and agents that help us operate, research,
-                    find exceptional founders first, and run the firm with a
-                    fraction of the usual headcount.
+                    Managing agents and building proprietary data and information
+                    flows are core investing skills at Anti Fund, alongside
+                    in-person relationships and technical judgment.
                   </p>
                 </div>
                 <aside aria-label="Role details" className="border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
@@ -117,8 +119,41 @@ export default function JobPage() {
               </div>
             </header>
 
+            <section aria-labelledby="ambition-title" className="section-frame mt-10">
+              <p className="paper-label">01 / The ambition</p>
+              <div>
+                <h2 id="ambition-title" className="section-heading">An asset manager for the new guard.</h2>
+                <div className="mt-5 max-w-[65ch] space-y-4 text-base leading-relaxed text-ink-soft">
+                  <p>
+                    Anti Fund is building a new kind of venture capital firm.
+                    Our ambition is to scale into a <strong className="font-medium text-ink">$100B+ asset manager representing the new guard</strong>.
+                    A firm where managing agents and building automated,
+                    proprietary flows of data and information are just as
+                    valuable as in-person relationships and technical judgment.
+                  </p>
+                  <p>
+                    As a Member of Technical Staff / Associate, you will help
+                    build the institution as well as the portfolio. You will
+                    build and manage agents, develop proprietary research
+                    infrastructure, meet founders, evaluate technology, and turn
+                    original insight into investment decisions. Each of those
+                    capabilities should strengthen the others.
+                  </p>
+                  <p>
+                    We want someone who sees venture capital as something to
+                    build. Your work should compound: a better source of
+                    information, a sharper thesis, a stronger founder
+                    relationship, or a system that makes the entire team more
+                    capable. This is how we intend to build a firm that can
+                    operate at institutional scale with a fraction of the usual
+                    headcount.
+                  </p>
+                </div>
+              </div>
+            </section>
+
             <section aria-labelledby="responsibilities-title" className="section-frame mt-10">
-              <p className="paper-label">01 / The work</p>
+              <p className="paper-label">02 / The work</p>
               <div>
                 <h2 id="responsibilities-title" className="section-heading">What you’ll build.</h2>
                 <ol className="mt-6 divide-y divide-line">
@@ -136,7 +171,7 @@ export default function JobPage() {
             </section>
 
             <section aria-labelledby="builder-title" className="section-frame mt-10">
-              <p className="paper-label">02 / Who you are</p>
+              <p className="paper-label">03 / Who you are</p>
               <div>
                 <h2 id="builder-title" className="section-heading">A builder first.</h2>
                 <p className="section-lede">This role is for you if you’re the type who can’t leave it alone.</p>
@@ -147,7 +182,7 @@ export default function JobPage() {
             </section>
 
             <section aria-labelledby="requirements-title" className="section-frame mt-10">
-              <p className="paper-label">03 / Requirements</p>
+              <p className="paper-label">04 / Requirements</p>
               <div>
                 <h2 id="requirements-title" className="section-heading">What we look for.</h2>
                 <ul className="mt-5 max-w-[65ch] list-disc space-y-3 pl-5 text-base leading-relaxed text-ink-soft marker:text-accent">
