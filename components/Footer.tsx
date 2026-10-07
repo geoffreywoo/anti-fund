@@ -77,6 +77,12 @@ export default function Footer() {
               Manifesto
             </a>
             <a
+              href="/job"
+              className="paper-link font-mono text-xs uppercase tracking-[0.08em]"
+            >
+              Jobs
+            </a>
+            <a
               href="/legal"
               className="paper-link font-mono text-xs uppercase tracking-[0.08em]"
             >
