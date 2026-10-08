@@ -97,14 +97,14 @@ test("mobile navigation preserves content and founder and LP paths", async ({
   await expect(allInvestments).not.toHaveAttribute("open", "");
   await allInvestments.locator("summary").click();
   await expect(allInvestments).toHaveAttribute("open", "");
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(54);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(55);
   await expect(portfolio.getByRole("link", { name: "Chronosphere" })).toBeVisible();
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
   await expect(investmentIndex).toHaveAttribute("data-mobile-layout", "compact");
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(54);
-  await expect(portfolio.locator("[data-portfolio-meta]")).toHaveCount(54);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(55);
+  await expect(portfolio.locator("[data-portfolio-meta]")).toHaveCount(55);
   await expect(portfolio.getByRole("link", { name: "Metis" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Entropy" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Liquid" })).toBeVisible();

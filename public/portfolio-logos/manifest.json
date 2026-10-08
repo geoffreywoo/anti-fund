@@ -1,6 +1,13 @@
 {
   "logos": [
     {
+      "name": "Catalyst",
+      "website": "https://catalyst.app/",
+      "source": "https://catalyst.app/favicon/favicon-96x96.png",
+      "file": "/portfolio-logos/catalyst.png",
+      "retrievedAt": "2026-10-08"
+    },
+    {
       "name": "Ramp",
       "website": "https://ramp.com/",
       "source": "https://ramp.com/apple-touch-icon.png",

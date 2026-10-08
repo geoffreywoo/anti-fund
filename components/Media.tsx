@@ -32,6 +32,11 @@ const featured = [
 
 const archive = [
   {
+    label: "Sequoia: Catalyst turns ideas into trades — October 8, 2026",
+    href: "https://sequoiacap.com/article/partnering-with-catalyst-turning-ideas-into-trades",
+    type: "Read",
+  },
+  {
     label: "Jake Paul & Geoff Woo on The a16z Show",
     href: "https://www.youtube.com/watch?v=yfafpyhB-8E",
     type: "Watch",
