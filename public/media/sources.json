@@ -1,0 +1,15 @@
+{
+  "general-matter-jake-paul.jpg": {
+    "source": "https://www.youtube.com/watch?v=fiIvF-1RqBQ&t=281s",
+    "creator": "Jake Paul Biz",
+    "type": "Video frame, cropped to the facility interior",
+    "captured": "2026-10-08"
+  },
+  "pentagon-geoff-jake-logan.jpg": {
+    "source": "https://www.youtube.com/watch?v=FaS8i37BjOQ",
+    "asset": "https://i.ytimg.com/vi/FaS8i37BjOQ/maxresdefault.jpg",
+    "creator": "Geoff Woo",
+    "type": "Official video thumbnail",
+    "retrieved": "2026-10-08"
+  }
+}

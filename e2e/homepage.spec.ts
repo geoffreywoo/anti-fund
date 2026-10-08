@@ -507,8 +507,14 @@ test("one field story leads to the complete media archive through a disclosure",
   await expect(media.getByRole("heading", { level: 2 })).toBeVisible();
   await expect(media.locator("article:visible")).toHaveCount(1);
   await expect(
-    media.getByAltText("Jake Paul and Geoff Woo visit hardware startups in El Segundo."),
+    media.getByAltText("Inside General Matter's Paducah site during the Anti Fund visit."),
   ).toBeVisible();
+  await expect(
+    media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail."),
+  ).toBeHidden();
+  await expect(
+    media.getByAltText("Jake Paul and Geoff Woo visit hardware startups in El Segundo."),
+  ).toBeHidden();
   await expect(
     media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
   ).toBeHidden();
@@ -519,7 +525,18 @@ test("one field story leads to the complete media archive through a disclosure",
   await archiveSummary.focus();
   await page.keyboard.press("Enter");
   await expect(archive).toHaveAttribute("open", "");
-  await expect(media.locator("article:visible")).toHaveCount(3);
+  await expect(media.locator("article:visible")).toHaveCount(5);
+  const newImages = [
+    media.getByAltText("Inside General Matter's Paducah site during the Anti Fund visit."),
+    media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail."),
+  ];
+  for (const image of newImages) {
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toBeVisible();
+    await expect.poll(() => image.evaluate((element: HTMLImageElement) =>
+      element.complete && element.naturalWidth > 0,
+    )).toBe(true);
+  }
   await expect(
     media.getByAltText("Geoff Woo and Logan Paul in Silicon Valley."),
   ).toBeVisible();
@@ -528,6 +545,8 @@ test("one field story leads to the complete media archive through a disclosure",
   ).toBeVisible();
 
   const expectedLinks = [
+    ["Inside General Matter with Jake Paul", "https://www.youtube.com/watch?v=fiIvF-1RqBQ"],
+    ["Geoff Woo, Jake & Logan Paul visit the Pentagon", "https://www.youtube.com/watch?v=FaS8i37BjOQ"],
     [
       "Sequoia: Catalyst turns ideas into trades — October 8, 2026",
       "https://sequoiacap.com/article/partnering-with-catalyst-turning-ideas-into-trades",

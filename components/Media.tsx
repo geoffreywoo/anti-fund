@@ -2,6 +2,24 @@ import Image from "next/image";
 
 const featured = [
   {
+    source: "Field visit / General Matter",
+    title: "Inside General Matter with Jake Paul",
+    description:
+      "Jake Paul and Anti Fund visit Paducah, Kentucky, where General Matter is rebuilding domestic uranium enrichment.",
+    href: "https://www.youtube.com/watch?v=fiIvF-1RqBQ",
+    imageSrc: "/media/general-matter-jake-paul.jpg",
+    alt: "Inside General Matter's Paducah site during the Anti Fund visit.",
+  },
+  {
+    source: "Field visit / Washington, D.C.",
+    title: "Geoff Woo, Jake & Logan Paul visit the Pentagon",
+    description:
+      "Geoff Woo, Jake Paul, and Logan Paul in Washington, D.C., visiting the Pentagon and Treasury and discussing the technologies behind America's future.",
+    href: "https://www.youtube.com/watch?v=FaS8i37BjOQ",
+    imageSrc: "/media/pentagon-geoff-jake-logan.jpg",
+    alt: "Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail.",
+  },
+  {
     source: "Field visit / El Segundo",
     title: "Jake Paul & Geoff Woo visit El Segundo",
     description:
