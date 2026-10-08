@@ -324,9 +324,9 @@ test("selected investments lead to the complete portfolio through a keyboard dis
   await portfolio.scrollIntoViewIfNeeded();
   const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
   const investmentSummary = allInvestments.locator("summary");
-  await expect(portfolio.locator("[data-company]")).toHaveCount(54);
+  await expect(portfolio.locator("[data-company]")).toHaveCount(55);
   await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
-  await expect(allInvestments.locator("[data-company]")).toHaveCount(42);
+  await expect(allInvestments.locator("[data-company]")).toHaveCount(43);
   await expect(allInvestments).not.toHaveAttribute("open", "");
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
@@ -335,13 +335,13 @@ test("selected investments lead to the complete portfolio through a keyboard dis
   await investmentSummary.focus();
   await page.keyboard.press("Enter");
   await expect(allInvestments).toHaveAttribute("open", "");
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(54);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(55);
   await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
 
   const companyKeys = await portfolio.locator("[data-company]").evaluateAll((rows) =>
     rows.map((row) => row.getAttribute("data-company")),
   );
-  expect(new Set(companyKeys).size).toBe(54);
+  expect(new Set(companyKeys).size).toBe(55);
 
   const boring = portfolio.locator('[data-company="the-boring-company"]');
   await expect(boring).toContainText("Series D");
@@ -350,7 +350,7 @@ test("selected investments lead to the complete portfolio through a keyboard dis
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(54);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(55);
   for (const company of [
     "Aeon",
     "Westmag",
@@ -360,6 +360,7 @@ test("selected investments lead to the complete portfolio through a keyboard dis
     "Melius",
     "Entropy",
     "Liquid",
+    "Catalyst",
   ]) {
     await expect(portfolio.getByRole("link", { name: company })).toBeVisible();
   }
@@ -527,6 +528,10 @@ test("one field story leads to the complete media archive through a disclosure",
   ).toBeVisible();
 
   const expectedLinks = [
+    [
+      "Sequoia: Catalyst turns ideas into trades — October 8, 2026",
+      "https://sequoiacap.com/article/partnering-with-catalyst-turning-ideas-into-trades",
+    ],
     ["Jake Paul & Geoff Woo visit El Segundo", "https://www.youtube.com/watch?v=DhVwnSa31WM&t=4s"],
     ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [

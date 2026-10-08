@@ -222,6 +222,13 @@ const softwareCompanies: Company[] = [
     partnered: "2026",
   },
   {
+    name: "Catalyst",
+    url: "https://catalyst.app/",
+    description: "AI agents that turn trading ideas into automated strategies.",
+    stage: "Pre-Seed",
+    partnered: "2026",
+  },
+  {
     name: "Polymarket",
     url: "https://polymarket.com/",
     description: "Global prediction-market platform.",
@@ -444,6 +451,7 @@ const portfolioGroupSpecs = [
       "Lighter",
       "Entropy",
       "Liquid",
+      "Catalyst",
       "Polymarket",
       "Archive",
       "WithCoverage",
