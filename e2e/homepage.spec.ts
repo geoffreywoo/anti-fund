@@ -429,15 +429,9 @@ test("team biographies and every founder reference remain available", async ({
   await expect(roster.locator("article")).toHaveCount(5);
   const biographies = roster.locator("[data-team-bio]");
   await expect(biographies).toHaveCount(5);
-  await expect(roster.getByRole("link", { name: "US patents", includeHidden: true })).toBeHidden();
-
+  await expect(roster.locator("details, summary")).toHaveCount(0);
   for (const biography of await biographies.all()) {
-    await expect(biography).not.toHaveAttribute("open", "");
-    const summary = biography.locator("summary");
-    await expect(summary).toHaveText("Full biography");
-    await summary.focus();
-    await page.keyboard.press("Enter");
-    await expect(biography).toHaveAttribute("open", "");
+    await expect(biography).toBeVisible();
   }
   await expect(roster.getByRole("link", { name: "US patents" })).toBeVisible();
   await expect(
