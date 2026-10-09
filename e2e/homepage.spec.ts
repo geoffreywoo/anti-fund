@@ -429,20 +429,16 @@ test("team biographies and every founder reference remain available", async ({
   await expect(roster.locator("article")).toHaveCount(5);
   const biographies = roster.locator("[data-team-bio]");
   await expect(biographies).toHaveCount(5);
-  await expect(roster.getByRole("link", { name: "US patents", includeHidden: true })).toBeHidden();
-
+  await expect(roster.locator("details, summary")).toHaveCount(0);
   for (const biography of await biographies.all()) {
-    await expect(biography).not.toHaveAttribute("open", "");
-    const summary = biography.locator("summary");
-    await expect(summary).toHaveText("Full biography");
-    await summary.focus();
-    await page.keyboard.press("Enter");
-    await expect(biography).toHaveAttribute("open", "");
+    await expect(biography).toBeVisible();
   }
   await expect(roster.getByRole("link", { name: "US patents" })).toBeVisible();
   await expect(
     roster.getByRole("link", { name: "peer-reviewed science papers" }),
   ).toBeVisible();
+  await expect(roster).toContainText("chairman of Ketone-IQ and Archive");
+  await expect(roster).toContainText("board director of Betr and W");
   await expect(roster).toContainText("Steve Han previously invested at March Capital");
   await expect(roster).toContainText("65M peak concurrent streams on Netflix");
   await expect(roster).toContainText("BA in Government from Harvard University");

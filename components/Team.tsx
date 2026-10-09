@@ -4,9 +4,8 @@ import type { ReactNode } from "react";
 type TeamMember = {
   name: string;
   title: string;
-  summary: string;
   profileUrl?: string;
-  bio?: ReactNode;
+  bio: ReactNode;
 };
 
 function ExternalLink({
@@ -32,14 +31,14 @@ const team: TeamMember[] = [
   {
     name: "Geoff Woo",
     title: "Co-founder & Managing Partner",
-    summary: "Entrepreneur and computer scientist; co-founder of Archive, Ketone-IQ, and W.",
     profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
-        Geoff Woo is an entrepreneur and computer scientist. He co-founded{" "}
-        <ExternalLink href="https://archive.com">Archive</ExternalLink>,{" "}
-        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink>, and{" "}
-        <ExternalLink href="https://getw.com">W</ExternalLink>. His first
+        Geoff Woo is an entrepreneur and computer scientist. He is chairman of{" "}
+        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink> and{" "}
+        <ExternalLink href="https://archive.com">Archive</ExternalLink>, and a
+        board director of <ExternalLink href="https://betr.app">Betr</ExternalLink>{" "}
+        and <ExternalLink href="https://getw.com">W</ExternalLink>. His first
         company, Glassmap (YC S11), was{" "}
         <ExternalLink href="https://techcrunch.com/2012/11/01/groupon-quietly-acquires-location-based-social-recommendations-startup-glassmap/">
           acquired by Groupon
@@ -60,7 +59,6 @@ const team: TeamMember[] = [
   {
     name: "Jake Paul",
     title: "Co-founder & Managing Partner",
-    summary: "Entrepreneur and professional boxer; founder of Most Valuable Promotions.",
     profileUrl: "https://en.wikipedia.org/wiki/Jake_Paul",
     bio: (
       <>
@@ -83,7 +81,6 @@ const team: TeamMember[] = [
   {
     name: "Logan Paul",
     title: "General Partner",
-    summary: "Co-founder of PRIME, host of Impaulsive, and professional wrestler.",
     profileUrl: "https://www.instagram.com/loganpaul/",
     bio: (
       <>
@@ -97,7 +94,6 @@ const team: TeamMember[] = [
   {
     name: "Steve Han",
     title: "Partner",
-    summary: "Former investor at March Capital; previously at Deutsche Bank.",
     bio: (
       <>
         Steve Han previously invested at March Capital and worked at Deutsche
@@ -109,7 +105,6 @@ const team: TeamMember[] = [
   {
     name: "Laura Brady",
     title: "Managing Director, Capital Formation",
-    summary: "CEO of Jake Paul's family office; 15 years in capital markets.",
     bio: (
       <>
         Laura Brady is CEO of Jake Paul's family office. She was previously
@@ -167,19 +162,9 @@ export default function Team() {
                       <p className="mt-1 font-body text-xs leading-relaxed text-ink-muted">
                         {member.title}
                       </p>
-                      <p className="mt-2 font-body text-[15px] leading-relaxed text-ink-soft">
-                        {member.summary}
+                      <p data-team-bio className="mt-2 max-w-3xl font-body text-[15px] leading-relaxed text-ink-soft">
+                        {member.bio}
                       </p>
-                      {member.bio && (
-                        <details data-team-bio className="mt-1">
-                          <summary className="min-h-11 w-fit cursor-pointer py-3 font-body text-xs leading-relaxed text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
-                            Full biography
-                          </summary>
-                          <p className="max-w-3xl pb-2 pt-1 font-body text-[15px] leading-relaxed text-ink-soft">
-                            {member.bio}
-                          </p>
-                        </details>
-                      )}
                     </div>
                   </article>
                 ))}
