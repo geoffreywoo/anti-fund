@@ -437,6 +437,8 @@ test("team biographies and every founder reference remain available", async ({
   await expect(
     roster.getByRole("link", { name: "peer-reviewed science papers" }),
   ).toBeVisible();
+  await expect(roster).toContainText("chairman of Ketone-IQ and Archive");
+  await expect(roster).toContainText("board director of Betr and W");
   await expect(roster).toContainText("Steve Han previously invested at March Capital");
   await expect(roster).toContainText("65M peak concurrent streams on Netflix");
   await expect(roster).toContainText("BA in Government from Harvard University");

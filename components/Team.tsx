@@ -34,10 +34,11 @@ const team: TeamMember[] = [
     profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
-        Geoff Woo is an entrepreneur and computer scientist. He co-founded{" "}
-        <ExternalLink href="https://archive.com">Archive</ExternalLink>,{" "}
-        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink>, and{" "}
-        <ExternalLink href="https://getw.com">W</ExternalLink>. His first
+        Geoff Woo is an entrepreneur and computer scientist. He is chairman of{" "}
+        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink> and{" "}
+        <ExternalLink href="https://archive.com">Archive</ExternalLink>, and a
+        board director of <ExternalLink href="https://betr.app">Betr</ExternalLink>{" "}
+        and <ExternalLink href="https://getw.com">W</ExternalLink>. His first
         company, Glassmap (YC S11), was{" "}
         <ExternalLink href="https://techcrunch.com/2012/11/01/groupon-quietly-acquires-location-based-social-recommendations-startup-glassmap/">
           acquired by Groupon
