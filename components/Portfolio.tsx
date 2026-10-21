@@ -31,6 +31,14 @@ const softwareCompanies: Company[] = [
     partnered: "2019",
   },
   {
+    name: "Whop",
+    logoSrc: "/portfolio-logos/whop.svg",
+    url: "https://whop.com/",
+    description: "Payments and commerce infrastructure for internet businesses.",
+    stage: "Growth",
+    partnered: "2026",
+  },
+  {
     name: "Chronosphere",
     url: "https://chronosphere.io/",
     description: "Cloud observability platform; acquired by Palo Alto Networks for $3.35B.",
@@ -445,6 +453,7 @@ const portfolioGroupSpecs = [
     title: "Software, Finance & Applied AI",
     names: [
       "Ramp",
+      "Whop",
       "ElevenLabs",
       "Erebor",
       "Monaco",
