@@ -545,10 +545,6 @@ test("one field story leads to the complete media archive through a disclosure",
   const expectedLinks = [
     ["Inside General Matter with Jake Paul", "https://www.youtube.com/watch?v=fiIvF-1RqBQ"],
     ["Geoff Woo, Jake & Logan Paul visit the Pentagon", "https://www.youtube.com/watch?v=FaS8i37BjOQ"],
-    [
-      "Sequoia: Catalyst turns ideas into trades — October 8, 2026",
-      "https://sequoiacap.com/article/partnering-with-catalyst-turning-ideas-into-trades",
-    ],
     ["Jake Paul & Geoff Woo visit El Segundo", "https://www.youtube.com/watch?v=DhVwnSa31WM&t=4s"],
     ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [
