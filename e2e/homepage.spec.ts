@@ -332,12 +332,13 @@ test("selected investments expand through a keyboard disclosure", async ({
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Anduril" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Ramp", exact: true })).toBeVisible();
-  await expect(portfolio.getByRole("link", { name: "Erebor", exact: true })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "ElevenLabs", exact: true })).toBeVisible();
   await investmentSummary.focus();
   await page.keyboard.press("Enter");
   await expect(allInvestments).toHaveAttribute("open", "");
   await expect(portfolio.locator("[data-company]:visible")).toHaveCount(53);
   await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
+  await expect(portfolio.getByRole("link", { name: "Erebor", exact: true })).toBeVisible();
 
   const companyKeys = await portfolio.locator("[data-company]").evaluateAll((rows) =>
     rows.map((row) => row.getAttribute("data-company")),
