@@ -637,7 +637,7 @@ const featuredCompanyNames = [
   "Saronic",
   "Helion",
   "Ramp",
-  "Erebor",
+  "ElevenLabs",
 ];
 const featuredCompanySet = new Set(featuredCompanyNames);
 const featuredCompanies = featuredCompanyNames
