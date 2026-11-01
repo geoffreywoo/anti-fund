@@ -15,7 +15,7 @@ const featured = [
     title: "Geoff Woo, Jake & Logan Paul visit the Pentagon",
     description:
       "Geoff Woo, Jake Paul, and Logan Paul in Washington, D.C., visiting the Pentagon and Treasury and discussing the technologies behind America's future.",
-    href: "https://www.youtube.com/watch?v=FaS8i37BjOQ",
+    href: "https://www.youtube.com/watch?v=ZTV0Ugo4-Ac",
     imageSrc: "/media/pentagon-geoff-jake-logan.jpg",
     alt: "Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail.",
   },
