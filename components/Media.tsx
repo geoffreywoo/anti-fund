@@ -7,8 +7,8 @@ const featured = [
     description:
       "Jake Paul and Anti Fund visit Paducah, Kentucky, where General Matter is rebuilding domestic uranium enrichment.",
     href: "https://www.youtube.com/watch?v=fiIvF-1RqBQ",
-    imageSrc: "/media/general-matter-jake-paul.jpg",
-    alt: "Inside General Matter's Paducah site during the Anti Fund visit.",
+    imageSrc: "/media/general-matter-jake-paul-thumbnail.jpg",
+    alt: "Official thumbnail for Jake Paul's General Matter visit, showing Jake with a radiation detector.",
   },
   {
     source: "Field visit / Washington, D.C.",

@@ -1,4 +1,11 @@
 {
+  "general-matter-jake-paul-thumbnail.jpg": {
+    "source": "https://www.youtube.com/watch?v=fiIvF-1RqBQ",
+    "asset": "https://i.ytimg.com/vi/fiIvF-1RqBQ/maxresdefault.jpg",
+    "creator": "Jake Paul Biz",
+    "type": "Official video thumbnail",
+    "retrieved": "2026-11-01"
+  },
   "general-matter-jake-paul.jpg": {
     "source": "https://www.youtube.com/watch?v=fiIvF-1RqBQ&t=281s",
     "creator": "Jake Paul Biz",

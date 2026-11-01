@@ -505,7 +505,7 @@ test("two field stories lead to the complete media archive through a disclosure"
   await expect(media.getByRole("heading", { level: 2 })).toBeVisible();
   await expect(media.locator("article:visible")).toHaveCount(2);
   await expect(
-    media.getByAltText("Inside General Matter's Paducah site during the Anti Fund visit."),
+    media.getByAltText("Official thumbnail for Jake Paul's General Matter visit, showing Jake with a radiation detector."),
   ).toBeVisible();
   await expect(
     media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail."),
@@ -525,7 +525,7 @@ test("two field stories lead to the complete media archive through a disclosure"
   await expect(archive).toHaveAttribute("open", "");
   await expect(media.locator("article:visible")).toHaveCount(5);
   const newImages = [
-    media.getByAltText("Inside General Matter's Paducah site during the Anti Fund visit."),
+    media.getByAltText("Official thumbnail for Jake Paul's General Matter visit, showing Jake with a radiation detector."),
     media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail."),
   ];
   for (const image of newImages) {
