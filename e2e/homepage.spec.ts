@@ -415,7 +415,7 @@ test("selected investments expand through a keyboard disclosure", async ({
   await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
 });
 
-test("team biographies and every founder reference remain available", async ({
+test("team biographies and selected founder references remain available", async ({
   page,
 }) => {
   await page.goto("/");
@@ -447,7 +447,7 @@ test("team biographies and every founder reference remain available", async ({
 
   const proof = page.locator("#proof");
   await proof.scrollIntoViewIfNeeded();
-  await expect(proof.locator("blockquote")).toHaveCount(7);
+  await expect(proof.locator("blockquote")).toHaveCount(4);
   await expect(proof.locator("blockquote:visible")).toHaveCount(0);
   await expect(proof.getByRole("link", { name: "Gianluca Bencomo", includeHidden: true })).toBeHidden();
   await expect(proof.getByRole("link", { name: "Eric Glyman", includeHidden: true })).toBeHidden();
@@ -463,10 +463,10 @@ test("team biographies and every founder reference remain available", async ({
   await expect(references).toHaveAttribute("open", "");
   await expect(references.getByRole("link", { name: "Gianluca Bencomo" })).toBeVisible();
   await expect(references.getByRole("link", { name: "Eric Glyman" })).toBeVisible();
-  await expect(references.getByRole("link", { name: "Sam Blond" })).toBeVisible();
+  await expect(references.getByRole("link", { name: "Yoon Yang" })).toBeVisible();
   await expect(references.getByRole("link", { name: "Rob Skillington" })).toBeVisible();
   await expect(references).toContainText("Anti Fund was our first investor");
-  await expect(proof.locator("blockquote:visible")).toHaveCount(7);
+  await expect(proof.locator("blockquote:visible")).toHaveCount(4);
   await expect(proof).toContainText("Geoff Woo invested personally in Ramp's Seed and Series B rounds. Anti Fund invested in Series D.");
   await expect(proof).not.toContainText("Abraham Othman");
   await referenceSummary.focus();

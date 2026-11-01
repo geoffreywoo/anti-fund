@@ -20,14 +20,6 @@ const founderTestimonials: Testimonial[] = [
     profileUrl: "https://x.com/eglyman",
   },
   {
-    quote: "Awesome working with Jake Paul, Geoff Woo and Anti Fund!!",
-    name: "Sam Blond",
-    role: "CEO,",
-    companyName: "Monaco",
-    companyUrl: "https://www.monaco.com/",
-    profileUrl: "https://x.com/samdblond",
-  },
-  {
     quote:
       "Geoff was one of our first investors and committed to backing Chronosphere before our company was even set up. He is incredibly networked in tech and investor circles and has been a key strategic thought partner. He is one of those rare humans that wields deep technical, product, and business expertise.",
     name: "Rob Skillington",
@@ -36,22 +28,6 @@ const founderTestimonials: Testimonial[] = [
     companyName: "Chronosphere",
     companyUrl: "https://chronosphere.io/",
     profileUrl: "https://www.linkedin.com/in/robskillington/",
-  },
-  {
-    quote: "Thanks for all of support! Couldn't ask for a better partner.",
-    name: "Aryan Shah",
-    role: "CEO,",
-    companyName: "Metis",
-    companyUrl: "https://www.withmetis.ai/",
-    profileUrl: "https://www.linkedin.com/in/aryan-shah1/",
-  },
-  {
-    quote:
-      "Geoff is an incredible visionary with sharp intuition. As our earliest investor, he has consistently given advice that proves true time and time again. His strong connections with the most influential minds in Silicon Valley are the exact fuel that early-stage founders can only dream of. Essentially, he brings his A-game. Founders just need to bring theirs.",
-    name: "Gun Choi",
-    role: "CEO & Co-founder,",
-    companyName: "Linedot",
-    companyUrl: "https://www.linedot.ai/",
   },
   {
     quote:
