@@ -34,17 +34,12 @@ const team: TeamMember[] = [
     profileUrl: "https://geoffreywoo.com",
     bio: (
       <>
-        Geoff Woo is an entrepreneur and computer scientist. He is chairman of{" "}
-        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink> and{" "}
-        <ExternalLink href="https://archive.com">Archive</ExternalLink>, and a
-        board director of <ExternalLink href="https://betr.app">Betr</ExternalLink>{" "}
-        and <ExternalLink href="https://getw.com">W</ExternalLink>. His first
-        company, Glassmap (YC S11), was{" "}
+        Geoff Woo is a Stanford Computer Science graduate, entrepreneur, and
+        computer scientist. His first company, Glassmap (YC S11), was{" "}
         <ExternalLink href="https://techcrunch.com/2012/11/01/groupon-quietly-acquires-location-based-social-recommendations-startup-glassmap/">
           acquired by Groupon
         </ExternalLink>
-        . A Stanford Computer Science graduate, he is a co-inventor and
-        co-author of numerous{" "}
+        . He is a co-inventor and co-author of numerous{" "}
         <ExternalLink href="https://patents.google.com/?inventor=Geoffrey+Woo">
           US patents
         </ExternalLink>{" "}
@@ -52,7 +47,11 @@ const team: TeamMember[] = [
         <ExternalLink href="https://scholar.google.com/scholar?hl=en&q=%22Geoffrey+Woo%22">
           peer-reviewed science papers
         </ExternalLink>
-        .
+        . He is chairman of{" "}
+        <ExternalLink href="https://ketone.com">Ketone-IQ</ExternalLink> and{" "}
+        <ExternalLink href="https://archive.com">Archive</ExternalLink>, and a
+        board director of <ExternalLink href="https://betr.app">Betr</ExternalLink>{" "}
+        and <ExternalLink href="https://getw.com">W</ExternalLink>.
       </>
     ),
   },
