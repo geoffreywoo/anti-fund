@@ -495,7 +495,7 @@ test("typography pairs readable sans body copy with serif identity and mono meta
   await expect(page.locator('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]')).toHaveCount(0);
 });
 
-test("one field story leads to the complete media archive through a disclosure", async ({
+test("two field stories lead to the complete media archive through a disclosure", async ({
   page,
 }) => {
   await page.goto("/");
@@ -503,13 +503,13 @@ test("one field story leads to the complete media archive through a disclosure",
   const media = page.locator("#media");
   await media.scrollIntoViewIfNeeded();
   await expect(media.getByRole("heading", { level: 2 })).toBeVisible();
-  await expect(media.locator("article:visible")).toHaveCount(1);
+  await expect(media.locator("article:visible")).toHaveCount(2);
   await expect(
     media.getByAltText("Inside General Matter's Paducah site during the Anti Fund visit."),
   ).toBeVisible();
   await expect(
     media.getByAltText("Geoff Woo, Jake Paul, and Logan Paul in the Pentagon visit video thumbnail."),
-  ).toBeHidden();
+  ).toBeVisible();
   await expect(
     media.getByAltText("Jake Paul and Geoff Woo visit hardware startups in El Segundo."),
   ).toBeHidden();
@@ -587,7 +587,7 @@ test("one field story leads to the complete media archive through a disclosure",
   await archiveSummary.focus();
   await page.keyboard.press("Space");
   await expect(archive).not.toHaveAttribute("open", "");
-  await expect(media.locator("article:visible")).toHaveCount(1);
+  await expect(media.locator("article:visible")).toHaveCount(2);
 });
 
 test("faq disclosure and keyboard navigation work", async ({ page }) => {
