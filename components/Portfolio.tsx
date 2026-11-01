@@ -258,13 +258,6 @@ const softwareCompanies: Company[] = [
     partnered: "2022",
   },
   {
-    name: "Creed",
-    url: "https://usecreed.com/",
-    description: "AI-guided Bible study and prayer.",
-    stage: "Seed",
-    partnered: "2025",
-  },
-  {
     name: "Pensive",
     url: "https://www.pensive.com/",
     description: "AI grading and tutoring for higher education.",
@@ -291,13 +284,6 @@ const softwareCompanies: Company[] = [
     description: "Insurance and risk infrastructure for ambitious businesses.",
     stage: "Seed",
     partnered: "2024",
-  },
-  {
-    name: "Cluely",
-    url: "https://cluely.com/",
-    description: "Real-time AI desktop assistance.",
-    stage: "Seed",
-    partnered: "2025",
   },
   {
     name: "Poke.com",
@@ -336,13 +322,6 @@ const consumerCompanies: Company[] = [
     description: "Men's personal care.",
     stage: "Incubation",
     partnered: "2024",
-  },
-  {
-    name: "Passes",
-    url: "https://www.passes.com/",
-    description: "Creator commerce infrastructure.",
-    stage: "Seed",
-    partnered: "2022",
   },
   {
     name: "Sesh",
@@ -464,10 +443,8 @@ const portfolioGroupSpecs = [
       "Polymarket",
       "Archive",
       "WithCoverage",
-      "Cluely",
       "Melius",
       "Natural",
-      "Creed",
       "Pensive",
     ],
   },
@@ -480,7 +457,6 @@ const portfolioGroupSpecs = [
       "Palm Tree Crew",
       "Kings League",
       "Happy Dad",
-      "Passes",
       "Sesh",
       "Ketone-IQ",
       "SipMargs",
@@ -695,7 +671,7 @@ function StageLabel({ stage }: { stage: string }) {
 }
 
 function CompanyLogo({ company }: { company: Company }) {
-  const needsDarkSurface = ["Creed", "Natural", "Orbital", "Rail", "The Boring Company"].includes(
+  const needsDarkSurface = ["Natural", "Orbital", "Rail", "The Boring Company"].includes(
     company.name,
   );
 
@@ -832,7 +808,7 @@ export default function Portfolio() {
 
               <details data-portfolio-disclosure className="group border-b border-line">
                 <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 pb-5 font-body text-base font-medium text-ink [&::-webkit-details-marker]:hidden">
-                  <span>View all investments</span>
+                  <span>More selected investments</span>
                   <span aria-hidden="true" className="font-mono text-xl font-normal group-open:rotate-45">+</span>
                 </summary>
                 <div data-remaining-investments className="space-y-7 border-t border-line py-6 sm:space-y-9 sm:py-8">
