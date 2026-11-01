@@ -544,7 +544,7 @@ test("two field stories lead to the complete media archive through a disclosure"
 
   const expectedLinks = [
     ["Inside General Matter with Jake Paul", "https://www.youtube.com/watch?v=fiIvF-1RqBQ"],
-    ["Geoff Woo, Jake & Logan Paul visit the Pentagon", "https://www.youtube.com/watch?v=FaS8i37BjOQ"],
+    ["Geoff Woo, Jake & Logan Paul visit the Pentagon", "https://www.youtube.com/watch?v=ZTV0Ugo4-Ac"],
     ["Jake Paul & Geoff Woo visit El Segundo", "https://www.youtube.com/watch?v=DhVwnSa31WM&t=4s"],
     ["48 hours with Anti Fund", "https://www.youtube.com/watch?v=4ND2P-HydlM"],
     [
