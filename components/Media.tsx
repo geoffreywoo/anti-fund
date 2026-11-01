@@ -143,8 +143,10 @@ export default function Media() {
           <div className="space-y-6 sm:space-y-8">
             <h2 className="section-heading">On the ground.</h2>
 
-            <div data-featured-field-story>
-              <FieldStory item={featured[0]} />
+            <div data-featured-field-story className="space-y-6 sm:space-y-8">
+              {featured.slice(0, 2).map((item) => (
+                <FieldStory key={item.href} item={item} />
+              ))}
             </div>
 
             <details data-media-archive className="border-y border-line">
@@ -152,7 +154,7 @@ export default function Media() {
                 More conversations &amp; field notes
               </summary>
               <div className="space-y-6 border-t border-line py-6 sm:space-y-8">
-                {featured.slice(1).map((item) => (
+                {featured.slice(2).map((item) => (
                   <FieldStory key={item.href} item={item} />
                 ))}
 
