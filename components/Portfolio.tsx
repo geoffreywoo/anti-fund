@@ -671,7 +671,7 @@ const featuredCompanyNames = [
   "Efference",
   "General Matter",
   "Saronic",
-  "Helion",
+  "Cathedral",
   "Ramp",
   "ElevenLabs",
 ];
