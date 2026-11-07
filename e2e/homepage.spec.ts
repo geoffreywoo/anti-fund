@@ -324,9 +324,9 @@ test("selected investments expand through a keyboard disclosure", async ({
   await portfolio.scrollIntoViewIfNeeded();
   const allInvestments = portfolio.locator("[data-portfolio-disclosure]");
   const investmentSummary = allInvestments.locator("summary");
-  await expect(portfolio.locator("[data-company]")).toHaveCount(53);
+  await expect(portfolio.locator("[data-company]")).toHaveCount(54);
   await expect(portfolio.locator("[data-company]:visible")).toHaveCount(12);
-  await expect(allInvestments.locator("[data-company]")).toHaveCount(41);
+  await expect(allInvestments.locator("[data-company]")).toHaveCount(42);
   await expect(investmentSummary).toHaveText("More selected investments+");
   await expect(allInvestments).not.toHaveAttribute("open", "");
   await expect(portfolio.getByRole("link", { name: "OpenAI" })).toBeVisible();
@@ -336,14 +336,14 @@ test("selected investments expand through a keyboard disclosure", async ({
   await investmentSummary.focus();
   await page.keyboard.press("Enter");
   await expect(allInvestments).toHaveAttribute("open", "");
-  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(53);
+  await expect(portfolio.locator("[data-company]:visible")).toHaveCount(54);
   await expect(portfolio.getByRole("link", { name: "SpaceX" })).toBeVisible();
   await expect(portfolio.getByRole("link", { name: "Erebor", exact: true })).toBeVisible();
 
   const companyKeys = await portfolio.locator("[data-company]").evaluateAll((rows) =>
     rows.map((row) => row.getAttribute("data-company")),
   );
-  expect(new Set(companyKeys).size).toBe(53);
+  expect(new Set(companyKeys).size).toBe(54);
 
   const boring = portfolio.locator('[data-company="the-boring-company"]');
   await expect(boring).toContainText("Series D");
@@ -352,7 +352,7 @@ test("selected investments expand through a keyboard disclosure", async ({
 
   const investmentIndex = portfolio.locator("[data-portfolio-index]");
   await expect(investmentIndex).toBeVisible();
-  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(53);
+  await expect(portfolio.locator("img[data-portfolio-logo]")).toHaveCount(54);
   for (const company of [
     "Aeon",
     "Westmag",

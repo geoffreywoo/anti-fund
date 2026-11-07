@@ -95,6 +95,14 @@ const softwareCompanies: Company[] = [
     partnered: "2022",
   },
   {
+    name: "Cathedral",
+    logoSrc: "/portfolio-logos/cathedral.svg",
+    url: "https://cathedral.com/",
+    description: "AI-powered cybersecurity for critical American infrastructure.",
+    stage: "Venture",
+    partnered: "2026",
+  },
+  {
     name: "Helion",
     url: "https://www.helionenergy.com/",
     description: "Commercial fusion energy.",
@@ -409,6 +417,7 @@ const portfolioGroupSpecs = [
     names: [
       "OpenAI",
       "Anduril",
+      "Cathedral",
       "Helion",
       "The Boring Company",
       "Saronic",
