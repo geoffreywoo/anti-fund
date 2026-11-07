@@ -70,7 +70,7 @@ We named this firm "Anti" because the greatest companies in history were built b
 
 Anti-consensus. Anti-incremental. Anti-bureaucratic. Anti-mediocre.
 
-The very best founders break from norm and, by definition, must be "anti" the way things have been done in the past. Anti Fund is built to find and fund these people.
+The very best founders break from the norm and, by definition, must be "anti" the way things have been done in the past. Anti Fund is built to find and fund these people.
 
 We have let our results and relentless work ethic speak louder than anything else. We have driven rapid growth, strong brand recognition, and deep respect in a short amount of time.
 
